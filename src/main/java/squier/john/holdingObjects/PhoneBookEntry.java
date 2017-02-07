@@ -1,20 +1,24 @@
 package squier.john.holdingObjects;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author John A. Squier
  */
 public class PhoneBookEntry implements Comparable<PhoneBookEntry> {
 
     private String name;
-    private PhoneNumber number;
+    private List<PhoneNumber> numbers;
 
     public PhoneBookEntry(String name, PhoneNumber number) {
         this.name = name;
-        this.number = number;
+        this.numbers = new ArrayList<>();
+        numbers.add(number);
     }
 
-    public PhoneNumber getPhoneNumber() {
-        return number;
+    public List<PhoneNumber> getPhoneNumbers() {
+        return numbers;
     }
 
     public String getName() {
@@ -23,7 +27,7 @@ public class PhoneBookEntry implements Comparable<PhoneBookEntry> {
 
     public boolean equals(PhoneBookEntry other) {
         if ( this.name.equals(other.name )
-                && this.number.equals(other.number) ) {
+                && this.numbers.equals(other.numbers) ) {
             return true;
         }
         else {
@@ -33,7 +37,13 @@ public class PhoneBookEntry implements Comparable<PhoneBookEntry> {
 
     @Override
     public String toString() {
-        String s = name + ": " + number.toString();
+        String phoneNumbers = "";
+
+        for ( PhoneNumber n : numbers ) {
+            phoneNumbers += n.toString() + "\n";
+        }
+
+        String s = name + ": " + phoneNumbers;
         return s;
     }
 

@@ -4,6 +4,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author John A. Squier
  */
@@ -21,7 +24,8 @@ public class PhoneBookEntryTest {
     @Test
     public void getPhoneNumberTest() {
         PhoneNumber expected = new PhoneNumber("333-333-3333");
-        PhoneNumber actual = phoneBookEntry1.getPhoneNumber();
+        List<PhoneNumber> list1 = phoneBookEntry1.getPhoneNumbers();
+        PhoneNumber actual = list1.get(0);
         Assert.assertTrue(expected.equals(actual));
     }
 

@@ -15,7 +15,7 @@ public class PhoneBook extends ArrayList<PhoneBookEntry> {
     public PhoneNumber lookup(String name) {
         for ( int i = 0; i < this.size(); i++ ) {
             if ( this.get(i).getName().equals(name) ) {
-                return this.get(i).getPhoneNumber();
+                return this.get(i).getPhoneNumbers().get(0);
             }
         }
         return null;
@@ -23,7 +23,7 @@ public class PhoneBook extends ArrayList<PhoneBookEntry> {
 
     public String reverseLookup(PhoneNumber toLookUp) {
         for ( int i = 0; i < this.size(); i++ ) {
-            if ( this.get(i).getPhoneNumber().equals(toLookUp) ) {
+            if ( this.get(i).getPhoneNumbers().equals(toLookUp) ) {
                 return this.get(i).getName();
             }
         }
