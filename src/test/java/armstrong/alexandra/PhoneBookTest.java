@@ -13,7 +13,7 @@ public class PhoneBookTest{
     public void setUp(){
         phoneBook = new PhoneBook();
         phoneBook.add("Name", "Number");
-        phoneBook.add("Name2", "Number");
+        phoneBook.add("Name2", "Number2");
     }
 
     @Test
@@ -36,6 +36,13 @@ public class PhoneBookTest{
         phoneBook.remove("Name2");
         int expected = 1;
         int actual = phoneBook.size();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void reverseLookUpTest(){
+        String expected = "Name";
+        String actual = phoneBook.reverseLookUp("Number");
         assertEquals(expected, actual);
     }
 }
