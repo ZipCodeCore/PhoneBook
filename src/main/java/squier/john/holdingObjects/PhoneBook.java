@@ -13,6 +13,11 @@ public class PhoneBook extends ArrayList<PhoneBookEntry> {
     }
 
     public PhoneNumber lookup(String name) {
+        for ( int i = 0; i < this.size(); i++ ) {
+            if ( this.get(i).getName().equals(name) ) {
+                return this.get(i).getPhoneNumber();
+            }
+        }
         return null;
     }
 

@@ -34,7 +34,12 @@ public class PhoneBookTest {
     public void lookupEntryThatExistsTest() {
         PhoneNumber expected = new PhoneNumber("123-456-7890");
         PhoneNumber actual = phoneBook.lookup("John Squier");
-        Assert.assertEquals(expected, actual);
+        Assert.assertTrue(expected.equals(actual));
+    }
+
+    @Test
+    public void lookupEntryThatDoesntExist() {
+        Assert.assertNull(phoneBook.lookup("Sam Sampson"));
     }
 
     @Test
