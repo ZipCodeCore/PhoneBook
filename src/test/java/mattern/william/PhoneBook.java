@@ -9,19 +9,21 @@ public class PhoneBook {
     TreeMap<String,String> phoneBook = new TreeMap<String, String>();
 
     public void addEntry(String name, String phoneNumber){
+        phoneBook.put(name, phoneNumber);
 
     }
 
     public void deleteEntry(String name){
+        phoneBook.remove(name);
 
     }
 
     public String lookup(String name){
-        return null;
+        return phoneBook.get(name);
     }
 
     public String getAllNames(){
-        return null;
+        return phoneBook.entrySet().toString();
     }
 
 }
