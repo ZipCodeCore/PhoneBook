@@ -62,12 +62,30 @@ public class PhoneBookTest {
 
         int actualBefore = phoneBook.size();
 
-        phoneBook.removeEntry(new PhoneBookEntry("Mike Wolfe", new PhoneNumber("098-765-4321")));
+        boolean removed =
+                phoneBook.removeEntry(new PhoneBookEntry("Mike Wolfe", new PhoneNumber("098-765-4321")));
 
         int actualAfter = phoneBook.size();
 
         Assert.assertTrue( expectedBefore == actualBefore
-                            && expectedAfter == actualAfter );
+                            && expectedAfter == actualAfter
+                            && removed );
+    }
+
+    @Test
+    public void attemptToRemoveEntryThatDoesntExistTest() {
+        int expectedBefore = 2, expectedAfter = 2;
+
+        int actualBefore = phoneBook.size();
+
+        boolean removed =
+                phoneBook.removeEntry(new PhoneBookEntry("John Doe", new PhoneNumber("123-456-7890")));
+
+        int actualAfter = phoneBook.size();
+
+        Assert.assertTrue( expectedBefore == actualBefore
+                            && expectedAfter == actualAfter
+                            && removed == false);
     }
 
     @Test
