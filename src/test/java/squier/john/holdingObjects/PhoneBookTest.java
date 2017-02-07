@@ -43,6 +43,18 @@ public class PhoneBookTest {
     }
 
     @Test
+    public void reverseLookUpPhoneNumberThatExists() {
+        String expected = "John Squier";
+        String actual = phoneBook.reverseLookup(new PhoneNumber("123-456-7890"));
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void reverseLookUpPhoneNumberThatDoesntExist() {
+        Assert.assertNull(phoneBook.reverseLookup(new PhoneNumber("111-111-1111")));
+    }
+
+    @Test
     public void addEntryToPhoneBookTest() {
         int expectedBefore = 2, expectedAfter = 3;
 

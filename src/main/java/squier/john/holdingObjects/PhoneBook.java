@@ -21,6 +21,15 @@ public class PhoneBook extends ArrayList<PhoneBookEntry> {
         return null;
     }
 
+    public String reverseLookup(PhoneNumber toLookUp) {
+        for ( int i = 0; i < this.size(); i++ ) {
+            if ( this.get(i).getPhoneNumber().equals(toLookUp) ) {
+                return this.get(i).getName();
+            }
+        }
+        return null;
+    }
+
     public boolean addEntry(PhoneBookEntry toAdd) {
         boolean b = add(toAdd);
         Collections.sort(this);
