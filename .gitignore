@@ -1,0 +1,8 @@
+.idea/
+*.iml
+target/
+*.class
+*.jar
+*.ear
+*.war
+.DS_Store
