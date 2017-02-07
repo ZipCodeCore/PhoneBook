@@ -55,7 +55,7 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void addEntryToPhoneBookTest() {
+    public void addNewEntryToPhoneBookTest() {
         int expectedBefore = 2, expectedAfter = 3;
 
         int actualBefore = phoneBook.size();
@@ -66,6 +66,11 @@ public class PhoneBookTest {
 
         Assert.assertTrue(expectedBefore == actualBefore
                             && expectedAfter == actualAfter);
+    }
+
+    @Test
+    public void addNumberToExistingEntryTest() {
+
     }
 
     @Test
@@ -98,6 +103,11 @@ public class PhoneBookTest {
         Assert.assertTrue( expectedBefore == actualBefore
                             && expectedAfter == actualAfter
                             && removed == false);
+    }
+
+    @Test
+    public void removeNumberFromExistingEntry() {
+
     }
 
     @Test

@@ -31,12 +31,16 @@ public class PhoneBook extends ArrayList<PhoneBookEntry> {
     }
 
     public boolean addEntry(PhoneBookEntry toAdd) {
+        // check if name already exists and if so add the number to name
+        //  otherwise make a new entry
         boolean b = add(toAdd);
         Collections.sort(this);
         return b;
     }
 
     public boolean removeEntry(PhoneBookEntry toRemove) {
+        // check if the entry has multiple numbers and if so delete the one given
+        //      otherwise delete the whole entry
         for ( int i = 0; i < this.size(); i++ ) {
             if ( this.get(i).equals(toRemove) ) {
                 remove(i);
