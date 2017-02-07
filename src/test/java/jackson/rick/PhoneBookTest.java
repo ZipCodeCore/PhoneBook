@@ -28,4 +28,14 @@ public class PhoneBookTest {
         assertEquals(String.format("I expected the result to be: %s", expected),
                      expected, actual);
     }
+    
+    @Test
+    public void reverseLookupTest() {
+        String expected = "First Person";
+        String actual = this.phoneBook.reverseLookup("302-555-0001");
+        System.out.println("Expected : " + expected);
+        System.out.println("Actual   : " + actual);
+        assertEquals(String.format("I expected the result to be: %s", expected),
+                     expected, actual);
+    }
 }

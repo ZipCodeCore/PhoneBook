@@ -18,6 +18,15 @@ public class PhoneBook {
         return this.phoneNumbers.get(name);
     }
     
+    public String reverseLookup(String name) {
+        for (String k : this.phoneNumbers.keySet()) {
+            if (this.phoneNumbers.get(k).equals(name)) {
+                return k;
+            }
+        }
+        return null;
+    }
+    
     public void add(String name, String phoneNumber) {
         this.phoneNumbers.put(name, phoneNumber);
     }
@@ -27,7 +36,7 @@ public class PhoneBook {
     }
     
     public void listAllNames() {
-        System.out.printf(this.phoneNumbers.keySet().toString());
+        System.out.println(this.phoneNumbers.keySet().toString());
     }
     
     public void listAllEntries() {
