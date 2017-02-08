@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15cebe18-0943-45e6-8aa1-883def515275" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/collins/john/PhoneBook.java" afterPath="$PROJECT_DIR$/src/main/java/collins/john/PhoneBook.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/collins/john/PhoneBookTest.java" afterPath="$PROJECT_DIR$/src/test/java/collins/john/PhoneBookTest.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PhoneBook2.png" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -797,7 +796,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1486491412859</updated>
-      <workItem from="1486491414401" duration="18322000" />
+      <workItem from="1486491414401" duration="18479000" />
     </task>
     <servers />
   </component>
@@ -834,7 +833,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18322000" />
+    <option name="totallyTimeSpent" value="18479000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="24" width="1280" height="773" extended-state="6" />
@@ -952,6 +951,11 @@
             <element signature="imports" expanded="true" />
           </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PhoneBook2.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/collins/john/PhoneBook.java">
