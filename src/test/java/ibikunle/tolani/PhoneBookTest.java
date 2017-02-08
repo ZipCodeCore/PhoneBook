@@ -22,13 +22,21 @@ public class PhoneBookTest {
 
 
     @Test
-    public void lookUpTest(){
-       //Lookup non existing, look up in an empty phone book
-        phoneBook.add("Tolani","610-444-4444");
+    public void lookUpTest() {
+        //Lookup non existing, look up in an empty phone book
+        phoneBook.add("Tolani", "610-444-4444");
         String expected = "610-444-4444";
         String actual = phoneBook.lookUp("Tolani");
-        Assert.assertEquals("I am expecting Tolani",expected,actual);
+        Assert.assertEquals("I am expecting 610-444-4444", expected, actual);
     }
+        @Test
+       public void reverseLookUpTest(){
+            phoneBook.add("Tolani", "610-444-4444");
+            String expected = "Tolani";
+            String actual = phoneBook.reverseLookUp("610-444-4444");
+            Assert.assertEquals("I am expecting Tolani",expected,actual);
+        }
+
     @Test
     public void lookUpNonExistingNumberTest(){
         String expected = "Does not exist";

@@ -12,6 +12,16 @@ public class PhoneBook extends TreeMap {
 
         return (String) this.get(name);
     }
+    public String reverseLookUp(String number){
+        String value = "";
+        for (Object keys: this.keySet()) { // look through the keys saying we now have access to the to values from the key
+            if(number.equals(this.get(keys))){ //checking to see if the the number you are passing through equals the number at the key
+                value = (String) keys; //then you are setting value equal to that number and returning the number.
+            }
+
+        }
+        return value;
+    }
 
     public void add(String name, String phoneNumber) {
         this.put(name, phoneNumber);
