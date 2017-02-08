@@ -31,11 +31,22 @@ public class PhoneBook extends ArrayList<PhoneBookEntry> {
     }
 
     public boolean addEntry(PhoneBookEntry toAdd) {
-        // check if name already exists and if so add the number to name
-        //  otherwise make a new entry
-        boolean b = add(toAdd);
+        boolean added = false;
+
+        for ( int i = 0; i < this.size(); i++ ) {
+            if (this.get(i).getName().equals(toAdd.getName())) {
+                this.get(i).addNumberToEntry(toAdd.getPhoneNumbers().get(0));
+                added = true;
+            }
+        }
+
+        // name isnt in phonebook
+        if ( added == false ) {
+            added = this.add(toAdd);
+        }
+
         Collections.sort(this);
-        return b;
+        return added;
     }
 
     public boolean removeEntry(PhoneBookEntry toRemove) {

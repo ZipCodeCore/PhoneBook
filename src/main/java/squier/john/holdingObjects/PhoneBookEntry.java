@@ -17,6 +17,11 @@ public class PhoneBookEntry implements Comparable<PhoneBookEntry> {
         numbers.add(number);
     }
 
+    public boolean addNumberToEntry(PhoneNumber newNumber) {
+        boolean added = numbers.add(newNumber);
+        return added;
+    }
+
     public List<PhoneNumber> getPhoneNumbers() {
         return numbers;
     }
@@ -26,13 +31,29 @@ public class PhoneBookEntry implements Comparable<PhoneBookEntry> {
     }
 
     public boolean equals(PhoneBookEntry other) {
-        if ( this.name.equals(other.name )
-                && this.numbers.equals(other.numbers) ) {
-            return true;
+        boolean entiresEqual = true;
+
+
+        if ( this.name.equals(other.name) ) {
+            if ( this.getPhoneNumbers().size() == other.getPhoneNumbers().size() ) {
+                for ( int i = 0; i < this.getPhoneNumbers().size(); i++ ) {
+                    if ( this.getPhoneNumbers().get(i).equals(other.getPhoneNumbers().get(i)) ) {
+                        // do nothing when equal
+                    }
+                    else {
+                        entiresEqual = false;
+                    }
+                }
+            }
+            else {
+                entiresEqual = false;
+            }
         }
         else {
-            return false;
+            entiresEqual = false;
         }
+
+        return entiresEqual;
     }
 
     @Override

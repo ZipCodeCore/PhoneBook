@@ -17,7 +17,7 @@ public class PhoneBookTest {
         phoneBook = new PhoneBook();
 
         entry1 = new PhoneBookEntry("John Squier", new PhoneNumber("123-456-7890"));
-        entry2 = new PhoneBookEntry("Mike Wolfe", new PhoneNumber("098-765-4321"));
+        entry2 = new PhoneBookEntry("Mike Wolfe", new PhoneNumber("998-765-4321"));
 
         phoneBook.addEntry(entry2);
         phoneBook.addEntry(entry1);
@@ -70,7 +70,16 @@ public class PhoneBookTest {
 
     @Test
     public void addNumberToExistingEntryTest() {
+        int expectedBefore = 2, expectedAfter = 2;
 
+        int actualBefore = phoneBook.size();
+
+        phoneBook.addEntry(new PhoneBookEntry("John Squier", new PhoneNumber("111-111-1111")));
+
+        int actualAfter = phoneBook.size();
+
+        Assert.assertTrue(expectedBefore == actualBefore
+                           && expectedAfter == actualAfter);
     }
 
     @Test
@@ -80,7 +89,7 @@ public class PhoneBookTest {
         int actualBefore = phoneBook.size();
 
         boolean removed =
-                phoneBook.removeEntry(new PhoneBookEntry("Mike Wolfe", new PhoneNumber("098-765-4321")));
+                phoneBook.removeEntry(new PhoneBookEntry("Mike Wolfe", new PhoneNumber("998-765-4321")));
 
         int actualAfter = phoneBook.size();
 
@@ -107,7 +116,20 @@ public class PhoneBookTest {
 
     @Test
     public void removeNumberFromExistingEntry() {
+        phoneBook.addEntry(new PhoneBookEntry("John Squier", new PhoneNumber("123-456-7899")));
 
+        int expectedBefore = 2, expectedAfter = 2;
+
+        int actualBefore = phoneBook.size();
+
+        boolean removed =
+                phoneBook.removeEntry(new PhoneBookEntry("John Squier", new PhoneNumber("123-456-7890")));
+
+        int actualAfter = phoneBook.size();
+
+        Assert.assertTrue( expectedBefore == actualBefore
+                            && expectedAfter == actualAfter
+                            && removed == true);
     }
 
     @Test
