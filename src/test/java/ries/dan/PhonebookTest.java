@@ -41,6 +41,14 @@ public class PhonebookTest {
     }
 
     @Test
+    public void removeEntry(){
+        phoneBook.removeEntry("Carmelo");
+        int expected = 1;
+        int actual = phoneBook.size();
+        assertEquals("We expect the phonebook to shrink by 1 person",expected,actual);
+    }
+
+    @Test
     public void reverseLookUpTest(){
         String expected = "John";
         String actual = phoneBook.reverseLookUp("(302)985-5648");

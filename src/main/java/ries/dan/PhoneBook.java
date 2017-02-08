@@ -62,5 +62,9 @@ public class PhoneBook extends TreeMap<String,ArrayList> {
         return name;
     }
 
+    public void removeEntry(String name){
+        this.remove(name);
+    }
+
     //public changeNumberstoString
 }
