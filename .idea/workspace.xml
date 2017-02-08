@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a507cf9e-87e2-4206-98e6-cea5ab282002" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/PhoneBookTest.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/reynoldsgillian/titko/App.java" afterPath="$PROJECT_DIR$/src/main/java/reynoldsgillian/titko/App.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/reynoldsgillian/titko/PhoneBook.java" afterPath="$PROJECT_DIR$/src/main/java/reynoldsgillian/titko/PhoneBook.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/PhoneBookTest.java" afterPath="$PROJECT_DIR$/src/test/java/PhoneBookTest.java" />
     </list>
@@ -34,15 +36,14 @@
       <file leaf-file-name="PhoneBook.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/reynoldsgillian/titko/PhoneBook.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="488">
-              <caret line="43" column="9" lean-forward="true" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
+            <state relative-caret-position="548">
+              <caret line="71" column="12" lean-forward="true" selection-start-line="71" selection-start-column="12" selection-end-line="71" selection-end-column="12" />
               <folding>
-                <element signature="e#638#639#0" expanded="true" />
-                <element signature="e#684#685#0" expanded="true" />
-                <element signature="e#734#735#0" expanded="true" />
-                <element signature="e#772#773#0" expanded="true" />
-                <element signature="e#866#867#0" expanded="true" />
-                <element signature="e#904#905#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#728#729#0" expanded="true" />
+                <element signature="e#820#821#0" expanded="true" />
+                <element signature="e#1581#1582#0" expanded="true" />
+                <element signature="e#1657#1658#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -51,8 +52,8 @@
       <file leaf-file-name="PhoneBookTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/PhoneBookTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="458">
-              <caret line="104" column="62" lean-forward="false" selection-start-line="104" selection-start-column="62" selection-end-line="104" selection-end-column="62" />
+            <state relative-caret-position="518">
+              <caret line="117" column="60" lean-forward="true" selection-start-line="117" selection-start-column="60" selection-end-line="117" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -63,8 +64,8 @@
       <file leaf-file-name="App.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/reynoldsgillian/titko/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state relative-caret-position="300">
+              <caret line="20" column="51" lean-forward="true" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -92,9 +93,9 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/AppTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/PhoneBookTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/reynoldsgillian/titko/App.java" />
         <option value="$PROJECT_DIR$/src/main/java/reynoldsgillian/titko/PhoneBook.java" />
-        <option value="$PROJECT_DIR$/src/test/java/PhoneBookTest.java" />
       </list>
     </option>
   </component>
@@ -112,10 +113,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="24" />
+    <option name="x" value="15" />
     <option name="y" value="34" />
-    <option name="width" value="1779" />
-    <option name="height" value="945" />
+    <option name="width" value="1597" />
+    <option name="height" value="940" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -224,70 +225,7 @@
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
   </component>
-  <component name="RunManager" selected="JUnit.PhoneBookTest.reverseLookupTest">
-    <configuration default="false" name="PhoneBookTest.addToNonExistingBookTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="HoldingObjects" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="PhoneBookTest" />
-      <option name="METHOD_NAME" value="addToNonExistingBookTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="PhoneBookTest.lookupTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="HoldingObjects" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="PhoneBookTest" />
-      <option name="METHOD_NAME" value="lookupTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="PhoneBookTest.lookupNonExistingKeyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="HoldingObjects" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="PhoneBookTest" />
-      <option name="METHOD_NAME" value="lookupNonExistingKeyTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.PhoneBookTest.removeSingleNumberTest">
     <configuration default="false" name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -316,6 +254,69 @@
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="PhoneBookTest" />
       <option name="METHOD_NAME" value="reverseLookupTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="PhoneBookTest.addInvalidKeyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="HoldingObjects" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="PhoneBookTest" />
+      <option name="METHOD_NAME" value="addInvalidKeyTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="PhoneBookTest.removeRecordTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="HoldingObjects" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="PhoneBookTest" />
+      <option name="METHOD_NAME" value="removeRecordTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="PhoneBookTest.removeSingleNumberTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="HoldingObjects" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="PhoneBookTest" />
+      <option name="METHOD_NAME" value="removeSingleNumberTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -703,19 +704,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.addToNonExistingBookTest" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.lookupTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.lookupNonExistingKeyTest" />
-      <item index="3" class="java.lang.String" itemvalue="Application.App" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.reverseLookupTest" />
+      <item index="0" class="java.lang.String" itemvalue="Application.App" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.reverseLookupTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.addInvalidKeyTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.removeRecordTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.removeSingleNumberTest" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.reverseLookupTest" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.removeSingleNumberTest" />
         <item index="1" class="java.lang.String" itemvalue="Application.App" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.lookupNonExistingKeyTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.lookupTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.addToNonExistingBookTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.addInvalidKeyTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.removeRecordTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.reverseLookupTest" />
       </list>
     </recent_temporary>
   </component>
@@ -729,65 +730,65 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1486504886308</updated>
-      <workItem from="1486504890396" duration="13169000" />
+      <workItem from="1486504890396" duration="19185000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PhoneBookTest_addToNonExistingBookTest - 2017.02.07 at 20h 11m 20s.xml">
-      <configuration name="PhoneBookTest.addToNonExistingBookTest" configurationId="JUnit" />
+    <history-entry file="PhoneBookTest_addInvalidKeyTest - 2017.02.07 at 20h 53m 40s.xml">
+      <configuration name="PhoneBookTest.addInvalidKeyTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTest_lookupNonExistingKeyTest - 2017.02.07 at 20h 12m 23s.xml">
-      <configuration name="PhoneBookTest.lookupNonExistingKeyTest" configurationId="JUnit" />
+    <history-entry file="PhoneBookTest_removeRecordTest - 2017.02.07 at 21h 00m 07s.xml">
+      <configuration name="PhoneBookTest.removeRecordTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTest_lookupNonExistingKeyTest - 2017.02.07 at 20h 12m 53s.xml">
-      <configuration name="PhoneBookTest.lookupNonExistingKeyTest" configurationId="JUnit" />
+    <history-entry file="PhoneBookTest_removeRecordTest - 2017.02.07 at 21h 00m 34s.xml">
+      <configuration name="PhoneBookTest.removeRecordTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTest_lookupTest - 2017.02.07 at 20h 12m 20s.xml">
-      <configuration name="PhoneBookTest.lookupTest" configurationId="JUnit" />
+    <history-entry file="PhoneBookTest_removeRecordTest - 2017.02.07 at 21h 01m 20s.xml">
+      <configuration name="PhoneBookTest.removeRecordTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTest_removeLastItemTest - 2017.02.07 at 20h 11m 09s.xml">
-      <configuration name="PhoneBookTest.removeLastItemTest" configurationId="JUnit" />
+    <history-entry file="PhoneBookTest_removeRecordTest - 2017.02.07 at 21h 01m 48s.xml">
+      <configuration name="PhoneBookTest.removeRecordTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTest_reverseLookupTest - 2017.02.07 at 20h 46m 32s.xml">
-      <configuration name="PhoneBookTest.reverseLookupTest" configurationId="JUnit" />
+    <history-entry file="PhoneBookTest_removeSingleNumberTest - 2017.02.07 at 22h 26m 30s.xml">
+      <configuration name="PhoneBookTest.removeSingleNumberTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTest_reverseLookupTest - 2017.02.07 at 20h 47m 03s.xml">
-      <configuration name="PhoneBookTest.reverseLookupTest" configurationId="JUnit" />
+    <history-entry file="PhoneBookTest_removeSingleNumberTest - 2017.02.07 at 22h 27m 18s.xml">
+      <configuration name="PhoneBookTest.removeSingleNumberTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTest_reverseLookupTest - 2017.02.07 at 20h 48m 28s.xml">
-      <configuration name="PhoneBookTest.reverseLookupTest" configurationId="JUnit" />
+    <history-entry file="PhoneBookTest_removeSingleNumberTest - 2017.02.07 at 22h 27m 36s.xml">
+      <configuration name="PhoneBookTest.removeSingleNumberTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTest_reverseLookupTest - 2017.02.07 at 20h 48m 47s.xml">
-      <configuration name="PhoneBookTest.reverseLookupTest" configurationId="JUnit" />
+    <history-entry file="PhoneBookTest_removeSingleNumberTest - 2017.02.07 at 22h 30m 17s.xml">
+      <configuration name="PhoneBookTest.removeSingleNumberTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTest_reverseLookupTest - 2017.02.07 at 20h 49m 41s.xml">
-      <configuration name="PhoneBookTest.reverseLookupTest" configurationId="JUnit" />
+    <history-entry file="PhoneBookTest_removeSingleNumberTest - 2017.02.07 at 22h 36m 21s.xml">
+      <configuration name="PhoneBookTest.removeSingleNumberTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13169000" />
+    <option name="totallyTimeSpent" value="19185000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="24" y="34" width="1779" height="945" extended-state="0" />
-    <editor active="true" />
+    <frame x="15" y="34" width="1597" height="940" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32990867" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17009133" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19520548" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19632606" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2282181" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25422668" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -856,16 +857,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/reynoldsgillian/titko/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state relative-caret-position="300">
+          <caret line="20" column="51" lean-forward="true" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/PhoneBookTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="104" column="62" lean-forward="false" selection-start-line="104" selection-start-column="62" selection-end-line="104" selection-end-column="62" />
+        <state relative-caret-position="518">
+          <caret line="117" column="60" lean-forward="true" selection-start-line="117" selection-start-column="60" selection-end-line="117" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -874,15 +875,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/reynoldsgillian/titko/PhoneBook.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="43" column="9" lean-forward="true" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
+        <state relative-caret-position="548">
+          <caret line="71" column="12" lean-forward="true" selection-start-line="71" selection-start-column="12" selection-end-line="71" selection-end-column="12" />
           <folding>
-            <element signature="e#638#639#0" expanded="true" />
-            <element signature="e#684#685#0" expanded="true" />
-            <element signature="e#734#735#0" expanded="true" />
-            <element signature="e#772#773#0" expanded="true" />
-            <element signature="e#866#867#0" expanded="true" />
-            <element signature="e#904#905#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#728#729#0" expanded="true" />
+            <element signature="e#820#821#0" expanded="true" />
+            <element signature="e#1581#1582#0" expanded="true" />
+            <element signature="e#1657#1658#0" expanded="true" />
           </folding>
         </state>
       </provider>

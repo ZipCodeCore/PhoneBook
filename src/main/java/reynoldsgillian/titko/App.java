@@ -17,6 +17,11 @@ public class App {
         phoneBook.removeEntry("Jim Doe");
         phoneBook.listAllEntries();
 
+        phoneBook.add("Jane Doe", "(321)123-4678");
+        phoneBook.add("Jane Doe", "(321)123-4688");
+        phoneBook.add("Jim Doe", "(321)123-4688");
+        phoneBook.add("Jim Jones", "(321)223-4678");
+        phoneBook.removeSingleNumber("Jane Doe","(321)123-4688");
     }
 
 }

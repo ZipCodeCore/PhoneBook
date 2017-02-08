@@ -2,6 +2,8 @@ import reynoldsgillian.titko.PhoneBook;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Stack;
+
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertNull;
@@ -69,9 +71,9 @@ public class PhoneBookTest {
     @Test
     public void addInvalidKeyTest(){//??
         phoneBook.add("Tom", "(123)45-9087"); //use the method to add another item
-        int expected = 3; //have two items already
+        int expected = 1; //have two items already
         int actual = phoneBook.size();
-        assertEquals("Expected 3 items", expected, actual);
+        assertEquals("Expected 1 items", expected, actual);
     }
 
     @Test
@@ -106,6 +108,14 @@ public class PhoneBookTest {
         assertEquals("Expected a phone number", expected, actual);
     }
 
-
+    @Test
+    public void removeSingleNumberTest(){
+        phoneBook.add("Jane Doe", "(321)123-7999");
+        phoneBook.add("Jane Doe", "(321)123-7897");
+        phoneBook.removeSingleNumber("Jane Doe", "(321)123-7897");
+        int expected = 1;
+        int actual = phoneBook.size();
+        assertEquals("Expected to get 1", expected, actual);
+    }
 
 }
