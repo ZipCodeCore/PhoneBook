@@ -16,10 +16,25 @@ public class PhoneBook {
         };
     }
 
+     //working first version
     public void addEntry(String name, String number) {
         Entries contactNumbers = new Entries(number);
         phoneBook.put(name, contactNumbers);
     }
+
+    /*
+    public void addEntry(String name, String number){
+        Set keys = phoneBook.keySet();
+        for (Object key: keys
+             ) {
+            if(key.toString().equals(name)){
+                if(this.)
+            }
+
+        }
+    }
+*/
+
 
     public void removeEntry(String name) {
         phoneBook.remove(name);
@@ -30,8 +45,8 @@ public class PhoneBook {
         return numbers;
     }
 
-    public void printEntriesKeys() {
-        System.out.println(phoneBook.keySet());
+    public String printEntriesKeys() {
+        return phoneBook.keySet().toString();
 
     }
 
