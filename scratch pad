@@ -1,0 +1,38 @@
+   public void addEntry(String name, String number)
+    {
+        Object targetObject = null;
+        boolean isNewName = true;
+        boolean isNewNumber = true;
+        for (Map.Entry<String, Entries> entry : phoneBook.entrySet())
+        {
+            if (entry.getKey().toString().equals(name))
+            {
+                isNewName = false;
+                for (int i = 0; i < entry.getValue().getNumbers().size(); i++)
+                {
+                    if (!entry.getValue().getNumbers().get(i).toString().equals(number))
+                    {
+                        isNewNumber = true;
+                        // System.out.println("dup name and number");
+                        //} else
+                        //{
+                        //entry.getValue().getNumbers().add(number);
+                        //System.out.println(entry.getValue().getNumbers().get(i+1).toString());
+                    }
+                }
+                System.out.println(entry.getValue().getNumbers().size());
+
+            }
+
+        }
+        if(isNewNumber)
+        {
+            targetObject = phoneBook.get(name).getNumbers();
+        }
+        if(isNewName)
+        {
+            Entries contactNumbers = new Entries(number);
+            phoneBook.put(name, contactNumbers);
+        }
+
+    }
