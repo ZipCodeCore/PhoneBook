@@ -95,4 +95,14 @@ public class PhoneBookTest {
         Assert.assertEquals("I am expecting 0",expected,actual);
     }
 
+    @Test
+    public void removeASingleNumberTest(){
+        phoneBook.add("Preston da JuiceMan","610-777-7777");
+        phoneBook.add("Preston da JuiceMan","610-888-8888");
+        phoneBook.removeASingleNumber("Preston da JuiceMan","610-888-8888");
+        int expected = 0;
+        int actual = phoneBook.get("Preston da JuiceMan").size();
+        Assert.assertEquals(" I am expecting the number to be removed",expected,actual);
+
+    }
 }
