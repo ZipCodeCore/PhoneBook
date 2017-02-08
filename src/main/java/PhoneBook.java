@@ -14,15 +14,22 @@ public class PhoneBook extends TreeMap {
 
 
     // modify all to take multiple Strings.
-    public void add(String aName, String aNumber) {
-        if (!ph.containsKey(aName)) {
-            ArrayList<String> numbers = new ArrayList<String>();
-            numbers.add(aNumber);
-            ph.put(aName, numbers);
-        } else {
-            ph.get(aName).add(aNumber);
-        }
+    public void add(String aName, String aNumber) throws InvalidPhoneNumberException {
 
+
+
+        if (aNumber.length() == 14) {
+            if (!ph.containsKey(aName)) {
+                ArrayList<String> numbers = new ArrayList<String>();
+                numbers.add(aNumber);
+                ph.put(aName, numbers);
+            } else {
+                ph.get(aName).add(aNumber);
+            }
+        } else {
+            System.out.println("Invalid number format");
+            throw new InvalidPhoneNumberException(aNumber);
+        }
     }
 
     public String lookUp(String aName) {
