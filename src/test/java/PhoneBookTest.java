@@ -99,13 +99,13 @@ public class PhoneBookTest {
 
 
     @Test
-    public void listAllNamesTest(){
-
+    public void reverseLookupTest(){
+        phoneBook.add("Jane Doe", "(321)123-7999");
+        String expected = "Jane Doe";
+        String actual = phoneBook.reverseLookup("(321)123-7999");
+        assertEquals("Expected a phone number", expected, actual);
     }
 
-    @Test
-    public void listAllEntriesTest(){
 
-    }
 
 }

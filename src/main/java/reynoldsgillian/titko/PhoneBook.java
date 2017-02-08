@@ -35,4 +35,14 @@ public class PhoneBook extends TreeMap {
             System.out.println(key + " " + this.get(key));
     }
 
+    public String reverseLookup(String number){
+        String nameToReturn = "";
+        for(Object key: this.keySet()){
+            if(number.equals(this.get(key))){
+                nameToReturn = (String) key;
+            }
+        }
+        return nameToReturn;
+    }
+
 }
