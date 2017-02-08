@@ -6,6 +6,8 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
+import static junit.framework.TestCase.assertEquals;
+
 /**
  * Created by tolaniibikunle on 2/7/17.
  */
@@ -34,7 +36,7 @@ public class PhoneBookTest {
             phoneBook.add("Tolani", "610-444-4444");
             String expected = "Tolani";
             String actual = phoneBook.reverseLookUp("610-444-4444");
-            Assert.assertEquals("I am expecting Tolani",expected,actual);
+            assertEquals("I am expecting Tolani",expected,actual);
         }
 
     @Test
@@ -59,7 +61,7 @@ public class PhoneBookTest {
         phoneBook.add("Dr.G","610-888-2321");
         int expected = 1;
         int actual = phoneBook.size();
-        Assert.assertEquals("I am expecting a duplicate value",expected,actual);
+        Assert.assertEquals("I am expecting one value",expected,actual);
     }
 
     @Test
@@ -97,12 +99,10 @@ public class PhoneBookTest {
 
     @Test
     public void removeASingleNumberTest(){
-        phoneBook.add("Preston da JuiceMan","610-777-7777");
-        phoneBook.add("Preston da JuiceMan","610-888-8888");
-        phoneBook.removeASingleNumber("Preston da JuiceMan","610-888-8888");
-        int expected = 0;
-        int actual = phoneBook.get("Preston da JuiceMan").size();
-        Assert.assertEquals(" I am expecting the number to be removed",expected,actual);
+        phoneBook.add("Preston da JuiceMan", "610-777-7777");
+        phoneBook.add("Preston da JuiceMan", "610-888-8888");
+        phoneBook.removeASingleNumber("610-888-8888");
+        assertEquals(1,phoneBook.get("Preston da JuiceMan").size());
 
-    }
+   }
 }

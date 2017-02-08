@@ -12,11 +12,14 @@ public class App {
     public static void main(String[] args)  {
         phoneBook.add("Tolani","612-121-1211");
         phoneBook.add("Dan","419-419-4419");
+        phoneBook.add("Dan","419-419-5656");
 
+        phoneBook.removeASingleNumber("419-419-5656");
+       // System.out.println(found);
         phoneBook.listAllEntries();
-        phoneBook.listAllNames();
-        phoneBook.removeEntry("Dan");
-        phoneBook.listAllNames();
+
+
+
     }
 
 
