@@ -17,6 +17,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< HEAD
       <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
@@ -35,6 +36,13 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
               <caret line="5" column="9" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
+=======
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="30" column="12" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="30" selection-end-column="12" />
+>>>>>>> part3
               <folding />
             </state>
           </provider>
@@ -82,8 +90,13 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
+<<<<<<< HEAD
     <option name="x" value="206" />
     <option name="y" value="28" />
+=======
+    <option name="x" value="25" />
+    <option name="y" value="30" />
+>>>>>>> part3
     <option name="width" value="1597" />
     <option name="height" value="940" />
   </component>
@@ -103,7 +116,10 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+<<<<<<< HEAD
       <pane id="Scope" />
+=======
+>>>>>>> part3
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -184,6 +200,10 @@
           </PATH>
         </subPane>
       </pane>
+<<<<<<< HEAD
+=======
+      <pane id="Scope" />
+>>>>>>> part3
       <pane id="Scratches" />
     </panes>
   </component>
@@ -198,7 +218,11 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
+<<<<<<< HEAD
   <component name="RunManager" selected="JUnit.PhoneBookTest.reverseLookupTest">
+=======
+  <component name="RunManager" selected="JUnit.PhoneBookTest.removeSingleNumberTest">
+>>>>>>> part3
     <configuration default="false" name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -713,9 +737,14 @@
       <workItem from="1486504890396" duration="19242000" />
       <workItem from="1486559128000" duration="7288000" />
       <workItem from="1486584565243" duration="495000" />
+<<<<<<< HEAD
       <workItem from="1486585103032" duration="7284000" />
       <workItem from="1486593895259" duration="89000" />
       <workItem from="1486594188077" duration="14000" />
+=======
+      <workItem from="1486585103032" duration="7152000" />
+      <workItem from="1486594095464" duration="26000" />
+>>>>>>> part3
     </task>
     <servers />
   </component>
@@ -752,10 +781,17 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="34412000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="206" y="28" width="1597" height="940" extended-state="0" />
+=======
+    <option name="totallyTimeSpent" value="34203000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="25" y="30" width="1597" height="940" extended-state="0" />
+>>>>>>> part3
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -767,12 +803,20 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17106774" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+>>>>>>> part3
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19223544" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+=======
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25422668" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> part3
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -806,6 +850,7 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -818,6 +863,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HoldingObjects.iml">
+=======
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+>>>>>>> part3
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -825,6 +873,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -845,6 +894,38 @@
     <entry file="file://$PROJECT_DIR$/src/test/java/PhoneBookTest.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/reynoldsgillian/titko/App.java" />
     <entry file="file://$PROJECT_DIR$/pom.xml" />
+=======
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="12" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="30" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/reynoldsgillian/titko/PhoneBook.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/PhoneBookTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/reynoldsgillian/titko/App.java" />
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="12" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="30" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/reynoldsgillian/titko/PhoneBook.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/PhoneBookTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/reynoldsgillian/titko/App.java" />
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="38" lean-forward="false" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> part3
     <entry file="file://$PROJECT_DIR$/src/main/java/reynoldsgillian/titko/PhoneBook.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/PhoneBookTest.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/reynoldsgillian/titko/App.java" />
@@ -867,6 +948,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/AppTest.java" />
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/java/reynoldsgillian/titko/App.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/PhoneBookTest.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/reynoldsgillian/titko/PhoneBook.java" />
@@ -886,10 +968,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="9" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
+=======
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="12" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="30" selection-end-column="12" />
+>>>>>>> part3
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/java/reynoldsgillian/titko/App.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/PhoneBookTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/reynoldsgillian/titko/PhoneBook.java" />
+>>>>>>> part3
   </component>
   <component name="masterDetails">
     <states>
