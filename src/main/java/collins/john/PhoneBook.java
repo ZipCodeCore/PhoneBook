@@ -37,11 +37,15 @@ public class PhoneBook {
 
     public String printEntries() {
         Set keys = phoneBook.keySet();
+        String x = "";
         for (Object key : keys
                 ) {
-            return key + "    " + phoneBook.get(key).getNumbers();// cite: http://www.java2novice.com/java-collections-and-util/treemap/iterate/
+            x += key + "    " + phoneBook.get(key).getNumbers().toString() + "\n";// cite: http://www.java2novice.com/java-collections-and-util/treemap/iterate/
         }
-        return "Phonebook is empty";
+        if(x.equals("")){
+            x = "Phonebook is empty";
+        }
+        return x;
     }
 
     public String reverseLookup(String searchNumber) {
