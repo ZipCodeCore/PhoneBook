@@ -12,14 +12,14 @@ public class PhoneBookTest {
     PhoneBook phoneBook;
 
     @Before
-    public void setUp(){
+    public void setUp() throws InvalidPhoneNumberFormat{
 
         phoneBook = new PhoneBook();
         phoneBook.addEntry("Bob", "3027223221");
     }
 
     @Test
-    public void lookUpTest(){
+    public void lookUpTest() throws RecordNotPresent{
 
         String expected = "[3027223221]";
         String actual = phoneBook.lookUp("Bob");
@@ -28,7 +28,7 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void addEntryTest(){
+    public void addEntryTest () throws InvalidPhoneNumberFormat, RecordNotPresent{
 
         phoneBook.addEntry("Euge", "4345677890");
         String expected = "[4345677890]";
@@ -37,7 +37,7 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void removeEntryTest(){
+    public void removeEntryTest() throws  InvalidPhoneNumberFormat, RecordNotPresent{
 
         phoneBook.addEntry("Euge", "4345677890");
         phoneBook.removeEntry("Bob");
@@ -47,7 +47,7 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void printEntryNumbersTest(){
+    public void printEntryNumbersTest()throws RecordNotPresent{
 
         String expected = "[Bob]";
         String actual = phoneBook.printAllNames().toString();
@@ -55,7 +55,7 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void printAllEntriesTest(){
+    public void printAllEntriesTest() throws InvalidPhoneNumberFormat, RecordNotPresent{
 
         phoneBook.addEntry("Euge", "4345677890");
         String expected = "Bob [3027223221]" + "\n" + "Euge [4345677890]" + "\n";
@@ -64,7 +64,7 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void reverseLookUpTest(){
+    public void reverseLookUpTest() throws  InvalidPhoneNumberFormat{
 
         String expected = "Bob";
         String actual = phoneBook.reverseLookUp("3027223221");
@@ -72,7 +72,7 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void removeNumberTest(){
+    public void removeNumberTest() throws RecordNotPresent{
 
         phoneBook.getEntry("Bob").removeNumber("3027223221");
         String expected = "[]";
@@ -80,5 +80,49 @@ public class PhoneBookTest {
         Assert.assertEquals("Testing removing a number", expected, actual);
     }
 
+    @Test(expected = InvalidPhoneNumberFormat.class)
+    public void reverseLookUpExceptionTest() throws InvalidPhoneNumberFormat{
+
+      phoneBook.reverseLookUp("");
+
+    }
+
+    @Test(expected = InvalidPhoneNumberFormat.class)
+    public void addEntryExceptionTest() throws InvalidPhoneNumberFormat{
+
+        phoneBook.addEntry("Kevin", "");
+    }
+
+    @Test(expected = RecordNotPresent.class)
+    public void lookUpExceptionTest() throws RecordNotPresent{
+
+        phoneBook.lookUp("Bob1");
+    }
+
+    @Test(expected = RecordNotPresent.class)
+    public void removeEntryExceptionTest() throws RecordNotPresent{
+
+        phoneBook.lookUp("");
+    }
+
+    @Test(expected = RecordNotPresent.class)
+    public void getEntryExceptionTest() throws RecordNotPresent{
+
+        phoneBook.getEntry("");
+    }
+
+    @Test(expected = RecordNotPresent.class)
+    public void printAllNamesExceptionTest() throws RecordNotPresent{
+
+        phoneBook.getEntries().clear();
+        phoneBook.printAllNames();
+    }
+
+    @Test(expected = RecordNotPresent.class)
+    public void printAllEntriesExceptionTest() throws RecordNotPresent{
+
+        phoneBook.getEntries().clear();
+        phoneBook.printAllEntries();
+    }
 
 }

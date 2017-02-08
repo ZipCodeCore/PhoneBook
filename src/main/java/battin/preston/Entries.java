@@ -19,8 +19,9 @@ public class Entries {
         return phoneNumbers;
     }
 
-    public void removeNumber(String number){
+    public void removeNumber(String number) {
 
         phoneNumbers.remove(number);
     }
+
 }
