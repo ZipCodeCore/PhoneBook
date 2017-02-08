@@ -11,18 +11,23 @@ public class PhoneBookTest {
     @Before
     public void setUp() {
         aPH = new PhoneBook();
-        aPH.add("Ryan Gross", "302-393-6344");
+        aPH.add("Ryan Gross", "123-456-7890");
+
+    }
+
+    public PhoneBook getaPH() {
+        return aPH;
     }
 
     @Test
     public void addTest() {
-        Assert.assertTrue(aPH.containsKey("Ryan Gross"));
-        Assert.assertTrue(aPH.containsValue("302-393-6344"));
+        aPH.add("Ryan Gross", "555-555-5555");
+        Assert.assertEquals(2, aPH.getPh().get("Ryan Gross").size());
     }
 
     @Test
     public void lookupTest() {
-        Assert.assertEquals("302-393-6344", aPH.lookUp("Ryan Gross"));
+        Assert.assertEquals("123-456-7890", aPH.lookUp("Ryan Gross"));
     }
 
     @Test
@@ -33,7 +38,11 @@ public class PhoneBookTest {
 
     @Test
     public void reverseLookUpTest() {
-        Assert.assertEquals("Ryan Gross", aPH.reverseLookUp("302-393-6344"));
+        aPH.add("Ryan Gross", "555-555-5555");
+
+        Assert.assertEquals("Ryan Gross", aPH.reverseLookUp("123-456-7890"));
+        // Check through whole array.
+        Assert.assertEquals("Ryan Gross", aPH.reverseLookUp("555-555-5555"));
     }
 
 }
