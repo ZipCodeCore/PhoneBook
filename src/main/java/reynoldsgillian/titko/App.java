@@ -7,21 +7,25 @@ public class App {
     static PhoneBook phoneBook = new PhoneBook();
 
     public static void main(String[] arg){
-       phoneBook.add("Jane Doe", "(321)123-4678");
-        phoneBook.add("Jim Doe", "(321)123-4688");
+
+        phoneBook.add("Jane Doe", "(321)123-4678");
+        phoneBook.add("Jim Doe", "(321)123-4689");
         phoneBook.add("Jim Jones", "(321)223-4678");
 
-        phoneBook.listAllEntries();
-        phoneBook.listAllNames();
 
         phoneBook.removeEntry("Jim Doe");
-        phoneBook.listAllEntries();
+
 
         phoneBook.add("Jane Doe", "(321)123-4678");
         phoneBook.add("Jane Doe", "(321)123-4688");
-        phoneBook.add("Jim Doe", "(321)123-4688");
-        phoneBook.add("Jim Jones", "(321)223-4678");
-        phoneBook.removeSingleNumber("Jane Doe","(321)123-4688");
+
+
+        //String foundName = phoneBook.reverseLookup("(321)123-4678");
+        //System.out.println(foundName);
+       phoneBook.listAllEntries();
+
+        phoneBook.removeSingleNumber("(321)123-4688");
+        phoneBook.listAllEntries();
     }
 
 }

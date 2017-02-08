@@ -112,9 +112,10 @@ public class PhoneBookTest {
     public void removeSingleNumberTest(){
         phoneBook.add("Jane Doe", "(321)123-7999");
         phoneBook.add("Jane Doe", "(321)123-7897");
-        phoneBook.removeSingleNumber("Jane Doe", "(321)123-7897");
+        phoneBook.add("Jim Doe", "(321)123-1457");
+        phoneBook.removeSingleNumber("(321)123-7897");
+        int actual = this.phoneBook.get("Jane Doe").size();
         int expected = 1;
-        int actual = phoneBook.size();
         assertEquals("Expected to get 1", expected, actual);
     }
 
