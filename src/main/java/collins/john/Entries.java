@@ -9,8 +9,11 @@ import java.util.List;
 public class Entries {
     List<String> phoneNumbers;
 
-    public Entries(String number){
+    public Entries(String pNumber){
         phoneNumbers = new ArrayList<String>();
-        phoneNumbers.add(number);
+        phoneNumbers.add(pNumber);
+    }
+    public List getNumbers(){
+        return phoneNumbers;
     }
 }
