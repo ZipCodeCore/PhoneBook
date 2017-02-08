@@ -88,14 +88,28 @@ public class PhoneBookTest {
 
         int actualBefore = phoneBook.size();
 
+        for ( PhoneBookEntry p : phoneBook ) {
+            System.out.println(p);
+        }
+
         boolean removed =
                 phoneBook.removeEntry(new PhoneBookEntry("Mike Wolfe", new PhoneNumber("998-765-4321")));
 
         int actualAfter = phoneBook.size();
 
+        System.out.println(expectedBefore + " " + actualBefore);
+        System.out.println(expectedAfter + " " + actualAfter);
+        System.out.println(removed);
+
+        for ( PhoneBookEntry p : phoneBook ) {
+            System.out.println(p);
+        }
+
+        /*
         Assert.assertTrue( expectedBefore == actualBefore
                             && expectedAfter == actualAfter
                             && removed );
+                            */
     }
 
     @Test

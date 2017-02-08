@@ -23,10 +23,15 @@ public class PhoneBook extends ArrayList<PhoneBookEntry> {
 
     public String reverseLookup(PhoneNumber toLookUp) {
         for ( int i = 0; i < this.size(); i++ ) {
-            if ( this.get(i).getPhoneNumbers().equals(toLookUp) ) {
-                return this.get(i).getName();
+
+            for ( int j = 0; j < this.get(i).getPhoneNumbers().size(); j++ ) {
+
+                if ( this.get(i).getPhoneNumbers().get(j).equals(toLookUp) ) {
+                    return this.get(i).getName();
+                }
             }
         }
+
         return null;
     }
 
@@ -52,11 +57,26 @@ public class PhoneBook extends ArrayList<PhoneBookEntry> {
     public boolean removeEntry(PhoneBookEntry toRemove) {
         // check if the entry has multiple numbers and if so delete the one given
         //      otherwise delete the whole entry
-        for ( int i = 0; i < this.size(); i++ ) {
-            if ( this.get(i).equals(toRemove) ) {
-                remove(i);
-                Collections.sort(this);
-                return true;
+        for ( PhoneBookEntry p : this ) {
+
+            if (p.getName().equals(toRemove.getName())) {
+
+                if (p.getPhoneNumbers().size() > 1) {
+
+                    for (PhoneNumber n : p.getPhoneNumbers()) {
+
+                        if (n.equals(toRemove.getPhoneNumbers().get(0))) {
+                            p.getPhoneNumbers().remove(n);
+                            Collections.sort(this);
+                            return true;
+                        }
+                    }
+                }
+                else {
+                    this.remove(p);
+                    Collections.sort(this);
+                    return true;
+                }
             }
         }
 
