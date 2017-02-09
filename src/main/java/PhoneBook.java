@@ -5,7 +5,7 @@ import java.util.*;
  */
 public class PhoneBook extends TreeMap {
 
-    private Map<String, List<String>> ph = new TreeMap<String, List<String>>();
+    private Map<String, List<String>> ph = new TreeMap<>();
 
 
     public Map<String, List<String>> getPh() {
@@ -15,48 +15,71 @@ public class PhoneBook extends TreeMap {
 
     // modify all to take multiple Strings.
     public void add(String aName, String aNumber) throws InvalidPhoneNumberException {
-
-
-
-        if (aNumber.length() == 14) {
-            if (!ph.containsKey(aName)) {
-                ArrayList<String> numbers = new ArrayList<String>();
-                numbers.add(aNumber);
-                ph.put(aName, numbers);
+        try {
+            if (aNumber.length() == 14) {
+                if (!ph.containsKey(aName)) {
+                    ArrayList<String> numbers = new ArrayList<String>();
+                    numbers.add(aNumber);
+                    ph.put(aName, numbers);
+                } else {
+                    ph.get(aName).add(aNumber);
+                }
             } else {
-                ph.get(aName).add(aNumber);
+                throw new InvalidPhoneNumberException();
             }
-        } else {
+        } catch(InvalidPhoneNumberException e) {
             System.out.println("Invalid number format");
-            throw new InvalidPhoneNumberException(aNumber);
         }
     }
 
-    public String lookUp(String aName) {
-        if (ph.containsKey(aName)) {
-            String allNumbers = "";
-            for (String singleNumber : ph.get(aName)) {
-                allNumbers += singleNumber;
+
+    public String lookUp(String aName) throws RecordNotPresentException {
+
+        try {
+            if (ph.containsKey(aName)) {
+                String allNumbers = "";
+                for (String singleNumber : ph.get(aName)) {
+                    allNumbers += singleNumber;
+                }
+                return allNumbers;
+            } else {
+                throw new RecordNotPresentException();
             }
-            return allNumbers;
-        } else {
-            return "Not found.";
-        }
-    }
+        } catch (RecordNotPresentException e) {
+            System.out.println("Record not found.");
 
-    public void remove(String aName) {
-        if (ph.containsKey(aName)) {
-            ph.remove(aName);
         }
+        return null;
     }
 
 
-    public void removeSingleNumber(String aNumber) {
-        for (String key : ph.keySet()) {
-            for (String number : ph.get(key)) {
-                if (number.equals(aNumber)) ;
-                ph.get(key).remove(aNumber);
+    public void remove(String aName) throws RecordNotPresentException {
+        try {
+            if (ph.containsKey(aName)) {
+                ph.remove(aName);
+            } else {
+                throw new RecordNotPresentException();
             }
+        } catch (RecordNotPresentException e) {
+            System.out.println("Record not found.");
+        }
+    }
+
+
+    public void removeSingleNumber(String aNumber) throws InvalidPhoneNumberException {
+        try {
+            if (aNumber.length() == 14) {
+                for (String key : ph.keySet()) {
+                    for (String number : ph.get(key)) {
+                        if (number.equals(aNumber)) ;
+                        ph.get(key).remove(aNumber);
+                    }
+                }
+            } else {
+                throw new InvalidPhoneNumberException();
+            }
+        } catch (InvalidPhoneNumberException e) {
+            System.out.println("Invalid number format.");
         }
     }
 
@@ -72,16 +95,47 @@ public class PhoneBook extends TreeMap {
         }
     }
 
-    public String reverseLookUp(String aNumber) {
+    public String reverseLookUp(String aNumber) throws InvalidPhoneNumberException, RecordNotPresentException {
+
+        try {
+            if (aNumber.length() == 14) {
+                if (doesExist(aNumber)) {
+                    for (String key : ph.keySet()) {
+                        for (String number : ph.get(key)) {
+                            if (number.equals(aNumber)) {
+                                return key;
+                            }
+                        }
+                    }
+                } else {
+                    throw new RecordNotPresentException();
+                }
+
+            } else {
+                throw new InvalidPhoneNumberException();
+            }
+        } catch (InvalidPhoneNumberException e) {
+            System.out.println("Invalid number");
+        } catch (RecordNotPresentException e) {
+            System.out.println("No record found.");
+        }
+        return null;
+    }
+
+
+    public boolean doesExist(String aNumber) {
         for (String key : ph.keySet()) {
             for (String number : ph.get(key)) {
                 if (number.equals(aNumber)) {
-                    return key;
+                    return true;
                 }
             }
         }
-        return "Not found";
+        return false;
     }
+
+
+
 }
 
 
