@@ -9,13 +9,12 @@ import java.io.FileNotFoundException;
  */
 public class App {
    static PhoneBook phoneBook = new PhoneBook();
-    public static void main(String[] args)  {
+    public static void main(String[] args) throws InvalidPhoneNumberFormatException {
         phoneBook.add("Tolani","612-121-1211");
         phoneBook.add("Dan","419-419-4419");
         phoneBook.add("Dan","419-419-5656");
 
-        phoneBook.removeASingleNumber("419-419-5656");
-       // System.out.println(found);
+        phoneBook.add ("milton","419-419-5656");
         phoneBook.listAllEntries();
 
 
