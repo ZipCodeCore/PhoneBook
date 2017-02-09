@@ -1,3 +1,4 @@
+import reynoldsgillian.titko.InvalidNumberFormatException;
 import reynoldsgillian.titko.PhoneBook;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,7 +23,7 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void lookupTest(){ //lookup existing value; lookup in empty phonebook
+    public void lookupTest() throws InvalidNumberFormatException { //lookup existing value; lookup in empty phonebook
     //returns a String
         phoneBook.add("Jane Doe", "(123)456-7890");
         String expected = "(123)456-7890";
@@ -31,7 +32,7 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void lookupNonExistingKeyTest(){ //lookup non-existing value
+    public void lookupNonExistingKeyTest() throws InvalidNumberFormatException { //lookup non-existing value
         //returns a String
         phoneBook.add("John Doe", "(123)456-7890");
         //String expected = "Key value does not exist";
@@ -40,7 +41,7 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void addTest(){
+    public void addTest() throws InvalidNumberFormatException {
     //Test if we add an item to the phonebook - look at its size
         phoneBook.add("Tom Dunn", "(123)456-9087"); //use the method to add another item
         //phoneBook.containsKey("Tom Dunn"); //could also check for the key
@@ -50,7 +51,7 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void addSameKeyTest(){
+    public void addSameKeyTest() throws InvalidNumberFormatException {
         phoneBook.add("Tom Dunn", "(123)457-9087"); //use the method to add another item
         phoneBook.add("Tom Dunn", "(123)457-9087"); //use the method to add duplicate item
         int expected = 1; //have two items
@@ -59,7 +60,7 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void addMultipleKeysTest(){
+    public void addMultipleKeysTest() throws InvalidNumberFormatException {
         phoneBook.add("Tom Dunn", "(123)456-9087"); //use the method to add another item
         phoneBook.add("Dick Dunn", "(123)459-9087"); //use the method to add duplicate item
         phoneBook.add("Harry Dunn", "(123)452-9087"); //use the method to add duplicate item
@@ -69,7 +70,7 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void addInvalidKeyTest(){//??
+    public void addInvalidKeyTest() throws InvalidNumberFormatException {//??
         phoneBook.add("Tom", "(123)45-9087"); //use the method to add another item
         int expected = 1; //have two items already
         int actual = phoneBook.size();
@@ -84,7 +85,7 @@ public class PhoneBookTest {
     //remove from phonebook that does not exist?
 
     @Test
-    public void removeLastItemTest(){
+    public void removeLastItemTest() throws InvalidNumberFormatException {
     //Test if we remove items from the list
         phoneBook.add("Jane Doe", "(321)123-8796");
         int expected = 0;
@@ -101,7 +102,7 @@ public class PhoneBookTest {
 
 
     @Test
-    public void reverseLookupTest(){
+    public void reverseLookupTest() throws InvalidNumberFormatException {
         phoneBook.add("Jane Doe", "(321)123-7999");
         String expected = "Jane Doe";
         String actual = phoneBook.reverseLookup("(321)123-7999");
@@ -109,7 +110,7 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void removeSingleNumberTest(){
+    public void removeSingleNumberTest() throws InvalidNumberFormatException {
         phoneBook.add("Jane Doe", "(321)123-7999");
         phoneBook.add("Jane Doe", "(321)123-7897");
         phoneBook.add("Jim Doe", "(321)123-1457");
