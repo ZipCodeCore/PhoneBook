@@ -12,9 +12,7 @@ import java.util.regex.Pattern;
 public class PhoneBook  {
 
    private Map<String, Entries> entries = new TreeMap<>();
-   String regexStr = "^(?:(?:\\+?1\\s*(?:[.-]\\s*)?)?(?:\\(\\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8]" +
-           "[02-9])\\s*\\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\\s*(?:[.-]\\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9]" +
-           "[02-9]{2})\\s*(?:[.-]\\s*)?([0-9]{4})(?:\\s*(?:#|x\\.?|ext\\.?|extension)\\s*(\\d+))?$";
+   String regexStr = "([(][0-9][0-9][0-9][)])-([0-9][0-9][0-9])-([0-9][0-9][0-9][0-9])";
 
    Pattern pattern = Pattern.compile(regexStr);
 
@@ -82,7 +80,7 @@ public class PhoneBook  {
          throw new RecordNotPresent("Record Not Present");
       }
 
-      entries.remove(name);
+      //entries.remove(name);
 
 
       return entries.get(name);

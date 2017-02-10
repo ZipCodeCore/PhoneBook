@@ -15,68 +15,120 @@ public class PhoneBookTest {
     public void setUp() throws InvalidPhoneNumberFormat{
 
         phoneBook = new PhoneBook();
-        phoneBook.addEntry("Bob", "3027223221");
+        phoneBook.addEntry("Bob", "(302)-722-3221");
     }
 
     @Test
-    public void lookUpTest() throws RecordNotPresent{
+    public void lookUpTest() {
 
-        String expected = "[3027223221]";
-        String actual = phoneBook.lookUp("Bob");
+        String expected = "[(302)-722-3221]";
+        String actual = "";
+       try {
+           actual = phoneBook.lookUp("Bob");
+       }catch (RecordNotPresent e){
+           Assert.fail();
+       }
         Assert.assertEquals("Testing adding a person", expected, actual);
 
     }
 
     @Test
-    public void addEntryTest () throws InvalidPhoneNumberFormat, RecordNotPresent{
+    public void addEntryTest () {
 
-        phoneBook.addEntry("Euge", "4345677890");
-        String expected = "[4345677890]";
-        String actual = phoneBook.lookUp("Euge");
+        try {
+
+            phoneBook.addEntry("Euge", "(434)-567-7890");
+        }catch (InvalidPhoneNumberFormat e){
+            Assert.fail();
+        }
+        String expected = "[(434)-567-7890]";
+        String actual = "";
+        try {
+             actual = phoneBook.lookUp("Euge");
+        }catch (RecordNotPresent e){Assert.fail(); System.out.println(e.getMessage());
+        }
         Assert.assertEquals("Testing adding an entry", expected, actual);
     }
 
     @Test
-    public void removeEntryTest() throws  InvalidPhoneNumberFormat, RecordNotPresent{
+    public void removeEntryTest(){
 
-        phoneBook.addEntry("Euge", "4345677890");
-        phoneBook.removeEntry("Bob");
-        Entries expected = null;
-        Entries actual = phoneBook.getEntry("Bob");
+        try {
+            phoneBook.addEntry("Euge", "(434)-567-7890");
+        }catch (InvalidPhoneNumberFormat e){
+            Assert.fail();
+        }
+        try {
+            phoneBook.removeEntry("Bob");
+        }catch (RecordNotPresent e){
+            Assert.fail();
+        }
+       int expected = 1;
+       int actual = phoneBook.getEntries().size();
         Assert.assertEquals("Testing removing an item", expected, actual);
     }
 
     @Test
-    public void printEntryNumbersTest()throws RecordNotPresent{
+    public void printEntryNumbersTest(){
 
         String expected = "[Bob]";
-        String actual = phoneBook.printAllNames().toString();
+        String actual = "";
+        try{
+            actual= phoneBook.printAllNames().toString();
+        }catch(RecordNotPresent e){
+            Assert.fail();
+        }
         Assert.assertEquals("Testing print all values", expected,actual);
     }
 
     @Test
-    public void printAllEntriesTest() throws InvalidPhoneNumberFormat, RecordNotPresent{
+    public void printAllEntriesTest() {
 
-        phoneBook.addEntry("Euge", "4345677890");
-        String expected = "Bob [3027223221]" + "\n" + "Euge [4345677890]" + "\n";
-        String actual = phoneBook.printAllEntries();
+       try{
+           phoneBook.addEntry("Euge", "(434)-567-7890");
+       }catch (InvalidPhoneNumberFormat e){
+           Assert.fail();
+       }
+        String expected = "Bob [(302)-722-3221]" + "\n" + "Euge [(434)-567-7890]" + "\n";
+        String actual = "";
+       try{
+           actual= phoneBook.printAllEntries();
+       }catch (RecordNotPresent e){
+           Assert.fail();
+       }
         Assert.assertEquals("Testing all entries print", expected, actual);
     }
 
     @Test
-    public void reverseLookUpTest() throws  InvalidPhoneNumberFormat{
+    public void reverseLookUpTest(){
 
         String expected = "Bob";
-        String actual = phoneBook.reverseLookUp("3027223221");
+        String actual = "";
+       try{
+           actual = phoneBook.reverseLookUp("(302)-722-3221");
+       }catch (InvalidPhoneNumberFormat e){
+           Assert.fail();
+
+       }
         Assert.assertEquals("Testing looking up by value", expected, actual);
     }
 
     @Test
-    public void removeNumberTest() throws RecordNotPresent{
+    public void removeNumberTest(){
 
-        phoneBook.getEntry("Bob").removeNumber("3027223221");
+       try{
+           phoneBook.getEntry("Bob").removeNumber("(302)-722-3221");
+       }catch (RecordNotPresent e){
+
+           Assert.fail();
+       }
         String expected = "[]";
-        String actual = phoneBook.getEntry("Bob").getPhoneNumbers().toString();
+        String actual = "";
+       try{
+           actual = phoneBook.getEntry("Bob").getPhoneNumbers().toString();
+       }catch (RecordNotPresent e){
+           Assert.fail();
+       }
         Assert.assertEquals("Testing removing a number", expected, actual);
     }
 
