@@ -40,4 +40,14 @@ public class PhoneBookTest {
         assertEquals(String.format("I expected the result to be: %s", expected),
                      expected, actual);
     }
+    
+    @Test
+    public void validPhoneNumberTest() {
+        boolean expected = true;
+        boolean actual = this.phoneBook.validPhoneNumber("(302) 555-0000");
+        System.out.println("Expected : " + expected);
+        System.out.println("Actual   : " + actual);
+        assertEquals(String.format("I expected the result to be: %s", expected),
+                expected, actual);
+    }
 }
