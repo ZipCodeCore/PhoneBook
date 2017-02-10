@@ -26,19 +26,29 @@ public class PhoneNumber {
             cWithoutParens[2] = c[3];
             String cWithoutParensAsString ="" + cWithoutParens[0] + cWithoutParens[1] + cWithoutParens[2];
 
-            areaCode = Integer.parseInt(cWithoutParensAsString);
-            if ( areaCode < 0 || areaCode > 999 ) {
+            int temp = Integer.parseInt(cWithoutParensAsString);
+            if ( temp < 0 || temp > 999 ) {
                 throw new InvalidPhoneNumberFormatException();
             }
-
-            firstThreeDigits = Integer.parseInt(split[1]);
-            if ( firstThreeDigits < 0 || firstThreeDigits > 999 ) {
-                throw new InvalidPhoneNumberFormatException();
+            else {
+                areaCode = temp;
             }
 
-            lastFourDigits = Integer.parseInt(split[2]);
-            if ( lastFourDigits < 0 || lastFourDigits > 9999 ) {
+            temp = Integer.parseInt(split[1]);
+            if ( temp < 0 || temp > 999 ) {
                 throw new InvalidPhoneNumberFormatException();
+            }
+            else {
+                firstThreeDigits = temp;
+            }
+
+
+            temp = Integer.parseInt(split[2]);
+            if ( temp < 0 || temp > 9999 ) {
+                throw new InvalidPhoneNumberFormatException();
+            }
+            else {
+                lastFourDigits = temp;
             }
         }
         else {

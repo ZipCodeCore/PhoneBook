@@ -13,14 +13,27 @@ public class PhoneBookEntryTest {
 
     @Before
     public void setup() {
-        phoneBookEntry1 = new PhoneBookEntry("John Squier", new PhoneNumber("333-333-3333"));
-        phoneBookEntry2 = new PhoneBookEntry("John Squier", new PhoneNumber("333-333-3333"));
-        phoneBookEntry3 = new PhoneBookEntry("Mike Wolfe", new PhoneNumber("111-111-1111"));
+        try {
+            phoneBookEntry1 = new PhoneBookEntry("John Squier", new PhoneNumber("333-333-3333"));
+            phoneBookEntry2 = new PhoneBookEntry("John Squier", new PhoneNumber("333-333-3333"));
+            phoneBookEntry3 = new PhoneBookEntry("Mike Wolfe", new PhoneNumber("111-111-1111"));
+        }
+        catch ( InvalidPhoneNumberFormatException e ) {
+
+        }
     }
 
     @Test
     public void getPhoneNumberTest() {
-        PhoneNumber expected = new PhoneNumber("333-333-3333");
+        PhoneNumber expected = null;
+
+        try {
+            new PhoneNumber("333-333-3333");
+        }
+        catch ( InvalidPhoneNumberFormatException e ) {
+
+        }
+
         PhoneNumber actual = phoneBookEntry1.getPhoneNumber();
         Assert.assertTrue(expected.equals(actual));
     }

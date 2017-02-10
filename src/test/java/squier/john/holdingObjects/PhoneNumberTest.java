@@ -13,9 +13,28 @@ public class PhoneNumberTest {
 
     @Before
     public void setup() {
-        phoneNumber1 = new PhoneNumber("123-456-7890");
-        phoneNumber2 = new PhoneNumber("123-456-7890");
-        phoneNumber3 = new PhoneNumber("098-765-4321");
+        try {
+            phoneNumber1 = new PhoneNumber("(123)-456-7890");
+            phoneNumber2 = new PhoneNumber("(123)-456-7890");
+            phoneNumber3 = new PhoneNumber("(098)-765-4321");
+        }
+        catch ( InvalidPhoneNumberFormatException e ) {
+
+        }
+    }
+
+    @Test(expected = InvalidPhoneNumberFormatException.class)
+    public void inputInvalidPhoneNumberTest() {
+        try {
+            PhoneNumber invalid = new PhoneNumber("17");
+            Assert.fail();
+        }
+        catch ( InvalidPhoneNumberFormatException e ) {
+            Assert.assertThat(e).
+
+        }
+
+
     }
 
     @Test
