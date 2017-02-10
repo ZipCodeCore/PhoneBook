@@ -2,6 +2,7 @@ import reynoldsgillian.titko.InvalidNumberFormatException;
 import reynoldsgillian.titko.PhoneBook;
 import org.junit.Before;
 import org.junit.Test;
+import reynoldsgillian.titko.RecordNotPresentException;
 
 import java.util.Stack;
 
@@ -23,24 +24,22 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void lookupTest() throws InvalidNumberFormatException { //lookup existing value; lookup in empty phonebook
-    //returns a String
+    public void lookupTest() throws InvalidNumberFormatException, RecordNotPresentException {
         phoneBook.add("Jane Doe", "(123)456-7890");
-        String expected = "(123)456-7890";
+        String expected = "[(123)456-7890]";
         String actual = phoneBook.lookup("Jane Doe");
         assertEquals("Expected a phone number string", expected, actual);
     }
 
-    @Test
-    public void lookupNonExistingKeyTest() throws InvalidNumberFormatException { //lookup non-existing value
-        //returns a String
+    @Test(expected = InvalidNumberFormatException.class) //expect an error
+    public void lookupNonExistingKeyTest() throws InvalidNumberFormatException, RecordNotPresentException { //lookup non-existing value
         phoneBook.add("John Doe", "(123)456-7890");
-        //String expected = "Key value does not exist";
-        //String actual = phoneBook.lookup("Jane Doe");
-        assertNull(null);
+        phoneBook.reverseLookup("(123)465-7980");
+        //assertNull(null);
     }
 
-    @Test
+    //http://stackoverflow.com/questions/1836364/bad-form-for-junit-test-to-throw-exception
+    @Test //expect no errors from this test
     public void addTest() throws InvalidNumberFormatException {
     //Test if we add an item to the phonebook - look at its size
         phoneBook.add("Tom Dunn", "(123)456-9087"); //use the method to add another item
@@ -50,13 +49,10 @@ public class PhoneBookTest {
         assertEquals("Expected 1 item", expected, actual);
     }
 
-    @Test
+    @Test(expected = InvalidNumberFormatException.class)
     public void addSameKeyTest() throws InvalidNumberFormatException {
         phoneBook.add("Tom Dunn", "(123)457-9087"); //use the method to add another item
         phoneBook.add("Tom Dunn", "(123)457-9087"); //use the method to add duplicate item
-        int expected = 1; //have two items
-        int actual = phoneBook.size();
-        assertEquals("Expected 1 items", expected, actual);
     }
 
     @Test
@@ -69,20 +65,10 @@ public class PhoneBookTest {
         assertEquals("Expected 3 items", expected, actual);
     }
 
-    @Test
-    public void addInvalidKeyTest() throws InvalidNumberFormatException {//??
-        phoneBook.add("Tom", "(123)45-9087"); //use the method to add another item
-        int expected = 1; //have two items already
-        int actual = phoneBook.size();
-        assertEquals("Expected 1 items", expected, actual);
+    @Test(expected = InvalidNumberFormatException.class) //expect exception to be thrown from this test
+    public void addInvalidKeyTest() throws InvalidNumberFormatException {
+        phoneBook.add("Tom", "(12)45-9087");
     }
-
-    @Test
-    public void addToNonExistingBookTest(){
-        //phoneBook.add("Tom", "(123)45-9087");
-        assertNull(null);
-    }
-    //remove from phonebook that does not exist?
 
     @Test
     public void removeLastItemTest() throws InvalidNumberFormatException {
@@ -90,34 +76,46 @@ public class PhoneBookTest {
         phoneBook.add("Jane Doe", "(321)123-8796");
         int expected = 0;
         phoneBook.remove("Jane Doe");
-        assertNull(null);
+        //assertNull(null);
     }
 
-    @Test
+    @Test(expected = RecordNotPresentException.class)
     public void removeFromEmptyPhonebookTest(){ //remove from empty phonebook
         //Test if we remove items from the list
         phoneBook.remove("Jane Doe");
-        assertNull(null);
     }
 
 
-    @Test
-    public void reverseLookupTest() throws InvalidNumberFormatException {
+    @Test //no error expected
+    public void reverseLookupTest() throws InvalidNumberFormatException, RecordNotPresentException {
         phoneBook.add("Jane Doe", "(321)123-7999");
         String expected = "Jane Doe";
         String actual = phoneBook.reverseLookup("(321)123-7999");
         assertEquals("Expected a phone number", expected, actual);
     }
 
+    @Test(expected = RecordNotPresentException.class) //error expected
+    public void badReverseLookupTest() throws InvalidNumberFormatException, RecordNotPresentException {
+        phoneBook.add("Jane Doe", "(321)123-7999");
+        String actual = phoneBook.reverseLookup("(321)123-7099");
+    }
+
     @Test
-    public void removeSingleNumberTest() throws InvalidNumberFormatException {
+    public void removeSingleNumberTest() throws InvalidNumberFormatException, RecordNotPresentException {
         phoneBook.add("Jane Doe", "(321)123-7999");
         phoneBook.add("Jane Doe", "(321)123-7897");
-        phoneBook.add("Jim Doe", "(321)123-1457");
         phoneBook.removeSingleNumber("(321)123-7897");
         int actual = this.phoneBook.get("Jane Doe").size();
         int expected = 1;
         assertEquals("Expected to get 1", expected, actual);
+    }
+
+    @Test(expected = RecordNotPresentException.class) //error expected
+    public void badRemoveSingleNumberTest() throws InvalidNumberFormatException, RecordNotPresentException {
+        phoneBook.add("Jane Doe", "(321)123-7999");
+        phoneBook.add("Jane Doe", "(321)123-7897");
+        phoneBook.add("Jim Doe", "(321)123-1457");
+        phoneBook.removeSingleNumber("(321)123-7890");
     }
 
 }

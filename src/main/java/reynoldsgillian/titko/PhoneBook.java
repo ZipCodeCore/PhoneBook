@@ -19,7 +19,7 @@ public class PhoneBook extends TreeMap<String, ArrayList> { //modify to take an 
     than one type of exception. Your tests should account for the possibility of exceptions and test for those
     exceptions that are expected..*/
 
-    public String lookup(String name) {
+    public String lookup(String name) throws RecordNotPresentException {
 
         return this.get(name).toString(); //modify to get the array value as a string
     }
@@ -45,9 +45,14 @@ public class PhoneBook extends TreeMap<String, ArrayList> { //modify to take an 
     }
 
     //We already have remove with the Treemap so rename our remove method
-    public void removeEntry(String entryName) { //removes entire entry from phonebook
+    public void removeEntry(String entryName) throws RecordNotPresentException { //removes entire entry from phonebook
 
-        this.remove(entryName);
+        try{
+            this.remove(entryName);
+            throw new RecordNotPresentException();
+        } catch (RecordNotPresentException e) {
+            System.out.println("The information is not available");
+        }
     }
 
     public void listAllNames() { //get the names (keys)
@@ -60,7 +65,7 @@ public class PhoneBook extends TreeMap<String, ArrayList> { //modify to take an 
             System.out.println(key + " " + this.get(key));
     }
 
-    public String reverseLookup(String number) throws InvalidNumberFormatException {
+    public String reverseLookup(String number) throws InvalidNumberFormatException, RecordNotPresentException {
         String nameToReturn = "";
         try{
             if(!number.matches("^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$")) {
@@ -71,27 +76,34 @@ public class PhoneBook extends TreeMap<String, ArrayList> { //modify to take an 
                 for (Object value : this.get(key)) {
                     if (number.equals(value)) { //get the phone number at the key location in the array
                         nameToReturn = (String) key;
-                    }
+                    } else throw new RecordNotPresentException();
                 }
             }
 
         } catch (InvalidNumberFormatException e) {
                 System.out.println("Invalid phone number format");
             }
+            catch (RecordNotPresentException e){
+            System.out.print("The information is not available");
+            }
         return nameToReturn;
         }
 
 
-    public void removeSingleNumber(String number) {
-        for (Object key : this.keySet()) {
-            //need to use iterator since we'll get concurrent error if we loop over the keys & try to remove
-            // them at the same time
-            Iterator iter = this.get(key).iterator(); //create an iterator for the arraylist
-            while(iter.hasNext()){
-                if (iter.next().equals(number)) { //see if the value the iterator has equals the number of interest
-                    iter.remove();
+    public void removeSingleNumber(String number) throws RecordNotPresentException {
+        try {
+            for (Object key : this.keySet()) {
+                //need to use iterator since we'll get concurrent error if we loop over the keys & try to remove
+                // them at the same time
+                Iterator iter = this.get(key).iterator(); //create an iterator for the arraylist
+                while(iter.hasNext()){
+                    if (iter.next().equals(number)) { //see if the value the iterator has equals the number of interest
+                        iter.remove();
+                    } else throw new RecordNotPresentException();
                 }
             }
+        } catch (RecordNotPresentException e){
+            System.out.print("The information is not available");
         }
     }
 }
