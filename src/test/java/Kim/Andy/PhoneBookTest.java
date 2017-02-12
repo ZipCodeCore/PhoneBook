@@ -42,6 +42,13 @@ public class PhoneBookTest {
         int actual = phoneBook.size();
         Assert.assertEquals("I expect my phonebook to be empty",expected, actual);
     }
+    @Test
+    public void reverseLookUpTEst(){
+        phoneBook.add("Andy", "610 - 277 - 1326");
+        String expected = "Andy";
+        String actual = phoneBook.reverseLookUp("610 - 277 - 1326");
+        Assert.assertEquals("I expect for the name to return", expected, actual);
+    }
 
 
 
