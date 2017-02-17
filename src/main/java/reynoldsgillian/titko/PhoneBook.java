@@ -25,8 +25,8 @@ public class PhoneBook extends TreeMap<String, ArrayList> { //modify to take an 
     }
 
     public void add(String name, String number) throws InvalidNumberFormatException {
-        try{
-            if(!number.matches("^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$")) {
+        try {
+            if (!number.matches("^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$")) {
                 throw new InvalidNumberFormatException();
             }
             //Check if name is in the phone book first as well as check if the array size is not zero
@@ -39,8 +39,9 @@ public class PhoneBook extends TreeMap<String, ArrayList> { //modify to take an 
                 numbers.add(number); //add the number to the array of phone numbers (for the given name)
                 this.put(name, numbers);
             }
-        } catch (InvalidNumberFormatException e){
-            System.out.println("Invalid phone number format");
+        } catch (InvalidNumberFormatException e) {
+            e.sendMessage();
+            throw e;
         }
     }
 
@@ -51,7 +52,8 @@ public class PhoneBook extends TreeMap<String, ArrayList> { //modify to take an 
             this.remove(entryName);
             throw new RecordNotPresentException();
         } catch (RecordNotPresentException e) {
-            System.out.println("The information is not available");
+            e.sendMessage();
+            throw e; //need to do either try/catch or try/throw
         }
     }
 
@@ -76,15 +78,19 @@ public class PhoneBook extends TreeMap<String, ArrayList> { //modify to take an 
                 for (Object value : this.get(key)) {
                     if (number.equals(value)) { //get the phone number at the key location in the array
                         nameToReturn = (String) key;
-                    } else throw new RecordNotPresentException();
+                    } else throw new RecordNotPresentException(); //can do try/catch but need to throw after catch
                 }
             }
 
         } catch (InvalidNumberFormatException e) {
-                System.out.println("Invalid phone number format");
+                //System.out.println("Invalid phone number format");
+                e.sendMessage();
+                throw e;
             }
             catch (RecordNotPresentException e){
-            System.out.print("The information is not available");
+            //System.out.print("The information is not available"); //can also sous here or in the error msg
+                e.sendMessage();
+                throw e;
             }
         return nameToReturn;
         }
@@ -103,7 +109,8 @@ public class PhoneBook extends TreeMap<String, ArrayList> { //modify to take an 
                 }
             }
         } catch (RecordNotPresentException e){
-            System.out.print("The information is not available");
+            e.sendMessage();
+            throw e;
         }
     }
 }
