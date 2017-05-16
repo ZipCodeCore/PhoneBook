@@ -97,6 +97,21 @@ public class TestPhonebook {
 
     }
 
+    @Test
+    public void testReverseLookUp(){
+        //given:
+        String contactName = "Molly";
+        String phoneNumber= "(302)-555-9743";
+        phoneBook.addEntry(contactName, phoneNumber);
+        //when:
+        phoneBook.reverseLookUp("(302)-555-9743");
+
+        //then:
+        Assert.assertEquals("Molly", phoneBook.reverseLookUp("(302)-555-9743"));
+
+
+    }
+
 
 
 

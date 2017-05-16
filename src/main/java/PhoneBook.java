@@ -54,6 +54,17 @@ public class PhoneBook {
     }
 
 
+    public String reverseLookUp(String phoneNumber){
+        String nameOfContact="";
+        for (Map.Entry<String, String> entry : contactInfo.entrySet()) {
+            if (entry.getValue().equals(phoneNumber)) {
+                nameOfContact += entry.getKey();
+            }
+
+        }
+        return nameOfContact;
+    }
+
 
 
 
