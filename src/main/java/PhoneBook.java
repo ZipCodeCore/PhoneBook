@@ -5,9 +5,12 @@ import java.util.TreeMap;
 /**
  * Created by aurorabanuelos on 5/16/17.
  */
+
+
 public class PhoneBook {
 
     TreeMap<String, String> phoneList = new TreeMap<String, String>();
+
 
     public String lookup(String inputName){
 
@@ -48,6 +51,20 @@ public class PhoneBook {
         }
 
         return allEntries.trim();
+
+    }
+
+    public String reverseLookup(String inputNumber){
+
+        String name = "";
+
+        for(Map.Entry<String, String> entry : phoneList.entrySet()){
+            if(entry.getValue().equals(inputNumber)){
+                name = entry.getKey();
+            }
+        }
+
+        return inputNumber + " belongs to : " + name;
 
     }
 
