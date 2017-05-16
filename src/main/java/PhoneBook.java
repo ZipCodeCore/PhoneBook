@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -9,19 +11,30 @@ import java.util.TreeMap;
 
 public class PhoneBook {
 
-    TreeMap<String, String> phoneList = new TreeMap<String, String>();
+
+    TreeMap<String, ArrayList<String>> phoneList = new TreeMap<String, ArrayList<String>>();
 
 
     public String lookup(String inputName){
 
-        return inputName + "'s phone number is: "+ phoneList.get(inputName);
+        return inputName + "'s phone number is: "+ phoneList.get(inputName).toString();
 
     }
 
-    public void addEntry(String inputName, String inputNumber){
+    public void addEntry(String inputName, ArrayList<String> inputNumber){
 
         phoneList.put(inputName, inputNumber);
 
+    }
+
+    public void addToExistingEntry(String inputName, String additionalPhoneNumber){
+
+        phoneList.get(inputName).add(additionalPhoneNumber);
+    }
+
+    public String lastPhoneNumberAdded(String inputName){
+        String lastPhoneAdded = phoneList.get(inputName).get(phoneList.get(inputName).size()-1);
+        return lastPhoneAdded;
     }
 
     public void removeEntry(String inputName){
@@ -34,7 +47,7 @@ public class PhoneBook {
 
         String allNames = "";
 
-        for(Map.Entry<String, String> entry : phoneList.entrySet()){
+        for(Map.Entry<String, ArrayList<String>> entry : phoneList.entrySet()){
             allNames += entry.getKey() + "\n";
         }
 
@@ -46,8 +59,8 @@ public class PhoneBook {
 
         String allEntries = "";
 
-        for(Map.Entry<String, String> entry : phoneList.entrySet()){
-            allEntries += entry.getKey() + ": " + entry.getValue() + "\n";
+        for(Map.Entry<String, ArrayList<String>> entry : phoneList.entrySet()){
+            allEntries += entry.getKey() + ": " + entry.getValue().toString() + "\n";
         }
 
         return allEntries.trim();
@@ -58,7 +71,7 @@ public class PhoneBook {
 
         String name = "";
 
-        for(Map.Entry<String, String> entry : phoneList.entrySet()){
+        for(Map.Entry<String, ArrayList<String>> entry : phoneList.entrySet()){
             if(entry.getValue().equals(inputNumber)){
                 name = entry.getKey();
             }

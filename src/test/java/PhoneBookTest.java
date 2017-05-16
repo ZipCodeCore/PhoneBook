@@ -2,6 +2,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 
 
 /**
@@ -15,8 +16,15 @@ public class PhoneBookTest {
     @Before
     public void setUp(){
         phoneBook = new PhoneBook();
-        phoneBook.phoneList.put("Aurora", "(845)-333-5454");
-        phoneBook.phoneList.put("Karen", "(234)-435-4433");
+        ArrayList<String> auroraPhoneNumbers = new ArrayList<String>();
+        ArrayList<String> karenPhoneNumbers = new ArrayList<String>();
+
+        auroraPhoneNumbers.add("(845)-333-5454");
+        auroraPhoneNumbers.add("(555)-345-7859");
+        karenPhoneNumbers.add("(234)-435-4433");
+
+        phoneBook.phoneList.put("Aurora", auroraPhoneNumbers);
+        phoneBook.phoneList.put("Karen", karenPhoneNumbers);
     }
 
 
@@ -24,7 +32,7 @@ public class PhoneBookTest {
     public void lookupTest(){
         //Given
         String inputName = "Aurora";
-        String expected = inputName + "'s phone number is: " + "(845)-333-5454";
+        String expected = inputName + "'s phone number is: " + "(845)-333-5454 , (555)-345-7859";
 
         //When
         String actual = phoneBook.lookup(inputName);
@@ -39,15 +47,43 @@ public class PhoneBookTest {
 
         //Given
         String inputName = "Sally";
-        String inputNumber = "(234)-777-5454";
+        ArrayList<String> sallyPhoneNumbers = new ArrayList<String>();
+        sallyPhoneNumbers.add("(234)-777-5454");
 
         //When
-        phoneBook.addEntry(inputName, inputNumber);
-        String actual = phoneBook.phoneList.get(inputName);
+        phoneBook.addEntry(inputName, sallyPhoneNumbers);
+        String actual = phoneBook.phoneList.get(inputName).toString();
 
         //Then
-        Assert.assertEquals("Entry should have been added", inputNumber, actual);
+        Assert.assertEquals("Entry should have been added", sallyPhoneNumbers, actual);
 
+    }
+
+    @Test
+    public void addToExistingEntryTest(){
+        //Given
+        String inputName = "Aurora";
+        String additionalPhoneNumber = "(278)-234-5555";
+
+        //When
+        phoneBook.addToExistingEntry(inputName, additionalPhoneNumber);
+        String actual = phoneBook.lastPhoneNumberAdded(inputName);
+
+        //Then
+        Assert.assertEquals("New phone number should be added to listing", additionalPhoneNumber, actual);
+    }
+
+    @Test
+    public void lastPhoneNumberAddedTest(){
+        //Given
+        String inputName = "Aurora";
+        String expected = "(555)-345-7859";
+
+        //When
+        String actual = phoneBook.lastPhoneNumberAdded(inputName);
+
+        //Then
+        Assert.assertEquals("phone numbers should match", expected, actual);
     }
 
     @Test
@@ -58,7 +94,7 @@ public class PhoneBookTest {
 
         //When
         phoneBook.removeEntry(inputName);
-        String actual = phoneBook.phoneList.get(inputName);
+        String actual = phoneBook.phoneList.get(inputName).toString();
 
         //Then
         Assert.assertEquals("Entry should have been removed", null, actual);
@@ -83,7 +119,7 @@ public class PhoneBookTest {
     public void listAllEntriesTest(){
 
         //Given
-        String expected = "Aurora: (845)-333-5454\nKaren: (234)-435-4433";
+        String expected = "Aurora: (845)-333-5454, (555)-345-7859\nKaren: (234)-435-4433";
 
         //When
         String actual = phoneBook.listAllEntries();
