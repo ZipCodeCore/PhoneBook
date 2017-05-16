@@ -73,10 +73,14 @@ public class PhoneBookTests {
         PhoneNumber phoneNumber1 = PhoneNumberFactory.createPhoneNumberSafely(111, 111, 1111);
         PhoneNumber phoneNumber2 = PhoneNumberFactory.createPhoneNumberSafely(111, 111, 1112);
         PhoneNumber phoneNumber3 = PhoneNumberFactory.createPhoneNumberSafely(111, 111, 1113);
+        PhoneNumber phoneNumber4 = PhoneNumberFactory.createPhoneNumberSafely(111, 111, 1114);
+
         phoneBook.add(name1, phoneNumber1);
         phoneBook.add(name2, phoneNumber2);
         phoneBook.add(name3, phoneNumber3);
-        String actual = "Aaron Long - (111)-111-1113\n" + "Chris Kim - (111)-111-1111\n" + "Dennis Kalaygian - (111)-111-1112\n";
+        phoneBook.addToExisting(name3, phoneNumber4);
+
+        String actual = "Aaron Long - (111)-111-1113, (111)-111-1114\n" + "Chris Kim - (111)-111-1111\n" + "Dennis Kalaygian - (111)-111-1112\n";
 
         //When
         String expected = phoneBook.listAllEntries();

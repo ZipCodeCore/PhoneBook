@@ -20,6 +20,11 @@ public class PhoneBook {
         contacts.put(name, phoneNumbers);
     }
 
+    public void addToExisting(String name, PhoneNumber phoneNumber) {
+        ArrayList<PhoneNumber> contactsPhoneNumbers = contacts.get(name);
+        contactsPhoneNumbers.add(phoneNumber);
+    }
+
     public void remove(String name) {
         contacts.remove(name);
     }
@@ -35,10 +40,11 @@ public class PhoneBook {
     public String listAllEntries() {
         StringBuilder sb = new StringBuilder();
         for (Map.Entry<String, ArrayList<PhoneNumber>> entry : contacts.entrySet()) {
-            for(int i = 0; i < entry.getValue().size(); i++){
-                sb.append(entry.getKey() + " - " + entry.getValue().get(i).toString() + "\n");
-
+            sb.append(entry.getKey() + " - " + entry.getValue().get(0).toString());
+            for(int i = 1; i < entry.getValue().size(); i++){
+                sb.append(", " + entry.getValue().get(i).toString());
             }
+            sb.append("\n");
         }
         return sb.toString();
     }
