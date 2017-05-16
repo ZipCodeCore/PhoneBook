@@ -17,30 +17,40 @@ import java.util.TreeMap;
 
 public class PhoneBook {
 
-    TreeMap<Person, PhoneNumber> map;
+    TreeMap<String,Long> map;
 
     PhoneBook() {
-        map = new TreeMap<Person, PhoneNumber>();
+        map = new TreeMap<String,Long>();
     }
 
-    PhoneNumber lookUp(Person person) {
-        return null;
+    Long lookUp(String name) {
+        return map.get(name);
     }
 
-    void put(Person person, PhoneNumber number) {
-        return;
+    Long add(String name, long phoneNumber) {
+        return map.put(name, phoneNumber);
     }
 
-    int size() {
-        return 0;
+    Long remove(String name) {
+        return map.remove(name);
     }
 
-    Person[] getAllPersons() {
-        return null;
+    String getAllPersons() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("");
+        for(Map.Entry<String,Long> entry : map.entrySet()) {
+            sb.append(entry.getKey() + "\n");
+        }
+        return sb.toString();
     }
 
-    Entry<Person, PhoneNumber> getAllEntries() {
-        return null;
+    String getAllEntries() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("");
+        for(Map.Entry<String,Long> entry : map.entrySet()) {
+            sb.append(entry.getKey() + ": " + entry.getValue() + "\n");
+        }
+        return sb.toString();
     }
 
 }
