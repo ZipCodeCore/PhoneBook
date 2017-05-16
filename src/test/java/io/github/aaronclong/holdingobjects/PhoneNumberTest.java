@@ -2,15 +2,25 @@ package io.github.aaronclong.holdingobjects;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
 
 /**
  * Created by aaronlong on 5/16/17.
  */
 public class PhoneNumberTest {
-    @Test
-    public void checkNumberConstruction() {
-        PhoneNumber num = PhoneNumber.registerNumber(200, 300, 4000);
-        assertTrue("Confirming number Construction", num instanceof PhoneNumber);
+  @Test
+  public void checkNumberConstruction() {
+    try {
+      PhoneNumber num = PhoneNumber.registerNumber(200, 300, 4000);
+      assertNotNull("Confirming number Construction", num);
+    } catch(Exception e) {
+      fail("Failed number Construction" + e.toString());
     }
+  }
+
+  @Test(expected = Exception.class)
+  public void checkThrowForInvalidNumber() throws Exception {
+    PhoneNumber.registerNumber(1, 2, 300);
+  }
 }
