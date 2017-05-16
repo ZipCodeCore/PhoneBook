@@ -1,10 +1,13 @@
+package phonebooktest;
+
+import exceptions.InvalidPhoneNumberFormatException;
 import org.junit.Assert;
 import org.junit.Test;
+import phonebook.PhoneBook;
 
 import java.io.ByteArrayInputStream;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Created by anthonyjones on 5/16/17.
@@ -26,7 +29,7 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void addEntryTest() {
+    public void addEntryTest() throws InvalidPhoneNumberFormatException {
         //Given
         String input = "Dan Alixk\n(492)-797-1823\n";
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(input.getBytes());
@@ -39,6 +42,20 @@ public class PhoneBookTest {
         //Then
         Assert.assertEquals("An extra entry in the hashmap, increases the size from 4 to 5 ", expected, actual.size());
         Assert.assertNotNull("Assert that there is an entry of Dan Alixk in the phonebook", phoneBook.lookUp(name));
+    }
+
+    @Test
+    public void addBadEntryTest() throws InvalidPhoneNumberFormatException {
+        //Given
+        String input = "Dan Alixk\n(0)-799933333333339999-03\n";
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(input.getBytes());
+        PhoneBook phoneBook = new PhoneBook(byteArrayInputStream);
+        String name = "Dan Alixk";
+        String number = "(0)-799933333333339999-03";
+        //When
+        Map actual = phoneBook.addEntry(name, number);
+        //Then
+        Assert.assertEquals(null, actual);
     }
 
 
@@ -57,7 +74,7 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void removeEntryTest() {
+    public void removeEntryTest() throws InvalidPhoneNumberFormatException{
 
         String input = "Ben Berger\n";
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(input.getBytes());
