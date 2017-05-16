@@ -7,6 +7,9 @@ public class PhoneBook {
 
 TreeMap<String, PhoneBookEntry> phoneBook = new TreeMap<>();
 
-
+	public PhoneBookEntry lookup(String phoneBookEntryName)
+	{
+		
+	}
 
 }
