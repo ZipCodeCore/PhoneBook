@@ -3,6 +3,7 @@ import org.junit.Test;
 
 import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -41,6 +42,21 @@ public class PhoneBookTests {
 
         //Then
         assertTrue(phoneBook.getContacts().isEmpty());
+    }
+
+    @Test
+    public void testRemoveFromExisting(){
+        //Given
+        String name = "John Doe";
+        PhoneNumber phoneNumber2 = PhoneNumberFactory.createPhoneNumberSafely(222,2222,2222);
+        phoneBook.add(name, phoneNumber);
+        phoneBook.addToExisting(name, phoneNumber2);
+
+        //When
+        phoneBook.removeFromExisting(name, phoneNumber2);
+
+        //Then
+        //TODO assert that phone number is removed, kept getting false pass
     }
 
     @Test

@@ -29,6 +29,10 @@ public class PhoneBook {
         contacts.remove(name);
     }
 
+    public void removeFromExisting(String s, PhoneNumber phoneNumber2) {
+
+    }
+
     public String listAllNames() {
         StringBuilder sb = new StringBuilder();
         for (Map.Entry<String, ArrayList<PhoneNumber>> entry : contacts.entrySet()) {
@@ -64,6 +68,8 @@ public class PhoneBook {
         }
         return name;
     }
+
+
 
     //TODO if want to do logging, make sure i have log4j properties in resources folder
 }
