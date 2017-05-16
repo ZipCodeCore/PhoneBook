@@ -1,6 +1,6 @@
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.TreeMap;
 
 /**
@@ -8,23 +8,25 @@ import java.util.TreeMap;
  */
 public class PhoneBook {
 
-    private Map<String, PhoneNumber> phoneNumbers = new TreeMap<String, PhoneNumber>();
+    private Map<String, ArrayList<PhoneNumber>> contacts = new TreeMap<String, ArrayList<PhoneNumber>>();
 
-    public Map<String, PhoneNumber> getPhoneNumbers() {
-        return phoneNumbers;
+    public Map<String, ArrayList<PhoneNumber>> getContacts() {
+        return contacts;
     }
 
     public void add(String name, PhoneNumber phoneNumber) {
-        phoneNumbers.put(name, phoneNumber);
+        ArrayList<PhoneNumber> phoneNumbers = new ArrayList<PhoneNumber>();
+        phoneNumbers.add(phoneNumber);
+        contacts.put(name, phoneNumbers);
     }
 
     public void remove(String name) {
-        phoneNumbers.remove(name);
+        contacts.remove(name);
     }
 
     public String listAllNames() {
         StringBuilder sb = new StringBuilder();
-        for (Map.Entry<String, PhoneNumber> entry : phoneNumbers.entrySet()) {
+        for (Map.Entry<String, ArrayList<PhoneNumber>> entry : contacts.entrySet()) {
             sb.append(entry.getKey() + "\n");
         }
         return sb.toString();
@@ -32,24 +34,30 @@ public class PhoneBook {
 
     public String listAllEntries() {
         StringBuilder sb = new StringBuilder();
-        for (Map.Entry<String, PhoneNumber> entry : phoneNumbers.entrySet()) {
-            sb.append(entry.getKey() + " - " + entry.getValue().toString() + "\n");
+        for (Map.Entry<String, ArrayList<PhoneNumber>> entry : contacts.entrySet()) {
+            for(int i = 0; i < entry.getValue().size(); i++){
+                sb.append(entry.getKey() + " - " + entry.getValue().get(i).toString() + "\n");
+
+            }
         }
         return sb.toString();
     }
 
     //TODO have throw a UnableToFindAssociatedPhoneNumberException;
-    public PhoneNumber lookup(String name){
-        return phoneNumbers.get(name);
+    public ArrayList<PhoneNumber> lookup(String name){
+        return contacts.get(name);
     }
 
     //TODO have throw a UnableToFindAssociatedNameException;
     public String reverseLookup(PhoneNumber phoneNumber){
         String name = "";
-        for (Map.Entry<String, PhoneNumber> entry : phoneNumbers.entrySet()) {
-            if(entry.getValue().equals(phoneNumber)) name = entry.getKey();
+        for (Map.Entry<String, ArrayList<PhoneNumber>> entry : contacts.entrySet()) {
+            for(int i = 0; i < entry.getValue().size(); i++){
+                if(entry.getValue().get(i).equals(phoneNumber)) name = entry.getKey();
+            }
         }
         return name;
     }
 
+    //TODO if want to do logging, make sure i have log4j properties in resources folder
 }

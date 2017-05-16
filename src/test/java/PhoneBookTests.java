@@ -27,7 +27,7 @@ public class PhoneBookTests {
         phoneBook.add(name, phoneNumber);
 
         //Then
-        assertFalse(phoneBook.getPhoneNumbers().isEmpty());
+        assertFalse(phoneBook.getContacts().isEmpty());
     }
 
     @Test
@@ -40,7 +40,7 @@ public class PhoneBookTests {
         phoneBook.remove(name);
 
         //Then
-        assertTrue(phoneBook.getPhoneNumbers().isEmpty());
+        assertTrue(phoneBook.getContacts().isEmpty());
     }
 
     @Test
@@ -100,7 +100,7 @@ public class PhoneBookTests {
         PhoneNumber expected = phoneNumber1;
 
         //When
-        PhoneNumber actual = phoneBook.lookup(name1);
+        PhoneNumber actual = phoneBook.lookup(name1).get(0);
 
         //Then
         assertEquals("Incorrect phone number returned", actual, expected);
