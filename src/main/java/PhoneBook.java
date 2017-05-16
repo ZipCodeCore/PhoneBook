@@ -8,35 +8,28 @@ import java.util.TreeMap;
  */
 public class PhoneBook {
 
-    public String name;
-    public String phoneNumber;
-    public String formattedPhoneNumber;
-    public boolean isNamePresent;
+    static TreeMap<String, String> PhoneBook = new TreeMap<String, String>();
 
-    TreeMap<String, String> phoneBook = new TreeMap<String, String>();
-
-    public void addPhoneBookEntry(String phoneNumber, String name){
-        this.phoneNumber = phoneNumber;
-        this.name = name;
-        phoneBook.put(phoneNumber, name);
+    public static void addPhoneBookEntry(String phoneNumber, String name){
+        PhoneBook.put(phoneNumber, name);
     }
 
-    public void removePhoneBookEntryByPhoneNumber(String phoneNumber){
-        phoneBook.remove(phoneNumber);
+    public static void removePhoneBookEntryByPhoneNumber(String phoneNumber){
+        PhoneBook.remove(phoneNumber);
     }
-    public void removePhoneBookEntryByName(String name){
-        phoneBook.remove(name);
+    public static void removePhoneBookEntryByName(String name){
+        PhoneBook.remove(name);
     }
-    public void listAllEntriesInPhoneBook(){
-        Set set = phoneBook.entrySet();
+    public static void listAllEntriesInPhoneBook(){
+        Set set = PhoneBook.entrySet();
         Iterator iterator = set.iterator();
         while(iterator.hasNext()){
             Map.Entry entry = (Map.Entry)iterator.next();
             System.out.println("Name: " + entry.getValue() + "\tNumber : " + entry.getKey() );
         }
     }
-    public void lookUpPhoneNumberBasedOnName(String phoneNumber) {
-        phoneBook.get(phoneNumber);
+    public static void lookUpPhoneNumberBasedOnName(String name) {
+        PhoneBook.get(name);
     }
 
 

@@ -7,11 +7,19 @@ public class Main {
 
     public static void main(String[]args) {
 
-        TreeMap<String, String> phoneBook = new TreeMap<String, String>();
+        PhoneBook.addPhoneBookEntry("123456789", "Keanu Reaves");
+        PhoneBook.addPhoneBookEntry("234234253", "Neo");
+        PhoneBook.addPhoneBookEntry("438209893", "Johnny Utah");
+        PhoneBook.addPhoneBookEntry("935235389", "Ted");
+        PhoneBook.addPhoneBookEntry("789766878", "Jack Traven");
 
-        phoneBook.put("123456789", "Keanu Reeves");
-        phoneBook.put("298765432", "Jimmy Greaves");
-        phoneBook.put("398765432", "Diego Maradona");
+        PhoneBook.removePhoneBookEntryByName("Ted");
+
+        PhoneBook.removePhoneBookEntryByPhoneNumber("789766878");
+        PhoneBook.lookUpPhoneNumberBasedOnName("Neo");
+        PhoneBook.listAllEntriesInPhoneBook();
+
+
 
     }
 
