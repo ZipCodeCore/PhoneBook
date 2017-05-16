@@ -1,6 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -15,40 +16,88 @@ public class PhoneBookTest {
         //Given
         Map<String, String> phoneInfo = new HashMap<>();
         phoneInfo.put("Sarah Silverman", "(302)-434-1849");
-        String id = "Sarah Silverman";
+        String name = "Sarah Silverman";
         String expected = "(302)-434-1849";
         PhoneBook phoneBook = new PhoneBook();
         //When
-        String actual = phoneBook.lookUp(phoneInfo, id);
+        String actual = phoneBook.lookUp(name);
         //Then
         Assert.assertEquals("The number of Sarah is \"(302)-434-1849\" ", expected, actual);
     }
 
     @Test
-    public void addEntryTest(){
-        Map<String, String> phoneInfo = new HashMap<>();
-        phoneInfo.put("Sarah Silverman", "(302)-434-1849");
-        phoneInfo.put("Ben Burger", "(802)-453-3582");
-        phoneInfo.put("Lisa Knelly", "(732)-914-8849");
-        phoneInfo.put("Steve Johns", "(412)-791-1823");
+    public void addEntryTest() {
+        //Given
+        String input = "Dan Alixk\n(492)-797-1823\n";
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(input.getBytes());
+        PhoneBook phoneBook = new PhoneBook(byteArrayInputStream);
         String name = "Dan Alixk";
         String number = "(492)-797-1823";
-
         int expected = 5;
-        PhoneBook phoneBook = new PhoneBook();
         //When
-        Map actual = phoneBook.addEntry(name,number);
+        Map actual = phoneBook.addEntry(name, number);
         //Then
         Assert.assertEquals("An extra entry in the hashmap, increases the size from 4 to 5 ", expected, actual.size());
-
+        Assert.assertNotNull("Assert that there is an entry of Dan Alixk in the phonebook", phoneBook.lookUp(name));
     }
 
 
     @Test
-    public void removeEntryTest(){
+    public void listAllEntriesTest() {
+        //Given
+        PhoneBook phoneBook = new PhoneBook();
+        String expected = "Ben Berger (802)-453-3582\n" +
+                "Lisa Knelly (732)-914-8849\n" +
+                "Sarah Silverman (302)-434-1849\n" +
+                "Steve Johns (412)-791-1823";
+        //When
+        String actual = phoneBook.listAllEntries();
+        //Then
+        Assert.assertEquals("Test to make sure all entries are in the phonebook", expected, actual);
+    }
 
+    @Test
+    public void removeEntryTest() {
+
+        String input = "Ben Berger\n";
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(input.getBytes());
+        PhoneBook phoneBook = new PhoneBook(byteArrayInputStream);
+        String name = "Ben Berger";
+
+        int expected = 3;
+        //When
+        Map actual = phoneBook.removeEntry(name);
+        //Then
+
+        // Assert.assertArrayEquals(null, null);
+        Assert.assertEquals("Removing Ben Berger will decrease the size from 4 to 3 ", expected, actual.size());
+        Assert.assertNull("Assert that there is no entry of Ben Berger in the phonebook", phoneBook.lookUp(name));
+    }
+
+    @Test
+    public void listAllNamesTest() {
+        //Given
+        PhoneBook phoneBook = new PhoneBook();
+        String expected = "Ben Berger\n" +
+                "Lisa Knelly\n" +
+                "Sarah Silverman\n" +
+                "Steve Johns";
+        //When
+        String actual = phoneBook.listAllNames();
+        //Then
+        Assert.assertEquals("Test to make sure all the names are in the phonebook", expected, actual);
     }
 
 
+    @Test
+    public void reverseLookupTest() {
+        //Given
+        PhoneBook phoneBook = new PhoneBook();
+        String expected = "(732)-914-8849";
+        //When
+        String actual = phoneBook.reverseLookUp(expected);
+        //Then
+        Assert.assertEquals("Test to make sure all the names are in the phonebook", expected, actual);
+    }
 
 }
