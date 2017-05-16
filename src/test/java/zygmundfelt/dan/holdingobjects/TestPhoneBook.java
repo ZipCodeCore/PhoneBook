@@ -2,22 +2,26 @@ package zygmundfelt.dan.holdingobjects;
 
 import org.junit.*;
 
+import java.util.ArrayList;
+
 public class TestPhoneBook {
 
     PhoneBook phoneBook;
 
     private void loadEntries() {
         phoneBook = new PhoneBook();
-        phoneBook.add("Zygmund-Felt,Dan", 5555555555L);
-        phoneBook.add("FlagDymz,And", 3335553333L);
-        phoneBook.add("Ated,Hyphen", 1234567890L);
-        phoneBook.add("Villain,MetalFace", 2678675309L);
+        phoneBook.addRecord("Zygmund-Felt,Dan", 5555555555L);
+        phoneBook.addRecord("Zygmund-Felt,Dan", 8888888888L);
+        phoneBook.addRecord("Smith,Stan", 3335553333L);
+        phoneBook.addRecord("Ated,Hyphen", 1234567890L);
+        phoneBook.addRecord("Villain,MetalFace", 2678675309L);
+        phoneBook.addRecord("Villain,MetalFace", 2158675309L);
     }
 
     @Test
     public void addTest() {
         PhoneBook phoneBook = new PhoneBook();
-        phoneBook.add("Zyg,Dan", 1234567890L);
+        phoneBook.addRecord("Zyg,Dan", 1234567890L);
         int expected = 1;
 
         int actual = phoneBook.map.size();
@@ -27,12 +31,81 @@ public class TestPhoneBook {
     }
 
     @Test
+    public void addMultipleToSameNameTest() {
+        PhoneBook phoneBook = new PhoneBook();
+        phoneBook.addRecord("Zyg,Dan", 1234567890L);
+        phoneBook.addRecord("Zyg,Dan", 9876543210L);
+        int expected = 2;
+
+        int actual = phoneBook.map.get("Zyg,Dan").size();
+
+        Assert.assertEquals(expected,actual);
+    }
+
+    @Test
+    public void addRecordsNewRecordTest() {
+        PhoneBook phoneBook = new PhoneBook();
+        phoneBook.addRecords("Zyg,Dan", 1234567890L, 9876543210L, 1236547890L);
+        int expected = 3;
+
+        int actual = phoneBook.map.get("Zyg,Dan").size();
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test //TODO - not a great test
+    public void removeRecordByNameValidTest() {
+        loadEntries();
+        ArrayList<Long> expected = phoneBook.map.get("Villain,MetalFace");
+
+        ArrayList<Long> actual = phoneBook.removeRecordByName("Villain,MetalFace");
+
+        Assert.assertTrue(expected == actual);
+    }
+
+    public void removeRecordByNameNonexistentTest() {
+        loadEntries();
+
+        ArrayList<Long> result = phoneBook.removeRecordByName("Puft,Stay");
+
+        Assert.assertTrue(result == null);
+    }
+
+    @Test
+    public void removePhoneNumberValidTest() {
+        loadEntries();
+        String expected = "[5555555555]";
+
+        phoneBook.removePhoneNumber(8888888888L);
+        String actual = phoneBook.map.get("Zygmund-Felt,Dan").toString();
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void removeNonexistentPhoneNumberTest() {
+        loadEntries();
+
+        Assert.assertFalse(phoneBook.removePhoneNumber(3216540987L));
+    }
+
+    @Test
+    public void removeNonexistentEntryTest() {
+        loadEntries();
+        Long expected = null;
+
+        ArrayList<Long> actual = phoneBook.removeRecordByName("Millain,VetalFace");
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
     public void lookUpValidEntryTest() {
         loadEntries();
         String name = "Ated,Hyphen";
-        long expected = 1234567890L;
+        ArrayList<Long> expected = phoneBook.map.get("Ated,Hyphen");
 
-        long actual = phoneBook.lookUp(name);
+        ArrayList<Long> actual = phoneBook.lookUp(name);
 
         Assert.assertEquals(expected, actual);
     }
@@ -41,49 +114,49 @@ public class TestPhoneBook {
     public void lookUpNonexistentEntryTest() {
         loadEntries();
         String name = "Ated,NoSuch";
-        Long expected = null;
+        ArrayList<Long> expected = null;
 
-        Long actual = phoneBook.lookUp(name);
+        ArrayList<Long> actual = phoneBook.lookUp(name);
 
         Assert.assertEquals(expected, actual);
     }
 
     @Test
-    public void getAllPersonsNonemptyTest() {
+    public void allNamesToStringNonemptyTest() {
         loadEntries();
-        String expected = "Ated,Hyphen\nFlagDymz,And\nVillain,MetalFace\nZygmund-Felt,Dan\n";
+        String expected = "Ated,Hyphen\nSmith,Stan\nVillain,MetalFace\nZygmund-Felt,Dan\n";
 
-        String actual = phoneBook.getAllPersons();
+        String actual = phoneBook.allNamesToString();
 
         Assert.assertEquals(expected, actual);
     }
 
     @Test
-    public void getAllPersonsEmptyTest() {
+    public void allNamesToStringEmptyTest() {
         PhoneBook phoneBook = new PhoneBook();
         String expected = "";
 
-        String actual = phoneBook.getAllPersons();
+        String actual = phoneBook.allNamesToString();
 
         Assert.assertEquals(expected, actual);
     }
 
     @Test
-    public void getAllEntriesNonemptyTest() {
+    public void allEntriesToStringNonemptyTest() {
         loadEntries();
-        String expected = "Ated,Hyphen: 1234567890\nFlagDymz,And: 3335553333\nVillain,MetalFace: 2678675309\nZygmund-Felt,Dan: 5555555555\n";
+        String expected = "Ated,Hyphen: [1234567890]\nSmith,Stan: [3335553333]\nVillain,MetalFace: [2678675309, 2158675309]\nZygmund-Felt,Dan: [5555555555, 8888888888]\n";
 
-        String actual = phoneBook.getAllEntries();
+        String actual = phoneBook.allEntriesToString();
 
         Assert.assertEquals(expected, actual);
     }
 
     @Test
-    public void getAllEntriesEmptyTest() {
+    public void allEntriesToStringEmptyTest() {
         PhoneBook phoneBook = new PhoneBook();
         String expected = "";
 
-        String actual = phoneBook.getAllEntries();
+        String actual = phoneBook.allEntriesToString();
 
         Assert.assertEquals(expected, actual);
     }
@@ -91,7 +164,7 @@ public class TestPhoneBook {
     @Test
     public void reverseLookUpValidPhoneNumberTest() {
         loadEntries();
-        String expected = "FlagDymz,And";
+        String expected = "Smith,Stan";
 
         String actual = phoneBook.reverseLookUp(3335553333L);
 
