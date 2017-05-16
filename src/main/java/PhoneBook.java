@@ -1,4 +1,7 @@
 import java.util.TreeMap;
+import java.util.Set;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * Created by brianmullin on 5/16/17.
@@ -14,18 +17,27 @@ public class PhoneBook {
 
     public String lookUpByName(String name){
 
-        String entry= phoneBook.get(name);
+        String entry = phoneBook.get(name);
         return entry;
     }
 
-    public void addEntries(String name, String phoneNumber){
+    public String addEntries(String name, String phoneNumber){
 
-        phoneBook.put(name, phoneNumber);
+        phoneBook.put("", phoneNumber);
+
+        return "The entry" + phoneBook.get(name) + "was added to phoneBook";
+
     }
 
-    public void removeEntries(){}
+    public void removeEntries(String name){
+
+        phoneBook.remove(name);
+
+    }
 
     public String listAllEntries(){
+
+
 
         return "";
     }

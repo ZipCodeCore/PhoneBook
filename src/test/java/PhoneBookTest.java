@@ -10,12 +10,13 @@ import java.util.TreeMap;
 public class PhoneBookTest {
 
     PhoneBook phoneBook;
+    //TreeMap<String, String> testPhoneBook = new TreeMap<String, String>();
 
     @Before
     public void setUp(){
 
         phoneBook = new PhoneBook();
-        //public TreeMap<String, String> testPhoneBook = new TreeMap<String, String>();
+
 
     }
 
@@ -26,7 +27,7 @@ public class PhoneBookTest {
         String expectedNumber = "302-757-1634";
 
         //When
-        phoneBook.put("Brian", "302-757-1634");
+        phoneBook.addEntries(entry, expectedNumber);
         String actualNumber = phoneBook.lookUpByName("Brian");
         //Then
         Assert.assertEquals("The expected phone number is ", expectedNumber, actualNumber);
@@ -40,9 +41,13 @@ public class PhoneBookTest {
         String name = "Brian";
         String phoneNumber = "302-757-1634";
 
+
         //When
+        phoneBook.addEntries(name, phoneNumber);
+        String actualNumber = phoneBook.lookUpByName("Brian");
 
         //Then
+        Assert.assertEquals("The expected phone number is ", expectedNumber, actualNumber);
 
     }
 
