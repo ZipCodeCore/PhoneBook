@@ -37,7 +37,7 @@ public class TestPhonebook {
         phoneBook.removeEntry("Molly");
 
         //then:
-        Assert.assertEquals(null, phoneBook.getContactInfo().get("Molly"));
+        Assert.assertEquals("Should return null once key is removed",null, phoneBook.getContactInfo().get("Molly"));
 
 
     }
@@ -107,7 +107,7 @@ public class TestPhonebook {
         phoneBook.reverseLookUp("(302)-555-9743");
 
         //then:
-        Assert.assertEquals("Molly", phoneBook.reverseLookUp("(302)-555-9743"));
+        Assert.assertEquals("Should return the key for the phone number","Molly", phoneBook.reverseLookUp("(302)-555-9743"));
 
 
     }
