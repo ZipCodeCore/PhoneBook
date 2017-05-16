@@ -1,7 +1,7 @@
 /**
  * Created by sarahweisser on 5/16/17.
  */
-public class Entry {
+public class PhoneBookEntry {
 
     private String name;
     private String formattedPhoneNumber;
@@ -29,7 +29,7 @@ public class Entry {
         return formattedPhoneNumber;
     }
 
-    public Entry(String name, String phoneNumber) {
+    public PhoneBookEntry(String name, String phoneNumber) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.formattedPhoneNumber = formatPhoneNumber(phoneNumber);
