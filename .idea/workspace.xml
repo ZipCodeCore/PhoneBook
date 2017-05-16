@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db1971b5-1272-4e7a-884c-ecf90d886615" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/PhoneNumberFactoryTests.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/PhoneBookFactoryTests.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/PhoneBook.java" afterPath="$PROJECT_DIR$/src/main/java/PhoneBook.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/PhoneNumberFactory.java" afterPath="$PROJECT_DIR$/src/main/java/PhoneNumberFactory.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/PhoneBookTests.java" afterPath="$PROJECT_DIR$/src/test/java/PhoneBookTests.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -27,8 +23,8 @@
       <file leaf-file-name="PhoneBookTests.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/PhoneBookTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="445">
-              <caret line="61" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+            <state relative-caret-position="340">
+              <caret line="98" column="25" lean-forward="false" selection-start-line="98" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -39,8 +35,8 @@
       <file leaf-file-name="PhoneBook.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/PhoneBook.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="22" lean-forward="false" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
+            <state relative-caret-position="460">
+              <caret line="41" column="38" lean-forward="false" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#231#252#0" expanded="true" />
@@ -50,6 +46,8 @@
                 <element signature="e#458#459#0" expanded="true" />
                 <element signature="e#497#498#0" expanded="true" />
                 <element signature="e#538#539#0" expanded="true" />
+                <element signature="e#1133#1134#0" expanded="true" />
+                <element signature="e#1178#1179#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -103,8 +101,8 @@
         <option value="$PROJECT_DIR$/src/test/java/PhoneBookFactoryTests.java" />
         <option value="$PROJECT_DIR$/src/main/java/PhoneNumberFactory.java" />
         <option value="$PROJECT_DIR$/src/test/java/PhoneNumberFactoryTests.java" />
-        <option value="$PROJECT_DIR$/src/main/java/PhoneBook.java" />
         <option value="$PROJECT_DIR$/src/test/java/PhoneBookTests.java" />
+        <option value="$PROJECT_DIR$/src/main/java/PhoneBook.java" />
       </list>
     </option>
   </component>
@@ -235,49 +233,7 @@
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
   </component>
-  <component name="RunManager" selected="JUnit.PhoneBookTests.listAllNames">
-    <configuration default="false" name="PhoneNumberFactoryTests.testGetPhoneLineCode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="HoldingObjects" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="PhoneNumberFactoryTests" />
-      <option name="METHOD_NAME" value="testGetPhoneLineCode" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="PhoneNumberFactoryTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="HoldingObjects" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="PhoneNumberFactoryTests" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.PhoneBookTests.testLookUp">
     <configuration default="false" name="PhoneBookTests.testAdd" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="HoldingObjects" />
@@ -328,6 +284,48 @@
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="PhoneBookTests" />
       <option name="METHOD_NAME" value="listAllNames" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="PhoneBookTests.testListAllEntries" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="HoldingObjects" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="PhoneBookTests" />
+      <option name="METHOD_NAME" value="testListAllEntries" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="PhoneBookTests.testLookUp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="HoldingObjects" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="PhoneBookTests" />
+      <option name="METHOD_NAME" value="testLookUp" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -715,19 +713,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.PhoneNumberFactoryTests.testGetPhoneLineCode" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.PhoneNumberFactoryTests" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.PhoneBookTests.testAdd" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.PhoneBookTests.testRemove" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.PhoneBookTests.listAllNames" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.PhoneBookTests.testAdd" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.PhoneBookTests.testRemove" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.PhoneBookTests.listAllNames" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.PhoneBookTests.testListAllEntries" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.PhoneBookTests.testLookUp" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.PhoneBookTests.listAllNames" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.PhoneBookTests.testRemove" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.PhoneBookTests.testAdd" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.PhoneNumberFactoryTests" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.PhoneNumberFactoryTests.testGetPhoneLineCode" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.PhoneBookTests.testLookUp" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.PhoneBookTests.testListAllEntries" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.PhoneBookTests.listAllNames" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.PhoneBookTests.testRemove" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.PhoneBookTests.testAdd" />
       </list>
     </recent_temporary>
   </component>
@@ -741,7 +739,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1494963090492</updated>
-      <workItem from="1494963096455" duration="4041000" />
+      <workItem from="1494963096455" duration="4641000" />
     </task>
     <servers />
   </component>
@@ -764,21 +762,21 @@
     <history-entry file="PhoneBookTests_listAllNames - 2017.05.16 at 16h 40m 35s.xml">
       <configuration name="PhoneBookTests.listAllNames" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTests_testAdd - 2017.05.16 at 16h 16m 48s.xml">
-      <configuration name="PhoneBookTests.testAdd" configurationId="JUnit" />
+    <history-entry file="PhoneBookTests_testListAllEntries - 2017.05.16 at 16h 45m 12s.xml">
+      <configuration name="PhoneBookTests.testListAllEntries" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTests_testAdd - 2017.05.16 at 16h 18m 10s.xml">
-      <configuration name="PhoneBookTests.testAdd" configurationId="JUnit" />
+    <history-entry file="PhoneBookTests_testListAllEntries - 2017.05.16 at 16h 46m 31s.xml">
+      <configuration name="PhoneBookTests.testListAllEntries" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTests_testRemove - 2017.05.16 at 16h 22m 55s.xml">
-      <configuration name="PhoneBookTests.testRemove" configurationId="JUnit" />
+    <history-entry file="PhoneBookTests_testLookUp - 2017.05.16 at 16h 50m 03s.xml">
+      <configuration name="PhoneBookTests.testLookUp" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTests_testRemove - 2017.05.16 at 16h 23m 03s.xml">
-      <configuration name="PhoneBookTests.testRemove" configurationId="JUnit" />
+    <history-entry file="PhoneBookTests_testLookUp - 2017.05.16 at 16h 50m 40s.xml">
+      <configuration name="PhoneBookTests.testLookUp" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4041000" />
+    <option name="totallyTimeSpent" value="4641000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1057" width="1343" height="1057" extended-state="0" />
@@ -823,7 +821,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -875,14 +873,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/PhoneNumber.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="16" lean-forward="false" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/PhoneNumberFactoryTests.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -901,10 +891,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/PhoneNumber.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="16" lean-forward="false" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/PhoneBook.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="22" lean-forward="false" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
+        <state relative-caret-position="460">
+          <caret line="41" column="38" lean-forward="false" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#231#252#0" expanded="true" />
@@ -914,14 +912,16 @@
             <element signature="e#458#459#0" expanded="true" />
             <element signature="e#497#498#0" expanded="true" />
             <element signature="e#538#539#0" expanded="true" />
+            <element signature="e#1133#1134#0" expanded="true" />
+            <element signature="e#1178#1179#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/PhoneBookTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="61" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+        <state relative-caret-position="340">
+          <caret line="98" column="25" lean-forward="false" selection-start-line="98" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

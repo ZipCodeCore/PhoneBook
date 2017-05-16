@@ -24,12 +24,22 @@ public class PhoneBook {
 
     public String listAllNames() {
         StringBuilder sb = new StringBuilder();
-        String allNames;
         for (Map.Entry<String, PhoneNumber> entry : phoneNumbers.entrySet()) {
             sb.append(entry.getKey() + "\n");
         }
-        allNames = sb.toString();
-        return allNames;
+        return sb.toString();
+    }
+
+    public String listAllEntries() {
+        StringBuilder sb = new StringBuilder();
+        for (Map.Entry<String, PhoneNumber> entry : phoneNumbers.entrySet()) {
+            sb.append(entry.getKey() + " - " + entry.getValue().toString() + "\n");
+        }
+        return sb.toString();
+    }
+
+    public PhoneNumber lookup(String name){
+        return phoneNumbers.get(name);
     }
 
 }
