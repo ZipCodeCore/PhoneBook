@@ -38,8 +38,18 @@ public class PhoneBook {
         return sb.toString();
     }
 
+    //TODO have throw a UnableToFindAssociatedPhoneNumberException;
     public PhoneNumber lookup(String name){
         return phoneNumbers.get(name);
+    }
+
+    //TODO have throw a UnableToFindAssociatedNameException;
+    public String reverseLookup(PhoneNumber phoneNumber){
+        String name = "";
+        for (Map.Entry<String, PhoneNumber> entry : phoneNumbers.entrySet()) {
+            if(entry.getValue().equals(phoneNumber)) name = entry.getKey();
+        }
+        return name;
     }
 
 }

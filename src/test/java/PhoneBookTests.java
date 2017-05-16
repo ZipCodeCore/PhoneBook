@@ -105,6 +105,27 @@ public class PhoneBookTests {
         //Then
         assertEquals("Incorrect phone number returned", actual, expected);
     }
+
+    @Test
+    public void testReverseLookUp(){
+        //Given
+        String name1 = "Chris Kim";
+        String name2 = "Dennis Kalaygian";
+        String name3 = "Aaron Long";
+        PhoneNumber phoneNumber1 = PhoneNumberFactory.createPhoneNumberSafely(111, 111, 1111);
+        PhoneNumber phoneNumber2 = PhoneNumberFactory.createPhoneNumberSafely(111, 111, 1112);
+        PhoneNumber phoneNumber3 = PhoneNumberFactory.createPhoneNumberSafely(111, 111, 1113);
+        phoneBook.add(name1, phoneNumber1);
+        phoneBook.add(name2, phoneNumber2);
+        phoneBook.add(name3, phoneNumber3);
+        String expected = name2;
+
+        //When
+        String actual = phoneBook.reverseLookup(phoneNumber2);
+
+        //Then
+        assertEquals("Incorrect name returned", actual, expected);
+    }
 }
 
 
