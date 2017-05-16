@@ -1,20 +1,67 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import static junit.framework.TestCase.assertFalse;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 /**
  * Created by andrewwong on 5/16/17.
  */
 public class PhoneBookTests {
     PhoneBook phoneBook;
+    PhoneNumber phoneNumber;
+
     @Before
-    public void initPhoneBook(){
+    public void initPhoneBook() {
         phoneBook = new PhoneBook();
+        phoneNumber = PhoneNumberFactory.createPhoneNumberSafely(856, 444, 4444);
     }
+
     @Test
-    public void testAdd(){
+    public void testAdd() {
         //Given
         String name = "John Doe";
+
         //When
+        phoneBook.add(name, phoneNumber);
+
         //Then
+        assertFalse(phoneBook.getPhoneNumbers().isEmpty());
     }
+
+    @Test
+    public void testRemove() {
+        //Given
+        String name = "John Doe";
+        phoneBook.add(name, phoneNumber);
+
+        //When
+        phoneBook.remove(name);
+
+        //Then
+        assertTrue(phoneBook.getPhoneNumbers().isEmpty());
+    }
+
+    @Test
+    public void listAllNames() {
+        //Given
+        String name1 = "Chris Kim";
+        String name2 = "Dennis Kalaygian";
+        String name3 = "Aaron Long";
+        PhoneNumber phoneNumber1 = PhoneNumberFactory.createPhoneNumberSafely(111, 111, 1111);
+        PhoneNumber phoneNumber2 = PhoneNumberFactory.createPhoneNumberSafely(111, 111, 1112);
+        PhoneNumber phoneNumber3 = PhoneNumberFactory.createPhoneNumberSafely(111, 111, 1113);
+        phoneBook.add(name1, phoneNumber1);
+        phoneBook.add(name2, phoneNumber2);
+        phoneBook.add(name3, phoneNumber3);
+        String actual = "Aaron Long\n" + "Chris Kim\n" + "Dennis Kalaygian\n";
+
+        //When
+        String expected = phoneBook.listAllNames();
+
+        //Then
+        assertEquals("Incorrect list of names", actual, expected);
+    }
+
 }
