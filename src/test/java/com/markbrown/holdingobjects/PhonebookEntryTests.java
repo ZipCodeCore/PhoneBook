@@ -2,6 +2,10 @@ package com.markbrown.holdingobjects;
 
 import org.junit.Test;
 import org.junit.Assert;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.Collections;
 
 /**
  * Unit test for PhonebookEntry Class
@@ -61,6 +65,41 @@ public class PhonebookEntryTests  {
         }
         for (String phoneNumber : phoneNumbers) {
             Assert.assertTrue((phoneNumber.matches("\\(\\d{3}\\)-\\d{3}-\\d{4}")));
+        }
+
+    }
+
+    @Test
+    public void testPhoneBookEntrySorting() {
+        //Given
+        PhonebookEntry phonebookEntry1 = new PhonebookEntry();
+        PhonebookEntry phonebookEntry2 = new PhonebookEntry();
+        try {
+            phonebookEntry1.addValidPhonebookName("Squarepants", "Spongebob");
+            phonebookEntry2.addValidPhonebookName("Krab", "Krusty");
+            phonebookEntry1.addValidPhoneNumber(302, 590,1001);
+            phonebookEntry2.addValidPhoneNumber(888,555,1100);
+        } catch (InvalidInputException invalidInputException) {
+        }
+
+        //When
+        int comparison = phonebookEntry1.compareTo(phonebookEntry2);
+
+        //Then
+        Assert.assertTrue(comparison == 1);
+    }
+
+    @Test (expected = InvalidInputException.class)
+    public void testPhoneBookEntryExceptionCaseOne() {
+        //Given
+        PhonebookEntry phonebookEntry1 = new PhonebookEntry();
+        PhonebookEntry phonebookEntry2 = new PhonebookEntry();
+        try {
+            phonebookEntry1.addValidPhonebookName("Squarepants", "Spongebob");
+            phonebookEntry2.addValidPhonebookName("Krab", "Krusty");
+            phonebookEntry1.addValidPhoneNumber(302333, 590,1001);
+            phonebookEntry2.addValidPhoneNumber(888,555,1100);
+        } catch (InvalidInputException invalidInputException) {
         }
 
     }

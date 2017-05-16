@@ -14,18 +14,15 @@ import org.apache.commons.lang3.math.NumberUtils;
  */
 public class PhonebookEntry implements Comparable<PhonebookEntry> {
 
-
-    private static final Logger logger = LoggerFactory.getLogger(PhonebookEntry.class);
     private enum RANDOM_FIRST_NAMES {ALEX, ANNE, BOB, BELINDA, CARLA, CHRIS, DELILAH, DAN, EVAN, ELLIE, FRAN, FELIX, GAVIN, GRACE, HELEN, HARRY, ILDA, IYASU, JAMES, JANE};
     private enum RANDOM_LAST_NAMES {JACKSON, ANDERSON, LOUIS, FLORENCE, BROWN, HILL, DEAN, EDWARDS, CLINTON, BUSH, NIXON, GALE, ALDRIN, GREENE, FORD, CARTER, TRUMP, JEFFERSON, YOUNG, WASHINGTON, ADAMS};
     private String phoneBookName;
     private String phoneNumber;
 
-    private PhonebookEntry() {}
+    public PhonebookEntry() {}
 
     public void addValidPhonebookName(String lastName, String firstName) throws InvalidInputException {
         if (NumberUtils.isParsable(lastName) || NumberUtils.isParsable(firstName)) {
-            logger.warn("Numbers cannot act as names.");
             throw new InvalidInputException();
         }
         phoneBookName = (lastName + ", " + firstName);
@@ -33,19 +30,11 @@ public class PhonebookEntry implements Comparable<PhonebookEntry> {
 
     public void addValidPhoneNumber(int areaCode, int corporateCode, int localCode) throws InvalidInputException {
         if (!("(" + areaCode + ")-" + corporateCode + "-" + localCode).matches("\\(\\d{3}\\)-\\d{3}-\\d{4}")) {
-            logger.warn("Improper Format");
             throw new InvalidInputException();
         }
         phoneNumber = "(" + areaCode + ")-" + corporateCode + "-" + localCode;
     }
 
-    public String getPhoneBookName() {
-        return phoneBookName;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
 
     public static int generateRandomAreaCode() {
         return (int) Math.floor(Math.random()*900) + 100;
@@ -99,7 +88,10 @@ public class PhonebookEntry implements Comparable<PhonebookEntry> {
                 index++;
             }
             else {
-                return this.phoneBookName.charAt(index) - otherPhonebookEntry.phoneBookName.charAt(index);
+                if (this.phoneBookName.charAt(index) - otherPhonebookEntry.phoneBookName.charAt(index) > 0) {
+                    return 1;
+                }
+                else {return -1;}
             }
         }
         return this.phoneBookName.charAt(index) - otherPhonebookEntry.phoneBookName.charAt(index);
