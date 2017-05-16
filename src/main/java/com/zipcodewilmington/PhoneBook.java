@@ -29,21 +29,28 @@ public class PhoneBook
             phoneBook.put(name, new PhoneNumber(phoneNumber));
             return true;
         } catch (InvalidPhoneNumberFormatException e){
-            logger.info(phoneNumber + " is an invalid Phone Number, " + name + "'s number was not added");
+            logger.warn(phoneNumber + " is an invalid Phone Number, " + name + "'s number was not added");
             return false;
         }
     }
 
     public boolean remove(String name){
-        return false;
+        if(phoneBook.size() > 0 && phoneBook.keySet().contains(name)) {
+            phoneBook.remove(name);
+            return true;
+        } else {
+            logger.warn("\"" + name + "\" not found, remove operation failed");
+            return false;
+        }
+
     }
 
-    public void listNames(){
-
+    public String listNames(){
+        return "";
     }
 
-    public void listEntries(){
-
+    public String listEntries(){
+        return "";
     }
 
     public String reverseLookup(PhoneNumber phoneNumber){

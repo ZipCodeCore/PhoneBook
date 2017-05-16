@@ -61,21 +61,58 @@ public class PhoneBookTest{
     }
 
     @Test
-    public void removeTest(){
+    public void removeTestForSize(){
         //Given
+        int expected = 1;
 
         //When
+        book.add(name1, num1);
+        book.add(name2, num2);
+        book.remove("Chris Kim");
+        int actual = book.size();
 
         //Then
+        assertEquals("Size of phonebook ought to be 1 after remove", expected, actual);
+    }
+
+    @Test
+    public void removeTestInvalidInput(){
+        //Given
+        int expected = 2;
+
+        //When
+        book.add(name1, num1);
+        book.add(name2, num2);
+        book.remove("Tim Kim");
+        int actual = book.size();
+
+        //Then
+        assertEquals("Tim Kim is not in phone book, size should be 2", expected, actual);
+    }
+
+    @Test
+    public void removeTestInvalidInputReturnsFalse(){
+        //Given is in @Before
+
+        //When
+        boolean actual = book.remove("Tim Kim");
+
+        //Then
+        assertFalse("Tim Kim is not in phone book, remove(\"Tim Kim\") should return false" , actual);
     }
 
     @Test
     public void listNamesTest(){
         //Given
+        book.add(name1, num1);
+        book.add(name2, num2);
+        String expected = "Chris Kim\nKirby Kim";
 
         //When
+        String actual = book.listNames();
 
         //Then
+        assertEquals("The return value should be \"Chris Kim\\nKirby Kim\"", expected, actual);
     }
 
     @Test
