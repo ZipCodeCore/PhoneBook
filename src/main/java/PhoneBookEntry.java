@@ -28,5 +28,4 @@ public class PhoneBookEntry {
 		this.contactNumber = contactNumber;
 	}
 
-
 }
