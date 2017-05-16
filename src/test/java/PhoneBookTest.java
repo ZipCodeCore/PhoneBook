@@ -71,10 +71,18 @@ public class PhoneBookTest {
     @Test
     public void listAllEntriesTest(){
         //Given
+        String name1 = "Spongebob";
+        String name2 = "Mr.Krabs";
+        String phoneNum1 = "1-800-pineapple";
+        String phoneNum2 = "1-800-krabby";
 
         //When
+        phoneBook.addEntries(name1, phoneNum1);
+        phoneBook.addEntries(name2, phoneNum2);
+        String actualString = phoneBook.listAllEntries();
 
         //Then
+        Assert.assertEquals("The expected String is ", expectedString, actualString);
 
     }
 

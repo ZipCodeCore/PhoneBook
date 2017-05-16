@@ -41,11 +41,9 @@ public class PhoneBook {
 
     public String listAllEntries(){
 
-        String allEntries = 
+        String allEntries = phoneBook.entrySet();
 
-
-
-        return "";
+        return allEntries;
     }
 
 }
