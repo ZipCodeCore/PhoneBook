@@ -46,15 +46,19 @@ public class PhoneBook
     }
 
     public String listNames(){
-        return "";
+        StringBuilder sb = new StringBuilder();
+        for(String key: phoneBook.keySet()){
+            sb.append(key + "\n");
+        }
+        return sb.toString();
     }
 
     public String listEntries(){
-        return "";
-    }
-
-    public String reverseLookup(PhoneNumber phoneNumber){
-        return "";
+        StringBuilder sb = new StringBuilder();
+        for(String key: phoneBook.keySet()){
+            sb.append(key + ": " + phoneBook.get(key) + "\n");
+        }
+        return sb.toString();
     }
 
     public int size(){

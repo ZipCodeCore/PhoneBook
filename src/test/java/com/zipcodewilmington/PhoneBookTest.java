@@ -106,30 +106,27 @@ public class PhoneBookTest{
         //Given
         book.add(name1, num1);
         book.add(name2, num2);
-        String expected = "Chris Kim\nKirby Kim";
+        String expected = "Chris Kim\nKirby Kim\n";
 
         //When
         String actual = book.listNames();
 
         //Then
-        assertEquals("The return value should be \"Chris Kim\\nKirby Kim\"", expected, actual);
+        assertEquals("The return value should be \"Chris Kim\\nKirby Kim\n\"", expected, actual);
     }
 
     @Test
     public void listEntriesTest(){
         //Given
+        book.add(name1, num1);
+        book.add(name2, num2);
+        String expected = "Chris Kim: (302)598-6245\nKirby Kim: (302)731-1176\n";
 
         //When
+        String actual = book.listEntries();
 
         //Then
+        assertEquals("The return value should be \"Chris Kim: (302)598-6245\\nKirby Kim: (302)731-1176\\n\";", expected, actual);
     }
 
-    @Test
-    public void reverseLookupTest(){
-        //Given
-
-        //When
-
-        //Then
-    }
 }
