@@ -75,14 +75,15 @@ public class PhoneBookTest {
         String name2 = "Mr.Krabs";
         String phoneNum1 = "1-800-pineapple";
         String phoneNum2 = "1-800-krabby";
+        String expectedSet = "The full phoneBook list is: [Mr.Krabs=1-800-krabby, Spongebob=1-800-pineapple]";
 
         //When
         phoneBook.addEntries(name1, phoneNum1);
         phoneBook.addEntries(name2, phoneNum2);
-        String actualString = phoneBook.listAllEntries();
+        String actualSet = phoneBook.listAllEntries();
 
         //Then
-        Assert.assertEquals("The expected String is ", expectedString, actualString);
+        Assert.assertEquals("The expected String is ", expectedSet, actualSet);
 
     }
 
