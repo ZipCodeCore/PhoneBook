@@ -23,19 +23,25 @@ public class PhoneBook {
 
     public String addEntries(String name, String phoneNumber){
 
-        phoneBook.put("", phoneNumber);
+        phoneBook.put(name, phoneNumber);
 
-        return "The entry" + phoneBook.get(name) + "was added to phoneBook";
+        return "The entry associated with " + phoneBook.get(name) + " was added to phoneBook";
 
     }
 
-    public void removeEntries(String name){
+    public String removeEntries(String name){
 
+        String number = phoneBook.get(name);
         phoneBook.remove(name);
+
+        return "The entry '" + name + " " + number + "' was removed from phoneBook." +
+                "It is now "+ phoneBook.get(name) + ".";
 
     }
 
     public String listAllEntries(){
+
+        String allEntries = 
 
 
 

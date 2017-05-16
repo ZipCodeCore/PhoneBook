@@ -38,26 +38,33 @@ public class PhoneBookTest {
     @Test
     public void addEntriesTest(){
         //Given
-        String name = "Brian";
-        String phoneNumber = "302-757-1634";
-
+        String name = "Patrick";
+        String phoneNumber = "302-761-9121";
+        String expectedString = "The entry 'Patrick 302-761-9121' was added to phoneBook";
 
         //When
-        phoneBook.addEntries(name, phoneNumber);
-        String actualNumber = phoneBook.lookUpByName("Brian");
+        String actualString = phoneBook.addEntries(name, phoneNumber);
 
         //Then
-        Assert.assertEquals("The expected phone number is ", expectedNumber, actualNumber);
+        Assert.assertEquals("The expected String is ", expectedString, actualString);
 
     }
 
     @Test
     public void removeEntriesTest(){
         //Given
+        String name = "Squidward";
+        String phoneNumber = "302-761-9222";
+        String expectedString = "The entry 'Squidward 302-761-9222' was removed from phoneBook." +
+                "It is now null.";
+        //String expectedString = null;
 
         //When
+        phoneBook.addEntries(name, phoneNumber);
+        String actualString = phoneBook.removeEntries(name);
 
         //Then
+        Assert.assertEquals("The expected String is ", expectedString, actualString);
 
     }
 

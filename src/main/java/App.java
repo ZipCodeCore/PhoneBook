@@ -3,7 +3,7 @@
  */
 public class App {
 
-    public static void(String[] args){
+    public static void main(String[] args){
 
         PhoneBook book = new PhoneBook();
 
