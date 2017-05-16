@@ -88,4 +88,23 @@ public class TestPhoneBook {
         Assert.assertEquals(expected, actual);
     }
 
+    @Test
+    public void reverseLookUpValidPhoneNumberTest() {
+        loadEntries();
+        String expected = "FlagDymz,And";
+
+        String actual = phoneBook.reverseLookUp(3335553333L);
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void reverseLookUpNonexistentNumberTest() {
+        loadEntries();
+
+        String result = phoneBook.reverseLookUp(1112223333L);
+
+        Assert.assertTrue(result == null);
+    }
+
 }

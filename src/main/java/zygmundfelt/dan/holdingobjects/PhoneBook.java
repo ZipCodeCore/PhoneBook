@@ -10,6 +10,10 @@ allows you to look up a person's phone number based on their
 name. PhoneBook should also have methods to add and remove
 entries, or to list all names or all entries (names an phone
 numbers).
+
+Add a reverseLookup() method to PhoneBook. This method should allow you to look up names by the phone number associated with them.
+
+
  */
 
 import java.util.Map;
@@ -51,6 +55,15 @@ public class PhoneBook {
             sb.append(entry.getKey() + ": " + entry.getValue() + "\n");
         }
         return sb.toString();
+    }
+
+    String reverseLookUp(Long number) {
+        for(String s : map.keySet()) {
+            if(map.get(s).equals(number)) {
+                return s;
+            }
+        }
+        return null;
     }
 
 }
