@@ -5,9 +5,9 @@ import org.junit.Test;
  */
 public class PhoneBookEntry {
 
-    private String name;
-    private String phoneNumber;
-    private String formattedPhoneNumber;
+    public String name;
+    public String phoneNumber;
+    public String formattedPhoneNumber;
 
     public PhoneBookEntry(String name, String phoneNumber){
         this.name = name;

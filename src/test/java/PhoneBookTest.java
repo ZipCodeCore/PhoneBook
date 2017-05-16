@@ -92,7 +92,7 @@ public class PhoneBookTest {
 
     }
     @Test
-    public void testLookUpByNamePhoneNumberKeyReturnKeyAndValue(){
+    public void testLookUpByNumberKeyReturnKeyAndValue(){
 
         // Given
         TreeMap<String, String> phoneBook = new TreeMap<String, String>();
