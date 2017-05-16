@@ -19,5 +19,11 @@ public class PhoneBook {
   public PhoneNumber lookup(String name) {
     return phoneBook.get(name);
   }
-  
+
+  public boolean remove(String name) {
+    PhoneNumber num = phoneBook.get(name);
+    if (num == null) { return false; }
+    return true;
+  }
+
 }
