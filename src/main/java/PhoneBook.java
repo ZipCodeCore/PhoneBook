@@ -16,13 +16,16 @@ public class PhoneBook {
 
     //Originally going to be voided methods, I decided to return the entire hashmap after it's populated
     public Map addEntry(String name, String phoneNumber) {
-
+        name = in.next();
+        phoneNumber = in.next();
+        phoneInfo.put(name, phoneNumber);
         return phoneInfo;
     }
 
     //Originally going to be voided methods, I decided to return the entire hashmap after a entry is removed.
     public Map removeEntry(String name) {
-       
+        name = in.next();
+        phoneInfo.remove(name);
         return phoneInfo;
     }
 
