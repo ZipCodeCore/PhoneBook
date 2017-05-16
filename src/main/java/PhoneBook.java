@@ -1,33 +1,31 @@
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Created by cameronsima on 5/16/17.
  */
 public class PhoneBook {
 
-    private HashMap<String, String> entries = new HashMap<>();
+    private TreeMap<String, String> entries = new TreeMap<>();
 
-    public String lookup() {
-        return "Hi";
+    public String lookup(String name) {
+        return entries.get(name);
     }
+
     public void add(String name, String phoneNumber) {
         entries.put(name, phoneNumber);
-
     }
-    public String[] listAllEntries() {
- /*       String[] result = new String[entries.size()];
 
-        entries.forEach((name, phoneNumber) -> {
-            result.add(String.format("%s, %s", name, phoneNumber);
-        });*/
-
-        return entries.keySet().toArray(new String[entries.size()]);
-
-
+    public void remove(String name) {
+        entries.remove(name);
     }
-    public String[] listAllNames() {
-        return new String[1];
+
+    public TreeMap<String, String> listAllEntries() {
+        return entries;
+    }
+    public Collection<String> listAllNames() {
+        return entries.values();
     }
 
 }
