@@ -8,7 +8,7 @@ public final class PhoneNumber {
     }
 
     PhoneNumber(String phoneNumber) throws InvalidPhoneNumberFormatException {
-        if (!phoneNumber.matches("\\(\\d{3}\\)-\\d{3}-\\d{4}")) {
+        if (!phoneNumber.matches("\\(\\d{3}\\)\\d{3}-\\d{4}")) {
             throw new InvalidPhoneNumberFormatException();
         }
         this.phoneNumberString = phoneNumber;
@@ -19,11 +19,11 @@ public final class PhoneNumber {
     }
 
     public String getCentralOfficeCode() {
-        return toString().substring(6, 9);
+        return toString().substring(5, 8);
     }
 
     public String getPhoneLineCode() {
-        return toString().substring(10, 14);
+        return toString().substring(9, 13);
     }
 
     @Override

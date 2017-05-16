@@ -28,7 +28,7 @@ public class PhoneBookTest{
 
         //When
         book.add(name1, num1);
-        String actual = book.lookup("Kirby Kim").toString();
+        String actual = book.lookup("Kirby Kim");
 
         //Then
         assertEquals("Kirby Kim's phone number should correctly return (302)731-1176", expected, actual);
@@ -54,7 +54,7 @@ public class PhoneBookTest{
 
         //When
         book.add(name1, num1);
-        String actual = book.lookup("Kirby Kim").toString();
+        String actual = book.lookup("Kirby Kim");
 
         //Then
         assertEquals("The one entry should be Kirby Kim, (302)731-1176", expected, actual);
