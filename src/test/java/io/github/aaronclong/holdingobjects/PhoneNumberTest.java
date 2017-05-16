@@ -19,8 +19,8 @@ public class PhoneNumberTest {
     }
   }
 
-  @Test(expected = Exception.class)
-  public void checkThrowForInvalidNumber() throws Exception {
+  @Test(expected = InvalidNumberException.class)
+  public void checkThrowForInvalidNumber() throws InvalidNumberException {
     PhoneNumber.registerNumber(1, 2, 300);
   }
 }

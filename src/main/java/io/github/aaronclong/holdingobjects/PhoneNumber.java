@@ -18,15 +18,15 @@ public class PhoneNumber {
   }
 
   static PhoneNumber registerNumber(int areaCode, int centralOfficeCod,
-                                    int phoneLineCode) throws Exception {
+                                    int phoneLineCode) throws InvalidNumberException {
     if (!isValidDigitRange(areaCode, 100, 999)) {
-      throw new Exception("Not Valid");
+      throw new InvalidNumberException();
     }
     if (!isValidDigitRange(centralOfficeCod, 100, 999)) {
-      throw new Exception("Not Valid");
+      throw new InvalidNumberException();
     }
     if (!isValidDigitRange(phoneLineCode, 1000, 9999)) {
-      throw new Exception("Not Valid");
+      throw new InvalidNumberException();
     }
     return new PhoneNumber(areaCode, centralOfficeCod, phoneLineCode);
   }
