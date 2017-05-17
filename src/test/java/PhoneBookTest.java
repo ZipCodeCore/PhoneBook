@@ -23,6 +23,7 @@ public class PhoneBookTest {
 	public void testLookup()
 	{
 		//: Given
+		phoneBook.addPhoneBookEntryToPhoneBook(thomas);
 		String expected = thomas.getContactNumber();
 
 		//: When
@@ -95,6 +96,20 @@ public class PhoneBookTest {
 
 		//: Then
 		assertEquals("These lists should be identical.", expected, actual);
+	}
+
+	@Test
+	public void testReverseLookup()
+	{
+		//: Given
+		phoneBook.addPhoneBookEntryToPhoneBook(thomas);
+		String expected = "Thomas";
+
+		//: When
+ 		String actual = phoneBook.reverseLookup("(302) - 333 - 3333");
+
+		//: Then
+		assertEquals("These names should be the same.", expected, actual);
 	}
 
 }

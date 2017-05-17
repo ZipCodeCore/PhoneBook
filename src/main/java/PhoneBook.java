@@ -11,19 +11,19 @@ public class PhoneBook {
 
 	public void addPhoneBookEntryToPhoneBook (PhoneBookEntry phoneBookEntryName)
 	{
-		phoneBook.put(phoneBookEntryName.getContactName(), phoneBookEntryName);
+		phoneBook.put(phoneBookEntryName.getContactNumber(), phoneBookEntryName);
 	}
 
 	public void removePhoneBookEntryFromPhoneBook (PhoneBookEntry phoneBookEntryName)
 	{
-		phoneBook.remove(phoneBookEntryName.getContactName());
+		phoneBook.remove(phoneBookEntryName.getContactNumber());
 	}
 
 	public String listAllPhoneBookEntryNames ()
 	{
 		ArrayList<String> phoneBookEntryNames = new ArrayList<>();
 		phoneBook.forEach((String, PhoneBookEntry) ->
-			phoneBookEntryNames.add(String));
+			phoneBookEntryNames.add(PhoneBookEntry.getContactName()));
 		String listOfPhoneBookEntryNames = "";
 		return listOfPhoneBookEntryNames.join(", ", phoneBookEntryNames);
 	}
@@ -33,7 +33,7 @@ public class PhoneBook {
 		ArrayList<String> phoneBookEntries = new ArrayList<>();
 		phoneBook.forEach((String, PhoneBookEntry) ->
 		{
-			phoneBookEntries.add(String);
+			phoneBookEntries.add(PhoneBookEntry.getContactName());
 			phoneBookEntries.add(PhoneBookEntry.getContactNumber());
 		});
 		String listOfPhoneBookEntries = "";
@@ -42,15 +42,18 @@ public class PhoneBook {
 
 	public PhoneBookEntry getPhoneBookEntryFromPhoneBook (PhoneBookEntry phoneBookEntryName)
 	{
-		return phoneBook.get(phoneBookEntryName.getContactName());
+		return phoneBook.get(phoneBookEntryName.getContactNumber());
 	}
 
 	public String lookup(PhoneBookEntry phoneBookEntryName)
 	{
-		String phoneNumber = phoneBookEntryName.getContactNumber();
+		String phoneNumber = phoneBook.get(phoneBookEntryName.getContactNumber()).getContactNumber();
 		return phoneNumber;
 	}
 
-
-
+	public String reverseLookup(String phoneNumber)
+	{
+		String phoneBookEntryName = phoneBook.get(phoneNumber).getContactName();
+		return phoneBookEntryName;
+	}
 }
