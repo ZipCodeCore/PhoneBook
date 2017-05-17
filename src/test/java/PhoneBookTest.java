@@ -16,7 +16,7 @@ public class PhoneBookTest {
 	public void startup()
 	{
 		phoneBook = new PhoneBook();
-		thomas = new PhoneBookEntry("thomas", "(302) - 333 - 3333");
+		thomas = new PhoneBookEntry("Thomas", "(302) - 333 - 3333");
 	}
 
 	@Test
@@ -59,6 +59,24 @@ public class PhoneBookTest {
 
 		//: Then
 		assertEquals("There should be nothing there.", expected, actual);
+	}
+
+	@Test
+	public void testListAllPhoneBookEntryNames()
+	{
+		//: Given
+		PhoneBookEntry rob = new PhoneBookEntry("Rob", "(302) - 555 - 5555");
+		PhoneBookEntry bob = new PhoneBookEntry("Bob", "(302) - 444 - 4444");
+		phoneBook.addPhoneBookEntryToPhoneBook(thomas);
+		phoneBook.addPhoneBookEntryToPhoneBook(rob);
+		phoneBook.addPhoneBookEntryToPhoneBook(bob);
+		String expected = "Bob Rob Thomas ";
+
+		//: When
+		String actual = phoneBook.listAllPhoneBookEntryNames();
+
+		//: Then
+		assertEquals("These lists should be identical", expected, actual);
 	}
 
 }

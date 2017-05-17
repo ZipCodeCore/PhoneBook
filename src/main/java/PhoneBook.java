@@ -17,6 +17,14 @@ public class PhoneBook {
 		phoneBook.remove(phoneBookEntryName.getContactName());
 	}
 
+	public String listAllPhoneBookEntryNames ()
+	{
+		StringBuilder sb = new StringBuilder();
+		phoneBook.forEach((String, PhoneBookEntry) ->
+			sb.append(String + " "));
+		return sb.toString();
+	}
+
 	public PhoneBookEntry getPhoneBookEntryFromPhoneBook (PhoneBookEntry phoneBookEntryName)
 	{
 		return phoneBook.get(phoneBookEntryName.getContactName());
