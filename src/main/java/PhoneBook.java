@@ -15,10 +15,15 @@ public class PhoneBook
 
     public void addNumber(String name, String num)
     {
-        try
-        {
-            ArrayList<PhoneNumber> myPhoneList = new ArrayList<PhoneNumber>();
-            PhoneNumber myNum = new PhoneNumber(num);
+         ArrayList<PhoneNumber> myPhoneList = new ArrayList<PhoneNumber>();
+            PhoneNumber myNum = null;
+            try
+            {
+                myNum = new PhoneNumber(num);
+            } catch (InvalidPhoneNumberFormatException e)
+            {
+                logger.info("Incorrect number");
+            }
             if(myPhoneMap.get(name) != null)
             {
                 myPhoneMap.get(name).add(myNum);
@@ -29,11 +34,6 @@ public class PhoneBook
                 myPhoneMap.put(name, myPhoneList);
             }
 
-        } catch (InvalidTypeException e)
-        {
-            e.printStackTrace();
-        }
-
     }
 
 
@@ -43,6 +43,10 @@ public class PhoneBook
         {
             myPhoneMap.remove(name);
         }
+        else
+        {
+            throw new RecordNotPresentException();
+        }
 
     }
 
@@ -50,6 +54,10 @@ public class PhoneBook
     {
         String numbersFound = "";
         ArrayList<PhoneNumber> search = myPhoneMap.get(name);
+        if(search.size() == 0)
+        {
+            throw new RecordNotPresentException();
+        }
         for(int i = 0; i < search.size(); i++)
         {
             numbersFound = numbersFound.concat(search.get(i).getPhoneNumber());
@@ -110,9 +118,6 @@ public class PhoneBook
         }
         return null;
     }
-
-
-
 
  }
 

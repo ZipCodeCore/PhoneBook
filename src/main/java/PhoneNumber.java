@@ -11,17 +11,17 @@ public class PhoneNumber
 
     public PhoneNumber(){}
 
-    public PhoneNumber(String phoneNumber) throws InvalidTypeException
+    public PhoneNumber(String phoneNumber) throws InvalidPhoneNumberFormatException
     {
         setPhoneNumber(phoneNumber);
     }
 
-    public void setPhoneNumber(String phoneNumber) throws InvalidTypeException
+    public void setPhoneNumber(String phoneNumber) throws InvalidPhoneNumberFormatException
     {
-        int phoneLength = String.valueOf(phoneNumber).length();
-        if(phoneLength != 10)
+        //validate phone number with format `(###)-###-####`
+        if (!phoneNumber.matches("\\(\\d{3}\\)-\\d{3}-\\d{4}"))
         {
-            throw new InvalidTypeException();
+            throw new InvalidPhoneNumberFormatException();
         }
         this.phoneNumber = phoneNumber;
     }
