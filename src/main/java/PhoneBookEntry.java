@@ -8,7 +8,8 @@ public class PhoneBookEntry {
 	private String contactNumber;
 
 	public PhoneBookEntry()
-	{}
+	{
+	}
 
 	public PhoneBookEntry(String contactName, String contactNumber)
 	{

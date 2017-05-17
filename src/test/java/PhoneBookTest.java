@@ -70,7 +70,7 @@ public class PhoneBookTest {
 		phoneBook.addPhoneBookEntryToPhoneBook(thomas);
 		phoneBook.addPhoneBookEntryToPhoneBook(rob);
 		phoneBook.addPhoneBookEntryToPhoneBook(bob);
-		String expected = "Bob Rob Thomas ";
+		String expected = "Bob,Rob,Thomas";
 
 		//: When
 		String actual = phoneBook.listAllPhoneBookEntryNames();
@@ -88,7 +88,7 @@ public class PhoneBookTest {
 		phoneBook.addPhoneBookEntryToPhoneBook(thomas);
 		phoneBook.addPhoneBookEntryToPhoneBook(rob);
 		phoneBook.addPhoneBookEntryToPhoneBook(bob);
-		String expected = "";
+		String expected = "Bob, (302) - 444 - 4444, Rob, (302) - 555 - 5555, Thomas, (302) - 333 - 3333";
 
 		//: When
 		String actual = phoneBook.listAllPhoneBookEntries();

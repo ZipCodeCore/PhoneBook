@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.TreeMap;
 
 /**
@@ -19,15 +21,23 @@ public class PhoneBook {
 
 	public String listAllPhoneBookEntryNames ()
 	{
-		StringBuilder sb = new StringBuilder();
+		ArrayList<String> phoneBookEntryNames = new ArrayList<>();
 		phoneBook.forEach((String, PhoneBookEntry) ->
-			sb.append(String + " "));
-		return sb.toString();
+			phoneBookEntryNames.add(String));
+		String listOfPhoneBookEntryNames = "";
+		return listOfPhoneBookEntryNames.join(", ", phoneBookEntryNames);
 	}
 
 	public String listAllPhoneBookEntries ()
 	{
-		return "";
+		ArrayList<String> phoneBookEntries = new ArrayList<>();
+		phoneBook.forEach((String, PhoneBookEntry) ->
+		{
+			phoneBookEntries.add(String);
+			phoneBookEntries.add(PhoneBookEntry.getContactNumber());
+		});
+		String listOfPhoneBookEntries = "";
+		return listOfPhoneBookEntries.join(", ", phoneBookEntries);
 	}
 
 	public PhoneBookEntry getPhoneBookEntryFromPhoneBook (PhoneBookEntry phoneBookEntryName)
