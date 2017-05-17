@@ -2,6 +2,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.TreeMap;
@@ -23,7 +24,7 @@ public class PhoneBookTests {
     }
 
     @Test
-    public void addEntryTest() {
+    public void addNumberTest() {
 
         phonebook.add(name, phoneNumber);
 
@@ -31,12 +32,23 @@ public class PhoneBookTests {
     }
 
     @Test
-    public void removeEntryTest() {
+    public void removeNumberTest() {
 
         phonebook.add(name, phoneNumber);
 
-        phonebook.remove(name);
+        phonebook.remove(name, phoneNumber);
+        
+        // should return {Cameron Sima=[]}; phone number arraylist is empty
+        Assert.assertEquals(0, phonebook.listAllEntries().get(name).size());
+    }
 
+    @Test
+    public void removeEntryTest() {
+        phonebook.add(name, phoneNumber);
+
+        phonebook.removeEntry(name);
+
+        // should return {Cameron Sima=[]}; phone number arraylist is empty
         Assert.assertEquals(0, phonebook.listAllEntries().size());
     }
 
@@ -48,10 +60,9 @@ public class PhoneBookTests {
 
         TreeMap result = phonebook.listAllEntries();
 
-        String resultString = "{Cameron Sima=2154673127, George Smith=2344563434}";
+        String resultString = "{Cameron Sima=[2154673127], George Smith=[2344563434]}";
 
         Assert.assertEquals(result.getClass(), TreeMap.class);
-        Assert.assertEquals(phoneNumber, result.get("Cameron Sima"));
 
         // results are sorted alphabetically
         Assert.assertEquals(resultString, result.toString());
@@ -67,16 +78,16 @@ public class PhoneBookTests {
         String resultPhoneNumber = allNames.toArray()[0].toString();
 
         Assert.assertEquals(1, allNames.size());
-        Assert.assertEquals(phoneNumber, resultPhoneNumber);
+        Assert.assertEquals(name, resultPhoneNumber);
     }
 
     @Test
     public void lookupTest() {
         phonebook.add(name, phoneNumber);
 
-        String result = phonebook.lookup("Cameron Sima");
+        ArrayList<String> result = phonebook.lookup("Cameron Sima");
 
-        Assert.assertEquals(phoneNumber, result);
+        Assert.assertEquals(phoneNumber, result.get(0));
     }
 
     @Test
