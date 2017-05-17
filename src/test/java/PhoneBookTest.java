@@ -46,4 +46,19 @@ public class PhoneBookTest {
 		assertEquals("These two entries should be the same.", expected, actual);
 	}
 
+	@Test
+	public void testRemovePhoneBookEntryFromPhoneBook()
+	{
+		//: Given
+		phoneBook.addPhoneBookEntryToPhoneBook(thomas);
+		phoneBook.removePhoneBookEntryFromPhoneBook(thomas);
+		PhoneBookEntry expected = null;
+
+		//: When
+		PhoneBookEntry actual = phoneBook.getPhoneBookEntryFromPhoneBook(thomas);
+
+		//: Then
+		assertEquals("There should be nothing there.", expected, actual);
+	}
+
 }

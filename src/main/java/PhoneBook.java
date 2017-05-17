@@ -14,7 +14,7 @@ public class PhoneBook {
 
 	public void removePhoneBookEntryFromPhoneBook (PhoneBookEntry phoneBookEntryName)
 	{
-
+		phoneBook.remove(phoneBookEntryName.getContactName());
 	}
 
 	public PhoneBookEntry getPhoneBookEntryFromPhoneBook (PhoneBookEntry phoneBookEntryName)
