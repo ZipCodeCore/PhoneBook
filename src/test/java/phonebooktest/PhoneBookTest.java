@@ -5,7 +5,6 @@ import exceptions.RecordNotPresent;
 import org.junit.Assert;
 import org.junit.Test;
 import phonebook.PhoneBook;
-
 import java.io.ByteArrayInputStream;
 import java.util.HashMap;
 import java.util.Map;
@@ -113,17 +112,12 @@ public class PhoneBookTest {
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(input.getBytes());
         PhoneBook phoneBook = new PhoneBook(byteArrayInputStream);
         String name = "Ben Berger";
-        String expectedString = "{Lisa Knelly=(732)-914-8849, Sarah Silverman=(302)-434-1849, Steve Johns=(412)-791-1823}";
-
-        int expected = 3;
+        String expectedString = "{Lisa Knelly=[(732)-914-8849], Sarah Silverman=[(302)-434-1849, (302)-544-1084], Steve Johns=[(412)-791-1823]}";
         //When
-
-        Map actual = phoneBook.removeRecord(name);
+        System.out.println(phoneBook.listAllEntries());
+        String actual = phoneBook.removeRecord(name).toString();
         //Then
-
-        Assert.assertEquals("Removing Ben Berger will decrease the size from 4 to 3 ", expected, actual.size());
-        // System.out.println(actual);
-        //Assert.assertEquals(expectedString, actual);
+        Assert.assertEquals("Removing Ben Berger will decrease the size from 4 to 3 ", expectedString, actual);
 
     }
 
@@ -219,7 +213,5 @@ public class PhoneBookTest {
         String actual = phoneBook.reverseLookUp("(76830)-0-0000");
         //Then
         Assert.assertEquals("Test to make sure all the names are in the phonebook", expected, actual);
-
-
     }
 }

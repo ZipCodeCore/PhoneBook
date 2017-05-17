@@ -60,7 +60,7 @@ public class PhoneBook {
 
 
         if (!phoneInfo.containsKey(name)) {
-            logger.warning("Cannot find " + name + " in the PhoneBook");
+            logger.warning("Cannot find " + name + " in the PhoneBook\n");
             throw new RecordNotPresent();
         } else {
             String output = phoneInfo.get(name).toString()
@@ -99,7 +99,7 @@ public class PhoneBook {
                 }
             }
         }
-        logger.warning("The number " + phoneNumber + " doesn't exist in the PhoneBook");
+        logger.warning("The number " + phoneNumber + " doesn't exist in the PhoneBook\n");
         throw new RecordNotPresent();
     }
 
@@ -107,7 +107,7 @@ public class PhoneBook {
 
 
         if (!phoneInfo.containsKey(name)) {
-            logger.warning("Cannot remove " + name + " as the name does not exist in the PhoneBook");
+            logger.warning("Cannot remove " + name + " as the name does not exist in the PhoneBook\n");
             throw new RecordNotPresent();
         } else {
             name = in.nextLine();
@@ -135,11 +135,12 @@ public class PhoneBook {
                 }
             }
         }
-        logger.warning("The number " + phoneNumber + " doesn't exist in the PhoneBook");
+        logger.warning("The number " + phoneNumber + " doesn't exist in the PhoneBook\n");
         throw new RecordNotPresent();
     }
 
     public PhoneBook checkNumberFormat(String number) throws InvalidPhoneNumberFormatException {
+//        logger.warning(number + "  is not a valid format, please try again");
         return new PhoneBook(number);
     }
 

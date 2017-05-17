@@ -26,11 +26,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PhoneBook.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PhoneBook.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/phonebook/PhoneBook.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="101" column="85" lean-forward="true" selection-start-line="101" selection-start-column="85" selection-end-line="101" selection-end-column="85" />
+            <state relative-caret-position="520">
+              <caret line="118" column="34" lean-forward="true" selection-start-line="118" selection-start-column="34" selection-end-line="118" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#382#404#0" expanded="true" />
@@ -39,14 +39,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PhoneBookTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PhoneBookTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/phonebooktest/PhoneBookTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="17" column="9" lean-forward="false" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+            <state relative-caret-position="338">
+              <caret line="23" column="37" lean-forward="false" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#485#501#0" expanded="true" />
+                <element signature="e#484#500#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -75,6 +75,9 @@
     <findStrings>
       <find>name</find>
       <find>Syste</find>
+      <find>removeNumberFromEntry</find>
+      <find>822</find>
+      <find>cannot</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -95,8 +98,8 @@
         <option value="$PROJECT_DIR$/src/main/java/exceptions/RecordNotPresent.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/exceptions/InvalidPhoneNumberFormatException.java" />
-        <option value="$PROJECT_DIR$/src/test/java/phonebooktest/PhoneBookTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/phonebook/PhoneBook.java" />
+        <option value="$PROJECT_DIR$/src/test/java/phonebooktest/PhoneBookTest.java" />
       </list>
     </option>
   </component>
@@ -249,6 +252,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/anthonyjones/dev/labs/HoldingObjects/src/test/java/phonebooktest/PhoneBookTest.java" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -263,32 +267,6 @@
     </option>
   </component>
   <component name="RunManager" selected="JUnit.PhoneBookTest">
-    <configuration default="false" name="PhoneBookTest.removeNumberFromEntryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="phonebooktest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="HoldingObjects" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="phonebooktest" />
-      <option name="MAIN_CLASS_NAME" value="phonebooktest.PhoneBookTest" />
-      <option name="METHOD_NAME" value="removeNumberFromEntryTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
     <configuration default="false" name="PhoneBookTest.removeNumberFromEntryButIncorrectFormatTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -380,6 +358,32 @@
       <option name="PACKAGE_NAME" value="phonebooktest" />
       <option name="MAIN_CLASS_NAME" value="phonebooktest.PhoneBookTest" />
       <option name="METHOD_NAME" value="lookUpTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="PhoneBookTest.removeEntryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="phonebooktest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="HoldingObjects" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="phonebooktest" />
+      <option name="MAIN_CLASS_NAME" value="phonebooktest.PhoneBookTest" />
+      <option name="METHOD_NAME" value="removeEntryTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -781,19 +785,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.removeNumberFromEntryTest" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.removeNumberFromEntryButIncorrectFormatTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.PhoneBookTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.reverseLookupInvalidFormatNumberTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.lookUpTest" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.removeNumberFromEntryButIncorrectFormatTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.PhoneBookTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.reverseLookupInvalidFormatNumberTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.lookUpTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.removeEntryTest" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="JUnit.PhoneBookTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.lookUpTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.reverseLookupInvalidFormatNumberTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.removeNumberFromEntryButIncorrectFormatTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.removeNumberFromEntryTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.removeEntryTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.lookUpTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.reverseLookupInvalidFormatNumberTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.removeNumberFromEntryButIncorrectFormatTest" />
       </list>
     </recent_temporary>
   </component>
@@ -812,42 +816,42 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PhoneBookTest - 2017.05.17 at 18h 13m 52s.xml">
+    <history-entry file="PhoneBookTest - 2017.05.17 at 18h 24m 05s.xml">
       <configuration name="PhoneBookTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTest - 2017.05.17 at 18h 17m 14s.xml">
+    <history-entry file="PhoneBookTest - 2017.05.17 at 18h 38m 43s.xml">
       <configuration name="PhoneBookTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTest - 2017.05.17 at 18h 17m 47s.xml">
-      <configuration name="PhoneBookTest" configurationId="JUnit" />
+    <history-entry file="PhoneBookTest_removeEntryTest - 2017.05.17 at 18h 31m 23s.xml">
+      <configuration name="PhoneBookTest.removeEntryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTest - 2017.05.17 at 18h 19m 27s.xml">
-      <configuration name="PhoneBookTest" configurationId="JUnit" />
+    <history-entry file="PhoneBookTest_removeEntryTest - 2017.05.17 at 18h 32m 25s.xml">
+      <configuration name="PhoneBookTest.removeEntryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTest - 2017.05.17 at 18h 20m 40s.xml">
-      <configuration name="PhoneBookTest" configurationId="JUnit" />
+    <history-entry file="PhoneBookTest_removeEntryTest - 2017.05.17 at 18h 32m 44s.xml">
+      <configuration name="PhoneBookTest.removeEntryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTest_lookUpTest - 2017.05.17 at 18h 16m 58s.xml">
-      <configuration name="PhoneBookTest.lookUpTest" configurationId="JUnit" />
+    <history-entry file="PhoneBookTest_removeEntryTest - 2017.05.17 at 18h 37m 10s.xml">
+      <configuration name="PhoneBookTest.removeEntryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTest_lookUpTest - 2017.05.17 at 18h 17m 09s.xml">
-      <configuration name="PhoneBookTest.lookUpTest" configurationId="JUnit" />
+    <history-entry file="PhoneBookTest_removeEntryTest - 2017.05.17 at 18h 37m 38s.xml">
+      <configuration name="PhoneBookTest.removeEntryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTest_removeNumberFromEntryButIncorrectFormatTest - 2017.05.17 at 18h 13m 38s.xml">
-      <configuration name="PhoneBookTest.removeNumberFromEntryButIncorrectFormatTest" configurationId="JUnit" />
+    <history-entry file="PhoneBookTest_removeEntryTest - 2017.05.17 at 18h 37m 47s.xml">
+      <configuration name="PhoneBookTest.removeEntryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTest_removeNumberFromEntryButIncorrectFormatTest - 2017.05.17 at 18h 13m 47s.xml">
-      <configuration name="PhoneBookTest.removeNumberFromEntryButIncorrectFormatTest" configurationId="JUnit" />
+    <history-entry file="PhoneBookTest_removeEntryTest - 2017.05.17 at 18h 38m 11s.xml">
+      <configuration name="PhoneBookTest.removeEntryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTest_reverseLookupInvalidFormatNumberTest - 2017.05.17 at 18h 16m 46s.xml">
-      <configuration name="PhoneBookTest.reverseLookupInvalidFormatNumberTest" configurationId="JUnit" />
+    <history-entry file="PhoneBookTest_removeEntryTest - 2017.05.17 at 18h 38m 25s.xml">
+      <configuration name="PhoneBookTest.removeEntryTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47322000" />
+    <option name="totallyTimeSpent" value="48443000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-293" y="-1057" width="1920" height="1057" extended-state="6" />
+    <frame x="-293" y="-1057" width="1920" height="1057" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -859,7 +863,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23212436" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23212436" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1345,24 +1349,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/phonebooktest/PhoneBookTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/phonebook/PhoneBook.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="17" column="9" lean-forward="false" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+        <state relative-caret-position="520">
+          <caret line="118" column="34" lean-forward="true" selection-start-line="118" selection-start-column="34" selection-end-line="118" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#485#501#0" expanded="true" />
+            <element signature="e#382#404#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/phonebook/PhoneBook.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/phonebooktest/PhoneBookTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="101" column="85" lean-forward="true" selection-start-line="101" selection-start-column="85" selection-end-line="101" selection-end-column="85" />
+        <state relative-caret-position="338">
+          <caret line="23" column="37" lean-forward="false" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#382#404#0" expanded="true" />
+            <element signature="e#484#500#0" expanded="true" />
           </folding>
         </state>
       </provider>
