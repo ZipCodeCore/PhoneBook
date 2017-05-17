@@ -79,4 +79,17 @@ public class PhoneBookTests {
         Assert.assertEquals(phoneNumber, result);
     }
 
+    @Test
+    public void reverseLookupTest() {
+
+        phonebook.add(name, phoneNumber);
+
+        String actualdResult = phonebook.reverseLookup(phoneNumber);
+        String expectedResult = "Cameron Sima";
+
+        Assert.assertEquals(expectedResult, actualdResult);
+    }
+
 }
+
+

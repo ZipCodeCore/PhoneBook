@@ -1,5 +1,6 @@
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.TreeMap;
 
 /**
@@ -11,6 +12,15 @@ public class PhoneBook {
 
     public String lookup(String name) {
         return entries.get(name);
+    }
+
+    public String reverseLookup(String phoneNumber) {
+        for (Map.Entry<String, String> entry : entries.entrySet()) {
+            if (entry.getValue().equals(phoneNumber)) {
+                return entry.getKey();
+            }
+        }
+        return null;
     }
 
     public void add(String name, String phoneNumber) {
