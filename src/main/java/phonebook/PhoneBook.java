@@ -94,9 +94,14 @@ public class PhoneBook {
     }
 
     public String reverseLookUp(String number) {
-
-
-        return "";
+        String listedName = "";
+        for (int i = 0; i < phoneInfo.size(); i++) {
+            if (phoneInfo.values().toArray()[i] == number) {
+                listedName = phoneInfo.keySet().toArray()[i].toString();
+              System.out.println(listedName);
+            }
+        }
+        return listedName.trim();
     }
 
     public PhoneBook checkNumberFormat(String number) throws InvalidPhoneNumberFormatException {
