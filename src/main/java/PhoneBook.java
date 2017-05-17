@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -8,15 +9,20 @@ public class PhoneBook {
 
 
     private Map<String, String> phoneMap = new TreeMap();
+    private Map<String, String> reversePhoneMap = new HashMap();
 
 
     public void addEntry(String name, String number) {
         phoneMap.put(name, number);
+        reversePhoneMap.put(number,name);
 
     }
 
     public void deleteEntry(String name) {
+        String numberToBeDeleted = phoneMap.get(name);
         phoneMap.remove(name);
+        reversePhoneMap.remove(numberToBeDeleted);
+
 
     }
 
@@ -33,5 +39,9 @@ public class PhoneBook {
         return stringBuilder.toString();
     }
 
+
+    public String reverseLookupNumber(String number){
+        return reversePhoneMap.get(number);
+    }
 
 }

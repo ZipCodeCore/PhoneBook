@@ -87,6 +87,24 @@ public class PhoneBookTest {
         Assert.assertEquals(contactList, exptectedValue);
     }
 
+    @Test
+    public void reverseLookupNumberTest(){
+
+
+        //: Given
+        phoneBook.addEntry("Vidya", "123-345-5678");
+        phoneBook.addEntry("Hari", "223-345-5678");
+        phoneBook.addEntry("Pranav", "423-345-5678");
+        phoneBook.addEntry("Adarsh", "523-345-5678");
+
+
+        //: When
+
+        String actual = phoneBook.reverseLookupNumber("123-345-5678");
+
+        //: Then
+        Assert.assertEquals("Vidya", actual);
+    }
 
 
 }
