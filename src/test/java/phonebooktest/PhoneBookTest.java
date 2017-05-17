@@ -129,7 +129,7 @@ public class PhoneBookTest {
     public void reverseLookupTest() {
         //Given
         PhoneBook phoneBook = new PhoneBook();
-        String expected = ;
+        String expected = "Lisa Knelly";
         //When
         String actual = phoneBook.reverseLookUp("(732)-914-8849");
         //Then

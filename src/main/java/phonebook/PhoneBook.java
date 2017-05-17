@@ -73,9 +73,6 @@ public class PhoneBook {
     public Map removeEntry(String name) throws RecordNotPresent {
 
 
-
-
-
         if (phoneInfo.remove(name) == null) {
             throw new RecordNotPresent();
         } else {
@@ -98,19 +95,8 @@ public class PhoneBook {
 
     public String reverseLookUp(String number) {
 
-        String listedName = "";
-        //System.out.println(listedName);
-        for (String phoneNumber : phoneInfo.values()) {
-            //System.out.println(phoneNumber);
-            if (phoneNumber.equals(number)) {
-                System.out.println(phoneNumber);
-                listedName =  phoneInfo.keySet().toString();
 
-                //System.out.println(listedName);
-            }
-        }
-       // System.out.println(listedName);
-        return listedName.trim();
+        return "";
     }
 
     public PhoneBook checkNumberFormat(String number) throws InvalidPhoneNumberFormatException {
