@@ -1,16 +1,20 @@
 package prahl.daniel;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.TreeMap;
 
 /**
  * Created by danielprahl on 5/16/17.
  */
+
 public class PhoneBook {
     TreeMap<String, String> record;
+    HashMap<String, String> reverseRecord;
 
     {
-        record = new TreeMap();
+        record = new TreeMap<>();
+        reverseRecord = new HashMap<>();
     }
 
     // part 1
@@ -19,10 +23,12 @@ public class PhoneBook {
     }
 
     public void addEntry(String name, String phoneNumber){
+        reverseRecord.put(phoneNumber, name);
         record.put(name, phoneNumber);
     }
 
     public void removeEntry(String name){
+        reverseRecord.remove(record.get(name));
         record.remove(name);
     }
     /*
@@ -48,8 +54,7 @@ public class PhoneBook {
 
     // part 2
     public String reverseLookup(String phoneNumber){
-        //todo
-        return null;
+        return reverseRecord.get(phoneNumber);
     }
 
 }
