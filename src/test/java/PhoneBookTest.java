@@ -1,6 +1,8 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -16,7 +18,7 @@ public class PhoneBookTest {
 	public void startup()
 	{
 		phoneBook = new PhoneBook();
-		thomas = new PhoneBookEntry("Thomas", "(302) - 333 - 3333");
+		thomas = new PhoneBookEntry("Thomas");
 	}
 
 	@Test
@@ -24,10 +26,10 @@ public class PhoneBookTest {
 	{
 		//: Given
 		phoneBook.addPhoneBookEntryToPhoneBook(thomas);
-		String expected = thomas.getContactNumber();
+		ArrayList<String> expected = thomas.getContactNumbers();
 
 		//: When
-		String actual = phoneBook.lookup(thomas);
+		ArrayList<String> actual = phoneBook.lookup(thomas);
 
 		//: Then
 		assertEquals("These two entries should be equal.", expected, actual);
@@ -66,8 +68,8 @@ public class PhoneBookTest {
 	public void testListAllPhoneBookEntryNames()
 	{
 		//: Given
-		PhoneBookEntry rob = new PhoneBookEntry("Rob", "(302) - 555 - 5555");
-		PhoneBookEntry bob = new PhoneBookEntry("Bob", "(302) - 444 - 4444");
+		PhoneBookEntry rob = new PhoneBookEntry("Rob");
+		PhoneBookEntry bob = new PhoneBookEntry("Bob");
 		phoneBook.addPhoneBookEntryToPhoneBook(thomas);
 		phoneBook.addPhoneBookEntryToPhoneBook(rob);
 		phoneBook.addPhoneBookEntryToPhoneBook(bob);
@@ -84,11 +86,13 @@ public class PhoneBookTest {
 	public void testListAllPhoneBookEntries()
 	{
 		//: Given
-		PhoneBookEntry rob = new PhoneBookEntry("Rob", "(302) - 555 - 5555");
-		PhoneBookEntry bob = new PhoneBookEntry("Bob", "(302) - 444 - 4444");
+		PhoneBookEntry rob = new PhoneBookEntry("Rob");
+		PhoneBookEntry bob = new PhoneBookEntry("Bob");
 		phoneBook.addPhoneBookEntryToPhoneBook(thomas);
 		phoneBook.addPhoneBookEntryToPhoneBook(rob);
+		rob.addNumberToContact("(302) - 555 - 5555");
 		phoneBook.addPhoneBookEntryToPhoneBook(bob);
+		bob.addNumberToContact("(302) - 444 - 4444");
 		String expected = "Bob, (302) - 444 - 4444, Rob, (302) - 555 - 5555, Thomas, (302) - 333 - 3333";
 
 		//: When
@@ -103,6 +107,7 @@ public class PhoneBookTest {
 	{
 		//: Given
 		phoneBook.addPhoneBookEntryToPhoneBook(thomas);
+		thomas.addNumberToContact("(302) - 333 - 3333");
 		String expected = "Thomas";
 
 		//: When

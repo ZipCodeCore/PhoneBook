@@ -1,22 +1,24 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.TreeMap;
 
 /**
  * Created by gregoryfletcher on 5/16/17.
  */
-public class PhoneBook {
+public class PhoneBook
+{
 
 	TreeMap<String, PhoneBookEntry> phoneBook = new TreeMap<>();
 
-	public void addPhoneBookEntryToPhoneBook (PhoneBookEntry phoneBookEntryName)
+	public void addPhoneBookEntryToPhoneBook (PhoneBookEntry entry)
 	{
-		phoneBook.put(phoneBookEntryName.getContactNumber(), phoneBookEntryName);
+		phoneBook.put(entry.getContactName(), entry);
 	}
 
-	public void removePhoneBookEntryFromPhoneBook (PhoneBookEntry phoneBookEntryName)
+	public void removePhoneBookEntryFromPhoneBook (PhoneBookEntry entry)
 	{
-		phoneBook.remove(phoneBookEntryName.getContactNumber());
+		phoneBook.remove(entry.getContactName());
 	}
 
 	public String listAllPhoneBookEntryNames ()
@@ -34,26 +36,34 @@ public class PhoneBook {
 		phoneBook.forEach((String, PhoneBookEntry) ->
 		{
 			phoneBookEntries.add(PhoneBookEntry.getContactName());
-			phoneBookEntries.add(PhoneBookEntry.getContactNumber());
+			phoneBookEntries.add(PhoneBookEntry.getContactName());
 		});
 		String listOfPhoneBookEntries = "";
 		return listOfPhoneBookEntries.join(", ", phoneBookEntries);
 	}
 
-	public PhoneBookEntry getPhoneBookEntryFromPhoneBook (PhoneBookEntry phoneBookEntryName)
+	public PhoneBookEntry getPhoneBookEntryFromPhoneBook (PhoneBookEntry entry)
 	{
-		return phoneBook.get(phoneBookEntryName.getContactNumber());
+		return phoneBook.get(entry.getContactName());
 	}
 
-	public String lookup(PhoneBookEntry phoneBookEntryName)
+	public ArrayList<String> lookup(PhoneBookEntry entry)
 	{
-		String phoneNumber = phoneBook.get(phoneBookEntryName.getContactNumber()).getContactNumber();
+		ArrayList<String> phoneNumber = phoneBook.get(entry.getContactName()).getContactNumbers();
 		return phoneNumber;
 	}
 
 	public String reverseLookup(String phoneNumber)
 	{
-		String phoneBookEntryName = phoneBook.get(phoneNumber).getContactName();
-		return phoneBookEntryName;
+		Iterator<String> iter = phoneBook.keySet().iterator();
+		while(iter.hasNext())
+		{
+			String name = iter.next();
+			if(phoneBook.get(name).getContactNumbers().contains(phoneNumber))
+			{
+				return name;
+			}
+		}
+		return null;
 	}
 }

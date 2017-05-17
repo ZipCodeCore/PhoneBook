@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Created by gregoryfletcher on 5/16/17.
  */
@@ -5,28 +7,28 @@ public class PhoneBookEntry {
 
 	private String contactName;
 
-	private String contactNumber;
+	private ArrayList<String> contactNumbers = new ArrayList<>();
 
 	public PhoneBookEntry()
 	{
 	}
 
-	public PhoneBookEntry(String contactName, String contactNumber)
+	public PhoneBookEntry(String contactName)
 	{
 		this.contactName = contactName;
-		this.contactNumber = contactNumber;
 	}
 
 	public String getContactName() {
 		return contactName;
 	}
 
-	public String getContactNumber() {
-		return contactNumber;
+	public ArrayList<String> getContactNumbers()
+	{
+		return contactNumbers;
 	}
 
-	public void setContactNumber(String phoneNumber) {
-		this.contactNumber = contactNumber;
+	public void addNumberToContact(String phoneNumber) {
+		this.getContactNumbers().add(phoneNumber);
 	}
 
 }
