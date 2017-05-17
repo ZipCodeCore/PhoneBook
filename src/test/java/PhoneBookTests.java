@@ -2,9 +2,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertFalse;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Created by andrewwong on 5/16/17.
@@ -45,6 +43,20 @@ public class PhoneBookTests {
     }
 
     @Test
+    public void testAddToExisting(){
+        //Given
+        String name = "Andrew";
+        PhoneNumber phoneNumber2 = PhoneNumberFactory.createPhoneNumberSafely(222,2222,2222);
+        phoneBook.add(name, phoneNumber);
+
+        //When
+        phoneBook.addToExisting(name, phoneNumber2);
+
+        //Then
+        assertEquals(phoneBook.getContacts().get(name).size(),2);
+    }
+
+    @Test
     public void testRemoveFromExisting(){
         //Given
         String name = "John Doe";
@@ -56,7 +68,7 @@ public class PhoneBookTests {
         phoneBook.removeFromExisting(name, phoneNumber2);
 
         //Then
-        //TODO assert that phone number is removed, kept getting false pass
+        assertEquals(phoneBook.getContacts().get(name).size(),1);
     }
 
     @Test
@@ -96,7 +108,8 @@ public class PhoneBookTests {
         phoneBook.add(name3, phoneNumber3);
         phoneBook.addToExisting(name3, phoneNumber4);
 
-        String actual = "Aaron Long - (111)-111-1113, (111)-111-1114\n" + "Chris Kim - (111)-111-1111\n" + "Dennis Kalaygian - (111)-111-1112\n";
+        String actual = "Aaron Long - (111)-111-1113, (111)-111-1114\n" + "Chris Kim - (111)-111-1111\n" +
+                "Dennis Kalaygian - (111)-111-1112\n";
 
         //When
         String expected = phoneBook.listAllEntries();

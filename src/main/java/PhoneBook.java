@@ -29,8 +29,8 @@ public class PhoneBook {
         contacts.remove(name);
     }
 
-    public void removeFromExisting(String s, PhoneNumber phoneNumber2) {
-
+    public void removeFromExisting(String name, PhoneNumber phoneNumber2) {
+        contacts.get(name).remove(phoneNumber2);
     }
 
     public String listAllNames() {
@@ -45,6 +45,7 @@ public class PhoneBook {
         StringBuilder sb = new StringBuilder();
         for (Map.Entry<String, ArrayList<PhoneNumber>> entry : contacts.entrySet()) {
             sb.append(entry.getKey() + " - " + entry.getValue().get(0).toString());
+
             for(int i = 1; i < entry.getValue().size(); i++){
                 sb.append(", " + entry.getValue().get(i).toString());
             }
