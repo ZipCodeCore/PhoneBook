@@ -12,13 +12,17 @@ public class TestPhoneBook {
     @Before
     public void initialize() {
         phoneBook = new PhoneBook();
-        phoneBook.addRecord("Zygmund-Felt,Dan", "(555) 555-5555");
-        phoneBook.addRecord("Zygmund-Felt,Dan", "(888) 888-8888");
-        phoneBook.addRecord("Smith,Stan", "(333) 555-3333");
-        phoneBook.addRecord("Ated,Hyphen", "(123) 456-7890");
-        phoneBook.addRecord("Villain,MetalFace", "(267) 867-5309");
-        phoneBook.addRecord("Villain,MetalFace", "(215) 867-5309");
         emptyPhoneBook = new PhoneBook();
+        try {
+            phoneBook.addRecord("Zygmund-Felt,Dan", "(555) 555-5555");
+            phoneBook.addRecord("Zygmund-Felt,Dan", "(888) 888-8888");
+            phoneBook.addRecord("Smith,Stan", "(333) 555-3333");
+            phoneBook.addRecord("Ated,Hyphen", "(123) 456-7890");
+            phoneBook.addRecord("Villain,MetalFace", "(267) 867-5309");
+            phoneBook.addRecord("Villain,MetalFace", "(215) 867-5309");
+        } catch (Exception e) {
+
+        }
     }
 
     @Test
