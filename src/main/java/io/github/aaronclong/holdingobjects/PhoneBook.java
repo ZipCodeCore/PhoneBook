@@ -22,7 +22,9 @@ public class PhoneBook {
     return phoneBook.get(name);
   }
   public String reverseLookup(PhoneNumber number) {
-    if (phoneBook.isEmpty() || !phoneBook.containsValue(number)) { return null; }
+    if (phoneBook.isEmpty() || !phoneBook.containsValue(number)) {
+      return null;
+    }
     return traverseMapForValue(number);
   }
 
@@ -37,7 +39,9 @@ public class PhoneBook {
 
   public boolean remove(String name) {
     PhoneNumber num = phoneBook.get(name);
-    if (num == null) { return false; }
+    if (num == null) {
+      return false;
+    }
     return true;
   }
 
