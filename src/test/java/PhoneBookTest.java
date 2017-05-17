@@ -1,3 +1,4 @@
+import com.sun.prism.impl.Disposer;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,9 +28,22 @@ public class PhoneBookTest {
         phoneBook.phoneList.put("Karen", karenPhoneNumbers);
     }
 
+    @Test(expected = InvalidPhoneNumberFormatException.class)
+    public void testInvalidPhoneNumberFormatException() throws InvalidPhoneNumberFormatException {
+        ArrayList<String> joePhoneNumbers = new ArrayList<String>();
+        joePhoneNumbers.add("-1");
+        phoneBook.addEntry("Joe", joePhoneNumbers);
+    }
+
+    @Test(expected = RecordNotPresent.class)
+    public void testRecordNotPresent() throws RecordNotPresent {
+        String inputName = "Mark";
+        phoneBook.lookup(inputName);
+    }
+
 
     @Test
-    public void lookupTest(){
+    public void lookupTest() throws RecordNotPresent{
         //Given
         String inputName = "Aurora";
         String expected = inputName + "'s phone number is: " + "(845)-333-5454, (555)-345-7859";
@@ -43,7 +57,7 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void addEntryTest(){
+    public void addEntryTest() throws InvalidPhoneNumberFormatException{
 
         //Given
         String inputName = "Sally";
@@ -61,7 +75,7 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void addToExistingEntryTest(){
+    public void addToExistingEntryTest() throws InvalidPhoneNumberFormatException, RecordNotPresent{
         //Given
         String inputName = "Aurora";
         String additionalPhoneNumber = "(278)-234-5555";
@@ -75,7 +89,7 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void lastPhoneNumberAddedTest(){
+    public void lastPhoneNumberAddedTest() throws RecordNotPresent{
         //Given
         String inputName = "Aurora";
         String expected = "(555)-345-7859";
@@ -88,14 +102,14 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void removeRecordTest(){
+    public void removeRecordTest() throws RecordNotPresent{
 
         //Given
         String inputName = "Aurora";
 
         //When
         phoneBook.removeRecord(inputName);
-        String actual = phoneBook.phoneList.get(inputName).toString();
+        String actual = phoneBook.lookup(inputName);
 
         //Then
         Assert.assertEquals("Entry should have been removed", null, actual);
@@ -103,7 +117,7 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void removeOnePhoneNumberFromEntryTest(){
+    public void removeOnePhoneNumberFromEntryTest() throws InvalidPhoneNumberFormatException, RecordNotPresent{
         //Given
         String inputName = "Aurora";
         String phoneNumberToBeRemoved = "(845)-333-5454";
@@ -117,7 +131,7 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void isPhoneNumberListedTest(){
+    public void isPhoneNumberListedTest() throws InvalidPhoneNumberFormatException, RecordNotPresent{
         //Given
         String inputName = "Aurora";
         String phoneNumberToBeChecked = "(845)-333-5454";
@@ -158,7 +172,7 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void reverseLookupTest(){
+    public void reverseLookupTest() throws InvalidPhoneNumberFormatException, RecordNotPresent{
         //Given
         String inputNumber = "(845)-333-5454";
         String expected = inputNumber + " belongs to : " + "Aurora";
