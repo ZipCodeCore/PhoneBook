@@ -3,6 +3,7 @@ package prahl.daniel;
 import org.junit.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by danielprahl on 5/16/17.
@@ -18,7 +19,7 @@ public class PhoneBookTest {
         phoneBook.addEntry("Alex", "(302)-555-5555");
 
         //when;
-        ArrayList<String> numbers = phoneBook.lookup("Alex");
+        List<String> numbers = phoneBook.lookup("Alex");
         String actual = numbers.get(0);
 
         //then;
@@ -34,7 +35,7 @@ public class PhoneBookTest {
         //when;
         phoneBook.addEntry("Alex", "(302)-555-5555");
         phoneBook.addEntry("Alex", "(302)-555-5556");
-        ArrayList<String> numbers = phoneBook.lookup("Alex");
+        List<String> numbers = phoneBook.lookup("Alex");
         String actual = numbers.get(1);
 
         //then;
@@ -61,7 +62,7 @@ public class PhoneBookTest {
 
         //when;
         phoneBook.removeRecord("Alex");
-        ArrayList actual = phoneBook.lookup("Alex");
+        List actual = phoneBook.lookup("Alex");
 
         //then;
         Assert.assertEquals(expected, actual);
@@ -77,7 +78,7 @@ public class PhoneBookTest {
 
         //when;
         phoneBook.removeNumber("Alex", "(302)-555-5555");
-        ArrayList<String> numbers = phoneBook.lookup("Alex");
+        List<String> numbers = phoneBook.lookup("Alex");
         String actual = numbers.get(0);
 
         //then;
@@ -112,7 +113,7 @@ public class PhoneBookTest {
         int expected = 7;
 
         //when;
-        ArrayList<String> entries = phoneBook.listAllEntries();
+        List<String> entries = phoneBook.listAllEntries();
         int actual = entries.size();
 
         //then;

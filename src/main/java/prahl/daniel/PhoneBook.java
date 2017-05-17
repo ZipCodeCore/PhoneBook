@@ -1,16 +1,14 @@
 package prahl.daniel;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * Created by danielprahl on 5/16/17.
  */
 
 public class PhoneBook {
-    TreeMap<String, ArrayList<String>> record;
-    HashMap<String, String> reverseRecord;
+    private Map<String, ArrayList<String>> record;
+    private Map<String, String> reverseRecord;
 
     // static initialization block
     {
@@ -18,7 +16,7 @@ public class PhoneBook {
         reverseRecord = new HashMap<>();
     }
 
-    public ArrayList<String> lookup(String name){
+    public List<String> lookup(String name){
         return record.get(name);    // return the list of all phone numbers associated with given name
     }
 
@@ -55,7 +53,7 @@ public class PhoneBook {
         }
     }
 
-    public ArrayList<String> listAllNames(){
+    public List<String> listAllNames(){
         String[] nameList = record.keySet().toArray(new String[0]); // create array of all names in main record
         ArrayList<String> names = new ArrayList<>();                // create arraylist to store array contents
         for (String s: nameList) {                                  // for each name in the array...
@@ -65,7 +63,7 @@ public class PhoneBook {
         return names;                                               // return populated arraylist
     }
 
-    public ArrayList<String> listAllEntries(){
+    public List<String> listAllEntries(){
         ArrayList<String> entryList = new ArrayList<>();        // create arraylist to store all main record entries
         String[] names = record.keySet().toArray(new String[0]);// create array of all names in main record
         for (String s: names) {                                 // for each name in the array...
