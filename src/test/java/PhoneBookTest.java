@@ -17,14 +17,14 @@ public class PhoneBookTest {
 	}
 
 	@Test
-	public PhoneBookEntry testLookup()
+	public void testLookup()
 	{
 		//: Given
 		PhoneBookEntry thomas = new PhoneBookEntry("thomas", "(302) - 333 - 3333");
-		PhoneBookEntry expected = thomas;
+		String expected = thomas.getContactNumber();
 
 		//: When
-		PhoneBookEntry actual = phoneBook.lookup("thomas");
+		String actual = phoneBook.lookup(thomas);
 
 		//: Then
 		assertEquals("These two entries should be equal.", expected, actual);
