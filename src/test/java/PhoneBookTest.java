@@ -79,4 +79,22 @@ public class PhoneBookTest {
 		assertEquals("These lists should be identical", expected, actual);
 	}
 
+	@Test
+	public void testListAllPhoneBookEntries()
+	{
+		//: Given
+		PhoneBookEntry rob = new PhoneBookEntry("Rob", "(302) - 555 - 5555");
+		PhoneBookEntry bob = new PhoneBookEntry("Bob", "(302) - 444 - 4444");
+		phoneBook.addPhoneBookEntryToPhoneBook(thomas);
+		phoneBook.addPhoneBookEntryToPhoneBook(rob);
+		phoneBook.addPhoneBookEntryToPhoneBook(bob);
+		String expected = "";
+
+		//: When
+		String actual = phoneBook.listAllPhoneBookEntries();
+
+		//: Then
+		assertEquals("These lists should be identical.", expected, actual);
+	}
+
 }

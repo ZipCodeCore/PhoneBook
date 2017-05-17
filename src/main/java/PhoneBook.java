@@ -25,6 +25,11 @@ public class PhoneBook {
 		return sb.toString();
 	}
 
+	public String listAllPhoneBookEntries ()
+	{
+		return "";
+	}
+
 	public PhoneBookEntry getPhoneBookEntryFromPhoneBook (PhoneBookEntry phoneBookEntryName)
 	{
 		return phoneBook.get(phoneBookEntryName.getContactName());
