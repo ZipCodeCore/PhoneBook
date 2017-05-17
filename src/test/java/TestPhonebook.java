@@ -24,7 +24,7 @@ public class TestPhonebook {
         phoneBook.addEntry(contactName, phoneNumber);
 
         //then:
-        Assert.assertEquals("(302)-555-9743", phoneBook.getContactInfo().get("Molly"));
+        Assert.assertEquals("Should add a new entry to the phonebook","(302)-555-9743", phoneBook.getContactInfo().get("Molly"));
     }
 
     @Test
@@ -37,7 +37,7 @@ public class TestPhonebook {
         phoneBook.removeEntry("Molly");
 
         //then:
-        Assert.assertEquals(null, phoneBook.getContactInfo().get("Molly"));
+        Assert.assertEquals("should return null if the key has been removed",null, phoneBook.getContactInfo().get("Molly"));
 
 
     }
@@ -52,7 +52,7 @@ public class TestPhonebook {
         phoneBook.lookup("Molly");
 
         //then:
-        Assert.assertEquals("(302)-555-9743", phoneBook.lookup("Molly"));
+        Assert.assertEquals("should return the phone number attached to the key","(302)-555-9743", phoneBook.lookup("Molly"));
 
 
     }
@@ -72,7 +72,7 @@ public class TestPhonebook {
         phoneBook.listAllEntries();
 
         //then:
-        Assert.assertEquals(expected, phoneBook.listAllEntries());
+        Assert.assertEquals("Should return all info in the phonebook",expected, phoneBook.listAllEntries());
 
 
     }
@@ -92,7 +92,7 @@ public class TestPhonebook {
         phoneBook.listAllNames();
 
         //then:
-        Assert.assertEquals(expected, phoneBook.listAllNames());
+        Assert.assertEquals("should return the list of names",expected, phoneBook.listAllNames());
 
 
     }
