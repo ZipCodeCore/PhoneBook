@@ -32,7 +32,7 @@ public class PhoneBookTest {
     public void lookupTest(){
         //Given
         String inputName = "Aurora";
-        String expected = inputName + "'s phone number is: " + "(845)-333-5454 , (555)-345-7859";
+        String expected = inputName + "'s phone number is: " + "(845)-333-5454, (555)-345-7859";
 
         //When
         String actual = phoneBook.lookup(inputName);
@@ -53,9 +53,10 @@ public class PhoneBookTest {
         //When
         phoneBook.addEntry(inputName, sallyPhoneNumbers);
         String actual = phoneBook.phoneList.get(inputName).toString();
+        actual = actual.substring(1, actual.length()-1);
 
         //Then
-        Assert.assertEquals("Entry should have been added", sallyPhoneNumbers, actual);
+        Assert.assertEquals("Entry should have been added", sallyPhoneNumbers.get(0), actual);
 
     }
 
@@ -87,18 +88,45 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void removeEntryTest(){
+    public void removeRecordTest(){
 
         //Given
         String inputName = "Aurora";
 
         //When
-        phoneBook.removeEntry(inputName);
+        phoneBook.removeRecord(inputName);
         String actual = phoneBook.phoneList.get(inputName).toString();
 
         //Then
         Assert.assertEquals("Entry should have been removed", null, actual);
 
+    }
+
+    @Test
+    public void removeOnePhoneNumberFromEntryTest(){
+        //Given
+        String inputName = "Aurora";
+        String phoneNumberToBeRemoved = "(845)-333-5454";
+
+        //When
+        phoneBook.removeOnePhoneNumberFromEntry(inputName, phoneNumberToBeRemoved);
+        boolean actual = phoneBook.isPhoneNumberListed(inputName, phoneNumberToBeRemoved);
+
+        //Then
+        Assert.assertEquals("Phone number should have been removed", false, actual);
+    }
+
+    @Test
+    public void isPhoneNumberListedTest(){
+        //Given
+        String inputName = "Aurora";
+        String phoneNumberToBeChecked = "(845)-333-5454";
+
+        //When
+        boolean actual = phoneBook.isPhoneNumberListed(inputName, phoneNumberToBeChecked);
+
+        //Then
+        Assert.assertEquals("Phone number should not be listed", true, actual);
     }
 
     @Test

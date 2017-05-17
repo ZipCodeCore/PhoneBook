@@ -17,7 +17,11 @@ public class PhoneBook {
 
     public String lookup(String inputName){
 
-        return inputName + "'s phone number is: "+ phoneList.get(inputName).toString();
+        String phoneNumsString = phoneList.get(inputName).toString();
+        phoneNumsString = phoneNumsString.substring(1, phoneNumsString.length()-1);
+
+
+        return inputName + "'s phone number is: "+ phoneNumsString;
 
     }
 
@@ -37,10 +41,28 @@ public class PhoneBook {
         return lastPhoneAdded;
     }
 
-    public void removeEntry(String inputName){
+    public void removeRecord(String inputName){
 
         phoneList.remove(inputName);
 
+    }
+
+    public void removeOnePhoneNumberFromEntry(String inputName, String phoneNumberToBeRemoved){
+
+        for(String phoneNum : phoneList.get(inputName)){
+            if(phoneNum.equals(phoneNumberToBeRemoved)){
+                phoneList.get(inputName).remove(phoneNum);
+            }
+        }
+    }
+
+    public boolean isPhoneNumberListed(String inputName, String phoneNumberToBeChecked){
+        for(String phoneNum : phoneList.get(inputName)){
+            if(phoneNum.equals(phoneNumberToBeChecked)){
+                return true;
+            }
+        }
+        return false;
     }
 
     public String listAllNames(){
@@ -60,7 +82,11 @@ public class PhoneBook {
         String allEntries = "";
 
         for(Map.Entry<String, ArrayList<String>> entry : phoneList.entrySet()){
-            allEntries += entry.getKey() + ": " + entry.getValue().toString() + "\n";
+
+            String phoneNumsString = entry.getValue().toString();
+            phoneNumsString = phoneNumsString.substring(1, phoneNumsString.length()-1);
+
+            allEntries += entry.getKey() + ": " + phoneNumsString + "\n";
         }
 
         return allEntries.trim();
@@ -69,15 +95,15 @@ public class PhoneBook {
 
     public String reverseLookup(String inputNumber){
 
-        String name = "";
-
         for(Map.Entry<String, ArrayList<String>> entry : phoneList.entrySet()){
-            if(entry.getValue().equals(inputNumber)){
-                name = entry.getKey();
+            for(String phoneNum : entry.getValue()){
+                if(phoneNum.equals(inputNumber)){
+                    return inputNumber + " belongs to : " + entry.getKey();
+                }
             }
         }
 
-        return inputNumber + " belongs to : " + name;
+        return null;
 
     }
 
