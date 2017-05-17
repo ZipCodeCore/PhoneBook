@@ -15,11 +15,13 @@ public class PhoneBook {
     }
 
     public static void removePhoneBookEntryByPhoneNumber(String phoneNumber){
-        PhoneBook.remove(phoneNumber);
+        System.out.println(PhoneBook.remove(phoneNumber));
     }
+
     public static void removePhoneBookEntryByName(String name){
-        PhoneBook.remove(name);
+        System.out.println("Deleting Entry : " + PhoneBook.remove(name));
     }
+
     public static void listAllEntriesInPhoneBook(){
         Set set = PhoneBook.entrySet();
         Iterator iterator = set.iterator();
@@ -29,7 +31,11 @@ public class PhoneBook {
         }
     }
     public static void lookUpPhoneNumberBasedOnName(String name) {
-        PhoneBook.get(name);
+        System.out.println("Number assosciated with Name : " + PhoneBook.get(name));
+    }
+
+    public static void lookUpNameBasedOnPhoneNuber(String phoneNumber) {
+        System.out.println("Name assosciated with Number : " + PhoneBook.get(phoneNumber));
     }
 
 

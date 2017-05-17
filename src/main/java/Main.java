@@ -15,10 +15,12 @@ public class Main {
 
         PhoneBook.removePhoneBookEntryByName("Ted");
 
-        PhoneBook.removePhoneBookEntryByPhoneNumber("789766878");
+        PhoneBook.removePhoneBookEntryByName("789766878");
         PhoneBook.lookUpPhoneNumberBasedOnName("Neo");
+
         PhoneBook.listAllEntriesInPhoneBook();
 
+        PhoneBook.lookUpNameBasedOnPhoneNuber("123456789");
 
 
     }
