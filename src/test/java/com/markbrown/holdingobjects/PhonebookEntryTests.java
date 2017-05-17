@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.util.Collections;
 
 /**
@@ -75,10 +76,10 @@ public class PhonebookEntryTests  {
         PhonebookEntry phonebookEntry1 = new PhonebookEntry();
         PhonebookEntry phonebookEntry2 = new PhonebookEntry();
         try {
-            phonebookEntry1.addValidPhonebookName("Squarepants", "Spongebob");
-            phonebookEntry2.addValidPhonebookName("Krab", "Krusty");
-            phonebookEntry1.addValidPhoneNumber(302, 590,1001);
-            phonebookEntry2.addValidPhoneNumber(888,555,1100);
+            phonebookEntry1.addValidPhonebookNameToEntry("Squarepants", "Spongebob");
+            phonebookEntry2.addValidPhonebookNameToEntry("Krab", "Krusty");
+            phonebookEntry1.addValidPhoneNumberToEntry(302, 590,1001);
+            phonebookEntry2.addValidPhoneNumberToEntry(888,555,1100);
         } catch (InvalidInputException invalidInputException) {
         }
 
@@ -90,21 +91,44 @@ public class PhonebookEntryTests  {
     }
 
     @Test (expected = InvalidInputException.class)
-    public void testPhoneBookEntryExceptionCaseOne() {
+    public void testPhoneBookEntryExceptionInvalidName() {
         //Given
         PhonebookEntry phonebookEntry1 = new PhonebookEntry();
-        PhonebookEntry phonebookEntry2 = new PhonebookEntry();
-        try {
-            phonebookEntry1.addValidPhonebookName("Squarepants", "Spongebob");
-            phonebookEntry2.addValidPhonebookName("Krab", "Krusty");
-            phonebookEntry1.addValidPhoneNumber(302333, 590,1001);
-            phonebookEntry2.addValidPhoneNumber(888,555,1100);
-        } catch (InvalidInputException invalidInputException) {
-        }
 
+        //When
+        phonebookEntry1.addValidPhonebookNameToEntry("8888", "Spongebob");
+        phonebookEntry1.addValidPhoneNumberToEntry(302, 590,1001);
     }
 
+    @Test (expected = InvalidInputException.class)
+    public void testPhoneBookEntryExceptionInvalidAreaCode() {
+        //Given
+        PhonebookEntry phonebookEntry1 = new PhonebookEntry();
 
+        //When
+        phonebookEntry1.addValidPhonebookNameToEntry("Squarepants", "Spongebob");
+        phonebookEntry1.addValidPhoneNumberToEntry(005, 590,1001);
+    }
+
+    @Test (expected = InvalidInputException.class)
+    public void testPhoneBookEntryExceptionInvalidCorporateCode() {
+        //Given
+        PhonebookEntry phonebookEntry2 = new PhonebookEntry();
+
+        //When
+        phonebookEntry2.addValidPhonebookNameToEntry("Krab", "Krusty");
+        phonebookEntry2.addValidPhoneNumberToEntry(888,077,1100);
+    }
+
+    @Test (expected = InvalidInputException.class)
+    public void testPhoneBookEntryExceptionInvalidLocalCode() {
+        //Given
+        PhonebookEntry phonebookEntry2 = new PhonebookEntry();
+
+        //When
+        phonebookEntry2.addValidPhonebookNameToEntry("Krab", "Krusty");
+        phonebookEntry2.addValidPhoneNumberToEntry(888,777,0100);
+    }
 
 
 }

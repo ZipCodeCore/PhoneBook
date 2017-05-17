@@ -21,20 +21,22 @@ public class PhonebookEntry implements Comparable<PhonebookEntry> {
 
     public PhonebookEntry() {}
 
-    public void addValidPhonebookName(String lastName, String firstName) throws InvalidInputException {
+    public void addValidPhonebookNameToEntry(String lastName, String firstName) throws InvalidInputException {
         if (NumberUtils.isParsable(lastName) || NumberUtils.isParsable(firstName)) {
-            throw new InvalidInputException();
+            throw new InvalidInputException("Name input is not valid");
         }
         phoneBookName = (lastName + ", " + firstName);
     }
 
-    public void addValidPhoneNumber(int areaCode, int corporateCode, int localCode) throws InvalidInputException {
+    public void addValidPhoneNumberToEntry(int areaCode, int corporateCode, int localCode) throws InvalidInputException {
         if (!("(" + areaCode + ")-" + corporateCode + "-" + localCode).matches("\\(\\d{3}\\)-\\d{3}-\\d{4}")) {
-            throw new InvalidInputException();
+            throw new InvalidInputException("Phone number input is not valid");
         }
         phoneNumber = "(" + areaCode + ")-" + corporateCode + "-" + localCode;
     }
 
+    public String getPhoneBookName() {return phoneBookName;}
+    public String getPhoneNumber() {return phoneNumber;}
 
     public static int generateRandomAreaCode() {
         return (int) Math.floor(Math.random()*900) + 100;
