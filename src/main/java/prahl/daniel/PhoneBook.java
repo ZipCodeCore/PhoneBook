@@ -9,51 +9,80 @@ import java.util.TreeMap;
  */
 
 public class PhoneBook {
-    TreeMap<String, String> record;
+    TreeMap<String, ArrayList<String>> record;
     HashMap<String, String> reverseRecord;
 
+    // static initialization block
     {
         record = new TreeMap<>();
         reverseRecord = new HashMap<>();
     }
 
-    // part 1
-    public String lookup(String name){
-        return record.get(name);
+    public ArrayList<String> lookup(String name){
+        return record.get(name);    // return the list of all phone numbers associated with given name
     }
 
-    public void addEntry(String name, String phoneNumber){
-        reverseRecord.put(phoneNumber, name);
-        record.put(name, phoneNumber);
-    }
-
-    public void removeEntry(String name){
-        reverseRecord.remove(record.get(name));
-        record.remove(name);
-    }
-    /*
-    public void removeNumber(String name, String phoneNumber){}*/
-
-    public String[] listAllNames(){
-        String[] nameList = record.keySet().toArray(new String[0]);
-        for (String s: nameList) {System.out.println(s);}
-        return nameList;
-    }
-
-    public String[] listAllEntries(){
-        ArrayList<String> entryList = new ArrayList<>();
-        String[] names = record.keySet().toArray(new String[0]);
-        for (String s: names) {
-            entryList.add(s);
-            entryList.add(record.get(s));
+    public void addEntry(String name, String phoneNumber) throws NumberFormatException{
+        if (!phoneNumber.matches("\\(\\d{3}\\)-\\d{3}-\\d{4}")) {   // verify correct input format
+            throw new NumberFormatException();
         }
-        String[] entryArray = entryList.toArray(new String[0]);
-        for (String s:entryArray) {System.out.println(s);}
-        return entryArray;
+        reverseRecord.put(phoneNumber, name);               // add to reverse lookup record, and...
+        if(!record.containsKey(name)) {             // if main record does not have this name already
+            record.put(name, new ArrayList<>());    // create as a new entry
+        }                                           // now that an entry has been confirmed or created...
+        record.get(name).add(phoneNumber);          // add new phone number to entry
     }
 
-    // part 2
-    public String reverseLookup(String phoneNumber){
+    public void removeRecord(String name){
+        for (String s: lookup(name)) {  // for each phone number listed under this name
+            reverseRecord.remove(s);    // remove associated entry from reverse lookup list
+        }                           // and...
+        record.remove(name);            // also remove entire entry from main record
+    }
+
+    public void removeNumber(String name, String phoneNumber){
+        if(reverseRecord.get(phoneNumber).equalsIgnoreCase(name)) { // check if number is associated with name
+            reverseRecord.remove(phoneNumber);                      // if so, remove from reverse record
+        }                                                       // and...
+        if(record.get(name).contains(phoneNumber)){         // check if number exists in order to proceed
+            ArrayList<String> tempList = record.get(name);  // store all numbers associated with this name
+            record.remove(name);                            // clear the entry entirely
+            for (String s: tempList) {                      // check each number that WAS associated with this name
+                if(s != phoneNumber){                       // if not the number being removed...
+                    addEntry(name, s);                      // add back into entry in main record
+                }
+            }
+        }
+    }
+
+    public ArrayList<String> listAllNames(){
+        String[] nameList = record.keySet().toArray(new String[0]); // create array of all names in main record
+        ArrayList<String> names = new ArrayList<>();                // create arraylist to store array contents
+        for (String s: nameList) {                                  // for each name in the array...
+            names.add(s);                                           // add name to arraylist
+            System.out.println(s);                                  // and print each name to console
+        }
+        return names;                                               // return populated arraylist
+    }
+
+    public ArrayList<String> listAllEntries(){
+        ArrayList<String> entryList = new ArrayList<>();        // create arraylist to store all main record entries
+        String[] names = record.keySet().toArray(new String[0]);// create array of all names in main record
+        for (String s: names) {                                 // for each name in the array...
+            entryList.add(s);                                   // add name to arraylist
+            System.out.println(s);                              // and print each name to console
+            for (String str: record.get(s)) {                   // for each phone number associated with each name...
+                entryList.add(str);                             // add phone number to arraylist
+                System.out.println(str);                        // and print each number to console
+            }
+        }
+        return entryList;                                       // return populated arraylist
+    }
+
+    public String reverseLookup(String phoneNumber) throws NumberFormatException{
+        if (!phoneNumber.matches("\\(\\d{3}\\)-\\d{3}-\\d{4}")) {
+            throw new NumberFormatException();
+        }
         return reverseRecord.get(phoneNumber);
     }
 
