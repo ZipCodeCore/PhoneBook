@@ -10,28 +10,32 @@ import java.util.logging.Logger;
 public class PhoneBook
 {
     private static final Logger logger = Logger.getLogger(PhoneBook.class.getName());
-    Map<String, String> myPhoneMap = new TreeMap<String, String>();
+    Map<String, ArrayList<PhoneNumber>> myPhoneMap = new TreeMap<String, ArrayList<PhoneNumber>>();
 
 
-    public void addNumber(PhoneNumber newNumber)
+    public void addNumber(String name, String num)
     {
-        myPhoneMap.put(newNumber.getName(), newNumber.getPhoneNumber());
-    }
-
-
-    public void addNumber(String name, String phoneNumber)
-    {
-        PhoneNumber newNumber = null;
         try
         {
-            newNumber = new PhoneNumber(name, phoneNumber);
+            ArrayList<PhoneNumber> myPhoneList = new ArrayList<PhoneNumber>();
+            PhoneNumber myNum = new PhoneNumber(num);
+            if(myPhoneMap.get(name) != null)
+            {
+                myPhoneMap.get(name).add(myNum);
+            }
+            else
+            {
+                myPhoneList.add(myNum);
+                myPhoneMap.put(name, myPhoneList);
+            }
+
         } catch (InvalidTypeException e)
         {
             e.printStackTrace();
         }
-        myPhoneMap.put(newNumber.getName(), newNumber.getPhoneNumber());
 
     }
+
 
     public void remove(String name)
     {
@@ -44,8 +48,13 @@ public class PhoneBook
 
     public String lookUp(String name)
     {
-        String search = myPhoneMap.get(name);
-        return search;
+        String numbersFound = "";
+        ArrayList<PhoneNumber> search = myPhoneMap.get(name);
+        for(int i = 0; i < search.size(); i++)
+        {
+            numbersFound = numbersFound.concat(search.get(i).getPhoneNumber());
+        }
+        return numbersFound;
     }
 
     public String listAllNames()
@@ -68,17 +77,40 @@ public class PhoneBook
        return entryList;
     }
 
-    public String lookUpName(String phoneNumber)
+    public String reverseLookUp(String phoneNumber)
     {
-        for(String key: myPhoneMap.keySet())
+       String returnName = "";
+       for(String nameKey: myPhoneMap.keySet())
+       {
+           for(PhoneNumber aNum : myPhoneMap.get(nameKey))
+           {
+               if(aNum.getPhoneNumber().equals(phoneNumber))
+               {
+                   returnName = returnName.concat(nameKey);
+               }
+           }
+       }
+     return returnName;
+    }
+
+    public String removeNumberBySearch(String phoneNumber)
+    {
+
+        for(String nameKey: myPhoneMap.keySet())
         {
-            if(myPhoneMap.get(key).equals(phoneNumber))
+            for(PhoneNumber aNum : myPhoneMap.get(nameKey))
             {
-                return key;
+                int index = 0;
+                if(aNum.getPhoneNumber().equals(phoneNumber))
+                {
+                    myPhoneMap.get(nameKey).remove(index);
+                    return myPhoneMap.get(nameKey).get(0).getPhoneNumber();
+                }
             }
         }
         return null;
     }
+
 
 
 

@@ -7,25 +7,13 @@ import java.util.ArrayList;
  */
 public class PhoneNumber
 {
-    private String name;
     private String phoneNumber;
 
     public PhoneNumber(){}
 
-    public PhoneNumber(String name, String phoneNumber) throws InvalidTypeException
+    public PhoneNumber(String phoneNumber) throws InvalidTypeException
     {
-        setName(name);
         setPhoneNumber(phoneNumber);
-    }
-
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-
-    public String getName()
-    {
-        return name;
     }
 
     public void setPhoneNumber(String phoneNumber) throws InvalidTypeException

@@ -18,10 +18,9 @@ public class testPhoneBook
     public void setUp() throws InvalidTypeException
     {
         myBook = new PhoneBook();
-        dave = new PhoneNumber("Dave", "1231231234");
-        paco = new PhoneNumber("Paco", "8434508649");
-        tina = new PhoneNumber("Tina", "4562341234");
-        myBook.myPhoneMap.put(dave.getName(), dave.getPhoneNumber());
+        dave = new PhoneNumber("1231231234");
+        paco = new PhoneNumber( "8434508649");
+        tina = new PhoneNumber("4562341234");
 
     }
 
@@ -29,15 +28,15 @@ public class testPhoneBook
     public void testAdd()
     {
         //Given
-        myBook.addNumber(paco);
-        myBook.addNumber(tina);
-        int expected = 3;
+        myBook.addNumber("Paco", paco.getPhoneNumber());
+        myBook.addNumber("Dave", dave.getPhoneNumber());
+        int expected = 2;
 
         //when
         int actual = myBook.myPhoneMap.size();
 
         //then
-        Assert.assertEquals("created 3 phoneNumbers", expected, actual);
+        Assert.assertEquals("created 2 phoneNumbers", expected, actual);
     }
 
     @Test
@@ -58,8 +57,8 @@ public class testPhoneBook
     public void testRemove()
     {
         //Given
-        myBook.addNumber(paco);
-        myBook.addNumber(tina);
+        myBook.addNumber("Paco", paco.getPhoneNumber());
+        myBook.addNumber("Tina", tina.getPhoneNumber());
         myBook.remove("Dave");
         int expected = 2;
 
@@ -74,9 +73,9 @@ public class testPhoneBook
     public void testAllNames()
     {
         //given
-        myBook.addNumber(tina);
-        myBook.addNumber(paco);
-        String expected ="Dave \nPaco\nTina\n";
+        myBook.addNumber("Tina", tina.getPhoneNumber());
+        myBook.addNumber("Paco", paco.getPhoneNumber());
+        String expected ="Paco\nTina\n";
 
         //when
         String actual = myBook.listAllNames();
@@ -89,9 +88,9 @@ public class testPhoneBook
     public void testAllEntries()
     {
         //given
-        myBook.addNumber(tina);
-        myBook.addNumber(paco);
-        String expected ="Dave 1231231234\nPaco 8434508649\nTina 4562341234\n";
+        myBook.addNumber("Tina", tina.getPhoneNumber());
+        myBook.addNumber("Paco", paco.getPhoneNumber());
+        String expected ="Paco 8434508649\nTina 4562341234\n";
 
         //when
         String actual = myBook.listAllEntries();
@@ -108,13 +107,25 @@ public class testPhoneBook
         String expected = "Alla";
 
         //when
-        String actual = myBook.lookUpName("8434575004");
+        String actual = myBook.reverseLookUp("8434575004");
 
         //then
         Assert.assertEquals("Set a phone number and should return phone", expected, actual);
     }
 
+    @Test
+    public void testRemoveBySearch()
+    {
+        //given
+        myBook.addNumber("Alla", "8434575004");
+        myBook.addNumber("Alla", "8434575222");
 
+        String expected = "8434575222";
 
+        //when
+        String actual =  myBook.removeNumberBySearch("8434575004");
 
+        //then
+        Assert.assertEquals(expected, actual);
+    }
 }

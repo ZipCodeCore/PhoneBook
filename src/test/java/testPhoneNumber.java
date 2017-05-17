@@ -11,23 +11,6 @@ public class testPhoneNumber
     String name;
 
 
-
-    @Test
-    public void testName()
-    {
-        //Given
-        name = "Paco";
-        myPhoneNumber.setName(name);
-        String expected = "Paco";
-
-        //When
-        String actual = myPhoneNumber.getName();
-
-        //Then
-        Assert.assertEquals("Set the name to phonebook", expected, actual);
-
-    }
-
     @Test
     public void testPhoneNumber() throws InvalidTypeException
     {
