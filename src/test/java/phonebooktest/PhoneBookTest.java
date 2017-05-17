@@ -1,6 +1,7 @@
 package phonebooktest;
 
 import exceptions.InvalidPhoneNumberFormatException;
+import exceptions.RecordNotPresent;
 import org.junit.Assert;
 import org.junit.Test;
 import phonebook.PhoneBook;
@@ -55,7 +56,7 @@ public class PhoneBookTest {
         //When
         Map actual = phoneBook.addEntry(name, number);
         //Then
-        Assert.assertEquals(null, actual);
+        Assert.assertEquals("This is a unformatted number, and should not pass", null, actual);
     }
 
 
@@ -73,22 +74,40 @@ public class PhoneBookTest {
         Assert.assertEquals("Test to make sure all entries are in the phonebook", expected, actual);
     }
 
-    @Test
-    public void removeEntryTest() throws InvalidPhoneNumberFormatException{
+    @Test(expected = InvalidPhoneNumberFormatException.class)
+    public void removeEntryTest() throws RecordNotPresent {
 
         String input = "Ben Berger\n";
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(input.getBytes());
         PhoneBook phoneBook = new PhoneBook(byteArrayInputStream);
         String name = "Ben Berger";
+        String expectedString = "{Lisa Knelly=(732)-914-8849, Sarah Silverman=(302)-434-1849, Steve Johns=(412)-791-1823}";
 
         int expected = 3;
+        //When
+
+        Map actual = phoneBook.removeEntry(name);
+        //Then
+
+        Assert.assertEquals("Removing Ben Berger will decrease the size from 4 to 3 ", expected, actual.size());
+       // System.out.println(actual);
+        //Assert.assertEquals(expectedString, actual);
+
+    }
+
+    @Test
+    public void removingNonexistentTest() throws RecordNotPresent {
+
+        String input = "Charlie Chaplin\n";
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(input.getBytes());
+        PhoneBook phoneBook = new PhoneBook(byteArrayInputStream);
+        String name = "Charlie Chaplin";
+
         //When
         Map actual = phoneBook.removeEntry(name);
         //Then
 
-        // Assert.assertArrayEquals(null, null);
-        Assert.assertEquals("Removing Ben Berger will decrease the size from 4 to 3 ", expected, actual.size());
-        Assert.assertNull("Assert that there is no entry of Ben Berger in the phonebook", phoneBook.lookUp(name));
+        Assert.assertEquals("Throw an exception if there isn't a person with said name in the phonebook", actual);
     }
 
     @Test
@@ -110,11 +129,12 @@ public class PhoneBookTest {
     public void reverseLookupTest() {
         //Given
         PhoneBook phoneBook = new PhoneBook();
-        String expected = "(732)-914-8849";
+        String expected = ;
         //When
-        String actual = phoneBook.reverseLookUp(expected);
+        String actual = phoneBook.reverseLookUp("(732)-914-8849");
         //Then
         Assert.assertEquals("Test to make sure all the names are in the phonebook", expected, actual);
     }
+
 
 }

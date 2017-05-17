@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 
 
 import exceptions.InvalidPhoneNumberFormatException;
+import exceptions.RecordNotPresent;
 
 /**
  * Created by anthonyjones on 5/16/17.
@@ -61,45 +62,58 @@ public class PhoneBook {
             phoneInfo.put(name, phoneNumber);
             return phoneInfo;
         } catch (InvalidPhoneNumberFormatException e) {
-            logger.warning(phoneNumber+" is not a valid number");
+            logger.warning(phoneNumber + " is not a valid number");
             return null;
 
         }
 
     }
 
-    //Originally going to be voided methods, I decided to return the entire hashmap after a entry is removed.
-    public Map removeEntry(String name) throws InvalidPhoneNumberFormatException {
+    //Originally going to be voided methods, I decided to return the entire hashMap after a entry is removed.
+    public Map removeEntry(String name) throws RecordNotPresent {
+
+
+
+
+
+        if (phoneInfo.remove(name) == null) {
+            throw new RecordNotPresent();
+        } else {
+            System.out.println("voice");
+        }
         name = in.nextLine();
         phoneInfo.remove(name);
         return phoneInfo;
+
+
     }
 
     public String listAllNames() {
-
         String allNames = "";
         for (String keys : phoneInfo.keySet()) {
             allNames += keys + "\n";
         }
-
         return allNames.trim();
     }
 
     public String reverseLookUp(String number) {
 
         String listedName = "";
+        //System.out.println(listedName);
         for (String phoneNumber : phoneInfo.values()) {
+            //System.out.println(phoneNumber);
             if (phoneNumber.equals(number)) {
-                listedName = phoneNumber;
+                System.out.println(phoneNumber);
+                listedName =  phoneInfo.keySet().toString();
+
+                //System.out.println(listedName);
             }
         }
+       // System.out.println(listedName);
         return listedName.trim();
     }
 
     public PhoneBook checkNumberFormat(String number) throws InvalidPhoneNumberFormatException {
-
-
-
         return new PhoneBook(number);
     }
 
