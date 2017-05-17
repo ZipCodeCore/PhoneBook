@@ -12,7 +12,7 @@ import org.apache.commons.lang3.math.NumberUtils;
 /**
  * Created by markbrown on 5/16/17.
  */
-public class PhonebookEntry implements Comparable<PhonebookEntry> {
+public class PhonebookEntry {
 
     private enum RANDOM_FIRST_NAMES {ALEX, ANNE, BOB, BELINDA, CARLA, CHRIS, DELILAH, DAN, EVAN, ELLIE, FRAN, FELIX, GAVIN, GRACE, HELEN, HARRY, ILDA, IYASU, JAMES, JANE};
     private enum RANDOM_LAST_NAMES {JACKSON, ANDERSON, LOUIS, FLORENCE, BROWN, HILL, DEAN, EDWARDS, CLINTON, BUSH, NIXON, GALE, ALDRIN, GREENE, FORD, CARTER, TRUMP, JEFFERSON, YOUNG, WASHINGTON, ADAMS};
@@ -76,27 +76,5 @@ public class PhonebookEntry implements Comparable<PhonebookEntry> {
         return names[random.nextInt(names.length)].toString();
     }
 
-    public int compareTo(PhonebookEntry otherPhonebookEntry) {
-        int index = 0;
-        while (index != Math.min(this.phoneBookName.length(), otherPhonebookEntry.phoneBookName.length())) {
-            if (this.phoneBookName.charAt(index) == otherPhonebookEntry.phoneBookName.charAt(index)) {
-                if (index == this.phoneBookName.length() - 1) {
-                    return -1;
-                } else if (index == otherPhonebookEntry.phoneBookName.length() - 1) {
-                    return 1;
-                } else if (index == this.phoneBookName.length() - 1 && index == otherPhonebookEntry.phoneBookName.length() - 1) {
-                    return 0;
-                }
-                index++;
-            }
-            else {
-                if (this.phoneBookName.charAt(index) - otherPhonebookEntry.phoneBookName.charAt(index) > 0) {
-                    return 1;
-                }
-                else {return -1;}
-            }
-        }
-        return this.phoneBookName.charAt(index) - otherPhonebookEntry.phoneBookName.charAt(index);
-    }
 
 }
