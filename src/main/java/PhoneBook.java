@@ -1,3 +1,4 @@
+import java.util.Set;
 import java.util.TreeMap;
 
 /**
@@ -5,13 +6,13 @@ import java.util.TreeMap;
  */
 public class PhoneBook {
 
-    private TreeMap phoneBook = new TreeMap();
+    private TreeMap<String, String> phoneBook = new TreeMap();
 
     public TreeMap getPhoneBook() {
         return phoneBook;
     }
 
-    public Object lookup(String name) {
+    public String lookup(String name) {
         return phoneBook.get(name);
     }
 
@@ -21,6 +22,17 @@ public class PhoneBook {
 
     public void removeEntry(String name) {
         phoneBook.remove(name);
+    }
+
+    public String[] showEntries() {
+        String[] listings = new String[phoneBook.size()];
+        Set<String> keys = phoneBook.keySet();
+        int i = 0;
+        for(String key : keys) {
+            listings[i] = "Name: " + key + "; Phone Number: " + lookup(key);
+            i++;
+        }
+        return listings;
     }
 
 }
