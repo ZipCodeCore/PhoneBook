@@ -28,21 +28,21 @@ import java.util.TreeMap;
 
 public class PhoneBook {
 
-    TreeMap<String,ArrayList<Long>> map;
+    TreeMap<String,ArrayList<String>> map;
 
     PhoneBook() {
-        map = new TreeMap<String,ArrayList<Long>>();
+        map = new TreeMap<String,ArrayList<String>>();
     }
 
-    ArrayList<Long> lookUp(String name) {
+    ArrayList<String> lookUp(String name) {
         return map.get(name);
     }
 
     /*
     Helper method for addRecord.
      */
-    private ArrayList<Long> createNewRecord(String name, Long phoneNumber) {
-        ArrayList<Long> list = new ArrayList<Long>();
+    private ArrayList<String> createNewRecord(String name, String phoneNumber) {
+        ArrayList<String> list = new ArrayList<String>();
         list.add(phoneNumber);
         return map.put(name, list);
     }
@@ -50,7 +50,7 @@ public class PhoneBook {
     /*
     Not sure if it'd be better to switch the blocks in if and else.
      */
-    ArrayList<Long> addRecord(String name, Long phoneNumber) {
+    ArrayList<String> addRecord(String name, String phoneNumber) {
         if(map.get(name) == null) {
             return createNewRecord(name, phoneNumber);
         } else {
@@ -59,18 +59,18 @@ public class PhoneBook {
         }
     }
 
-    ArrayList<Long> addRecords(String name, Long... phoneNumbers) {
-        for(Long number : phoneNumbers) {
-            addRecord(name, number);
+    ArrayList<String> addRecords(String name, String... phoneNumbers) {
+        for(String s : phoneNumbers) {
+            addRecord(name, s);
         }
         return map.get(name);
     }
 
-    ArrayList<Long> removeRecordByName(String name) {
+    ArrayList<String> removeRecordByName(String name) {
         return map.remove(name);
     }
 
-    boolean removePhoneNumber(Long phoneNumber) {
+    boolean removePhoneNumber(String phoneNumber) {
         String name = reverseLookUp(phoneNumber);
         return name != null && map.get(name).remove(phoneNumber);
     }
@@ -78,7 +78,7 @@ public class PhoneBook {
     String allNamesToString() {
         StringBuilder sb = new StringBuilder();
         sb.append("");
-        for(Map.Entry<String,ArrayList<Long>> entry : map.entrySet()) {
+        for(Map.Entry<String,ArrayList<String>> entry : map.entrySet()) {
             sb.append(entry.getKey() + "\n");
         }
         return sb.toString();
@@ -87,13 +87,13 @@ public class PhoneBook {
     String allEntriesToString() {
         StringBuilder sb = new StringBuilder();
         sb.append("");
-        for(Map.Entry<String,ArrayList<Long>> entry : map.entrySet()) {
+        for(Map.Entry<String,ArrayList<String>> entry : map.entrySet()) {
             sb.append(entry.getKey() + ": " + entry.getValue() + "\n");
         }
         return sb.toString();
     }
 
-    String reverseLookUp(Long number) {
+    String reverseLookUp(String number) {
         for(String s : map.keySet()) {
             if(map.get(s).contains(number)) {
                 return s;

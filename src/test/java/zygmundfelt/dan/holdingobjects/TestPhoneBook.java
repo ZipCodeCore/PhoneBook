@@ -7,76 +7,72 @@ import java.util.ArrayList;
 public class TestPhoneBook {
 
     PhoneBook phoneBook;
+    PhoneBook emptyPhoneBook;
 
-    private void loadEntries() {
+    @Before
+    public void initialize() {
         phoneBook = new PhoneBook();
-        phoneBook.addRecord("Zygmund-Felt,Dan", 5555555555L);
-        phoneBook.addRecord("Zygmund-Felt,Dan", 8888888888L);
-        phoneBook.addRecord("Smith,Stan", 3335553333L);
-        phoneBook.addRecord("Ated,Hyphen", 1234567890L);
-        phoneBook.addRecord("Villain,MetalFace", 2678675309L);
-        phoneBook.addRecord("Villain,MetalFace", 2158675309L);
+        phoneBook.addRecord("Zygmund-Felt,Dan", "(555) 555-5555");
+        phoneBook.addRecord("Zygmund-Felt,Dan", "(888) 888-8888");
+        phoneBook.addRecord("Smith,Stan", "(333) 555-3333");
+        phoneBook.addRecord("Ated,Hyphen", "(123) 456-7890");
+        phoneBook.addRecord("Villain,MetalFace", "(267) 867-5309");
+        phoneBook.addRecord("Villain,MetalFace", "(215) 867-5309");
+        emptyPhoneBook = new PhoneBook();
     }
 
     @Test
     public void addTest() {
-        PhoneBook phoneBook = new PhoneBook();
-        phoneBook.addRecord("Zyg,Dan", 1234567890L);
+        emptyPhoneBook.addRecord("Zyg,Dan", "(123) 456-7890");
         int expected = 1;
 
-        int actual = phoneBook.map.size();
+        int actual = emptyPhoneBook.map.size();
 
         Assert.assertEquals(expected,actual);
-
     }
 
     @Test
     public void addMultipleToSameNameTest() {
-        PhoneBook phoneBook = new PhoneBook();
-        phoneBook.addRecord("Zyg,Dan", 1234567890L);
-        phoneBook.addRecord("Zyg,Dan", 9876543210L);
+        emptyPhoneBook.addRecord("Zyg,Dan", "(123) 456-7890");
+        emptyPhoneBook.addRecord("Zyg,Dan", "(987) 654-3210");
         int expected = 2;
 
-        int actual = phoneBook.map.get("Zyg,Dan").size();
+        int actual = emptyPhoneBook.map.get("Zyg,Dan").size();
 
         Assert.assertEquals(expected,actual);
     }
 
     @Test
     public void addRecordsNewRecordTest() {
-        PhoneBook phoneBook = new PhoneBook();
-        phoneBook.addRecords("Zyg,Dan", 1234567890L, 9876543210L, 1236547890L);
+        emptyPhoneBook.addRecords("Zyg,Dan", "(123) 456-7890", "(987) 654-3210", "(654) 321-9800");
         int expected = 3;
 
-        int actual = phoneBook.map.get("Zyg,Dan").size();
+        int actual = emptyPhoneBook.map.get("Zyg,Dan").size();
 
         Assert.assertEquals(expected, actual);
     }
 
     @Test //TODO - not a great test
     public void removeRecordByNameValidTest() {
-        loadEntries();
-        ArrayList<Long> expected = phoneBook.map.get("Villain,MetalFace");
+        ArrayList<String> expected = phoneBook.map.get("Villain,MetalFace");
 
-        ArrayList<Long> actual = phoneBook.removeRecordByName("Villain,MetalFace");
+        ArrayList<String> actual = phoneBook.removeRecordByName("Villain,MetalFace");
 
         Assert.assertTrue(expected == actual);
     }
 
+    @Test
     public void removeRecordByNameNonexistentTest() {
-        loadEntries();
-
-        ArrayList<Long> result = phoneBook.removeRecordByName("Puft,Stay");
+        ArrayList<String> result = phoneBook.removeRecordByName("Puft,Stay");
 
         Assert.assertTrue(result == null);
     }
 
     @Test
     public void removePhoneNumberValidTest() {
-        loadEntries();
-        String expected = "[5555555555]";
+        String expected = "[(555) 555-5555]";
 
-        phoneBook.removePhoneNumber(8888888888L);
+        phoneBook.removePhoneNumber("(888) 888-8888");
         String actual = phoneBook.map.get("Zygmund-Felt,Dan").toString();
 
         Assert.assertEquals(expected, actual);
@@ -84,46 +80,40 @@ public class TestPhoneBook {
 
     @Test
     public void removeNonexistentPhoneNumberTest() {
-        loadEntries();
-
-        Assert.assertFalse(phoneBook.removePhoneNumber(3216540987L));
+        Assert.assertFalse(phoneBook.removePhoneNumber("(321) 654-0987"));
     }
 
     @Test
     public void removeNonexistentEntryTest() {
-        loadEntries();
         Long expected = null;
 
-        ArrayList<Long> actual = phoneBook.removeRecordByName("Millain,VetalFace");
+        ArrayList<String> actual = phoneBook.removeRecordByName("Millain,VetalFace");
 
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void lookUpValidEntryTest() {
-        loadEntries();
         String name = "Ated,Hyphen";
-        ArrayList<Long> expected = phoneBook.map.get("Ated,Hyphen");
+        ArrayList<String> expected = phoneBook.map.get("Ated,Hyphen");
 
-        ArrayList<Long> actual = phoneBook.lookUp(name);
+        ArrayList<String> actual = phoneBook.lookUp(name);
 
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void lookUpNonexistentEntryTest() {
-        loadEntries();
         String name = "Ated,NoSuch";
-        ArrayList<Long> expected = null;
+        ArrayList<String> expected = null;
 
-        ArrayList<Long> actual = phoneBook.lookUp(name);
+        ArrayList<String> actual = phoneBook.lookUp(name);
 
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void allNamesToStringNonemptyTest() {
-        loadEntries();
         String expected = "Ated,Hyphen\nSmith,Stan\nVillain,MetalFace\nZygmund-Felt,Dan\n";
 
         String actual = phoneBook.allNamesToString();
@@ -133,19 +123,19 @@ public class TestPhoneBook {
 
     @Test
     public void allNamesToStringEmptyTest() {
-        PhoneBook phoneBook = new PhoneBook();
         String expected = "";
 
-        String actual = phoneBook.allNamesToString();
+        String actual = emptyPhoneBook.allNamesToString();
 
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void allEntriesToStringNonemptyTest() {
-        loadEntries();
-        String expected = "Ated,Hyphen: [1234567890]\nSmith,Stan: [3335553333]\nVillain,MetalFace: [2678675309, 2158675309]\nZygmund-Felt,Dan: [5555555555, 8888888888]\n";
-
+        String expected = "Ated,Hyphen: [(123) 456-7890]\n" +
+        "Smith,Stan: [(333) 555-3333]\n" +
+        "Villain,MetalFace: [(267) 867-5309, (215) 867-5309]\n" +
+        "Zygmund-Felt,Dan: [(555) 555-5555, (888) 888-8888]\n";
         String actual = phoneBook.allEntriesToString();
 
         Assert.assertEquals(expected, actual);
@@ -153,29 +143,25 @@ public class TestPhoneBook {
 
     @Test
     public void allEntriesToStringEmptyTest() {
-        PhoneBook phoneBook = new PhoneBook();
         String expected = "";
 
-        String actual = phoneBook.allEntriesToString();
+        String actual = emptyPhoneBook.allEntriesToString();
 
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void reverseLookUpValidPhoneNumberTest() {
-        loadEntries();
         String expected = "Smith,Stan";
 
-        String actual = phoneBook.reverseLookUp(3335553333L);
+        String actual = phoneBook.reverseLookUp("(333) 555-3333");
 
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void reverseLookUpNonexistentNumberTest() {
-        loadEntries();
-
-        String result = phoneBook.reverseLookUp(1112223333L);
+        String result = phoneBook.reverseLookUp("(111) 222-3333");
 
         Assert.assertTrue(result == null);
     }
