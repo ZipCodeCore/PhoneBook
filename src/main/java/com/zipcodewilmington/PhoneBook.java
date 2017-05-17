@@ -20,8 +20,9 @@ public class PhoneBook {
         phoneBook.put(name, list);
     }
 
-    public ArrayList<PhoneNumber> lookup(String name) {
-        return phoneBook.get(name);
+    public ArrayList<PhoneNumber> lookup(String name) throws RecordNotFoundException{
+        if(!phoneBook.containsKey(name)) throw new RecordNotFoundException();
+        else return phoneBook.get(name);
     }
 
     public boolean add(String name, String phoneNumber) {
@@ -40,14 +41,14 @@ public class PhoneBook {
         }
     }
 
-    public boolean remove(String name, String phoneNumber) {
+    public boolean remove(String name, String phoneNumber) throws RecordNotFoundException {
         if (phoneBook.size() > 0 && phoneBook.keySet().contains(name)) {
             int listSize = phoneBook.get(name).size();
             safeRemove(listSize, name, phoneNumber);
             return true;
         } else {
             logger.warn("\"" + name + "\" not found, remove operation failed");
-            return false;
+            throw new RecordNotFoundException("\"" + name + "\" not found, remove operation failed");
         }
     }
 
@@ -79,7 +80,10 @@ public class PhoneBook {
         return phoneBook.size();
     }
 
-    public String reverseLookup(String number) {
+    public String reverseLookup(String number) throws RecordNotFoundException, InvalidPhoneNumberFormatException{
+        if (!number.matches("\\(\\d{3}\\)\\d{3}-\\d{4}")) {
+            throw new InvalidPhoneNumberFormatException();
+        }
         Set<Map.Entry<String, ArrayList<PhoneNumber>>> entrySet = phoneBook.entrySet();
         for (Map.Entry<String, ArrayList<PhoneNumber>> entry : entrySet) {
             for(PhoneNumber phoneNumber: entry.getValue()){
@@ -88,7 +92,8 @@ public class PhoneBook {
                 }
             }
         }
-        return null;
+        logger.warn(number + " does not belong to any record in this phonebook");
+        throw new RecordNotFoundException(number + " does not belong to any record in this phonebook");
     }
 
 }

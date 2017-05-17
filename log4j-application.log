@@ -1,0 +1,273 @@
+2017-05-16 18:20:06 WARN  PhoneBook:42 - "Tim Kim" not found, remove operation failed
+2017-05-16 20:12:46 INFO  PhoneBook:71 - entry.getKey() = Chris Kim, entry.getValue = (302)598-6245
+2017-05-16 20:12:46 INFO  PhoneBook:71 - entry.getKey() = Kirby Kim, entry.getValue = (302)731-1176
+2017-05-16 20:14:03 INFO  PhoneBook:71 - entry.getKey() = Chris Kim, entry.getValue = (302)598-6245
+2017-05-16 20:14:52 DEBUG PhoneBook:71 - entry.getKey() = Chris Kim, entry.getValue = (302)598-6245
+2017-05-16 21:05:51 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:06:15 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:06:15 INFO  PhoneBook:36 - Putting [(302)731-1176, (302)598-6245]into key Kirby Kim
+2017-05-16 21:08:37 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:08:37 INFO  PhoneBook:62 - After first add[(302)731-1176]
+2017-05-16 21:08:37 INFO  PhoneBook:36 - Putting [(302)731-1176, (302)598-6245]into key Kirby Kim
+2017-05-16 21:08:37 INFO  PhoneBook:64 - After second add[(302)731-1176, (302)598-6245]
+2017-05-16 21:10:45 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:10:45 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:10:45 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:10:45 INFO  PhoneBook:36 - Putting [(302)731-1176, (302)598-6245]into key Kirby Kim
+2017-05-16 21:10:45 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:10:45 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:10:45 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:10:45 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:10:45 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:10:45 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:10:45 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:10:45 WARN  PhoneBook:49 - "Tim Kim" not found, remove operation failed
+2017-05-16 21:10:45 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:10:45 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:10:45 WARN  PhoneBook:49 - "Tim Kim" not found, remove operation failed
+2017-05-16 21:10:45 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:11:41 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:11:41 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:11:41 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:11:41 INFO  PhoneBook:36 - Putting [(302)731-1176, (302)598-6245]into key Kirby Kim
+2017-05-16 21:11:41 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:11:41 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:11:41 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:11:41 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:11:41 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:11:41 INFO  PhoneBook:36 - Putting [(302)731-1176, (302)598-6245]into key Kirby Kim
+2017-05-16 21:11:41 INFO  PhoneBook:36 - Putting [(302)598-6245, (302)731-1176]into key Chris Kim
+2017-05-16 21:11:41 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:11:41 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:11:41 WARN  PhoneBook:49 - "Tim Kim" not found, remove operation failed
+2017-05-16 21:11:41 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:11:41 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:11:41 WARN  PhoneBook:49 - "Tim Kim" not found, remove operation failed
+2017-05-16 21:11:41 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:14:32 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:14:32 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:14:32 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:14:32 INFO  PhoneBook:36 - Putting [(302)731-1176, (302)598-6245]into key Kirby Kim
+2017-05-16 21:14:32 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:14:32 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:14:32 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:14:32 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:14:32 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:14:32 INFO  PhoneBook:36 - Putting [(302)731-1176, (302)598-6245]into key Kirby Kim
+2017-05-16 21:14:32 INFO  PhoneBook:36 - Putting [(302)598-6245, (302)731-1176]into key Chris Kim
+2017-05-16 21:14:32 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:14:32 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:14:32 WARN  PhoneBook:49 - "Tim Kim" not found, remove operation failed
+2017-05-16 21:14:32 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:14:32 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:14:32 WARN  PhoneBook:49 - "Tim Kim" not found, remove operation failed
+2017-05-16 21:14:32 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:15:42 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:15:42 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:15:42 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:15:42 INFO  PhoneBook:36 - Putting [(302)731-1176, (302)598-6245]into key Kirby Kim
+2017-05-16 21:15:42 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:15:42 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:15:42 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:15:42 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:15:42 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:15:42 INFO  PhoneBook:36 - Putting [(302)731-1176, (302)598-6245]into key Kirby Kim
+2017-05-16 21:15:42 INFO  PhoneBook:36 - Putting [(302)598-6245, (302)731-1176]into key Chris Kim
+2017-05-16 21:15:42 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:15:42 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:15:42 WARN  PhoneBook:49 - "Tim Kim" not found, remove operation failed
+2017-05-16 21:15:42 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:15:42 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:15:42 WARN  PhoneBook:49 - "Tim Kim" not found, remove operation failed
+2017-05-16 21:15:42 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:17:28 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:17:28 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:17:28 INFO  PhoneBook:36 - Putting [(302)731-1176, (302)598-6245]into key Kirby Kim
+2017-05-16 21:17:28 INFO  PhoneBook:36 - Putting [(302)598-6245, (302)731-1176]into key Chris Kim
+2017-05-16 21:17:55 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:17:55 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:17:55 INFO  PhoneBook:36 - Putting [(302)731-1176, (302)598-6245]into key Kirby Kim
+2017-05-16 21:17:55 INFO  PhoneBook:36 - Putting [(302)598-6245, (302)731-1176]into key Chris Kim
+2017-05-16 21:25:55 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:25:55 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:25:55 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:25:55 INFO  PhoneBook:36 - Putting [(302)731-1176, (302)598-6245]into key Kirby Kim
+2017-05-16 21:25:55 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:25:55 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:25:55 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:25:55 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:25:55 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:25:55 INFO  PhoneBook:36 - Putting [(302)731-1176, (302)598-6245]into key Kirby Kim
+2017-05-16 21:25:55 INFO  PhoneBook:36 - Putting [(302)598-6245, (302)731-1176]into key Chris Kim
+2017-05-16 21:25:55 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:25:55 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:25:55 INFO  PhoneBook:36 - Putting [(302)598-6245, (302)731-1176]into key Chris Kim
+2017-05-16 21:25:55 WARN  PhoneBook:49 - "Tim Kim" not found, remove operation failed
+2017-05-16 21:25:55 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:25:55 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:25:55 WARN  PhoneBook:49 - "Tim Kim" not found, remove operation failed
+2017-05-16 21:25:55 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:26:56 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:26:56 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:26:56 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:26:56 INFO  PhoneBook:36 - Putting [(302)731-1176, (302)598-6245]into key Kirby Kim
+2017-05-16 21:26:56 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:26:56 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:26:56 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:26:56 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:26:56 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:26:56 INFO  PhoneBook:36 - Putting [(302)731-1176, (302)598-6245]into key Kirby Kim
+2017-05-16 21:26:56 INFO  PhoneBook:36 - Putting [(302)598-6245, (302)731-1176]into key Chris Kim
+2017-05-16 21:26:56 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:26:56 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:26:56 WARN  PhoneBook:49 - "Tim Kim" not found, remove operation failed
+2017-05-16 21:26:56 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:26:56 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:26:56 WARN  PhoneBook:49 - "Tim Kim" not found, remove operation failed
+2017-05-16 21:26:56 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:26:56 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:26:56 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:26:56 INFO  PhoneBook:36 - Putting [(302)598-6245, (302)731-1176]into key Chris Kim
+2017-05-16 21:27:25 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:27:25 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:30:52 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:30:52 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:31:25 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:31:25 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:36:37 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:36:37 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:40:35 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:40:35 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:40:40 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:40:40 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:40:40 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:40:40 INFO  PhoneBook:36 - Putting [(302)731-1176, (302)598-6245]into key Kirby Kim
+2017-05-16 21:40:40 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:40:40 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:40:40 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:40:40 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:40:40 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:40:40 INFO  PhoneBook:36 - Putting [(302)731-1176, (302)598-6245]into key Kirby Kim
+2017-05-16 21:40:40 INFO  PhoneBook:36 - Putting [(302)598-6245, (302)731-1176]into key Chris Kim
+2017-05-16 21:40:40 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:40:40 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:40:40 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:40:40 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:40:40 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:40:40 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:40:40 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:40:40 INFO  PhoneBook:36 - Putting [(302)598-6245, (302)731-1176]into key Chris Kim
+2017-05-16 21:45:57 WARN  PhoneBook:49 - "Tim Kim" not found, remove operation failed
+2017-05-16 21:48:04 WARN  PhoneBook:49 - "Tim Kim" not found, remove operation failed
+2017-05-16 21:48:15 INFO  PhoneBook:35 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-16 21:48:15 INFO  PhoneBook:35 - Putting [(302)598-6245]into key Chris Kim
+2017-05-16 21:48:15 WARN  PhoneBook:49 - "Tim Kim" not found, remove operation failed
+2017-05-17 12:17:23 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:17:23 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-17 12:17:23 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:17:23 INFO  PhoneBook:36 - Putting [(302)731-1176, (302)598-6245]into key Kirby Kim
+2017-05-17 12:17:23 WARN  PhoneBook:50 - "Nonexistent Record" not found, remove operation failed
+2017-05-17 12:17:23 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:17:23 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:17:23 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-17 12:17:23 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:17:23 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-17 12:17:23 INFO  PhoneBook:36 - Putting [(302)731-1176, (302)598-6245]into key Kirby Kim
+2017-05-17 12:17:23 INFO  PhoneBook:36 - Putting [(302)598-6245, (302)731-1176]into key Chris Kim
+2017-05-17 12:17:23 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:17:23 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-17 12:17:23 WARN  PhoneBook:50 - "Tim Kim" not found, remove operation failed
+2017-05-17 12:17:23 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:17:23 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-17 12:17:23 WARN  PhoneBook:50 - "Tim Kim" not found, remove operation failed
+2017-05-17 12:17:23 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:17:23 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:17:23 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-17 12:17:23 INFO  PhoneBook:36 - Putting [(302)598-6245, (302)731-1176]into key Chris Kim
+2017-05-17 12:17:59 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:17:59 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-17 12:17:59 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:17:59 INFO  PhoneBook:36 - Putting [(302)731-1176, (302)598-6245]into key Kirby Kim
+2017-05-17 12:17:59 WARN  PhoneBook:50 - "Nonexistent Record" not found, remove operation failed
+2017-05-17 12:17:59 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:17:59 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:17:59 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-17 12:17:59 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:17:59 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-17 12:17:59 INFO  PhoneBook:36 - Putting [(302)731-1176, (302)598-6245]into key Kirby Kim
+2017-05-17 12:17:59 INFO  PhoneBook:36 - Putting [(302)598-6245, (302)731-1176]into key Chris Kim
+2017-05-17 12:17:59 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:17:59 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-17 12:17:59 WARN  PhoneBook:50 - "Tim Kim" not found, remove operation failed
+2017-05-17 12:17:59 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:17:59 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-17 12:17:59 WARN  PhoneBook:50 - "Tim Kim" not found, remove operation failed
+2017-05-17 12:17:59 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:17:59 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:17:59 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-17 12:17:59 INFO  PhoneBook:36 - Putting [(302)598-6245, (302)731-1176]into key Chris Kim
+2017-05-17 12:17:59 WARN  PhoneBook:95 - (555)555-5555 does not belong to any record in this phonebook
+2017-05-17 12:18:39 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:18:39 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-17 12:18:39 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:18:39 INFO  PhoneBook:36 - Putting [(302)731-1176, (302)598-6245]into key Kirby Kim
+2017-05-17 12:18:39 WARN  PhoneBook:50 - "Nonexistent Record" not found, remove operation failed
+2017-05-17 12:18:39 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:18:39 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:18:39 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-17 12:18:39 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:18:39 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-17 12:18:39 INFO  PhoneBook:36 - Putting [(302)731-1176, (302)598-6245]into key Kirby Kim
+2017-05-17 12:18:39 INFO  PhoneBook:36 - Putting [(302)598-6245, (302)731-1176]into key Chris Kim
+2017-05-17 12:18:39 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:18:39 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-17 12:18:39 WARN  PhoneBook:50 - "Tim Kim" not found, remove operation failed
+2017-05-17 12:18:39 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:18:39 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-17 12:18:39 WARN  PhoneBook:50 - "Tim Kim" not found, remove operation failed
+2017-05-17 12:18:39 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:18:39 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:18:39 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-17 12:18:39 INFO  PhoneBook:36 - Putting [(302)598-6245, (302)731-1176]into key Chris Kim
+2017-05-17 12:18:39 WARN  PhoneBook:95 - (555)555-5555 does not belong to any record in this phonebook
+2017-05-17 12:19:22 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:19:22 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-17 12:19:22 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:19:22 INFO  PhoneBook:36 - Putting [(302)731-1176, (302)598-6245]into key Kirby Kim
+2017-05-17 12:19:22 WARN  PhoneBook:50 - "Nonexistent Record" not found, remove operation failed
+2017-05-17 12:19:22 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:19:22 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:19:22 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-17 12:19:22 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:19:22 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-17 12:19:22 INFO  PhoneBook:36 - Putting [(302)731-1176, (302)598-6245]into key Kirby Kim
+2017-05-17 12:19:22 INFO  PhoneBook:36 - Putting [(302)598-6245, (302)731-1176]into key Chris Kim
+2017-05-17 12:19:22 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:19:22 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-17 12:19:22 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:19:22 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-17 12:19:22 WARN  PhoneBook:50 - "Tim Kim" not found, remove operation failed
+2017-05-17 12:19:22 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:19:22 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:19:22 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-17 12:19:22 INFO  PhoneBook:36 - Putting [(302)598-6245, (302)731-1176]into key Chris Kim
+2017-05-17 12:19:22 WARN  PhoneBook:95 - (555)555-5555 does not belong to any record in this phonebook
+2017-05-17 12:19:44 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:19:44 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-17 12:19:44 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:19:44 INFO  PhoneBook:36 - Putting [(302)731-1176, (302)598-6245]into key Kirby Kim
+2017-05-17 12:19:44 WARN  PhoneBook:50 - "Nonexistent Record" not found, remove operation failed
+2017-05-17 12:19:44 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:19:44 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:19:44 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-17 12:19:44 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:19:44 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-17 12:19:44 INFO  PhoneBook:36 - Putting [(302)731-1176, (302)598-6245]into key Kirby Kim
+2017-05-17 12:19:44 INFO  PhoneBook:36 - Putting [(302)598-6245, (302)731-1176]into key Chris Kim
+2017-05-17 12:19:44 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:19:44 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-17 12:19:44 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:19:44 INFO  PhoneBook:36 - Putting [(302)731-1176]into key Kirby Kim
+2017-05-17 12:19:44 INFO  PhoneBook:36 - Putting [(302)598-6245]into key Chris Kim
+2017-05-17 12:19:44 INFO  PhoneBook:36 - Putting [(302)598-6245, (302)731-1176]into key Chris Kim
+2017-05-17 12:19:44 WARN  PhoneBook:95 - (555)555-5555 does not belong to any record in this phonebook
