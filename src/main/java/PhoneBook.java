@@ -54,7 +54,7 @@ public class PhoneBook {
     }
 
     //TODO have throw a UnableToFindAssociatedPhoneNumberException;
-    public ArrayList<PhoneNumber> lookup(String name) throws NonExistentEntryException {
+    public ArrayList<PhoneNumber> lookup(String name){
         return contacts.get(name);
     }
 
