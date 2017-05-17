@@ -2,6 +2,7 @@ package io.github.aaronclong.holdingobjects;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -51,6 +52,8 @@ public class PhoneBookTest {
 
   @Test
   public void testRemovalOfItemFromEntry() {
-    assertNull("Confirming that none existing elements return null", phoneBook.reverseLookup(phoneNumber));
+    phoneBook.add("Dennis", phoneNumber);
+    phoneBook.remove("Dennis", 0);
+    assertTrue("Confirming that item is removed", phoneBook.lookup("Dennis").size() == 0);
   }
 }
