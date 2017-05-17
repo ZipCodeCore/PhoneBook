@@ -60,11 +60,11 @@ public class PhonebookEntryTests  {
     @Test
     public void testRandomPhoneNumberHasProperSyntax() {
 
-        String[] phoneNumbers = new String[100000];
-        for (int index = 0; index < phoneNumbers.length; index++) {
-            phoneNumbers[index] = PhonebookEntry.generateRandomPhoneNumber();
+        String[] phonebookEntries = new String[100000];
+        for (int index = 0; index < phonebookEntries.length; index++) {
+            phonebookEntries[index] = PhonebookEntry.generateRandomPhoneNumber();
         }
-        for (String phoneNumber : phoneNumbers) {
+        for (String phoneNumber : phonebookEntries) {
             Assert.assertTrue((phoneNumber.matches("\\(\\d{3}\\)-\\d{3}-\\d{4}")));
         }
 

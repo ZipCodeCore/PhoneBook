@@ -59,7 +59,7 @@ public class PhonebookEntry implements Comparable<PhonebookEntry> {
 
 
     public static String generateRandomName() {
-        return generateRandomLastName() + ", " + generateRandomFirstName();
+         return generateRandomLastName() + ", " + generateRandomFirstName();
     }
 
 

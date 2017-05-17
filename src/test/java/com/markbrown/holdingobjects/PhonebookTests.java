@@ -2,8 +2,10 @@ package com.markbrown.holdingobjects;
 
 import org.junit.Test;
 import org.junit.Assert;
+import org.slf4j.*;
 
 public class PhonebookTests {
+
 
     @Test
     public void testAdditionOfEntryToPhoneBook() {
@@ -83,4 +85,59 @@ public class PhonebookTests {
         Assert.assertTrue(!expectedOutput.equals(actualOutput));
     }
 
+    @Test
+    public void testPrintAllNames() {
+        //Given
+        Phonebook phonebook = new Phonebook();
+        PhonebookEntry phonebookEntryTwo = new PhonebookEntry();
+        phonebookEntryTwo.addValidPhonebookNameToEntry("Krusty", "Krab");
+        phonebookEntryTwo.addValidPhoneNumberToEntry(302, 598,1987);
+        phonebook.addEntryToPhonebook(phonebookEntryTwo);
+        PhonebookEntry phonebookEntryThree = new PhonebookEntry();
+        phonebookEntryThree.addValidPhonebookNameToEntry("Squarepants", "Spongebob");
+        phonebookEntryThree.addValidPhoneNumberToEntry(598, 888,2212);
+        phonebook.addEntryToPhonebook(phonebookEntryThree);
+        PhonebookEntry phonebookEntryFour = new PhonebookEntry();
+        phonebookEntryFour.addValidPhonebookNameToEntry("Dog", "Alpha");
+        phonebookEntryFour.addValidPhoneNumberToEntry(777, 432,1134);
+        phonebook.addEntryToPhonebook(phonebookEntryFour);
+        int expectedOutput = 3;
+
+
+        //When
+        int actualOutput = phonebook.getPhonebookEntries().size();
+        Phonebook.printAllNames(phonebook);
+
+        //Assert
+        Assert.assertTrue(expectedOutput == actualOutput);
+
+    }
+
+    @Test
+    public void testPrintAllEntries() {
+        //Given
+        Phonebook phonebook = new Phonebook();
+        PhonebookEntry phonebookEntryTwo = new PhonebookEntry();
+        phonebookEntryTwo.addValidPhonebookNameToEntry("Krusty", "Krab");
+        phonebookEntryTwo.addValidPhoneNumberToEntry(302, 598,1987);
+        phonebook.addEntryToPhonebook(phonebookEntryTwo);
+        PhonebookEntry phonebookEntryThree = new PhonebookEntry();
+        phonebookEntryThree.addValidPhonebookNameToEntry("Squarepants", "Spongebob");
+        phonebookEntryThree.addValidPhoneNumberToEntry(598, 888,2212);
+        phonebook.addEntryToPhonebook(phonebookEntryThree);
+        PhonebookEntry phonebookEntryFour = new PhonebookEntry();
+        phonebookEntryFour.addValidPhonebookNameToEntry("Dog", "Alpha");
+        phonebookEntryFour.addValidPhoneNumberToEntry(777, 432,1134);
+        phonebook.addEntryToPhonebook(phonebookEntryFour);
+        int expectedOutput = 3;
+
+
+        //When
+        int actualOutput = phonebook.getPhonebookEntries().size();
+        Phonebook.printAllEntries(phonebook);
+
+        //Assert
+        Assert.assertTrue(expectedOutput == actualOutput);
+
+    }
 }
