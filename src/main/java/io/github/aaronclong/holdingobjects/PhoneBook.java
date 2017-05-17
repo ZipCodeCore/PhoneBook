@@ -1,24 +1,31 @@
 package io.github.aaronclong.holdingobjects;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
-import java.util.Set;
 
 /**
  * Created by aaronlong on 5/16/17.
  */
 public class PhoneBook {
-  private HashMap<String, PhoneNumber> phoneBook;
+  private HashMap<String, ArrayList<PhoneNumber>> phoneBook;
 
   public PhoneBook() {
     phoneBook = new HashMap<>();
   }
 
   public void add(String name, PhoneNumber phoneNumber) {
-    phoneBook.put(name, phoneNumber);
+    ArrayList<PhoneNumber> indexList;
+    if (phoneBook.containsKey(name)) {
+      indexList = phoneBook.get(name);
+    } else {
+      indexList = new ArrayList<>();
+    }
+    indexList.add(phoneNumber);
+    phoneBook.put(name, indexList);
   }
 
-  public PhoneNumber lookup(String name) {
+  public ArrayList<PhoneNumber> lookup(String name) {
     return phoneBook.get(name);
   }
   public String reverseLookup(PhoneNumber number) {
@@ -29,7 +36,7 @@ public class PhoneBook {
   }
 
   private String traverseMapForValue(PhoneNumber number) {
-    for (Entry<String, PhoneNumber> set : phoneBook.entrySet()) {
+    for (Entry<String, ArrayList<PhoneNumber>> set : phoneBook.entrySet()) {
       if (number.equals(set.getValue())) {
         return set.getKey();
       }
@@ -38,11 +45,21 @@ public class PhoneBook {
   }
 
   public boolean remove(String name) {
-    PhoneNumber num = phoneBook.get(name);
+    ArrayList<PhoneNumber> num = phoneBook.remove(name);
     if (num == null) {
       return false;
     }
     return true;
   }
+
+  public boolean remove(String name, int index) {
+    ArrayList<PhoneNumber> num = phoneBook.get(name);
+    if (num == null) {
+      return false;
+    }
+    num.remove(index);
+    return true;
+  }
+
 
 }
