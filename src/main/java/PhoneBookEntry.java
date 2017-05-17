@@ -1,10 +1,12 @@
+import java.util.ArrayList;
+
 /**
  * Created by sarahweisser on 5/16/17.
  */
 public class PhoneBookEntry {
 
     private String name;
-    private String formattedPhoneNumber;
+    private ArrayList<String> phoneNumbers = new ArrayList<String>();
     private String phoneNumber;
 
     public String getName() {
@@ -14,30 +16,23 @@ public class PhoneBookEntry {
         this.name = name;
     }
 
-    public String getFormattedPhoneNumber() {
-        return formattedPhoneNumber;
+    public void addNumber(String phoneNumber) {
+        this.phoneNumbers.add(formatPhoneNumber(phoneNumber));
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-        this.formattedPhoneNumber = formatPhoneNumber(phoneNumber);
+    public ArrayList<String> getFormattedPhoneNumbers() {
+        return phoneNumbers;
     }
+
 
     public String formatPhoneNumber(String phoneNumber) {
-        formattedPhoneNumber = "(" + phoneNumber.substring(0, 3) + ") " + phoneNumber.substring(3, 6) + "-"
+        String formattedPhoneNumber = "(" + phoneNumber.substring(0, 3) + ") " + phoneNumber.substring(3, 6) + "-"
                 + phoneNumber.substring(6, 10);
         return formattedPhoneNumber;
     }
 
-    public PhoneBookEntry(String name, String phoneNumber) {
+    public PhoneBookEntry(String name) {
         this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.formattedPhoneNumber = formatPhoneNumber(phoneNumber);
-    }
-
-    @Override
-    public String toString() {
-        return "Name: " + name + "\nPhone Number: " + formattedPhoneNumber;
     }
 
 }
