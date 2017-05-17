@@ -5,7 +5,7 @@ import java.util.*;
  */
 public class PhoneBook {
 
-    static TreeMap<String, String> PhoneBook = new TreeMap<String, String>();
+    static Map<String, String> PhoneBook = new TreeMap<String, String>();
 
     public static void addPhoneBookEntry(String phoneNumber, String name){
         PhoneBook.put(phoneNumber, name);
