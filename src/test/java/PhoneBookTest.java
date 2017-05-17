@@ -1,10 +1,10 @@
+import com.sun.org.apache.regexp.internal.RE;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Created by gregoryfletcher on 5/16/17.
@@ -19,6 +19,18 @@ public class PhoneBookTest {
 	{
 		phoneBook = new PhoneBook();
 		thomas = new PhoneBookEntry("Thomas");
+	}
+
+	@Test(expected = InvalidPhoneNumberFormatException.class)
+	public void testInvalidPhoneNumberFormatException() throws InvalidPhoneNumberFormatException
+	{
+		phoneBook.reverseLookup("2");
+	}
+
+	@Test(expected = RecordNotFoundException.class)
+	public void testRecordNotFoundException() throws RecordNotFoundException, InvalidPhoneNumberFormatException
+	{
+		phoneBook.reverseLookup("(302)-838-7728");
 	}
 
 	@Test
@@ -54,7 +66,7 @@ public class PhoneBookTest {
 	{
 		//: Given
 		phoneBook.addPhoneBookEntryToPhoneBook(thomas);
-		phoneBook.removePhoneBookEntryFromPhoneBook(thomas);
+		phoneBook.removeRecord(thomas);
 		PhoneBookEntry expected = null;
 
 		//: When
@@ -90,10 +102,10 @@ public class PhoneBookTest {
 		PhoneBookEntry bob = new PhoneBookEntry("Bob");
 		phoneBook.addPhoneBookEntryToPhoneBook(thomas);
 		phoneBook.addPhoneBookEntryToPhoneBook(rob);
-		rob.addNumberToContact("(302) - 555 - 5555");
+		rob.addNumberToContact("(302) 555 - 5555");
 		phoneBook.addPhoneBookEntryToPhoneBook(bob);
-		bob.addNumberToContact("(302) - 444 - 4444");
-		String expected = "Bob, (302) - 444 - 4444, Rob, (302) - 555 - 5555, Thomas, (302) - 333 - 3333";
+		bob.addNumberToContact("(302) 444 - 4444");
+		String expected = "Bob, (302) 444 - 4444, Rob, (302) 555 - 5555, Thomas, (302) 333 - 3333";
 
 		//: When
 		String actual = phoneBook.listAllPhoneBookEntries();
@@ -103,15 +115,15 @@ public class PhoneBookTest {
 	}
 
 	@Test
-	public void testReverseLookup()
+	public void testReverseLookup() throws InvalidPhoneNumberFormatException
 	{
 		//: Given
 		phoneBook.addPhoneBookEntryToPhoneBook(thomas);
-		thomas.addNumberToContact("(302) - 333 - 3333");
+		thomas.addNumberToContact("(302) 333 - 3333");
 		String expected = "Thomas";
 
 		//: When
- 		String actual = phoneBook.reverseLookup("(302) - 333 - 3333");
+ 		String actual = phoneBook.reverseLookup("(302) 333 - 3333");
 
 		//: Then
 		assertEquals("These names should be the same.", expected, actual);

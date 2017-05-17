@@ -1,3 +1,5 @@
+import com.sun.media.sound.InvalidFormatException;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -16,7 +18,7 @@ public class PhoneBook
 		phoneBook.put(entry.getContactName(), entry);
 	}
 
-	public void removePhoneBookEntryFromPhoneBook (PhoneBookEntry entry)
+	public void removeRecord(PhoneBookEntry entry)
 	{
 		phoneBook.remove(entry.getContactName());
 	}
@@ -53,17 +55,21 @@ public class PhoneBook
 		return phoneNumber;
 	}
 
-	public String reverseLookup(String phoneNumber)
+	public String reverseLookup(String phoneNumber) throws InvalidPhoneNumberFormatException, RecordNotFoundException
 	{
+		if (!phoneNumber.matches("\\(\\d{3}\\)-\\d{3}-\\d{4}"))
+		{
+			throw new InvalidPhoneNumberFormatException();
+		}
 		Iterator<String> iter = phoneBook.keySet().iterator();
 		while(iter.hasNext())
 		{
 			String name = iter.next();
-			if(phoneBook.get(name).getContactNumbers().contains(phoneNumber))
-			{
-				return name;
-			}
+				if (phoneBook.get(name).getContactNumbers().contains(phoneNumber))
+				{
+					return name;
+				}
 		}
-		return null;
+		throw new RecordNotFoundException();
 	}
 }
