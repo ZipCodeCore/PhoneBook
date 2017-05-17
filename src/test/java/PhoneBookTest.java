@@ -10,7 +10,6 @@ import java.util.TreeMap;
 public class PhoneBookTest {
 
     PhoneBook phoneBook;
-    //TreeMap<String, String> testPhoneBook = new TreeMap<String, String>();
 
     @Before
     public void setUp(){
@@ -84,6 +83,22 @@ public class PhoneBookTest {
 
         //Then
         Assert.assertEquals("The expected String is ", expectedSet, actualSet);
+
+    }
+
+    @Test
+    public void reverseLookUpTest(){
+        //Given
+        String expectedName = "Brian";
+        String phoneNumber = "302-757-1634";
+
+        //When
+        phoneBook.addEntries(expectedName, phoneNumber);
+        String actualName = phoneBook.reverseLookUp(phoneNumber);
+
+        //Then
+        Assert.assertEquals("The expected phone number is ", expectedName, actualName);
+
 
     }
 

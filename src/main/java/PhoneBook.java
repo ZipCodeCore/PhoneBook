@@ -8,10 +8,9 @@ import java.util.Map;
  */
 public class PhoneBook {
 
-    private String name;
-    private String phoneNumber;
-    public static TreeMap<String, String> phoneBook = new TreeMap<String, String>();
-
+    //private String name;
+    //private String phoneNumber;
+    public static Map<String, String> phoneBook = new TreeMap<String, String>();
 
     public PhoneBook(){}
 
@@ -24,8 +23,8 @@ public class PhoneBook {
 
 
     public String addEntries(String name, String phoneNumber){
-
         phoneBook.put(name, phoneNumber);
+
         return "The entry associated with " + phoneBook.get(name) + " was added to phoneBook";
     }
 
@@ -34,6 +33,7 @@ public class PhoneBook {
 
         String number = phoneBook.get(name);
         phoneBook.remove(name);
+
         return "The entry '" + name + " " + number + "' was removed from phoneBook." +
                 "It is now "+ phoneBook.get(name) + ".";
     }
@@ -45,9 +45,15 @@ public class PhoneBook {
     }
 
 
-    public String reverseLookUp(){
+    public String reverseLookUp(String phoneNumber){
+        String name = "";
+        for(Map.Entry<String, String> entry : phoneBook.entrySet()){
+            if(entry.getValue().equals(phoneNumber))
+                name += entry.getKey();
+            //break;
 
-        
+        }
+        return name;
     }
 
 }
