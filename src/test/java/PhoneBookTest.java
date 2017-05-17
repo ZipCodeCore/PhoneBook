@@ -2,6 +2,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by gregoryfletcher on 5/16/17.
@@ -9,18 +10,19 @@ import static org.junit.Assert.assertEquals;
 public class PhoneBookTest {
 
 	PhoneBook phoneBook;
+	PhoneBookEntry thomas;
 
 	@Before
 	public void startup()
 	{
 		phoneBook = new PhoneBook();
+		thomas = new PhoneBookEntry("thomas", "(302) - 333 - 3333");
 	}
 
 	@Test
 	public void testLookup()
 	{
 		//: Given
-		PhoneBookEntry thomas = new PhoneBookEntry("thomas", "(302) - 333 - 3333");
 		String expected = thomas.getContactNumber();
 
 		//: When
@@ -28,6 +30,20 @@ public class PhoneBookTest {
 
 		//: Then
 		assertEquals("These two entries should be equal.", expected, actual);
+	}
+
+	@Test
+	public void testAddPhoneBookEntryToPhoneBook()
+	{
+		//: Given
+		phoneBook.addPhoneBookEntryToPhoneBook(thomas);
+		PhoneBookEntry expected = thomas;
+
+		//: When
+		PhoneBookEntry actual = phoneBook.getPhoneBookEntryFromPhoneBook(thomas);
+
+		//: Then
+		assertEquals("These two entries should be the same.", expected, actual);
 	}
 
 }

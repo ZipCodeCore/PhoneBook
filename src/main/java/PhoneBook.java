@@ -7,9 +7,24 @@ public class PhoneBook {
 
 	TreeMap<String, PhoneBookEntry> phoneBook = new TreeMap<>();
 
-	public String lookup(PhoneBookEntry phoneBookName)
+	public void addPhoneBookEntryToPhoneBook (PhoneBookEntry phoneBookEntryName)
 	{
-		String phoneNumber = phoneBookName.getContactNumber();
+		phoneBook.put(phoneBookEntryName.getContactName(), phoneBookEntryName);
+	}
+
+	public void removePhoneBookEntryFromPhoneBook (PhoneBookEntry phoneBookEntryName)
+	{
+
+	}
+
+	public PhoneBookEntry getPhoneBookEntryFromPhoneBook (PhoneBookEntry phoneBookEntryName)
+	{
+		return phoneBook.get(phoneBookEntryName.getContactName());
+	}
+
+	public String lookup(PhoneBookEntry phoneBookEntryName)
+	{
+		String phoneNumber = phoneBookEntryName.getContactNumber();
 		return phoneNumber;
 	}
 
