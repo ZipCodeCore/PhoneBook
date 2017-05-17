@@ -108,6 +108,24 @@ public class PhoneBookTest {
         Assert.assertEquals("Vidya", actual);
     }
 
+    @Test
+    public void lookUpNameWithMultiPhoneNumberTest(){
+
+
+        //: Given
+        phoneBook.addEntry("Vidya", "123-625-5678");
+        phoneBook.addEntry("Vidya", "423-305-4678");
+        phoneBook.addEntry("Vidya", "623-665-5678");
+        phoneBook.addEntry("Vidya", "183-385-2698");
+
+
+        //: When
+
+        String actual = phoneBook.lookUpName("Vidya");
+
+        //: Then
+        Assert.assertEquals("623-665-5678  423-305-4678  183-385-2698  123-625-5678", actual);
+    }
 
 }
 
