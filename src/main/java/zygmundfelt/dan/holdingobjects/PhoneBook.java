@@ -69,14 +69,19 @@ public class PhoneBook {
         return sb.toString();
     }
 
-    ArrayList<String> lookUp(String name) {
-        return map.get(name);
+    ArrayList<String> lookUp(String name) throws RecordNotPresentException{
+        ArrayList<String> result = map.get(name);
+        if(result == null) {
+            throw new RecordNotPresentException();
+        }
+        return result;
     }
 
     /*
     Helper method for addRecord.
      */
-    private ArrayList<String> createNewRecord(String name, String phoneNumber) {
+    private ArrayList<String> createNewRecord(String name, String phoneNumber) throws InvalidPhoneNumberFormatException {
+        validatePhoneNumber(phoneNumber);
         ArrayList<String> list = new ArrayList<String>();
         list.add(phoneNumber);
         return map.put(name, list);
@@ -85,7 +90,7 @@ public class PhoneBook {
     /*
     Not sure if it'd be better to switch the blocks in if and else.
      */
-    ArrayList<String> addRecord(String name, String phoneNumber) {
+    ArrayList<String> addRecord(String name, String phoneNumber) throws InvalidPhoneNumberFormatException {
         if(map.get(name) == null) {
             return createNewRecord(name, phoneNumber);
         } else {
@@ -94,18 +99,19 @@ public class PhoneBook {
         }
     }
 
-    ArrayList<String> addRecords(String name, String... phoneNumbers) {
+    ArrayList<String> addRecords(String name, String... phoneNumbers) throws InvalidPhoneNumberFormatException {
         for(String s : phoneNumbers) {
             addRecord(name, s);
         }
         return map.get(name);
     }
 
-    ArrayList<String> removeRecordByName(String name) {
+    ArrayList<String> removeRecordByName(String name) throws RecordNotPresentException{
+        lookUp(name);
         return map.remove(name);
     }
 
-    boolean removePhoneNumber(String phoneNumber) {
+    boolean removePhoneNumber(String phoneNumber) throws RecordNotPresentException {
         String name = reverseLookUp(phoneNumber);
         return name != null && map.get(name).remove(phoneNumber);
     }
@@ -128,13 +134,13 @@ public class PhoneBook {
         return sb.toString();
     }
 
-    String reverseLookUp(String number) {
+    String reverseLookUp(String number) throws RecordNotPresentException {
         for(String s : map.keySet()) {
             if(map.get(s).contains(number)) {
                 return s;
             }
         }
-        return null;
+        throw new RecordNotPresentException();
     }
 
 }
