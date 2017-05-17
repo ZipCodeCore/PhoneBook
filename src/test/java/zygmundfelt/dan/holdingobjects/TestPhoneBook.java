@@ -36,7 +36,7 @@ public class TestPhoneBook {
     }
 
     @Test (expected = InvalidPhoneNumberFormatException.class)
-    public void addInvalidPhoneNumberFormatTest() {
+    public void addInvalidPhoneNumberFormatTest() throws InvalidPhoneNumberFormatException {
         emptyPhoneBook.addRecord("Dan,Dan", "Dan,Dan");
     }
 
@@ -52,12 +52,12 @@ public class TestPhoneBook {
     }
 
     @Test (expected = InvalidPhoneNumberFormatException.class)
-    public void addInvalidPhoneNumberFormatInMiddleOfListOfAdds() {
+    public void addInvalidPhoneNumberFormatInMiddleOfListOfAdds() throws InvalidPhoneNumberFormatException {
         emptyPhoneBook.addRecords("Zyg,Dan", "(867) 530-9123", "(123) 456-7890", "blahblahblah", "(321) 654-7890");
     }
 
     @Test
-    public void addRecordsNewRecordTest() {
+    public void addRecordsNewRecordTest() throws InvalidPhoneNumberFormatException {
         emptyPhoneBook.addRecords("Zyg,Dan", "(123) 456-7890", "(987) 654-3210", "(654) 321-9800");
         int expected = 3;
 
@@ -66,8 +66,8 @@ public class TestPhoneBook {
         Assert.assertEquals(expected, actual);
     }
 
-    @Test //TODO - not a great test
-    public void removeRecordByNameValidTest() {
+    @Test
+    public void removeRecordByNameValidTest() throws RecordNotPresentException {
         ArrayList<String> expected = phoneBook.map.get("Villain,MetalFace");
 
         ArrayList<String> actual = phoneBook.removeRecordByName("Villain,MetalFace");
@@ -76,12 +76,12 @@ public class TestPhoneBook {
     }
 
     @Test (expected = RecordNotPresentException.class)
-    public void removeRecordByNameNonexistentTest() {
+    public void removeRecordByNameNonexistentTest() throws RecordNotPresentException {
         phoneBook.removeRecordByName("Puft,Stay");
     }
 
     @Test
-    public void removePhoneNumberValidTest() {
+    public void removePhoneNumberValidTest() throws RecordNotPresentException {
         String expected = "[(555) 555-5555]";
 
         phoneBook.removePhoneNumber("(888) 888-8888");
@@ -91,12 +91,12 @@ public class TestPhoneBook {
     }
 
     @Test (expected = RecordNotPresentException.class)
-    public void removeNonexistentPhoneNumberTest() {
+    public void removeNonexistentPhoneNumberTest() throws RecordNotPresentException {
         phoneBook.removePhoneNumber("(321) 654-0987");
     }
 
     @Test
-    public void lookUpValidEntryTest() {
+    public void lookUpValidEntryTest() throws RecordNotPresentException {
         String name = "Ated,Hyphen";
         ArrayList<String> expected = phoneBook.map.get("Ated,Hyphen");
 
@@ -106,7 +106,7 @@ public class TestPhoneBook {
     }
 
     @Test (expected = RecordNotPresentException.class)
-    public void lookUpNonexistentEntryTest() {
+    public void lookUpNonexistentEntryTest() throws RecordNotPresentException {
         phoneBook.lookUp("Ated,NoSuch");
     }
 
@@ -149,7 +149,7 @@ public class TestPhoneBook {
     }
 
     @Test
-    public void reverseLookUpValidPhoneNumberTest() {
+    public void reverseLookUpValidPhoneNumberTest() throws RecordNotPresentException {
         String expected = "Smith,Stan";
 
         String actual = phoneBook.reverseLookUp("(333) 555-3333");
@@ -158,7 +158,7 @@ public class TestPhoneBook {
     }
 
     @Test (expected = RecordNotPresentException.class)
-    public void reverseLookUpNonexistentNumberTest() {
+    public void reverseLookUpNonexistentNumberTest() throws RecordNotPresentException {
         phoneBook.reverseLookUp("(111) 222-3333");
     }
 

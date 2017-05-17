@@ -68,12 +68,17 @@ public class PhoneBook {
     /*
     Not sure if it'd be better to switch the blocks in if and else.
      */
-    ArrayList<String> addRecord(String name, String phoneNumber) throws InvalidPhoneNumberFormatException {
-        if(map.get(name) == null) {
-            return createNewRecord(name, phoneNumber);
-        } else {
-            map.get(name).add(phoneNumber);
-            return map.get(name);
+    ArrayList<String> addRecord(String name, String phoneNumber) {
+        try {
+            validatePhoneNumber(phoneNumber);
+            if(map.get(name) == null) {
+                return createNewRecord(name, phoneNumber);
+            } else {
+                map.get(name).add(phoneNumber);
+                return map.get(name);
+            }
+        } catch (InvalidPhoneNumberFormatException e) {
+            return null;
         }
     }
 
