@@ -168,4 +168,26 @@ public class PhoneBookTest {
         // then
         Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void removeOneNumberFromEntryTest() {
+        // given
+        PhoneBook book = new PhoneBook();
+        PhoneBookEntry entry1 = new PhoneBookEntry("Sarah");
+        entry1.addNumber("4435401564");
+        entry1.addNumber("8885551234");
+        PhoneBookEntry entry2 = new PhoneBookEntry("Jenny");
+        entry2.addNumber("3028675309");
+        book.addEntry(entry1);
+        book.addEntry(entry2);
+        String expected = "(443) 540-1564";
+        book.removeNumberFromEntry("Sarah", "(888) 555-1234");
+
+        // when
+        String actual = book.lookup("Sarah");
+
+        // then
+        Assert.assertEquals(expected, actual);
+
+    }
 }

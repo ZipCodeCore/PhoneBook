@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * Created by sarahweisser on 5/16/17.
@@ -57,4 +54,14 @@ public class PhoneBook {
         return null;
     }
 
+    public void removeNumberFromEntry(String key, String phoneNumber) {
+        PhoneBookEntry entry = new PhoneBookEntry(key);
+        String [] numbers = lookup(key).split(", ");
+        ArrayList<String> editedNumbers = new ArrayList<String>(Arrays.asList(numbers));
+        editedNumbers.remove(phoneNumber);
+        for (String number : editedNumbers) {
+            entry.addNumber(number);
+        }
+        phoneBook.put(entry.getName(), entry.getFormattedPhoneNumbers().toString());
+    }
 }
