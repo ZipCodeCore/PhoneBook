@@ -27,14 +27,16 @@ public class PhoneBookTest {
         PhoneBook book = new PhoneBook();
         PhoneBookEntry entry = new PhoneBookEntry("Sarah", "4435401564");
         book.addEntry(entry);
-        book.removeEntry("Sarah");
+        String expectedRemoved = "(443) 540-1564";
         int expected = 0;
 
         // when
+        String removed = book.removeEntry("Sarah");
         int actual = book.getPhoneBook().size();
 
         // then
         Assert.assertEquals(expected, actual);
+        Assert.assertEquals(expectedRemoved, removed);
     }
 
     @Test
@@ -47,6 +49,21 @@ public class PhoneBookTest {
 
         // when
         String actual = book.lookup("Sarah");
+
+        // then
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void lookupEntryNotInBookTest() {
+        // given
+        PhoneBook book = new PhoneBook();
+        PhoneBookEntry entry = new PhoneBookEntry("Sarah", "4435401564");
+        book.addEntry(entry);
+        String expected = null;
+
+        // when
+        String actual = book.lookup("Sara");
 
         // then
         Assert.assertEquals(expected, actual);
@@ -67,5 +84,39 @@ public class PhoneBookTest {
 
         // then
         Assert.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void reverseLookupByPhoneNumber() {
+        // given
+        PhoneBook book = new PhoneBook();
+        PhoneBookEntry entry1 = new PhoneBookEntry("Sarah", "4435401564");
+        PhoneBookEntry entry2 = new PhoneBookEntry("Jenny", "3028675309");
+        book.addEntry(entry1);
+        book.addEntry(entry2);
+        String expected = "Jenny";
+
+        // when
+        String actual = book.reverseLookup("(302) 867-5309");
+
+        // then
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void reverseLookupByPhoneNumberNotFoundTest() {
+        // given
+        PhoneBook book = new PhoneBook();
+        PhoneBookEntry entry1 = new PhoneBookEntry("Sarah", "4435401564");
+        PhoneBookEntry entry2 = new PhoneBookEntry("Jenny", "3028675309");
+        book.addEntry(entry1);
+        book.addEntry(entry2);
+        String expected = null;
+
+        // when
+        String actual = book.reverseLookup("(402) 867-5309");
+
+        // then
+        Assert.assertEquals(expected, actual);
     }
 }
