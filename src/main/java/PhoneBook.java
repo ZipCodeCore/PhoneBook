@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -25,7 +24,7 @@ public class PhoneBook {
         contactsPhoneNumbers.add(phoneNumber);
     }
 
-    public void remove(String name) {
+    public void removeContact(String name) {
         contacts.remove(name);
     }
 
@@ -55,7 +54,7 @@ public class PhoneBook {
     }
 
     //TODO have throw a UnableToFindAssociatedPhoneNumberException;
-    public ArrayList<PhoneNumber> lookup(String name){
+    public ArrayList<PhoneNumber> lookup(String name) throws NonExistentEntryException {
         return contacts.get(name);
     }
 

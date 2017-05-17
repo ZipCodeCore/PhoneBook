@@ -36,7 +36,7 @@ public class PhoneBookTests {
         phoneBook.add(name, phoneNumber);
 
         //When
-        phoneBook.remove(name);
+        phoneBook.removeContact(name);
 
         //Then
         assertTrue(phoneBook.getContacts().isEmpty());
