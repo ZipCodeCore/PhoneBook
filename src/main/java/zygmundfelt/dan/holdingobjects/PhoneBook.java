@@ -28,10 +28,45 @@ import java.util.TreeMap;
 
 public class PhoneBook {
 
-    TreeMap<String,ArrayList<String>> map;
+    Map<String,ArrayList<String>> map;
 
     PhoneBook() {
         map = new TreeMap<String,ArrayList<String>>();
+    }
+
+    private String validatePhoneNumber(String phoneNumber) throws InvalidPhoneNumberFormatException {
+        if (phoneNumber.matches("\\(\\d{3}\\) \\d{3}-\\d{4}")) {   // Valid phone number
+            return phoneNumber;
+        }
+        try {
+            Long.parseLong(phoneNumber);
+        } catch (Exception e) {
+            throw new InvalidPhoneNumberFormatException();
+        }
+        return buildPhoneNumber(phoneNumber);
+    }
+
+    private String buildPhoneNumber(String phoneNumber) throws InvalidPhoneNumberFormatException {
+        if(phoneNumber.length() != 10 || phoneNumber.charAt(0) == 0){
+            throw new InvalidPhoneNumberFormatException();
+        }
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("(");
+        sb.append(phoneNumber.charAt(0));
+        sb.append(phoneNumber.charAt(1));
+        sb.append(phoneNumber.charAt(2));
+        sb.append(") ");
+        sb.append(phoneNumber.charAt(3));
+        sb.append(phoneNumber.charAt(4));
+        sb.append(phoneNumber.charAt(5));
+        sb.append("-");
+        sb.append(phoneNumber.charAt(6));
+        sb.append(phoneNumber.charAt(7));
+        sb.append(phoneNumber.charAt(8));
+        sb.append(phoneNumber.charAt(9));
+
+        return sb.toString();
     }
 
     ArrayList<String> lookUp(String name) {

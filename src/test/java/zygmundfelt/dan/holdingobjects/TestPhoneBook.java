@@ -31,6 +31,11 @@ public class TestPhoneBook {
         Assert.assertEquals(expected,actual);
     }
 
+    @Test (expected = InvalidPhoneNumberFormatException.class)
+    public void addInvalidPhoneNumberFormatTest() {
+        emptyPhoneBook.addRecord("Dan,Dan", "Dan,Dan");
+    }
+
     @Test
     public void addMultipleToSameNameTest() {
         emptyPhoneBook.addRecord("Zyg,Dan", "(123) 456-7890");
@@ -40,6 +45,11 @@ public class TestPhoneBook {
         int actual = emptyPhoneBook.map.get("Zyg,Dan").size();
 
         Assert.assertEquals(expected,actual);
+    }
+
+    @Test (expected = InvalidPhoneNumberFormatException.class)
+    public void addInvalidPhoneNumberFormatInMiddleOfListOfAdds() {
+        emptyPhoneBook.addRecords("Zyg,Dan", "(867) 530-9123", "(123) 456-7890", "blahblahblah", "(321) 654-7890");
     }
 
     @Test
@@ -61,11 +71,9 @@ public class TestPhoneBook {
         Assert.assertTrue(expected == actual);
     }
 
-    @Test
+    @Test (expected = RecordNotPresentException.class)
     public void removeRecordByNameNonexistentTest() {
-        ArrayList<String> result = phoneBook.removeRecordByName("Puft,Stay");
-
-        Assert.assertTrue(result == null);
+        phoneBook.removeRecordByName("Puft,Stay");
     }
 
     @Test
@@ -78,18 +86,9 @@ public class TestPhoneBook {
         Assert.assertEquals(expected, actual);
     }
 
-    @Test
+    @Test (expected = RecordNotPresentException.class)
     public void removeNonexistentPhoneNumberTest() {
-        Assert.assertFalse(phoneBook.removePhoneNumber("(321) 654-0987"));
-    }
-
-    @Test
-    public void removeNonexistentEntryTest() {
-        Long expected = null;
-
-        ArrayList<String> actual = phoneBook.removeRecordByName("Millain,VetalFace");
-
-        Assert.assertEquals(expected, actual);
+        phoneBook.removePhoneNumber("(321) 654-0987");
     }
 
     @Test
@@ -102,14 +101,9 @@ public class TestPhoneBook {
         Assert.assertEquals(expected, actual);
     }
 
-    @Test
+    @Test (expected = RecordNotPresentException.class)
     public void lookUpNonexistentEntryTest() {
-        String name = "Ated,NoSuch";
-        ArrayList<String> expected = null;
-
-        ArrayList<String> actual = phoneBook.lookUp(name);
-
-        Assert.assertEquals(expected, actual);
+        phoneBook.lookUp("Ated,NoSuch");
     }
 
     @Test
@@ -159,11 +153,9 @@ public class TestPhoneBook {
         Assert.assertEquals(expected, actual);
     }
 
-    @Test
+    @Test (expected = RecordNotPresentException.class)
     public void reverseLookUpNonexistentNumberTest() {
-        String result = phoneBook.reverseLookUp("(111) 222-3333");
-
-        Assert.assertTrue(result == null);
+        phoneBook.reverseLookUp("(111) 222-3333");
     }
 
 }
