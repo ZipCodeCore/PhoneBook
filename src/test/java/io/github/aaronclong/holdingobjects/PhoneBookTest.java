@@ -56,4 +56,11 @@ public class PhoneBookTest {
     phoneBook.remove("Dennis", 0);
     assertTrue("Confirming that item is removed", phoneBook.lookup("Dennis").size() == 0);
   }
+
+  @Test
+  public void testClearOfItem() {
+    phoneBook.add("Dennis", phoneNumber);
+    phoneBook.remove("Dennis");
+    assertNull("Confirming entire entry was removed", phoneBook.lookup("Dennis"));
+  }
 }

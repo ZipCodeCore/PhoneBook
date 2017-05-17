@@ -10,7 +10,7 @@ public class PhoneNumber {
 
   private String formattedNumber;
 
-  private PhoneNumber(int theArea, int theOffice, int theLine) {
+  private PhoneNumber(int theArea, int theOffice, int theLine) throws InvalidNumberException {
     areaCode = theArea;
     centralOfficeCode = theOffice;
     phoneLineCode = theLine;
@@ -19,15 +19,9 @@ public class PhoneNumber {
 
   static PhoneNumber registerNumber(int areaCode, int centralOfficeCod,
                                     int phoneLineCode) throws InvalidNumberException {
-    if (!isValidDigitRange(areaCode, 100, 999)) {
-      throw new InvalidNumberException();
-    }
-    if (!isValidDigitRange(centralOfficeCod, 100, 999)) {
-      throw new InvalidNumberException();
-    }
-    if (!isValidDigitRange(phoneLineCode, 1000, 9999)) {
-      throw new InvalidNumberException();
-    }
+    isValidDigitRange(areaCode, 100, 999);
+    isValidDigitRange(centralOfficeCod, 100, 999);
+    isValidDigitRange(phoneLineCode, 1000, 9999);
     return new PhoneNumber(areaCode, centralOfficeCod, phoneLineCode);
   }
 
@@ -40,7 +34,12 @@ public class PhoneNumber {
     formattedNumber = String.format("(%d)-%d-%d", areaCode, centralOfficeCode, phoneLineCode);
   }
 
-  private static boolean isValidDigitRange(int digit, int startLimit, int endLimit) {
-    return digit >= startLimit && digit <= endLimit;
+  private static boolean isValidDigitRange(int digit, int startLimit, int endLimit)
+          throws InvalidNumberException {
+    boolean valid = digit >= startLimit && digit <= endLimit;
+    if (!valid) {
+      throw new InvalidNumberException();
+    }
+    return valid;
   }
 }
