@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 public class PhoneBook
 {
     private static final Logger logger = Logger.getLogger(PhoneBook.class.getName());
-    TreeMap<String, String> myPhoneMap = new TreeMap<String, String>();
+    Map<String, String> myPhoneMap = new TreeMap<String, String>();
 
 
     public void addNumber(PhoneNumber newNumber)
@@ -68,7 +68,17 @@ public class PhoneBook
        return entryList;
     }
 
-
+    public String lookUpName(String phoneNumber)
+    {
+        for(String key: myPhoneMap.keySet())
+        {
+            if(myPhoneMap.get(key).equals(phoneNumber))
+            {
+                return key;
+            }
+        }
+        return null;
+    }
 
 
 

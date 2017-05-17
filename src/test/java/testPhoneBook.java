@@ -100,11 +100,19 @@ public class testPhoneBook
         Assert.assertEquals("print out two numbers", expected, actual);
     }
 
-//    @Test void testReverseLookup()
-//    {
-//        //given
-//
-//    }
+    @Test
+    public void testCreateAndAddNumberSearchName()
+    {
+        //given
+        myBook.addNumber("Alla", "8434575004");
+        String expected = "Alla";
+
+        //when
+        String actual = myBook.lookUpName("8434575004");
+
+        //then
+        Assert.assertEquals("Set a phone number and should return phone", expected, actual);
+    }
 
 
 
