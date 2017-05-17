@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed18bca7-f72d-487b-badc-26026a149ac6" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/phonebook/PhoneBook.class" afterPath="$PROJECT_DIR$/target/classes/phonebook/PhoneBook.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/phonebooktest/PhoneBookTest.class" afterPath="$PROJECT_DIR$/target/test-classes/phonebooktest/PhoneBookTest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/phonebook/PhoneBook.java" afterPath="$PROJECT_DIR$/src/main/java/phonebook/PhoneBook.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/phonebooktest/PhoneBookTest.java" afterPath="$PROJECT_DIR$/src/test/java/phonebooktest/PhoneBookTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -16,38 +20,28 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PhoneBook.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PhoneBook.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/phonebook/PhoneBook.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="102" column="9" lean-forward="false" selection-start-line="102" selection-start-column="9" selection-end-line="102" selection-end-column="9" />
+            <state relative-caret-position="407">
+              <caret line="99" column="20" lean-forward="false" selection-start-line="99" selection-start-column="20" selection-end-line="99" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#720#721#0" expanded="true" />
-                <element signature="e#763#764#0" expanded="true" />
+                <element signature="e#1212#1213#0" expanded="true" />
+                <element signature="e#1255#1256#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PhoneBookTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PhoneBookTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/phonebooktest/PhoneBookTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="131" column="38" lean-forward="false" selection-start-line="131" selection-start-column="38" selection-end-line="131" selection-end-column="38" />
+            <state relative-caret-position="1820">
+              <caret line="129" column="14" lean-forward="false" selection-start-line="129" selection-start-column="14" selection-end-line="129" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IndexOutOfBoundsException.java" pinned="false" current-in-tab="false">
-        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/src.zip!/java/lang/IndexOutOfBoundsException.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="37" column="49" lean-forward="false" selection-start-line="37" selection-start-column="49" selection-end-line="37" selection-end-column="49" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -66,7 +60,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/exceptions/RecordNotPresent.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="7" column="46" lean-forward="true" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
+              <caret line="7" column="46" lean-forward="false" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -122,10 +116,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="427" />
-    <option name="y" value="23" />
-    <option name="width" value="853" />
-    <option name="height" value="773" />
+    <option name="x" value="-293" />
+    <option name="y" value="-1057" />
+    <option name="width" value="1920" />
+    <option name="height" value="1057" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -277,85 +271,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.PhoneBookTest.reverseLookupTest">
-    <configuration default="false" name="PhoneBookTest.addBadEntryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="phonebooktest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="HoldingObjects" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="phonebooktest" />
-      <option name="MAIN_CLASS_NAME" value="phonebooktest.PhoneBookTest" />
-      <option name="METHOD_NAME" value="addBadEntryTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="PhoneBookTest.removingNonexistentTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="phonebooktest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="HoldingObjects" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="phonebooktest" />
-      <option name="MAIN_CLASS_NAME" value="phonebooktest.PhoneBookTest" />
-      <option name="METHOD_NAME" value="removingNonexistentTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="PhoneBookTest.whatever" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="phonebooktest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="HoldingObjects" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="phonebooktest" />
-      <option name="MAIN_CLASS_NAME" value="phonebooktest.PhoneBookTest" />
-      <option name="METHOD_NAME" value="whatever" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.PhoneBookTest">
     <configuration default="false" name="PhoneBookTest.reverseLookupTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -382,7 +298,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="PhoneBookTest.listAllNamesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="PhoneBookTest.addNewNumberToEntryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="phonebooktest.*" />
@@ -394,7 +310,85 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="phonebooktest" />
       <option name="MAIN_CLASS_NAME" value="phonebooktest.PhoneBookTest" />
-      <option name="METHOD_NAME" value="listAllNamesTest" />
+      <option name="METHOD_NAME" value="addNewNumberToEntryTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="PhoneBookTest.addEntryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="phonebooktest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="HoldingObjects" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="phonebooktest" />
+      <option name="MAIN_CLASS_NAME" value="phonebooktest.PhoneBookTest" />
+      <option name="METHOD_NAME" value="addEntryTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="PhoneBookTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="phonebooktest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="HoldingObjects" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="phonebooktest" />
+      <option name="MAIN_CLASS_NAME" value="phonebooktest.PhoneBookTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="PhoneBookTest.removeNumberFromEntryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="phonebooktest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="HoldingObjects" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="phonebooktest" />
+      <option name="MAIN_CLASS_NAME" value="phonebooktest.PhoneBookTest" />
+      <option name="METHOD_NAME" value="removeNumberFromEntryTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -645,6 +639,7 @@
       <setting name="passParentEnv" value="true" />
       <setting name="launchBrowser" value="true" />
       <setting name="launchBrowserUrl" value="" />
+      <setting name="depsClasspath" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -773,6 +768,12 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -789,19 +790,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.addBadEntryTest" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.removingNonexistentTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.whatever" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.reverseLookupTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.listAllNamesTest" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.reverseLookupTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.addNewNumberToEntryTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.addEntryTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.PhoneBookTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.removeNumberFromEntryTest" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.reverseLookupTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.listAllNamesTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.removingNonexistentTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.addBadEntryTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.whatever" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.PhoneBookTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.removeNumberFromEntryTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.addEntryTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.addNewNumberToEntryTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.PhoneBookTest.reverseLookupTest" />
       </list>
     </recent_temporary>
   </component>
@@ -820,54 +821,54 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PhoneBookTest_reverseLookupTest - 2017.05.16 at 22h 10m 00s.xml">
-      <configuration name="PhoneBookTest.reverseLookupTest" configurationId="JUnit" />
+    <history-entry file="PhoneBookTest - 2017.05.17 at 15h 47m 07s.xml">
+      <configuration name="PhoneBookTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTest_reverseLookupTest - 2017.05.16 at 22h 10m 45s.xml">
-      <configuration name="PhoneBookTest.reverseLookupTest" configurationId="JUnit" />
+    <history-entry file="PhoneBookTest_removeNumberFromEntryTest - 2017.05.17 at 15h 28m 43s.xml">
+      <configuration name="PhoneBookTest.removeNumberFromEntryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTest_reverseLookupTest - 2017.05.16 at 22h 11m 01s.xml">
-      <configuration name="PhoneBookTest.reverseLookupTest" configurationId="JUnit" />
+    <history-entry file="PhoneBookTest_removeNumberFromEntryTest - 2017.05.17 at 15h 35m 54s.xml">
+      <configuration name="PhoneBookTest.removeNumberFromEntryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTest_reverseLookupTest - 2017.05.16 at 22h 15m 02s.xml">
-      <configuration name="PhoneBookTest.reverseLookupTest" configurationId="JUnit" />
+    <history-entry file="PhoneBookTest_removeNumberFromEntryTest - 2017.05.17 at 15h 37m 41s.xml">
+      <configuration name="PhoneBookTest.removeNumberFromEntryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTest_reverseLookupTest - 2017.05.16 at 22h 16m 09s.xml">
-      <configuration name="PhoneBookTest.reverseLookupTest" configurationId="JUnit" />
+    <history-entry file="PhoneBookTest_removeNumberFromEntryTest - 2017.05.17 at 15h 38m 02s.xml">
+      <configuration name="PhoneBookTest.removeNumberFromEntryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTest_reverseLookupTest - 2017.05.16 at 22h 17m 19s.xml">
-      <configuration name="PhoneBookTest.reverseLookupTest" configurationId="JUnit" />
+    <history-entry file="PhoneBookTest_removeNumberFromEntryTest - 2017.05.17 at 15h 38m 45s.xml">
+      <configuration name="PhoneBookTest.removeNumberFromEntryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTest_reverseLookupTest - 2017.05.16 at 22h 17m 36s.xml">
-      <configuration name="PhoneBookTest.reverseLookupTest" configurationId="JUnit" />
+    <history-entry file="PhoneBookTest_removeNumberFromEntryTest - 2017.05.17 at 15h 44m 59s.xml">
+      <configuration name="PhoneBookTest.removeNumberFromEntryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTest_reverseLookupTest - 2017.05.16 at 22h 17m 43s.xml">
-      <configuration name="PhoneBookTest.reverseLookupTest" configurationId="JUnit" />
+    <history-entry file="PhoneBookTest_removeNumberFromEntryTest - 2017.05.17 at 15h 45m 37s.xml">
+      <configuration name="PhoneBookTest.removeNumberFromEntryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTest_reverseLookupTest - 2017.05.16 at 22h 19m 02s.xml">
-      <configuration name="PhoneBookTest.reverseLookupTest" configurationId="JUnit" />
+    <history-entry file="PhoneBookTest_removeNumberFromEntryTest - 2017.05.17 at 15h 46m 03s.xml">
+      <configuration name="PhoneBookTest.removeNumberFromEntryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PhoneBookTest_reverseLookupTest - 2017.05.16 at 22h 19m 15s.xml">
-      <configuration name="PhoneBookTest.reverseLookupTest" configurationId="JUnit" />
+    <history-entry file="PhoneBookTest_removeNumberFromEntryTest - 2017.05.17 at 15h 46m 27s.xml">
+      <configuration name="PhoneBookTest.removeNumberFromEntryTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23062000" />
+    <option name="totallyTimeSpent" value="41104000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="427" y="23" width="853" height="773" extended-state="0" />
+    <frame x="-293" y="-1057" width="1920" height="1057" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3284974" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3253886" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32892805" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23212436" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -928,7 +929,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="7" />
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -977,10 +978,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/exceptions/RecordNotPresent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="46" lean-forward="true" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/src.zip!/java/lang/IndexOutOfBoundsException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
+        <state relative-caret-position="63">
           <caret line="37" column="49" lean-forward="false" selection-start-line="37" selection-start-column="49" selection-end-line="37" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/src.zip!/java/util/logging/Logger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="217" column="13" lean-forward="false" selection-start-line="217" selection-start-column="13" selection-end-line="217" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -993,32 +1010,105 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/exceptions/RecordNotPresent.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/phonebook/PhoneBook.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="46" lean-forward="true" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
-          <folding />
+        <state relative-caret-position="126">
+          <caret line="89" column="0" lean-forward="false" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1212#1213#0" expanded="true" />
+            <element signature="e#1255#1256#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/phonebooktest/PhoneBookTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="131" column="38" lean-forward="false" selection-start-line="131" selection-start-column="38" selection-end-line="131" selection-end-column="38" />
+        <state relative-caret-position="180">
+          <caret line="89" column="0" lean-forward="true" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="4" lean-forward="false" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/src.zip!/java/lang/ArrayIndexOutOfBoundsException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="36" column="53" lean-forward="false" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/src.zip!/java/lang/RuntimeException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="42" column="13" lean-forward="false" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/src.zip!/java/lang/Exception.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="73">
+          <caret line="33" column="57" lean-forward="true" selection-start-line="33" selection-start-column="57" selection-end-line="33" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/src.zip!/java/io/IOException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="38" column="29" lean-forward="true" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/src.zip!/java/lang/IndexOutOfBoundsException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="37" column="49" lean-forward="false" selection-start-line="37" selection-start-column="49" selection-end-line="37" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/exceptions/RecordNotPresent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="46" lean-forward="false" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/phonebook/PhoneBook.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="102" column="9" lean-forward="false" selection-start-line="102" selection-start-column="9" selection-end-line="102" selection-end-column="9" />
+        <state relative-caret-position="407">
+          <caret line="99" column="20" lean-forward="false" selection-start-line="99" selection-start-column="20" selection-end-line="99" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#720#721#0" expanded="true" />
-            <element signature="e#763#764#0" expanded="true" />
+            <element signature="e#1212#1213#0" expanded="true" />
+            <element signature="e#1255#1256#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/exceptions/InvalidPhoneNumberFormatException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/phonebooktest/PhoneBookTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1820">
+          <caret line="129" column="14" lean-forward="false" selection-start-line="129" selection-start-column="14" selection-end-line="129" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

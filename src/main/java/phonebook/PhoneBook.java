@@ -14,14 +14,23 @@ import exceptions.RecordNotPresent;
 public class PhoneBook {
     Logger logger = Logger.getLogger("*");
 
-    Map<String, String> phoneInfo = new TreeMap<>();
+    // Map<String, String> phoneInfo = new TreeMap<>();
+//    Map<String, ArrayList<Object>> phoneInfo = new HashMap<>();
+    Map<String, List<String>> phoneInfo = new TreeMap<>();
+
     Scanner in = new Scanner(System.in);
 
     {
-        phoneInfo.put("Sarah Silverman", "(302)-434-1849");
-        phoneInfo.put("Ben Berger", "(802)-453-3582");
-        phoneInfo.put("Lisa Knelly", "(732)-914-8849");
-        phoneInfo.put("Steve Johns", "(412)-791-1823");
+        // A list of entries to play with
+        phoneInfo.put("Sarah Silverman", new ArrayList<>());
+        phoneInfo.get("Sarah Silverman").add(("(302)-434-1849"));
+        phoneInfo.get("Sarah Silverman").add(("(302)-544-1084"));
+        phoneInfo.put("Ben Berger", new ArrayList<>());
+        phoneInfo.get("Ben Berger").add(("(802)-453-3582"));
+        phoneInfo.put("Lisa Knelly", new ArrayList<>());
+        phoneInfo.get("Lisa Knelly").add(("(732)-914-8849"));
+        phoneInfo.put("Steve Johns", new ArrayList<>());
+        phoneInfo.get("Steve Johns").add(("(412)-791-1823"));
     }
 
     public PhoneBook() {
@@ -43,13 +52,19 @@ public class PhoneBook {
             entryLister += keys + " " + phoneInfo.get(keys) + "\n";
         }
 
-        return entryLister.trim();
+        return entryLister.replace(",", "")
+                .replace("[", "")
+                .replace("]", "").trim();
     }
 
-    //unsure how to populate Hashmap so I created  signature that takes in one and uses the putAll method.
+    //unsure how to populate Treemap so I created  signature that takes in one and uses the putAll method.
     public String lookUp(String name) {
-        // phoneInfo.putAll(hashMap);
-        return phoneInfo.get(name);
+        String output = phoneInfo.get(name).toString()
+                .replace(",", "")
+                .replace("[", "")
+                .replace("]", "");
+
+        return output;
     }
 
     //Originally going to be voided methods, I decided to return the entire hashmap after it's populated
@@ -59,30 +74,37 @@ public class PhoneBook {
             name = in.nextLine();
             phoneNumber = in.nextLine();
             checkNumberFormat(phoneNumber);
-            phoneInfo.put(name, phoneNumber);
+            if (phoneInfo.get(name) != null) {
+                phoneInfo.get(name).add(phoneNumber);
+            } else {
+                phoneInfo.put(name, new ArrayList<>());
+                phoneInfo.get(name).add(phoneNumber);
+            }
             return phoneInfo;
         } catch (InvalidPhoneNumberFormatException e) {
             logger.warning(phoneNumber + " is not a valid number");
             return null;
-
         }
-
     }
 
     //Originally going to be voided methods, I decided to return the entire hashMap after a entry is removed.
-    public Map removeEntry(String name) throws RecordNotPresent {
-
-
-        if (phoneInfo.remove(name) == null) {
-            throw new RecordNotPresent();
-        } else {
-            System.out.println("voice");
+    public Map removeNumberFromEntry(String number) {
+        for (Map.Entry<String, List<String>> outerLoop : phoneInfo.entrySet()) {
+            for (String listedNumber : outerLoop.getValue()) {
+                if (listedNumber.equals(number)) {
+                    phoneInfo.get(outerLoop.getKey()).remove(listedNumber);
+                    return phoneInfo;
+                }
+            }
         }
+        return null;
+    }
+
+    public Map removeRecord(String name) {
+
         name = in.nextLine();
         phoneInfo.remove(name);
         return phoneInfo;
-
-
     }
 
     public String listAllNames() {
@@ -94,14 +116,14 @@ public class PhoneBook {
     }
 
     public String reverseLookUp(String number) {
-        String listedName = "";
-        for (int i = 0; i < phoneInfo.size(); i++) {
-            if (phoneInfo.values().toArray()[i] == number) {
-                listedName = phoneInfo.keySet().toArray()[i].toString();
-              System.out.println(listedName);
+        for (Map.Entry<String, List<String>> outerLoop : phoneInfo.entrySet()) {
+            for (String listedNumber : outerLoop.getValue()) {
+                if (listedNumber.equals(number)) {
+                    return outerLoop.getKey();
+                }
             }
         }
-        return listedName.trim();
+        return null;
     }
 
     public PhoneBook checkNumberFormat(String number) throws InvalidPhoneNumberFormatException {
