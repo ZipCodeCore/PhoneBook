@@ -86,6 +86,48 @@ public class PhonebookTests {
     }
 
     @Test
+    public void testReverseLookUpEntry() {
+        //Given
+        Phonebook phonebook = new Phonebook();
+        PhonebookEntry phonebookEntryTwo = new PhonebookEntry();
+        phonebookEntryTwo.addValidPhonebookNameToEntry("Krusty", "Krab");
+        phonebookEntryTwo.addValidPhoneNumberToEntry(302, 598,1987);
+        phonebook.addEntryToPhonebook(phonebookEntryTwo);
+        PhonebookEntry phonebookEntryThree = new PhonebookEntry();
+        phonebookEntryThree.addValidPhonebookNameToEntry("Squarepants", "Spongebob");
+        phonebookEntryThree.addValidPhoneNumberToEntry(598, 888,2212);
+        phonebook.addEntryToPhonebook(phonebookEntryThree);
+        String expectedOutput = "Krusty, Krab";
+
+        //When
+        String actualOutput = phonebook.reverseLookup("(302)-598-1987");
+
+        //Assert
+        Assert.assertTrue(expectedOutput.equals(actualOutput));
+    }
+
+    @Test
+    public void testReverseLookUpEntryCanBeAbsent() {
+        //Given
+        Phonebook phonebook = new Phonebook();
+        PhonebookEntry phonebookEntryTwo = new PhonebookEntry();
+        phonebookEntryTwo.addValidPhonebookNameToEntry("Krusty", "Krab");
+        phonebookEntryTwo.addValidPhoneNumberToEntry(302, 598,1987);
+        phonebook.addEntryToPhonebook(phonebookEntryTwo);
+        PhonebookEntry phonebookEntryThree = new PhonebookEntry();
+        phonebookEntryThree.addValidPhonebookNameToEntry("Squarepants", "Spongebob");
+        phonebookEntryThree.addValidPhoneNumberToEntry(598, 888,2212);
+        phonebook.addEntryToPhonebook(phonebookEntryThree);
+        String expectedOutput = "Summer, Sandy";
+
+        //When
+        String actualOutput = phonebook.reverseLookup("(302)-598-1987");
+
+        //Assert
+        Assert.assertTrue(!expectedOutput.equals(actualOutput));
+    }
+
+    @Test
     public void testPrintAllNames() {
         //Given
         Phonebook phonebook = new Phonebook();
@@ -130,6 +172,23 @@ public class PhonebookTests {
         phonebookEntryFour.addValidPhoneNumberToEntry(777, 432,1134);
         phonebook.addEntryToPhonebook(phonebookEntryFour);
         int expectedOutput = 3;
+
+
+        //When
+        int actualOutput = phonebook.getPhonebookEntries().size();
+        Phonebook.printAllEntries(phonebook);
+
+        //Assert
+        Assert.assertTrue(expectedOutput == actualOutput);
+
+    }
+
+    //Fragile test because it will fail if entries are rejected because name keys already exist
+    @Test
+    public void testRandomPhoneBook() {
+        //Given
+        Phonebook phonebook = Phonebook.createRandomPhoneBook(10);
+        int expectedOutput = 10;
 
 
         //When

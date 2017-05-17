@@ -41,6 +41,16 @@ public class Phonebook {
         }
     }
 
+    public String reverseLookup(String phoneNumberAsString) {
+        for (Map.Entry<String, String> entry: getPhonebookEntries().entrySet()) {
+            if (phoneNumberAsString.equals(entry.getValue())) {
+                return entry.getKey();
+            }
+        }
+        logger.warn("Number not listed.");
+        return "Number not listed.";
+    }
+
     public static void printAllNames(Phonebook phonebook) {
         for (Map.Entry<String, String> entry: phonebook.getPhonebookEntries().entrySet()) {
             logger.info(entry.getKey());
@@ -51,5 +61,15 @@ public class Phonebook {
         for (Map.Entry<String, String> entry: phonebook.getPhonebookEntries().entrySet()) {
             logger.info(entry.getKey() + " --- " + entry.getValue());
         }
+    }
+
+    public static Phonebook createRandomPhoneBook(int numberOfEntries) {
+        int entryNumber = 0;
+        Phonebook phonebook = new Phonebook();
+        while (entryNumber < numberOfEntries) {
+            phonebook.getPhonebookEntries().put(PhonebookEntry.generateRandomName(), PhonebookEntry.generateRandomPhoneNumber());
+            entryNumber++;
+        }
+        return phonebook;
     }
 }
