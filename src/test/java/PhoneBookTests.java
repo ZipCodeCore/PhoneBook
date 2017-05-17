@@ -37,18 +37,18 @@ public class PhoneBookTests {
         phonebook.add(name, phoneNumber);
 
         phonebook.remove(name, phoneNumber);
-        
+
         // should return {Cameron Sima=[]}; phone number arraylist is empty
         Assert.assertEquals(0, phonebook.listAllEntries().get(name).size());
     }
 
     @Test
     public void removeEntryTest() {
+
         phonebook.add(name, phoneNumber);
 
         phonebook.removeEntry(name);
 
-        // should return {Cameron Sima=[]}; phone number arraylist is empty
         Assert.assertEquals(0, phonebook.listAllEntries().size());
     }
 
@@ -61,8 +61,6 @@ public class PhoneBookTests {
         TreeMap result = phonebook.listAllEntries();
 
         String resultString = "{Cameron Sima=[2154673127], George Smith=[2344563434]}";
-
-        Assert.assertEquals(result.getClass(), TreeMap.class);
 
         // results are sorted alphabetically
         Assert.assertEquals(resultString, result.toString());
