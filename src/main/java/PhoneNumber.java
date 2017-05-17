@@ -9,7 +9,6 @@ public class PhoneNumber
 {
     private String name;
     private String phoneNumber;
-    private ArrayList<PhoneBook> myPhoneFactory;
 
     public PhoneNumber(){}
 
@@ -39,9 +38,9 @@ public class PhoneNumber
         this.phoneNumber = phoneNumber;
     }
 
-    public int compareTo(PhoneNumber p)
+    public String getPhoneNumber()
     {
-            return this.getName().compareTo(p.getName());
+        return phoneNumber;
     }
 
 
