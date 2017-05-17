@@ -29,7 +29,7 @@ public class PhoneBook {
     return phoneBook.get(name);
   }
   public String reverseLookup(PhoneNumber number) {
-    if (phoneBook.isEmpty() || !phoneBook.containsValue(number)) {
+    if (phoneBook.isEmpty()) {
       return null;
     }
     return traverseMapForValue(number);
@@ -37,7 +37,8 @@ public class PhoneBook {
 
   private String traverseMapForValue(PhoneNumber number) {
     for (Entry<String, ArrayList<PhoneNumber>> set : phoneBook.entrySet()) {
-      if (number.equals(set.getValue())) {
+      int index = set.getValue().indexOf(number);
+      if (index > -1) {
         return set.getKey();
       }
     }

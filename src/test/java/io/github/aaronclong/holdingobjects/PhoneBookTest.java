@@ -28,7 +28,8 @@ public class PhoneBookTest {
   @Test
   public void testLookupForValidReturn() {
     phoneBook.add("Dennis", phoneNumber);
-    assertEquals("Confirming same number Returned from PhoneBook", phoneNumber, phoneBook.lookup("Dennis"));
+    numberList.add(phoneNumber);
+    assertEquals("Confirming same number Returned from PhoneBook", numberList, phoneBook.lookup("Dennis"));
   }
 
   @Test
