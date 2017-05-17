@@ -6,6 +6,7 @@ import java.util.Map.Entry;
 import java.util.TreeMap;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
+import java.util.ArrayList;
 
 
 /**
@@ -15,61 +16,77 @@ public class Phonebook {
 
     private final static Logger logger = LoggerFactory.getLogger(Phonebook.class);
 
-    private Map<String, String> phonebookEntries = new TreeMap<String, String>();
-
+    private Map<String, ArrayList<String>> phonebookEntries = new TreeMap<String, ArrayList<String>>();
 
     public Phonebook() {}
 
-    public Map<String, String> getPhonebookEntries() {return phonebookEntries;}
+    public Map<String, ArrayList<String>> getPhonebookEntries() {return phonebookEntries;}
 
     public void addEntryToPhonebook(PhonebookEntry phonebookEntry) {
-        getPhonebookEntries().put(phonebookEntry.getPhoneBookName(), phonebookEntry.getPhoneNumber());
+        if (lookup(phonebookEntry.getPhoneBookName()).equals("Person not listed in phonebook.")) {
+            phonebookEntries.put(phonebookEntry.getPhoneBookName(), phonebookEntry.getPhoneNumbers());
+        } else {
+            phonebookEntries.get(phonebookEntry.getPhoneBookName()).add(phonebookEntry.getPhoneNumbers().get(0));
+        }
+
     }
 
-    public void removeEntryFromPhonebook(PhonebookEntry phonebookEntry) {
-        getPhonebookEntries().remove(phonebookEntry.getPhoneBookName());
+    public void removeEntryFromPhonebook(String phoneNumberAsString) {
+        String entry = reverseLookup(phoneNumberAsString);
+        if (!entry.equals("Number not listed.")) {
+            for (int index = 0; index < phonebookEntries.get(entry).size(); index++) {
+                if (phonebookEntries.get(entry).get(index).equals(phoneNumberAsString)) {
+                    phonebookEntries.get(entry).remove(index);
+                }
+            }
+        } else {
+            logger.warn("Number not found.");
+        }
     }
+
 
     public String lookup(String lastNameFirstName) {
-        String matchingPhoneNumberEntry = getPhonebookEntries().get(lastNameFirstName);
-        if (matchingPhoneNumberEntry == null) {
-            logger.warn("Person not listed in phonebook.");
+        if (!phonebookEntries.containsKey(lastNameFirstName)) {
             return "Person not listed in phonebook.";
-        }
-        else {
-            return matchingPhoneNumberEntry;
+        } else {
+            String entry = "";
+            for (int index = 0; index < phonebookEntries.get(lastNameFirstName).size(); index++) {
+                entry += (phonebookEntries.get(lastNameFirstName).get(index) + " ");
+            }
+            return entry;
         }
     }
 
+
     public String reverseLookup(String phoneNumberAsString) {
-        for (Map.Entry<String, String> entry: getPhonebookEntries().entrySet()) {
-            if (phoneNumberAsString.equals(entry.getValue())) {
-                return entry.getKey();
+        for (Map.Entry<String, ArrayList<String>> entry: getPhonebookEntries().entrySet()) {
+            for (int index = 0; index < entry.getValue().size(); index++) {
+                if (phoneNumberAsString.equals(entry.getValue().get(index))) {
+                    return entry.getKey();
+                }
             }
         }
-        logger.warn("Number not listed.");
         return "Number not listed.";
     }
 
+    public void removeEntireEntryFromPhonebook(String lastNameFirstName) {
+        if (!lastNameFirstName.equals("Person not listed in phonebook.")) {
+            phonebookEntries.remove(lastNameFirstName);
+        } else {
+            logger.warn("Person not listed in phonebook.");
+        }
+    }
+
     public static void printAllNames(Phonebook phonebook) {
-        for (Map.Entry<String, String> entry: phonebook.getPhonebookEntries().entrySet()) {
+        for (Map.Entry<String, ArrayList<String>> entry: phonebook.getPhonebookEntries().entrySet()) {
             logger.info(entry.getKey());
         }
     }
 
     public static void printAllEntries(Phonebook phonebook) {
-        for (Map.Entry<String, String> entry: phonebook.getPhonebookEntries().entrySet()) {
+        for (Map.Entry<String, ArrayList<String>> entry: phonebook.getPhonebookEntries().entrySet()) {
             logger.info(entry.getKey() + " --- " + entry.getValue());
         }
     }
 
-    public static Phonebook createRandomPhoneBook(int numberOfEntries) {
-        int entryNumber = 0;
-        Phonebook phonebook = new Phonebook();
-        while (entryNumber < numberOfEntries) {
-            phonebook.getPhonebookEntries().put(PhonebookEntry.generateRandomName(), PhonebookEntry.generateRandomPhoneNumber());
-            entryNumber++;
-        }
-        return phonebook;
-    }
 }
