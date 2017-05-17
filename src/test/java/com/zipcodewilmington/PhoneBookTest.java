@@ -4,6 +4,9 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 public class PhoneBookTest{
 
@@ -12,6 +15,7 @@ public class PhoneBookTest{
     String num2;
     String name1;
     String name2;
+    private static final Logger logger = LoggerFactory.getLogger(PhoneBook.class);
 
     @Before
     public void initialize() {
@@ -28,7 +32,8 @@ public class PhoneBookTest{
 
         //When
         book.add(name1, num1);
-        String actual = book.lookup("Kirby Kim");
+        PhoneNumber firstNumber = book.lookup("Kirby Kim").get(0);
+        String actual = firstNumber.toString();
 
         //Then
         assertEquals("Kirby Kim's phone number should correctly return (302)731-1176", expected, actual);
@@ -50,29 +55,48 @@ public class PhoneBookTest{
     @Test
     public void addTestForEntry(){
         //Given
-        String expected = "(302)731-1176";
+        String expected = "(302)598-6245";
 
         //When
         book.add(name1, num1);
-        String actual = book.lookup("Kirby Kim");
+        book.add(name1, num2);
+
+        PhoneNumber secondNumber = book.lookup("Kirby Kim").get(1);
+        String actual = secondNumber.toString();
 
         //Then
-        assertEquals("The one entry should be Kirby Kim, (302)731-1176", expected, actual);
+        assertEquals("The first phone number for Kirby Kim should be (302)598-6245", expected, actual);
     }
 
     @Test
-    public void removeTestForSize(){
+    public void removeTestForSameSize(){
+        //Given
+        book.add(name1, num1);
+        book.add(name2, num2);
+        book.add(name2, num1);
+        int expected = 2;
+
+        //When
+        book.remove("Chris Kim", "(302)731-1176");
+        int actual = book.size();
+
+        //Then
+        assertEquals("Size of phonebook should still be 2, because Chris had two numbers", expected, actual);
+    }
+
+    @Test
+    public void removeTestForDifferentSize(){
         //Given
         book.add(name1, num1);
         book.add(name2, num2);
         int expected = 1;
 
         //When
-        book.remove("Chris Kim");
+        book.remove("Chris Kim", "(302)598-6245");
         int actual = book.size();
 
         //Then
-        assertEquals("Size of phonebook ought to be 1 after remove", expected, actual);
+        assertEquals("Size of phonebook should now be 1, because Chris had one number", expected, actual);
     }
 
     @Test
@@ -83,7 +107,7 @@ public class PhoneBookTest{
         int expected = 2;
 
         //When
-        book.remove("Tim Kim");
+        book.remove("Tim Kim", "(302)388-8956");
         int actual = book.size();
 
         //Then
@@ -95,7 +119,7 @@ public class PhoneBookTest{
         //Given is in @Before
 
         //When
-        boolean actual = book.remove("Tim Kim");
+        boolean actual = book.remove("Tim Kim", "(302)388-8956");
 
         //Then
         assertFalse("Tim Kim is not in phone book, remove(\"Tim Kim\") should return false" , actual);
@@ -120,13 +144,15 @@ public class PhoneBookTest{
         //Given
         book.add(name1, num1);
         book.add(name2, num2);
-        String expected = "Chris Kim: (302)598-6245\nKirby Kim: (302)731-1176\n";
+        book.add(name1, num2);
+        book.add(name2, num1);
+        String expected = "Chris Kim:\n  (302)598-6245\n  (302)731-1176\nKirby Kim:\n  (302)731-1176\n  (302)598-6245\n";
 
         //When
         String actual = book.listEntries();
 
         //Then
-        assertEquals("The return value should be \"Chris Kim: (302)598-6245\\nKirby Kim: (302)731-1176\\n\";", expected, actual);
+        assertEquals("The return value should be Chris Kim:\n  (302)598-6245\n  (302)731-1176\nKirby Kim:\n  (302)731-1176\n  (302)598-6245\n", expected, actual);
     }
 
     @Test
