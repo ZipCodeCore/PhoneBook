@@ -98,7 +98,6 @@ public class PhoneBook {
         for (int i = 0; i < phoneInfo.size(); i++) {
             if (phoneInfo.values().toArray()[i] == number) {
                 listedName = phoneInfo.keySet().toArray()[i].toString();
-              System.out.println(listedName);
             }
         }
         return listedName.trim();
