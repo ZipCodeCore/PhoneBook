@@ -24,7 +24,7 @@ public class PhoneBookManager {
 
     public String lookup(String name){
 
-        return phoneBook.get(name);
+        return name + ": " + phoneBook.get(name);
     }
 
     public String add(String name, String phoneNumber){
@@ -39,7 +39,7 @@ public class PhoneBookManager {
         return name + " has removed from Phone Book";
     }
 
-    public String showAllEntires(){
+    public String showAllEntries(){
 
         String allEntries = "";
 
@@ -49,6 +49,23 @@ public class PhoneBookManager {
 
         return "All Entries are Below" + allEntries;
     }
+
+
+    public String reverseLookup(String phoneNumber) {
+
+        String name = null;
+
+        for(Map.Entry p: phoneBook.entrySet()){
+            if (p.getValue().equals(phoneNumber)){
+                name = (String) p.getKey();
+            }
+        }
+
+        return phoneNumber + ": " + name;
+
+
+    }
+
 
 
 }
