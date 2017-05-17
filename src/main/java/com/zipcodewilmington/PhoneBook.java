@@ -3,7 +3,7 @@ package com.zipcodewilmington;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.TreeMap;
+import java.util.*;
 
 public class PhoneBook
 {
@@ -63,6 +63,17 @@ public class PhoneBook
 
     public int size(){
         return phoneBook.size();
+    }
+
+    public String reverseLookup(String number){
+        Set<Map.Entry<String, PhoneNumber>> entrySet = phoneBook.entrySet();
+        for(Map.Entry<String, PhoneNumber> entry: entrySet) {
+            logger.debug("entry.getKey() = " + entry.getKey() + ", entry.getValue = " + entry.getValue());
+            if (entry.getValue().toString().equals(number)) {
+                return entry.getKey();
+            }
+        }
+        return null;
     }
 
 

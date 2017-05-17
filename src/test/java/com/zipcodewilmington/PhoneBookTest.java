@@ -63,11 +63,11 @@ public class PhoneBookTest{
     @Test
     public void removeTestForSize(){
         //Given
+        book.add(name1, num1);
+        book.add(name2, num2);
         int expected = 1;
 
         //When
-        book.add(name1, num1);
-        book.add(name2, num2);
         book.remove("Chris Kim");
         int actual = book.size();
 
@@ -78,11 +78,11 @@ public class PhoneBookTest{
     @Test
     public void removeTestInvalidInput(){
         //Given
+        book.add(name1, num1);
+        book.add(name2, num2);
         int expected = 2;
 
         //When
-        book.add(name1, num1);
-        book.add(name2, num2);
         book.remove("Tim Kim");
         int actual = book.size();
 
@@ -127,6 +127,20 @@ public class PhoneBookTest{
 
         //Then
         assertEquals("The return value should be \"Chris Kim: (302)598-6245\\nKirby Kim: (302)731-1176\\n\";", expected, actual);
+    }
+
+    @Test
+    public void reverseLookupTest(){
+        //Given
+        book.add(name1, num1);
+        book.add(name2, num2);
+        String expected = "Chris Kim";
+
+        //When
+        String actual = book.reverseLookup("(302)598-6245");
+
+        //Then
+        assertEquals("The result of the lookup should be \"Chris Kim\"", expected, actual);
     }
 
 }
