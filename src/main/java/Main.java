@@ -13,14 +13,12 @@ public class Main {
         PhoneBook.addPhoneBookEntry("935235389", "Ted");
         PhoneBook.addPhoneBookEntry("789766878", "Jack Traven");
 
-        PhoneBook.removePhoneBookEntryByName("Ted");
-
         PhoneBook.removePhoneBookEntryByName("789766878");
-        PhoneBook.lookUpPhoneNumberBasedOnName("Neo");
+        //PhoneBook.lookUpPhoneNumberBasedOnName("Neo");
 
         PhoneBook.listAllEntriesInPhoneBook();
 
-        PhoneBook.lookUpNameBasedOnPhoneNuber("123456789");
+        PhoneBook.lookUpNameBasedOnPhoneNumber("123456789");
 
 
     }

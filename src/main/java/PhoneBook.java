@@ -1,7 +1,4 @@
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * Created by jarrydstamatelos on 5/16/17.
@@ -30,13 +27,25 @@ public class PhoneBook {
             System.out.println("Name: " + entry.getValue() + "\tNumber : " + entry.getKey() );
         }
     }
-    public static void lookUpPhoneNumberBasedOnName(String name) {
-        System.out.println("Number assosciated with Name : " + PhoneBook.get(name));
-    }
 
-    public static void lookUpNameBasedOnPhoneNuber(String phoneNumber) {
+
+    public static void lookUpNameBasedOnPhoneNumber(String phoneNumber) {
         System.out.println("Name assosciated with Number : " + PhoneBook.get(phoneNumber));
     }
+
+    public static List getValueFromKey(TreeMap tm, Object value) {
+        Set find = tm.keySet();
+        Iterator iterator = find.iterator();
+        List list = new ArrayList();
+        while(iterator.hasNext()){
+            Object o = iterator.next();
+            if( tm.get(o).equals(value) ) {
+                list.add(o);
+            }
+        }
+        return list;
+    }
+
 
 
 
