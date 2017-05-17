@@ -53,9 +53,11 @@ public class PhoneBook {
         return sb.toString();
     }
 
-    //TODO have throw a UnableToFindAssociatedPhoneNumberException;
-    public ArrayList<PhoneNumber> lookup(String name) throws NonExistentEntryException {
+    public ArrayList<PhoneNumber> lookup(String name) throws RecordNotPresentException {
+        if(contacts.get(name)==null) throw new RecordNotPresentException();
+
         return contacts.get(name);
+
     }
 
     //TODO have throw a UnableToFindAssociatedNameException;

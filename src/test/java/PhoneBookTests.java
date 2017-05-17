@@ -1,6 +1,8 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.*;
 
@@ -137,6 +139,15 @@ public class PhoneBookTests {
 
         //Then
         assertEquals("Incorrect phone number returned", actual, expected);
+    }
+
+    @Test (expected = RecordNotPresentException.class)
+    public void testRecordNotPresentException(){
+        //Given
+        String name = "Slender Man";
+
+        //When
+        phoneBook.lookup(name);
     }
 
     @Test
