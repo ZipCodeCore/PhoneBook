@@ -42,26 +42,34 @@ public class PhoneBook
 
     }
 
-    public String listAllNames()
-    {
-        String nameList = "";
-        for (String treeKey : myPhoneMap.keySet())
-        {
-            nameList += treeKey + "\n";
-        }
-        return nameList;
-    }
-
-    public void listAllEntries()
-    {
-        myPhoneMap.entrySet();
-    }
-
     public String lookUp(String name)
     {
         String search = myPhoneMap.get(name);
         return search;
     }
+
+    public String listAllNames()
+    {
+        String nameList = "";
+        for (String nameKey : myPhoneMap.keySet())
+        {
+            nameList += nameKey + "\n";
+        }
+        return nameList;
+    }
+
+    public String  listAllEntries()
+    {
+        String entryList = "";
+        for(String nameKey : myPhoneMap.keySet())
+        {
+            entryList += nameKey + " " + lookUp(nameKey)+"\n";
+        }
+       return entryList;
+    }
+
+
+
 
 
  }

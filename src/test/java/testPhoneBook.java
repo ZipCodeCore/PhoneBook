@@ -74,17 +74,37 @@ public class testPhoneBook
     public void testAllNames()
     {
         //given
+        myBook.addNumber(tina);
         myBook.addNumber(paco);
-        String expected ="Dave\nPaco\n";
+        String expected ="Dave \nPaco\nTina\n";
 
         //when
         String actual = myBook.listAllNames();
 
         //then
         Assert.assertEquals("print out two numbers", expected, actual);
-
-
     }
+
+    @Test
+    public void testAllEntries()
+    {
+        //given
+        myBook.addNumber(tina);
+        myBook.addNumber(paco);
+        String expected ="Dave 1231231234\nPaco 8434508649\nTina 4562341234\n";
+
+        //when
+        String actual = myBook.listAllEntries();
+
+        //then
+        Assert.assertEquals("print out two numbers", expected, actual);
+    }
+
+//    @Test void testReverseLookup()
+//    {
+//        //given
+//
+//    }
 
 
 
