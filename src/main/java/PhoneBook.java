@@ -24,11 +24,13 @@ public class PhoneBook {
         contactsPhoneNumbers.add(phoneNumber);
     }
 
-    public void removeContact(String name) {
+    public void removeContact(String name) throws RecordNotPresentException{
+        if (contacts.get(name)==null) throw new RecordNotPresentException();
         contacts.remove(name);
     }
 
-    public void removeFromExisting(String name, PhoneNumber phoneNumber2) {
+    public void removeFromExisting(String name, PhoneNumber phoneNumber2) throws RecordNotPresentException {
+        if(!contacts.get(name).contains(phoneNumber2)) throw new RecordNotPresentException();
         contacts.get(name).remove(phoneNumber2);
     }
 
@@ -60,18 +62,16 @@ public class PhoneBook {
 
     }
 
-    //TODO have throw a UnableToFindAssociatedNameException;
-    public String reverseLookup(PhoneNumber phoneNumber){
-        String name = "";
+    public String reverseLookup(PhoneNumber phoneNumber) throws RecordNotPresentException{
+        String name = null;
         for (Map.Entry<String, ArrayList<PhoneNumber>> entry : contacts.entrySet()) {
             for(int i = 0; i < entry.getValue().size(); i++){
                 if(entry.getValue().get(i).equals(phoneNumber)) name = entry.getKey();
             }
         }
+        if(name==null) {
+            throw new RecordNotPresentException();
+        }
         return name;
     }
-
-
-
-    //TODO if want to do logging, make sure i have log4j properties in resources folder
 }

@@ -32,7 +32,7 @@ public class PhoneBookTests {
     }
 
     @Test
-    public void testRemove() {
+    public void testRemoveContact() {
         //Given
         String name = "John Doe";
         phoneBook.add(name, phoneNumber);
@@ -42,6 +42,11 @@ public class PhoneBookTests {
 
         //Then
         assertTrue(phoneBook.getContacts().isEmpty());
+    }
+
+    @Test (expected = RecordNotPresentException.class)
+    public void testRecordNotPresentExceptionForRemoveContact(){
+        phoneBook.removeContact("John Smith");
     }
 
     @Test
@@ -71,6 +76,17 @@ public class PhoneBookTests {
 
         //Then
         assertEquals(phoneBook.getContacts().get(name).size(),1);
+    }
+
+    @Test (expected = RecordNotPresentException.class)
+    public void testRecordNotPresentExceptionForRemoveFromExisting(){
+        //Given
+        String name = "John Doe";
+        PhoneNumber phoneNumber2 = PhoneNumberFactory.createPhoneNumberSafely(222,2222,2222);
+        phoneBook.add(name, phoneNumber);
+
+        //When
+        phoneBook.removeFromExisting(name, phoneNumber2);
     }
 
     @Test
@@ -142,7 +158,7 @@ public class PhoneBookTests {
     }
 
     @Test (expected = RecordNotPresentException.class)
-    public void testRecordNotPresentException(){
+    public void testRecordNotPresentExceptionForLookup(){
         //Given
         String name = "Slender Man";
 
@@ -169,6 +185,13 @@ public class PhoneBookTests {
 
         //Then
         assertEquals("Incorrect name returned", actual, expected);
+    }
+
+    @Test (expected = RecordNotPresentException.class)
+    public void testRecordNotPresentInReverseLookup(){
+        PhoneNumber phoneNumber1 = PhoneNumberFactory.createPhoneNumberSafely(555, 111, 1111);
+
+        phoneBook.reverseLookup(phoneNumber1);
     }
 }
 
