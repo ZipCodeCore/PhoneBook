@@ -27,15 +27,13 @@ public class PhoneBookEntryTest {
         PhoneBookEntry entry = new PhoneBookEntry("Sarah");
         entry.addNumber("4435401564");
         entry.addNumber("8885551234");
-        ArrayList<String> expected = new ArrayList<String>();
-        expected.add("(443) 540-1564");
-        expected.add("(888) 555-1234");
+        String expected = "(443) 540-1564, (888) 555-1234";
 
         // when
-        ArrayList<String> actual = entry.getFormattedPhoneNumbers();
+        String actual = entry.getFormattedPhoneNumbers().toString();
 
         // then
-        Assert.assertArrayEquals(expected.toArray(), actual.toArray());
+        Assert.assertEquals(expected, actual);
     }
 
 

@@ -19,7 +19,15 @@ public class PhoneBook {
     }
 
     public void addEntry(PhoneBookEntry entry) {
-        phoneBook.put(entry.getName(), entry.getFormattedPhoneNumber());
+        phoneBook.put(entry.getName(), entry.getFormattedPhoneNumbers().toString());
+    }
+
+    public String addNumberToEntry(String name, String phoneNumber) {
+        PhoneBookEntry entry = new PhoneBookEntry(name);
+        entry.addNumber(lookup(name));
+        entry.addNumber(phoneNumber);
+        addEntry(entry);
+        return lookup(name);
     }
 
     public String removeEntry(String name) {
@@ -31,7 +39,7 @@ public class PhoneBook {
         Set<String> keys = phoneBook.keySet();
         int i = 0;
         for(String key : keys) {
-            listings[i] = "Name: " + key + "; Phone Number: " + lookup(key);
+            listings[i] = "Name: " + key + "; Phone Number(s): " + lookup(key);
             i++;
         }
         return listings;
@@ -42,7 +50,7 @@ public class PhoneBook {
         Set<String> keys = phoneBook.keySet();
         int i = 0;
         for(String key : keys) {
-            if (lookup(key).equalsIgnoreCase(phoneNumber)) {
+            if (lookup(key).contains(phoneNumber)) {
                 return key;
             }
         }

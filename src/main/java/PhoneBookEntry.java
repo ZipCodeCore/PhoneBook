@@ -7,7 +7,6 @@ public class PhoneBookEntry {
 
     private String name;
     private ArrayList<String> phoneNumbers = new ArrayList<String>();
-    private String phoneNumber;
 
     public String getName() {
         return name;
@@ -17,11 +16,21 @@ public class PhoneBookEntry {
     }
 
     public void addNumber(String phoneNumber) {
-        this.phoneNumbers.add(formatPhoneNumber(phoneNumber));
+        if (phoneNumber.length() < 14) {
+            phoneNumber = formatPhoneNumber(phoneNumber);
+        }
+        this.phoneNumbers.add(phoneNumber);
     }
 
-    public ArrayList<String> getFormattedPhoneNumbers() {
-        return phoneNumbers;
+
+    public StringBuilder getFormattedPhoneNumbers() {
+        StringBuilder formattedPhoneNumbers = new StringBuilder();
+        for(int i = 0; i < phoneNumbers.size() - 1; i++) {
+            formattedPhoneNumbers.append(phoneNumbers.get(i));
+            formattedPhoneNumbers.append(", ");
+        }
+        formattedPhoneNumbers.append(phoneNumbers.get(phoneNumbers.size() - 1));
+        return formattedPhoneNumbers;
     }
 
 

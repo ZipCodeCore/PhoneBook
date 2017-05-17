@@ -7,25 +7,64 @@ import org.junit.Test;
 public class PhoneBookTest {
 
     @Test
-    public void addEntryToPhoneBookTest() {
+    public void addEntryWithOneNumberToPhoneBookTest() {
         // given
         PhoneBook book = new PhoneBook();
-        PhoneBookEntry entry = new PhoneBookEntry("Sarah", "4435401564");
+        PhoneBookEntry entry = new PhoneBookEntry("Sarah");
+        entry.addNumber("4435401564");
         book.addEntry(entry);
-        int expected = 1;
+        int expectedSize = 1;
+        String expectedValue = "(443) 540-1564";
 
         // when
-        int actual = book.getPhoneBook().size();
+        int actualSize = book.getPhoneBook().size();
+        String actualValue = book.lookup("Sarah");
 
         // then
-        Assert.assertEquals(expected, actual);
+        Assert.assertEquals(expectedSize, actualSize);
+        Assert.assertEquals(expectedValue, actualValue);
+    }
+
+    @Test
+    public void addEntryWithMultiplePhoneNumbersToPhoneBookTest() {
+        // given
+        PhoneBook book = new PhoneBook();
+        PhoneBookEntry entry = new PhoneBookEntry("Sarah");
+        entry.addNumber("4435401564");
+        entry.addNumber("8885551234");
+        book.addEntry(entry);
+        String expectedValue = "(443) 540-1564, (888) 555-1234";
+
+        // when
+        String actualValue = book.lookup("Sarah");
+
+        // then
+        Assert.assertEquals(expectedValue, actualValue);
+    }
+
+   @Test
+    public void addNumberToPreviousEntry() {
+        // given
+        PhoneBook book = new PhoneBook();
+        PhoneBookEntry entry = new PhoneBookEntry("Sarah");
+        entry.addNumber("4435401564");
+        book.addEntry(entry);
+        book.addNumberToEntry("Sarah", "8885551234");
+        String expectedValue = "(443) 540-1564, (888) 555-1234";
+
+        // when
+        String actualValue = book.lookup("Sarah");
+
+        // then
+        Assert.assertEquals(expectedValue, actualValue);
     }
 
     @Test
     public void removeEntryFromPhoneBookTest() {
         // given
         PhoneBook book = new PhoneBook();
-        PhoneBookEntry entry = new PhoneBookEntry("Sarah", "4435401564");
+        PhoneBookEntry entry = new PhoneBookEntry("Sarah");
+        entry.addNumber("4435401564");
         book.addEntry(entry);
         String expectedRemoved = "(443) 540-1564";
         int expected = 0;
@@ -43,9 +82,11 @@ public class PhoneBookTest {
     public void lookupEntryTest() {
         // given
         PhoneBook book = new PhoneBook();
-        PhoneBookEntry entry = new PhoneBookEntry("Sarah", "4435401564");
+        PhoneBookEntry entry = new PhoneBookEntry("Sarah");
+        entry.addNumber("4435401564");
+        entry.addNumber("8885551234");
         book.addEntry(entry);
-        String expected = "(443) 540-1564";
+        String expected = "(443) 540-1564, (888) 555-1234";
 
         // when
         String actual = book.lookup("Sarah");
@@ -58,7 +99,8 @@ public class PhoneBookTest {
     public void lookupEntryNotInBookTest() {
         // given
         PhoneBook book = new PhoneBook();
-        PhoneBookEntry entry = new PhoneBookEntry("Sarah", "4435401564");
+        PhoneBookEntry entry = new PhoneBookEntry("Sarah");
+        entry.addNumber("4435401564");
         book.addEntry(entry);
         String expected = null;
 
@@ -73,11 +115,14 @@ public class PhoneBookTest {
     public void showListingsTest() {
         // given
         PhoneBook book = new PhoneBook();
-        PhoneBookEntry entry1 = new PhoneBookEntry("Sarah", "4435401564");
-        PhoneBookEntry entry2 = new PhoneBookEntry("Jenny", "3028675309");
+        PhoneBookEntry entry1 = new PhoneBookEntry("Sarah");
+        entry1.addNumber("4435401564");
+        entry1.addNumber("8885551234");
+        PhoneBookEntry entry2 = new PhoneBookEntry("Jenny");
+        entry2.addNumber("3028675309");
         book.addEntry(entry1);
         book.addEntry(entry2);
-        String[] expected = {"Name: Jenny; Phone Number: (302) 867-5309", "Name: Sarah; Phone Number: (443) 540-1564"};
+        String[] expected = {"Name: Jenny; Phone Number(s): (302) 867-5309", "Name: Sarah; Phone Number(s): (443) 540-1564, (888) 555-1234"};
 
         // when
         String[] actual = book.showEntries();
@@ -90,8 +135,10 @@ public class PhoneBookTest {
     public void reverseLookupByPhoneNumber() {
         // given
         PhoneBook book = new PhoneBook();
-        PhoneBookEntry entry1 = new PhoneBookEntry("Sarah", "4435401564");
-        PhoneBookEntry entry2 = new PhoneBookEntry("Jenny", "3028675309");
+        PhoneBookEntry entry1 = new PhoneBookEntry("Sarah");
+        entry1.addNumber("4435401564");
+        PhoneBookEntry entry2 = new PhoneBookEntry("Jenny");
+        entry2.addNumber("3028675309");
         book.addEntry(entry1);
         book.addEntry(entry2);
         String expected = "Jenny";
@@ -107,8 +154,10 @@ public class PhoneBookTest {
     public void reverseLookupByPhoneNumberNotFoundTest() {
         // given
         PhoneBook book = new PhoneBook();
-        PhoneBookEntry entry1 = new PhoneBookEntry("Sarah", "4435401564");
-        PhoneBookEntry entry2 = new PhoneBookEntry("Jenny", "3028675309");
+        PhoneBookEntry entry1 = new PhoneBookEntry("Sarah");
+        entry1.addNumber("4435401564");
+        PhoneBookEntry entry2 = new PhoneBookEntry("Jenny");
+        entry2.addNumber("3028675309");
         book.addEntry(entry1);
         book.addEntry(entry2);
         String expected = null;
