@@ -11,8 +11,7 @@ import java.util.TreeMap;
  */
 public class PhoneBookManager {
 
-
-    Map<String, String> phoneBook = new TreeMap<String, String>();
+    Map<String, ArrayList<String>> phoneBook = new TreeMap<String, ArrayList<String>>();
 
 
     public int size(){
@@ -20,23 +19,22 @@ public class PhoneBookManager {
         return phoneBook.size();
     }
 
-
-
     public String lookup(String name){
 
         return name + ": " + phoneBook.get(name);
     }
 
-    public String add(String name, String phoneNumber){
+    public void addEntries(String name, String phoneNumber){
 
-        phoneBook.put(name , phoneNumber);
-        return name + " " + phoneNumber + " has added to Phone Book";
+        ArrayList<String> pb = new ArrayList<String>();
+        pb.add(phoneNumber);
+        phoneBook.put(name , pb);
     }
 
-    public String remove(String name){
+    public void removeEntry(String name){
 
         phoneBook.remove(name);
-        return name + " has removed from Phone Book";
+
     }
 
     public String showAllEntries(){
@@ -44,27 +42,39 @@ public class PhoneBookManager {
         String allEntries = "";
 
         for(Map.Entry p: phoneBook.entrySet()){
-            allEntries += "\n\nName: " + p.getKey() + "\nPhoneNumbers: " + p.getValue();
+            allEntries += "\n\n" + p.getKey() + "\n" + p.getValue();
         }
 
-        return "All Entries are Below" + allEntries;
+        return allEntries;
     }
 
+    public String reverseLookup(String number){
 
-    public String reverseLookup(String phoneNumber) {
+        //looking every set within the phoneBook treeMap
+        for(Map.Entry<String, ArrayList<String>> entry : phoneBook.entrySet()){
 
-        String name = null;
-
-        for(Map.Entry p: phoneBook.entrySet()){
-            if (p.getValue().equals(phoneNumber)){
-                name = (String) p.getKey();
+            //now its in the set, and looking for the String phoneNum within the arrayList
+            for(String phoneNum : entry.getValue()){
+                if(phoneNum.equals(number)){
+                    return entry.getKey();
+                }
             }
         }
-
-        return phoneNumber + ": " + name;
-
+        return null;
 
     }
+
+    public void addToExistingEntry(String existingName, String additionalNumber){
+
+        phoneBook.get(existingName).add(additionalNumber);
+
+    }
+
+    public void removeOneNumberFromEntry(String existingName, String numberToBeRemove){
+
+        phoneBook.get(existingName).remove(numberToBeRemove);
+    }
+
 
 
 
