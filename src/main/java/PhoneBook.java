@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Set;
 import java.util.TreeMap;
 
@@ -20,8 +22,8 @@ public class PhoneBook {
         phoneBook.put(entry.getName(), entry.getFormattedPhoneNumber());
     }
 
-    public void removeEntry(String name) {
-        phoneBook.remove(name);
+    public String removeEntry(String name) {
+        return phoneBook.remove(name);
     }
 
     public String[] showEntries() {
@@ -33,6 +35,18 @@ public class PhoneBook {
             i++;
         }
         return listings;
+    }
+
+    public String reverseLookup(String phoneNumber) {
+        String[] listings = new String[phoneBook.size()];
+        Set<String> keys = phoneBook.keySet();
+        int i = 0;
+        for(String key : keys) {
+            if (lookup(key).equalsIgnoreCase(phoneNumber)) {
+                return key;
+            }
+        }
+        return null;
     }
 
 }
