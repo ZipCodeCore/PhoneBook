@@ -28,6 +28,7 @@ public class PhoneBook {
   public ArrayList<PhoneNumber> lookup(String name) {
     return phoneBook.get(name);
   }
+  
   public String reverseLookup(PhoneNumber number) {
     if (phoneBook.isEmpty()) {
       return null;
