@@ -26,7 +26,7 @@ public class TestPhoneBook {
     }
 
     @Test
-    public void addTest() {
+    public void addTest() throws InvalidPhoneNumberFormatException {
         emptyPhoneBook.addRecord("Zyg,Dan", "(123) 456-7890");
         int expected = 1;
 
@@ -36,12 +36,37 @@ public class TestPhoneBook {
     }
 
     @Test (expected = InvalidPhoneNumberFormatException.class)
-    public void addInvalidPhoneNumberFormatTest() throws InvalidPhoneNumberFormatException {
+    public void addInvalidPhoneNumberStringTest() throws InvalidPhoneNumberFormatException {
         emptyPhoneBook.addRecord("Dan,Dan", "Dan,Dan");
     }
 
+    @Test (expected = InvalidPhoneNumberFormatException.class)
+    public void addInvalidPhoneNumberTooLongTest() throws InvalidPhoneNumberFormatException {
+        emptyPhoneBook.addRecord("Dan,Dan", "12345671234567");
+    }
+
     @Test
-    public void addMultipleToSameNameTest() {
+    public void addValidPhoneNumberWithJustDigitsTest() throws InvalidPhoneNumberFormatException {
+        emptyPhoneBook.addRecord("Jude,Hey", "4322342234");
+        int expected = 1;
+
+        int actual = emptyPhoneBook.map.size();
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test (expected = InvalidPhoneNumberFormatException.class)
+    public void addInvalidPhoneNumberZeroFirstDigitTest() throws InvalidPhoneNumberFormatException {
+        emptyPhoneBook.addRecord("Everdeen,Katniss", "0987654321");
+    }
+
+    @Test (expected = InvalidPhoneNumberFormatException.class)
+    public void addInvalidPhoneNumberGoodFormatZeroFirstDigitTest() throws InvalidPhoneNumberFormatException {
+        emptyPhoneBook.addRecord("Melark,Peeta", "(089) 123-4321");
+    }
+
+    @Test
+    public void addMultipleToSameNameTest() throws InvalidPhoneNumberFormatException {
         emptyPhoneBook.addRecord("Zyg,Dan", "(123) 456-7890");
         emptyPhoneBook.addRecord("Zyg,Dan", "(987) 654-3210");
         int expected = 2;

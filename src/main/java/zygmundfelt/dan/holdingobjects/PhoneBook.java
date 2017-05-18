@@ -3,32 +3,40 @@ package zygmundfelt.dan.holdingobjects;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.logging.Logger;
 
 public class PhoneBook {
 
     Map<String,ArrayList<String>> map;
+    private static final Logger logger = Logger.getLogger("zygmundfelt.dan.holdingobjects");
 
     PhoneBook() {
         map = new TreeMap<String,ArrayList<String>>();
     }
 
     private String validatePhoneNumber(String phoneNumber) throws InvalidPhoneNumberFormatException {
-        if (phoneNumber.matches("\\(\\d{3}\\) \\d{3}-\\d{4}")) {   // Valid phone number
+        if (phoneNumber.matches("\\(\\d{3}\\) \\d{3}-\\d{4}$")) {
+            if(phoneNumber.charAt(1) == '0'){
+                throw new InvalidPhoneNumberFormatException();
+            }
             return phoneNumber;
         }
+        return attemptToConvertFromNumericalFormat(phoneNumber);
+    }
+
+    private String attemptToConvertFromNumericalFormat(String phoneNumber) throws InvalidPhoneNumberFormatException {
         try {
             Long.parseLong(phoneNumber);
+            if(phoneNumber.charAt(0) == '0' || phoneNumber.length() != 10) {
+                throw new InvalidPhoneNumberFormatException();
+            }
+            return buildPhoneNumber(phoneNumber);
         } catch (Exception e) {
             throw new InvalidPhoneNumberFormatException();
         }
-        return buildPhoneNumber(phoneNumber);
     }
 
-    private String buildPhoneNumber(String phoneNumber) throws InvalidPhoneNumberFormatException {
-        if(phoneNumber.length() != 10 || phoneNumber.charAt(0) == 0){
-            throw new InvalidPhoneNumberFormatException();
-        }
-
+    private String buildPhoneNumber(String phoneNumber) {
         StringBuilder sb = new StringBuilder();
         sb.append("(");
         sb.append(phoneNumber.charAt(0));
@@ -47,19 +55,11 @@ public class PhoneBook {
         return sb.toString();
     }
 
-    ArrayList<String> lookUp(String name) throws RecordNotPresentException{
-        ArrayList<String> result = map.get(name);
-        if(result == null) {
-            throw new RecordNotPresentException();
-        }
-        return result;
-    }
-
     /*
     Helper method for addRecord.
      */
     private ArrayList<String> createNewRecord(String name, String phoneNumber) throws InvalidPhoneNumberFormatException {
-        validatePhoneNumber(phoneNumber);
+        logger.info("Attempting to create record: " + name + ", " + phoneNumber);
         ArrayList<String> list = new ArrayList<String>();
         list.add(phoneNumber);
         return map.put(name, list);
@@ -68,17 +68,18 @@ public class PhoneBook {
     /*
     Not sure if it'd be better to switch the blocks in if and else.
      */
-    ArrayList<String> addRecord(String name, String phoneNumber) {
+    ArrayList<String> addRecord(String name, String phoneNumber) throws InvalidPhoneNumberFormatException {
         try {
-            validatePhoneNumber(phoneNumber);
+            String validPhoneNumber = validatePhoneNumber(phoneNumber);
             if(map.get(name) == null) {
-                return createNewRecord(name, phoneNumber);
+                return createNewRecord(name, validPhoneNumber);
             } else {
-                map.get(name).add(phoneNumber);
+                map.get(name).add(validPhoneNumber);
                 return map.get(name);
             }
         } catch (InvalidPhoneNumberFormatException e) {
-            return null;
+            logger.warning("Unable to create record of phone number " + phoneNumber + ": Invalid format.");
+            throw new InvalidPhoneNumberFormatException();
         }
     }
 
@@ -89,6 +90,25 @@ public class PhoneBook {
         return map.get(name);
     }
 
+    ArrayList<String> lookUp(String name) throws RecordNotPresentException{
+        ArrayList<String> result = map.get(name);
+        if(result == null) {
+            logger.warning("Unable to find nonexistent record for " + name);
+            throw new RecordNotPresentException();
+        }
+        return result;
+    }
+
+    String reverseLookUp(String number) throws RecordNotPresentException {
+        for(String s : map.keySet()) {
+            if(map.get(s).contains(number)) {
+                return s;
+            }
+        }
+        logger.warning("Unable to locate nonexistent phone number: " + number);
+        throw new RecordNotPresentException();
+    }
+
     ArrayList<String> removeRecordByName(String name) throws RecordNotPresentException{
         lookUp(name);
         return map.remove(name);
@@ -96,7 +116,7 @@ public class PhoneBook {
 
     boolean removePhoneNumber(String phoneNumber) throws RecordNotPresentException {
         String name = reverseLookUp(phoneNumber);
-        return name != null && map.get(name).remove(phoneNumber);
+        return map.get(name).remove(phoneNumber);
     }
 
     String allNamesToString() {
@@ -115,15 +135,6 @@ public class PhoneBook {
             sb.append(entry.getKey() + ": " + entry.getValue() + "\n");
         }
         return sb.toString();
-    }
-
-    String reverseLookUp(String number) throws RecordNotPresentException {
-        for(String s : map.keySet()) {
-            if(map.get(s).contains(number)) {
-                return s;
-            }
-        }
-        throw new RecordNotPresentException();
     }
 
 }
