@@ -9,7 +9,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 
-public class TestPhoneBookManager {
+public class TestException {
 
     PhoneBookManager pb;
 
@@ -36,13 +36,13 @@ public class TestPhoneBookManager {
         assertEquals("The size of phoneBook should be increased by one",expectedSize, actualSize, 0);
     }
 
-    @Test
+    @Test(expected = RecordNotPresent.class)
     public void testRemoveEntry() throws RecordNotPresent{
 
         int currentSize = pb.size();
         int expectedSize = currentSize - 1;
 
-        pb.removeEntry("Ms J");
+        pb.removeEntry("zzz"); // name not exist
         int actualSize = pb.size();
 
         assertEquals("The size of phoneBook should be decread by one",expectedSize, actualSize, 0);
@@ -50,10 +50,10 @@ public class TestPhoneBookManager {
 
 
 
-    @Test
+    @Test(expected = RecordNotPresent.class)
     public void testLookup() throws RecordNotPresent{
 
-        String lookupName = "Ms J";
+        String lookupName = "zzz"; // name not exist
 
         String expected = "Ms J: [(302)450-4500]";
         String actual = pb.lookup(lookupName);
@@ -61,10 +61,10 @@ public class TestPhoneBookManager {
         assertEquals("pull phone number by name", expected, actual);
     }
 
-    @Test
+    @Test (expected = InvalidPhoneNumberFormatException.class)
     public void testShowAllEntries() throws InvalidPhoneNumberFormatException {
 
-        pb.addEntry("Zach Mullen", "(302)450-4000");
+        pb.addEntry("Zach Mullen", "(302)50-4000"); // wrong format
 
         String expected = "\n\nMs J\n[(302)450-4500]\n\nZach Mullen\n[(302)450-4000]";
         String actual = pb.showAllEntries();
@@ -72,7 +72,7 @@ public class TestPhoneBookManager {
         assertEquals("Should be showing all the entries", expected, actual);
     }
 
-    @Test
+    @Test (expected = Exception.class)
     public void testReverseLookup() throws InvalidPhoneNumberFormatException, RecordNotPresent{
 
         String expected =  "Ms J";
@@ -81,34 +81,34 @@ public class TestPhoneBookManager {
         assertEquals("Should be showing all the entries", expected, actual);
     }
 
-    @Test
+    @Test (expected = Exception.class)
     public void testAddToExistingEntry() throws InvalidPhoneNumberFormatException, RecordNotPresent{
 
         int expectedNumberOfPhoneNmbers = 2;
 
-        pb.addToExistingEntry("Ms J", "(555)555-5555");
+        pb.addToExistingEntry("x", "(555)555-5555"); // wrong format
+
+
 
         int actualNumberOfPhoneNumbers = pb.phoneBook.get("Ms J").size();
 
         assertEquals("Should be showing all the entries", expectedNumberOfPhoneNmbers, actualNumberOfPhoneNumbers);
     }
 
-    @Test
+    @Test (expected = Exception.class)
     public void testRemoveOneNumberFromEntry() throws InvalidPhoneNumberFormatException, RecordNotPresent{
 
         int expectedNumberOfPhoneNmbers = 1;
 
         pb.addToExistingEntry("Ms J", "(555)555-5555");
 
-        pb.removeOneNumberFromEntry("Ms J", "(555)555-5555");
+        pb.removeOneNumberFromEntry("x", "(555)555-5555"); //wrong name
+
+        //pb.removeOneNumberFromEntry("", "(555)555-5555");
 
         int actualNumberOfPhoneNumbers = pb.phoneBook.get("Ms J").size();
-
-        assertEquals("Should be showing all the entries", expectedNumberOfPhoneNmbers, actualNumberOfPhoneNumbers);
     }
 
 
 
 }
-
-
