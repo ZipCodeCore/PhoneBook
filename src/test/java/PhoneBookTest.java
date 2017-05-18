@@ -1,18 +1,25 @@
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
  * Created by sarahweisser on 5/16/17.
  */
 public class PhoneBookTest {
+    PhoneBookEntry entry;
+    PhoneBook book;
+
+    @Before
+    public void setUp() throws InvalidPhoneNumberFormatException {
+        // given{
+        book = new PhoneBook();
+        entry = new PhoneBookEntry("Sarah");
+        entry.addNumber("4435401564");
+        book.addEntry(entry);
+    }
 
     @Test
     public void addEntryWithOneNumberToPhoneBookTest() {
-        // given
-        PhoneBook book = new PhoneBook();
-        PhoneBookEntry entry = new PhoneBookEntry("Sarah");
-        entry.addNumber("4435401564");
-        book.addEntry(entry);
         int expectedSize = 1;
         String expectedValue = "(443) 540-1564";
 
@@ -26,11 +33,8 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void addEntryWithMultiplePhoneNumbersToPhoneBookTest() {
+    public void addEntryWithMultiplePhoneNumbersToPhoneBookTest() throws InvalidPhoneNumberFormatException {
         // given
-        PhoneBook book = new PhoneBook();
-        PhoneBookEntry entry = new PhoneBookEntry("Sarah");
-        entry.addNumber("4435401564");
         entry.addNumber("8885551234");
         book.addEntry(entry);
         String expectedValue = "(443) 540-1564, (888) 555-1234";
@@ -43,12 +47,8 @@ public class PhoneBookTest {
     }
 
    @Test
-    public void addNumberToPreviousEntry() {
+    public void addNumberToPreviousEntry() throws InvalidPhoneNumberFormatException {
         // given
-        PhoneBook book = new PhoneBook();
-        PhoneBookEntry entry = new PhoneBookEntry("Sarah");
-        entry.addNumber("4435401564");
-        book.addEntry(entry);
         book.addNumberToEntry("Sarah", "8885551234");
         String expectedValue = "(443) 540-1564, (888) 555-1234";
 
@@ -62,10 +62,6 @@ public class PhoneBookTest {
     @Test
     public void removeEntryFromPhoneBookTest() {
         // given
-        PhoneBook book = new PhoneBook();
-        PhoneBookEntry entry = new PhoneBookEntry("Sarah");
-        entry.addNumber("4435401564");
-        book.addEntry(entry);
         String expectedRemoved = "(443) 540-1564";
         int expected = 0;
 
@@ -79,11 +75,8 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void lookupEntryTest() {
+    public void lookupEntryTest() throws InvalidPhoneNumberFormatException {
         // given
-        PhoneBook book = new PhoneBook();
-        PhoneBookEntry entry = new PhoneBookEntry("Sarah");
-        entry.addNumber("4435401564");
         entry.addNumber("8885551234");
         book.addEntry(entry);
         String expected = "(443) 540-1564, (888) 555-1234";
@@ -96,12 +89,8 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void lookupEntryNotInBookTest() {
+    public void lookupEntryNotInBookTest() throws InvalidPhoneNumberFormatException {
         // given
-        PhoneBook book = new PhoneBook();
-        PhoneBookEntry entry = new PhoneBookEntry("Sarah");
-        entry.addNumber("4435401564");
-        book.addEntry(entry);
         String expected = null;
 
         // when
@@ -112,15 +101,12 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void showListingsTest() {
+    public void showListingsTest() throws InvalidPhoneNumberFormatException {
         // given
-        PhoneBook book = new PhoneBook();
-        PhoneBookEntry entry1 = new PhoneBookEntry("Sarah");
-        entry1.addNumber("4435401564");
-        entry1.addNumber("8885551234");
+        entry.addNumber("8885551234");
         PhoneBookEntry entry2 = new PhoneBookEntry("Jenny");
         entry2.addNumber("3028675309");
-        book.addEntry(entry1);
+        book.addEntry(entry);
         book.addEntry(entry2);
         String[] expected = {"Name: Jenny; Phone Number(s): (302) 867-5309", "Name: Sarah; Phone Number(s): (443) 540-1564, (888) 555-1234"};
 
@@ -132,14 +118,10 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void reverseLookupByPhoneNumber() {
+    public void reverseLookupByPhoneNumber() throws InvalidPhoneNumberFormatException {
         // given
-        PhoneBook book = new PhoneBook();
-        PhoneBookEntry entry1 = new PhoneBookEntry("Sarah");
-        entry1.addNumber("4435401564");
         PhoneBookEntry entry2 = new PhoneBookEntry("Jenny");
         entry2.addNumber("3028675309");
-        book.addEntry(entry1);
         book.addEntry(entry2);
         String expected = "Jenny";
 
@@ -151,14 +133,11 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void reverseLookupByPhoneNumberNotFoundTest() {
+    public void reverseLookupByPhoneNumberNotFoundTest() throws InvalidPhoneNumberFormatException {
         // given
-        PhoneBook book = new PhoneBook();
-        PhoneBookEntry entry1 = new PhoneBookEntry("Sarah");
-        entry1.addNumber("4435401564");
         PhoneBookEntry entry2 = new PhoneBookEntry("Jenny");
         entry2.addNumber("3028675309");
-        book.addEntry(entry1);
+        book.addEntry(entry);
         book.addEntry(entry2);
         String expected = null;
 
@@ -170,15 +149,12 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void removeOneNumberFromEntryTest() {
+    public void removeOneNumberFromEntryTest() throws InvalidPhoneNumberFormatException {
         // given
-        PhoneBook book = new PhoneBook();
-        PhoneBookEntry entry1 = new PhoneBookEntry("Sarah");
-        entry1.addNumber("4435401564");
-        entry1.addNumber("8885551234");
+        entry.addNumber("8885551234");
         PhoneBookEntry entry2 = new PhoneBookEntry("Jenny");
         entry2.addNumber("3028675309");
-        book.addEntry(entry1);
+        book.addEntry(entry);
         book.addEntry(entry2);
         String expected = "(443) 540-1564";
         book.removeNumberFromEntry("Sarah", "(888) 555-1234");

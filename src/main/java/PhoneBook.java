@@ -19,7 +19,7 @@ public class PhoneBook {
         phoneBook.put(entry.getName(), entry.getFormattedPhoneNumbers().toString());
     }
 
-    public String addNumberToEntry(String name, String phoneNumber) {
+    public String addNumberToEntry(String name, String phoneNumber) throws InvalidPhoneNumberFormatException {
         PhoneBookEntry entry = new PhoneBookEntry(name);
         entry.addNumber(lookup(name));
         entry.addNumber(phoneNumber);
@@ -54,7 +54,7 @@ public class PhoneBook {
         return null;
     }
 
-    public void removeNumberFromEntry(String key, String phoneNumber) {
+    public void removeNumberFromEntry(String key, String phoneNumber) throws InvalidPhoneNumberFormatException {
         PhoneBookEntry entry = new PhoneBookEntry(key);
         String [] numbers = lookup(key).split(", ");
         ArrayList<String> editedNumbers = new ArrayList<String>(Arrays.asList(numbers));

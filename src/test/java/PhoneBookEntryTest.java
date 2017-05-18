@@ -22,7 +22,7 @@ public class PhoneBookEntryTest {
     }
 
     @Test
-    public void addNumbersToEntryTest() {
+    public void addNumbersToEntryTest() throws InvalidPhoneNumberFormatException {
         // given
         PhoneBookEntry entry = new PhoneBookEntry("Sarah");
         entry.addNumber("4435401564");
