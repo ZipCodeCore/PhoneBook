@@ -137,4 +137,22 @@ public class PhoneBook {
         return sb.toString();
     }
 
+    /*
+    Method to test equality of PhoneBooks, which could be useful for testing.
+    It checks that the maps have the same name and that the entry for each
+    name has the same size. At this point, it doesn't check that the
+    ArrayLists have the same elements--only size.
+     */
+    boolean isEqual(PhoneBook other) {
+        if(map.size() != other.map.size()) {
+            return false;
+        }
+        for(String s : map.keySet()) {
+            if(other.map.get(s) == null || other.map.get(s).size() != map.get(s).size()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

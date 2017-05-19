@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 public class TestPhoneBook {
 
-    PhoneBook phoneBook;
-    PhoneBook emptyPhoneBook;
+    private PhoneBook phoneBook;
+    private PhoneBook emptyPhoneBook;
 
     @Before
     public void initialize() {
@@ -21,7 +21,7 @@ public class TestPhoneBook {
             phoneBook.addRecord("Villain,MetalFace", "(267) 867-5309");
             phoneBook.addRecord("Villain,MetalFace", "(215) 867-5309");
         } catch (Exception e) {
-
+            //Since this is a test class, I will permit myself a fake catch.
         }
     }
 
