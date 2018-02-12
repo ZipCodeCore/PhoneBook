@@ -28,15 +28,4 @@ public class Person {
         return builder.toString();
     }
 
-
-    public static void main(String[] args) {
-        Person eric = new Person("Coder Cat", "867-5309");
-        eric.addNumber("117-2490");
-
-        System.out.println(eric.printName());
-        System.out.println(eric.printNumbers());
-
-
-    }
-
 }
