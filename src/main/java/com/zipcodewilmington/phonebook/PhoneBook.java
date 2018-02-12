@@ -12,7 +12,7 @@ public class PhoneBook {
 
     //TODO: create constructor that allows a default dataset
     public PhoneBook() {
-        book = new HashMap<>();
+        book = new HashMap<String, Entry>();
         numberOfEntries = 0;
     }
 

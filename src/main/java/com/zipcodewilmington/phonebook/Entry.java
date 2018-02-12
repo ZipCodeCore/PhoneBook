@@ -46,12 +46,13 @@ public class Entry {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Entry entry = (Entry) o;
-        //match names only, names assumed unique for this example
-        return Objects.equals(name, entry.name);
+        return Objects.equals(name, entry.name) &&
+                Objects.equals(numbers, entry.numbers);
     }
 
     @Override
     public int hashCode() {
+
         return Objects.hash(name, numbers);
     }
 
