@@ -14,9 +14,13 @@ Your completed lab must be submitted via GitHub. Labs are not complete unless th
 
 ### Part I:
 
-Create a PhoneBook class that holds names and phone numbers in sorted order. You can use an associative data type (one which stores items as keys paired with values).
+Create a PhoneBook class that holds names and phone numbers. You can use an associative data type (one which stores items as keys paired with values).
 
-Your PhoneBook class should have a lookup() method which allows you to look up a person's phone number based on their name. PhoneBook should also have methods to add and remove entries, or to list all names or all entries (names an phone numbers).
+Your PhoneBook class should have the following method
+  * lookup(String name) -  allows you to look up a person's phone number based on their name
+  * add(String name, String phoneNumber) - add entry
+  * remove(String name) - remove entry
+  * display() - list all entries (names an phone numbers) in alphabetical order
 
 ### Part II:
 
