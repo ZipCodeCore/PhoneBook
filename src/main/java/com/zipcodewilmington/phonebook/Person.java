@@ -28,4 +28,9 @@ public class Person {
         this.number = number;
     }
 
+    public Person() {
+        this.name = "empty";
+        this.number = "0000000000";
+    }
+
 }

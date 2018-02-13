@@ -1,6 +1,8 @@
 package com.zipcodewilmington.phonebook;
 
 
+import sun.invoke.empty.Empty;
+
 import java.util.TreeMap;
 
 /**
@@ -12,12 +14,12 @@ public class PhoneBook {
     //Person bill = new Person("bill", "1234567890");
     //PhoneBook yellowPages = new PhoneBook(("bill", new Person("bill", "1234567890"));
 
-    public PhoneBook() {
-        this.phoneBook = new TreeMap<String, Person>();
-    }
-
     public PhoneBook(TreeMap<String, Person> phoneBook) {
         this.phoneBook = phoneBook;
+    }
+
+    public PhoneBook() {
+        this.phoneBook = new TreeMap<String, Person>();
     }
 
 //    public Person get(String name){
@@ -46,8 +48,11 @@ public class PhoneBook {
         this.phoneBook.remove(name);
     }
 
-    public boolean existenceCheck(String name){
-        return this.phoneBook.containsKey(name);
+    public void existenceCheck(String name) throws RuntimeException{
+        //return this.phoneBook.containsKey(name);
+        if (this.phoneBook.containsKey(name)){
+            throw new RuntimeException();
+        }
     }
     
     public String display(){
