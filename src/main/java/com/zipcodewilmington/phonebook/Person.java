@@ -17,11 +17,11 @@ public class Person {
         numberList.add(numberToAdd);
     }
 
-    public printNumbers() {
+    public getAllPhoneNumbers() {
         return numberList;
     }
 
-    public printName() {
+    public getName() {
         return name;
     }
 

@@ -1,6 +1,7 @@
 package com.zipcodewilmington.phonebook;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -15,10 +16,20 @@ public class PhoneBookTest {
 
     @Test
     public void testAddEntry() {
+        Person mitch = new Person("Mitch", "5551234");
+        String expected = "Mitch";
+        String actual = mitch.getName();
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testAddEntry2() {
 
     }
 
     @Test
-    public void
+    public void testAddNumber() {
+
+    }
 
 }
