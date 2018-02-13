@@ -14,12 +14,20 @@ public class Number {
 
     // can't think of a great reason for a default constructor atm
     public Number(String number) {
-        this("mobile", number);
+        this("home", number);
     }
 
     public Number(String description, String number) {
         this.description = description;
         this.number = number;
+    }
+
+    /**
+     * getter for number prop
+     * @return unformatted number as String
+     */
+    public String getNumber() {
+        return number;
     }
 
     @Override

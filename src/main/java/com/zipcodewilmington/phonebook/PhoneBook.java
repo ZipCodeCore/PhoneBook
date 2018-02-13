@@ -10,28 +10,92 @@ public class PhoneBook {
     private HashMap<String, Entry> book;
     private int numberOfEntries;
 
-    //TODO: create constructor that allows a default dataset
     public PhoneBook() {
-        book = new HashMap<String, Entry>();
+        numberOfEntries = 0;
+        book = new HashMap<>();
         numberOfEntries = 0;
     }
 
-    public Entry lookup(String name) {
-       return book.get(name);
+    /**
+     * get the phone number(s) on record for the given name
+     * @param name the name for which to search
+     * @return the list of phone numbers associated with the given name or an error msg if not found
+     */
+    public String lookup(String name) {
+        if (book.containsKey(name))
+            return book.get(name).listNumbers();
+        else
+            return "[ I have no memory of this person. ]";
     }
 
-    //TODO: reverseLookup
+    /**
+     * get the name of the person on record to whom the given phone number belongs
+     * @param number the phone number used as the search parameter
+     * @return the person to whom the number belongs or an error msg if the number isn't found
+     */
     public String reverseLookup(String number) {
-        return null;
+        for (Entry e : book.values()) {
+            if (e.listNumbers().contains(number)) {
+                return e.getName();
+            }
+        }
+        return "[ She definitely changed her number. ]";
     }
 
+    /**
+     * @return  a (somewhat) formatted list of all Entries
+     */
+    public String listAll() {
+        StringBuilder sb = new StringBuilder();
+        for (Entry e : book.values())
+            sb.append(e.toString());
+        return sb.toString();
+
+    }
+
+    /**
+     * print a (somewhat) formatted list of all Entries
+     */
+    public void printAll() {
+        System.out.println(listAll());
+    }
+
+    /**
+     * attempt to remove an Entry by its name
+     * @param name the name of the entry to be removed
+     * @return the Entry removed or null if none was found
+     */
     public Entry removeEntry(String name) {
         return book.remove(name);
     }
 
+    /**
+     * attempt to remove a given number from the given Entry name
+     * @param name the name of the Entry to be removed
+     * @param number the number to remove from the entry
+     * @return true if successful
+     */
+    public boolean removeNumberFromEntry(String name, String number) {
+        return book.get(name).remove(number);
+    }
+
+    /**
+     * add a new entry to the phoneBook. If the Entry exists w/ the given name, add number to existing entry
+     * @param name the name of the entry to add/update
+     * @param number the phone number to add
+     * @return the entry that was updated/added
+     */
     public Entry addEntry(String name, String number) {
-        numberOfEntries++;
-        return book.put(name, new Entry(name, number));
+        Entry e;
+        if (book.containsKey(name)) {
+            e = book.get(name);
+            e.addNumber(number, "");
+        }
+        else {
+            numberOfEntries++;
+            e = book.put(name, new Entry(name, number));
+        }
+        return e;
     }
 
     @Override

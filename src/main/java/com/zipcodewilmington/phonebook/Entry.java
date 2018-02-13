@@ -15,30 +15,50 @@ public class Entry {
 
     public Entry(String name, String... nums) {
         this.name = name;
+        numbers = new ArrayList<>();
         for (String n : nums) {
             numbers.add(new Number(n));
         }
     }
 
-    public ArrayList<Number> getNumbers() {
-        return numbers;
+    /**
+     * slightly format and return all numbers recorded for this entry
+     * @return the numbers for this entry
+     */
+    public String listNumbers() {
+        StringBuilder sb = new StringBuilder();
+        for (Number n : numbers) {
+            sb.append(n.getNumber());
+            sb.append("\n");
+        }
+        return sb.toString();
     }
 
-    //TODO: return numbers as JSON string
-    public String getNumbersJSON() {
-        return null;
-    }
-
-    public String getName() {
-        return name;
-    }
-
+    /**
+     * add a new number to this entry
+     * @param number the number to be added
+     * @param description a description for this number i.e. mobile, home, etc.
+     * @return true if success else false
+     */
     public boolean addNumber(String number, String description) {
         return numbers.add(new Number(description, number));
     }
 
+    /**
+     * attempt to remove a number from this entry
+     * @param number the number to remove
+     * @return true if success
+     */
     public boolean remove(String number) {
         return numbers.remove(new Number("dummy", number));
+    }
+
+    /**
+     * getter for name prop
+     * @return unformatted name as String
+     */
+    public String getName() {
+        return name;
     }
 
     @Override
@@ -59,8 +79,9 @@ public class Entry {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (Number n : numbers)
-            sb.append(n.toString());
+        for (Number n : numbers) {
+            sb.append(String.format("%1$-15s %2$s \n", name, n.getNumber()));
+        }
         return sb.toString();
     }
 }
