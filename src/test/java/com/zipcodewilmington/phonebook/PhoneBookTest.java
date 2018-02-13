@@ -30,9 +30,22 @@ public class PhoneBookTest {
     @Test
     public void removeTest() {
         PhoneBook testPhoneBook = new PhoneBook();
+        testPhoneBook.add("Marky", "123.321.9999");
+        testPhoneBook.add("Ricky", "999.543.1234");
+        testPhoneBook.remove("Marky");
+        String testNumber = testPhoneBook.lookup("Ricky");
+        Assert.assertNotEquals(null, testNumber);
 
+    }
 
-
+    @Test
+    public void removeTest2() {
+        PhoneBook testPhoneBook = new PhoneBook();
+        testPhoneBook.add("Marky", "123.321.9999");
+        testPhoneBook.add("Ricky", "999.543.1234");
+        testPhoneBook.remove("Ricky");
+        String testNumber = testPhoneBook.lookup("Ricky");
+        Assert.assertEquals(null, testNumber);
 
     }
 
@@ -57,23 +70,52 @@ public class PhoneBookTest {
 
 
     @Test
-    public void listNamesTest() {
+    public void listNamesTest1() {
         PhoneBook testPhoneBook = new PhoneBook();
         testPhoneBook.add("Marky", "888.546.9876");
         testPhoneBook.add("Ricky", "888.555.3376");
         testPhoneBook.add("Danny", "888.546.9087");
         testPhoneBook.add("Terri", "888.123.7862");
-        testPhoneBook.listNames();
+        String actual = testPhoneBook.listNames();
+        String expected = "Danny\nMarky\nRicky\nTerri\n";
+        Assert.assertEquals(expected, actual);
+    }
 
+    @Test
+    public void listNamesTest2() {
+        PhoneBook testPhoneBook = new PhoneBook();
+        testPhoneBook.add("Marky", "888.546.9876");
+        testPhoneBook.add("Ricky", "888.555.3376");
+        testPhoneBook.add("Danny", "888.546.9087");
+        testPhoneBook.add("Terri", "888.123.7862");
+        String actual = testPhoneBook.listNames();
+        String expected = "Danny\nMarky\nGood Will\nTerri\n";
+        Assert.assertNotEquals(expected, actual);
     }
 
 
     @Test
-    public void listNamesAndNumbersTest() {
-
+    public void listNamesAndNumbersTest1() {
         PhoneBook testPhoneBook = new PhoneBook();
-
+        testPhoneBook.add("Marky", "888.546.9876");
+        testPhoneBook.add("Ricky", "888.555.3376");
+        testPhoneBook.add("Danny", "888.546.9087");
+        testPhoneBook.add("Terri", "888.123.7862");
+        String actual = testPhoneBook.listNamesAndNumbers();
+        String expected = "Danny: 888.546.9087\nMarky: 888.546.9876\nRicky: 888.555.3376\nTerri: 888.123.7862\n";
+        Assert.assertEquals(expected, actual);
     }
 
+    @Test
+    public void listNamesAndNumbersTest2() {
+        PhoneBook testPhoneBook = new PhoneBook();
+        testPhoneBook.add("Marky", "888.546.9876");
+        testPhoneBook.add("Ricky", "888.555.3376");
+        testPhoneBook.add("Danny", "888.546.9087");
+        testPhoneBook.add("Terri", "888.123.7862");
+        String actual = testPhoneBook.listNamesAndNumbers();
+        String expected = "Joey: 888.546.9087\nRobby: 888.546.9876\nJohnny: 888.555.3376\nBrian: 888.123.7862\n";
+        Assert.assertNotEquals(expected, actual);
+    }
 
 }

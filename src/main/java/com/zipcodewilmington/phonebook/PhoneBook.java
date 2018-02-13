@@ -33,7 +33,7 @@ public class PhoneBook {
         String list = "";
         Set<String> keys = myTree.keySet();
         for (String i : keys) {
-            list += i;
+            list += i + "\n";
         }
         return list;
     }
@@ -43,7 +43,7 @@ public class PhoneBook {
         String list = "";
         Set<String> keys = myTree.keySet();
         for (String i : keys) {
-            list += i + ":" + myTree.get(i);
+            list += i + ": " + myTree.get(i)+ "\n";
         }
         return list;
     }
@@ -56,6 +56,16 @@ public class PhoneBook {
     public static void main(String[] args) {
 
         PhoneBook myPhoneBook = new PhoneBook();
+
+        myPhoneBook.add("Marky", "555.123.4321");
+        myPhoneBook.add("Ricky", "555.432.9785");
+        myPhoneBook.add("Danny", "555.999.8865");
+        myPhoneBook.add("Terri", "555.123.9886");
+
+        System.out.println(myPhoneBook.listNamesAndNumbers());
+        //System.out.println(myPhoneBook.listNames());
+
+
 
     }
 
