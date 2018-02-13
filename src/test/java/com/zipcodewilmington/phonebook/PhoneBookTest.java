@@ -11,26 +11,55 @@ import org.junit.experimental.theories.suppliers.TestedOn;
  */
 public class PhoneBookTest {
 
-    @Before
-    public void setUp() {
-        testBook = new PhoneBook();
-    }
-
-
-
 
     @Test
     public void addTest() {
-
         PhoneBook testBook = new PhoneBook();
-        String name = "Dan";
-        String number = "4847986543";
-       // String expected = "Dan 4847986543";
+        testBook.addEntry("Luke", "6109998787");
+        String testNumber = testBook.stringLookup("Luke");
+        Assert.assertTrue(testNumber.equals("6109998787"));
 
-        testBook.add(name, number);
-        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void addTest1() {
+        PhoneBook testBook = new PhoneBook();
+        testBook.addEntry("Kate", "4846569090");
+        String testNumber = testBook.stringLookup("Kate");
+        Assert.assertTrue(testNumber.equals("4846569090"));
+
+    }
+
+    @Test
+    public void removeTest1() {
+        PhoneBook testBook = new PhoneBook();
+        testBook.addEntry("Kate", "4846569090");
+        testBook.remove("Kate");
+        String testNumber = testBook.stringLookup("Kate");
+        Assert.assertEquals(null, testNumber);
+
+
+    }
+
+    @Test
+    public void stringLookupTest() {
+        PhoneBook testBook = new PhoneBook();
+        testBook.addEntry("Kate", "4846569090");
+        String testNumber = testBook.stringLookup("Kate");
+        Assert.assertFalse(testNumber.equals("4846587091"));
+
+    }
+
+    @Test
+    public void stringLookupTest1() {
+        PhoneBook testBook = new PhoneBook();
+        testBook.addEntry("Kate", "4846569090");
+        String testNumber = testBook.stringLookup("Kate");
+        Assert.assertTrue(testNumber.equals("4846569090"));
+
     }
 
 
-
 }
+
+
