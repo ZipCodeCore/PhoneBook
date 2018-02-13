@@ -56,8 +56,11 @@ public class PhoneBook {
         String contactsAndNumbers = "";
 
         for (Map.Entry<String, String> entry : nameNumberBook.entrySet()) {
-            String getKeys = String.format("%1$-15s", entry.getKey());
-            String getValues = String.format("%1$-15s", entry.getValue());
+            String getKeys = String.format("%1$-10s", entry.getKey());
+            String getValues = String.format("%1$-10s", entry.getValue());
+
+            //String getKeys = entry.getKey() + ":  ";
+            //tring getValues = entry.getValue();
 
             contactsAndNumbers += getKeys + getValues + "\n";
         }
@@ -70,19 +73,18 @@ public class PhoneBook {
         PhoneBook phonebook = new PhoneBook();
 
         phonebook.add("George", "123.456.7890");
+        //phonebook.remove("George");
         phonebook.add("Pete", "292.349.8023");
         phonebook.add("Dan", "854.930.2175");
         phonebook.add("Brad", "609.489.2345");
         phonebook.add("Stan", "346.256.1765");
         phonebook.add("Luke", "367.945.3984");
 
-
-
         //phonebook.lookup("George");
         //phonebook.remove("George");
 
         //System.out.println(phonebook.lookup("George"));
-        //System.out.println(phonebook.listNames());
+        System.out.println(phonebook.listNames());
         System.out.println(phonebook.listPhoneBook());
 
 
