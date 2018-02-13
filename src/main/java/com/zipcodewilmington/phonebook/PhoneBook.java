@@ -8,10 +8,10 @@ import java.util.TreeMap;
  */
 public class PhoneBook {
 
-    private Map<String, String> phoneRecord;
+    public Map<String, String> phoneRecord;
 
-    public PhoneBook() {
-        phoneRecord = new TreeMap<String, String>();
+    public PhoneBook(Map<String, String> phoneRecord) {
+        this.phoneRecord = phoneRecord;
     }
 
     /**
@@ -21,7 +21,7 @@ public class PhoneBook {
      * @param number
      */
     public void addNameAndNumber(String name, String number) {
-        if (!phoneRecord.containsKey(name)) {
+        if (!containsName(name)) {
             phoneRecord.put(name, number);
             System.out.println("Record was successfully added to the Phone Book.");
         } else {
@@ -113,6 +113,14 @@ public class PhoneBook {
 
     }
 
+
+    public boolean containsName(String name) {
+        return phoneRecord.containsKey(name);
+    }
+
+    public boolean containsPhoneNumber(String phoneNumber) {
+        return phoneRecord.containsKey(phoneNumber);
+    }
 }
 
 

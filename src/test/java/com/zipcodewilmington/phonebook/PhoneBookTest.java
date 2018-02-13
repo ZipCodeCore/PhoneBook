@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert;
 import org.junit.After;
+
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -12,43 +13,51 @@ import java.util.TreeMap;
  */
 public class PhoneBookTest {
 
-    private PhoneBook testRecord;
+    private static PhoneBook testPhoneBook;
 
-
+    /**
+     * double brace initializing: outer pair of braces means that you
+     * are declaring and initializing an anonymous inner class that
+     * extends TreeMap. Inner braces represents an instance initializer,
+     * code that is run when an instance is created.
+     */
     @Before
-    public void testSetUp() {
+    public void setUp() {
 
-        testRecord = new PhoneBook();
-
-        testRecord.addNameAndNumber("Sally", "7173419899");
-        testRecord.addNameAndNumber("Zach", "7173413244");
-        testRecord.addNameAndNumber("Adam", "7173419675");
-        testRecord.addNameAndNumber("Chance", "555");
-        testRecord.addNameAndNumber("Wally", "8906786");
-
+        Map<String, String> expectedPhoneBook = new TreeMap<String, String>() {
+            {
+                put("fa", "43234");
+                put("jj", "54323");
+                put("dfafa", "894579");
+            }
+        };
+        testPhoneBook = new PhoneBook(expectedPhoneBook);
     }
+
 
     @Test
     public void recordShouldAddToPhoneBook() {
-        testRecord.addNameAndNumber("Julia", "7173248976");
-        boolean expectedName = testRecord.containsKey(name);
-        boolean expectedValue = testRecord.containsKey(value);
-        Assert.assertEquals(expectedName, true);
-        Assert.assertEquals(expectedValue, true);
+        testPhoneBook.addNameAndNumber("Julia", "7173248976");
+        boolean actualValue = testPhoneBook.containsName("Julia");
+        boolean actualName = testPhoneBook.containsPhoneNumber("7173248976");
+        Assert.assertTrue(actualName);
+        Assert.assertTrue(actualValue);
     }
+
 
     @Test
     public void recordShouldDeleteFromPhoneBook() {
-        testRecord.deleteNameAndNumber("Julia");
-        boolean expectedName = testRecord.containsKey(name);
-        boolean expectedValue = testRecord.containsKey(value);
-        Assert.assertEquals(expectedName, false);
-        Assert.assertEquals(expectedValue,false);
+        testPhoneBook.deleteNameAndNumber("Julia");
+        boolean actualValue = testPhoneBook.containsPhoneNumber("Julia");
+        boolean actualName = testPhoneBook.containsPhoneNumber("7173248976");
+        Assert.assertFalse(actualName);
+        Assert.assertFalse(actualValue);
     }
 
     @Test
     public void phoneNumberShouldRetrieveByName() {
-
+        String expected = testPhoneBook.deleteNameAndNumber("Julia");
+        boolean expectedName = testPhoneBook.containsName(name);
         Assert.assertEquals(expected, actual);
     }
 
