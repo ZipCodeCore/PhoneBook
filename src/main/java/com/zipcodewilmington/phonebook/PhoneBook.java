@@ -30,29 +30,40 @@ public class PhoneBook {
     }
 
     //remove a name & number entry
-    public void remove(String name) {
+    public String remove(String name) {
+        String removeName = name + " " + treeMap.get(name) + " has been removed";
         if(treeMap.containsKey(name)) {
             treeMap.remove(name);
         }
+        return removeName;
     }
 
     //find phone number lookup by name
-    public void lookup(String name) {
-        if(treeMap.containsKey(name)) {
-            treeMap.get(name);
+    public String lookup(String name) {
+        String look = "";
+        if (treeMap.containsKey(name)) {
+            look = treeMap.get(name);
+        } else {
+            look = name + " is not in database";
         }
-
+        return look;
     }
 
     //print out all of the entries in PhoneBook
     //need to work on code for formatting
+
     public String display(){
-        String printOut = "";
+        StringBuilder printOut = new StringBuilder();
         for(Map.Entry<String, String> entry: treeMap.entrySet()) {
-            printOut += entry.getKey() + " " + entry.getValue() + "\n";
+            printOut
+                    .append(entry.getKey())
+                    .append(" ")
+                    .append(entry.getValue())
+                    .append("\n");
         }
+        String print = printOut.toString();
         System.out.println(printOut);
-        return printOut;
+        return print;
     }
 
 
