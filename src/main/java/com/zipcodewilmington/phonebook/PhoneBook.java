@@ -59,9 +59,13 @@ public class PhoneBook {
         }
 
         public String listNamesAndNumbers(){
-        Set<String>PhoneBookList = phoneBook.keySet();
-            for (String nameKeys:phoneBookList) {
-                namesAndNumbers+=nameKeys + "   "+phoneBook.get(nameKeys)+ "\n";
+            if(phoneBook.isEmpty()){
+                return null;
+            }else {
+                Set<String> PhoneBookList = phoneBook.keySet();
+                for (String nameKeys : phoneBookList) {
+                    namesAndNumbers += nameKeys + "   " + phoneBook.get(nameKeys) + "\n";
+                }
             }
 
         return namesAndNumbers;

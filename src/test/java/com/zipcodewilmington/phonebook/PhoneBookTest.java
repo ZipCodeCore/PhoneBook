@@ -37,12 +37,23 @@ public class PhoneBookTest {
         String actual = phoneBookRecord.lookup("Micheal");
         Assert.assertEquals(expected, actual);
     }
-    public void testlistNames(){
-        String expected = "John\n" +
-                            "Micheal\n"+
-                            "James\n";
+    @Test
+    public void testListNames(){
+        String expected = "James\n" +
+                            "John\n"+
+                            "Micheal\n";
         String actual = phoneBookRecord.listNames();
         Assert.assertEquals(expected, actual);
 
     }
+    @Test
+    public void testListNumbersAndNumbers(){
+        String expected = "James    "+ "1234554321\n"+
+                "John   "+"1234567890\n"+
+                "Micheal    "+"5678901234";
+        String actual =phoneBookRecord.listNamesAndNumbers();
+        Assert.assertEquals(expected, actual);
+    }
+
+
 }
