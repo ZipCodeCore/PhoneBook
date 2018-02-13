@@ -47,6 +47,14 @@ public class PhoneBookTest {
     }
 
     public void testDisplay() {
+        //Given
+        String expectedNameNumber = "Bob 302-555-1234 \n";
+        PhoneBook book = new PhoneBook();
+        book.add("Bob", "302-555-1234");
+        //When
+        String actualNameNumber = book.display();
+        //Then
+        Assert.assertEquals(expectedNameNumber, actualNameNumber);
 
     }
 

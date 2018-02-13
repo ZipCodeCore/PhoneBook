@@ -24,45 +24,34 @@ public class PhoneBook {
 
     //add a name & number entry
     public void add(String name, String number) {
-        treeMap.put(name, number);
-        String confirm = "";
-        if(treeMap.put(name, number)!= null) {
-            confirm = name + " and " + number + " are now in the database";
-        } else {
-            confirm = "Error: " + name + " is already in the database";
+        if(!treeMap.containsKey(name)) {
+            treeMap.put(name, number);
         }
     }
 
     //remove a name & number entry
-    public String remove(String name) {
-        treeMap.remove(name);
-        String response = "";
-        if(treeMap.remove(name) != null) {
-            response = "Name and number removed";
+    public void remove(String name) {
+        if(treeMap.containsKey(name)) {
+            treeMap.remove(name);
         }
-        if(treeMap.remove(name)== null) {
-            response = "Invalid entry";
-        }
-        return response;
     }
 
     //find phone number lookup by name
-    public String lookup(String name) {
-         String lookup = treeMap.get(name);
-         String notFound = name + " is not in the directory";
-         if(lookup != null) {
-             return lookup;
-         }
-         else {
-             return notFound;
-         }
+    public void lookup(String name) {
+        if(treeMap.containsKey(name)) {
+            treeMap.get(name);
+        }
+
     }
 
     //print out all of the entries in PhoneBook
     //need to work on code for formatting
-    public String display() {
-        System.out.println(treeMap.entrySet().toString());
-        String printOut = treeMap.entrySet().toString();
+    public String display(){
+        String printOut = "";
+        for(Map.Entry<String, String> entry: treeMap.entrySet()) {
+            printOut += entry.getKey() + " " + entry.getValue() + "\n";
+        }
+        System.out.println(printOut);
         return printOut;
     }
 
