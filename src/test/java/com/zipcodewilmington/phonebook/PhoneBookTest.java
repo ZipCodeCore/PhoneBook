@@ -44,18 +44,35 @@ public class PhoneBookTest {
 
         //Given
         PhoneBook book = new PhoneBook();
-        book.add("Robert", "302-555-1234");
-        String expectedValue = "Robert " + book.lookup("Robert") + " has been removed";
-        book.add("Robert", expectedValue);
+        book.add("Bob", "302-555-1234");
+        String expectedValue = "";
 
         //When
-        String actualNumber = book.remove("Robert");
+        book.remove("Bob");
+        String actualValue = book.display();
 
         //Then
-        Assert.assertEquals(expectedValue, actualNumber );
+        Assert.assertEquals(expectedValue, actualValue);
+    }
+
+    @Test
+    public void testRemove2() {
+
+        //Given
+        PhoneBook book = new PhoneBook();
+        book.add("Bob", "302-555-1234");
+        String expectedValue = "";
+
+        //When
+        book.remove("Robert");
+        String actualValue = book.display();
+
+        //Then
+        Assert.assertNotEquals(expectedValue, actualValue);
 
 
     }
+
 
     @Test
     public void testLookup(){
@@ -64,13 +81,53 @@ public class PhoneBookTest {
         PhoneBook book = new PhoneBook();
         String expectedNumber = "302-555-1234";
         book.add("Bob", expectedNumber);
-
         //When
         String actualNumber = book.lookup("Bob");
-
         //Then
         Assert.assertEquals(expectedNumber, actualNumber);
     }
+
+    @Test
+    public void testLookup2(){
+
+        //Given
+        PhoneBook book = new PhoneBook();
+        book.add("Bob", "302-555-1234");
+        String expectedNumber = null;
+        //When
+        String actualNumber = book.lookup("Frank");
+        //Then
+        Assert.assertEquals(expectedNumber, actualNumber);
+    }
+
+    @Test
+    public void testLookup3(){
+
+        //Given
+        PhoneBook book = new PhoneBook();
+        book.add("Bob", "302-555-1234");
+        String expectedNumber = "302-555-9988";
+        book.add("Frank", expectedNumber);
+        //When
+        String actualNumber = book.lookup("Frank");
+        //Then
+        Assert.assertEquals(expectedNumber, actualNumber);
+    }
+
+    @Test
+    public void testreverseLookup(){
+
+        //Given
+        PhoneBook book = new PhoneBook();
+        String expectedName = "Bob";
+        book.add(expectedName, "302-555-1234");
+        //When
+        String actualName = book.reverseLookup("302-555-1234");
+        //Then
+        Assert.assertEquals(expectedName, actualName);
+    }
+
+
     @Test
     public void testDisplay() {
         //Given: need help from instructor

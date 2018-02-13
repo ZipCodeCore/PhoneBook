@@ -33,12 +33,8 @@ public class PhoneBook {
     }
 
     //remove a name & number entry
-    public String remove(String name) {
-        String removeName = name + " " + treeMap.get(name) + " has been removed";
-        if(treeMap.containsKey(name)) {
+    public void remove(String name) {
             treeMap.remove(name);
-        }
-        return removeName;
     }
 
     //find phone number lookup by name
@@ -47,9 +43,18 @@ public class PhoneBook {
         return number;
     }
 
-    //print out all of the entries in PhoneBook
-    //need to work on code for formatting
+    //reverse lookup
+    public String reverseLookup (String number) {
+        String name = "";
+        for(Map.Entry<String, String> entry: treeMap.entrySet()) {
+            if(entry.getValue().equals(number)) {
+                name = entry.getKey();
+            }
+        }
+        return name;
+    }
 
+    //print out all of the entries in PhoneBook
     public String display(){
         StringBuilder printOut = new StringBuilder();
         for(Map.Entry<String, String> entry: treeMap.entrySet()) {
@@ -60,7 +65,6 @@ public class PhoneBook {
                     .append("\n");
         }
         String print = printOut.toString();
-        System.out.println(printOut);
         return print;
     }
 
