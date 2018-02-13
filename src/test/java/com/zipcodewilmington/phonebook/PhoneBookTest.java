@@ -48,10 +48,24 @@ public class PhoneBookTest {
     }
     @Test
     public void testListNumbersAndNumbers(){
-        String expected = "James    "+ "1234554321\n"+
+        String expected = "James   "+ "1234554321\n"+
                 "John   "+"1234567890\n"+
-                "Micheal    "+"5678901234";
+                "Micheal   "+"5678901234";
         String actual =phoneBookRecord.listNamesAndNumbers();
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testAdd(){
+        boolean expected = true;
+        boolean actual = phoneBookRecord.add("Peter","7777777777");
+        Assert.assertEquals(expected, actual);
+
+    }
+    @Test
+    public void testRemove(){
+        boolean expected =true;
+        boolean actual = phoneBookRecord.remove("John");
         Assert.assertEquals(expected, actual);
     }
 

@@ -24,18 +24,23 @@ public class PhoneBook {
 
     }
 
-    public void add(String name,String phoneNumber) {
+    public boolean add(String name,String phoneNumber) {
 
      phoneBook.put(name, phoneNumber);
+     if(phoneBook.get(name).equals(phoneNumber)){
+         return true;
+     }return false;
     }
 
-    public void remove(String name){
+    public boolean remove(String name){
         if(phoneBook.containsKey(name)){
             phoneBook.remove(name);
         }
         else{
             System.out.println(name+" does not exist in the phone book list");
         }
+        return !phoneBook.containsKey(name);
+
 
     }
 
