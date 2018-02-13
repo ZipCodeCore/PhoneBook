@@ -1,5 +1,12 @@
 package com.zipcodewilmington.phonebook;
 
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+
+
+
 /**
  * Created by leon on 1/23/18.
  */
@@ -17,14 +24,14 @@ public class PhoneBookTest {
     public void testAddContact(){
         phoneBook.addContact("Genya", "6578356767");
         boolean genyaIsInPhoneBook = phoneBook.getContactsList().keySet().contains("Genya");
-        assertTrue(genyaIsInPhoneBook);
+        Assert.assertTrue(genyaIsInPhoneBook);
 
     }
     @Test
     public void testRemoveContact(){
         phoneBook.removeContact("Pete Jones");
         boolean peteJonesHasBeenRemoved = !phoneBook.getContactsList().containsKey("Pete Jones");
-        assertTrue(peteJonesHasBeenRemoved);
+        Assert.assertTrue(peteJonesHasBeenRemoved);
     }
     @Test
     public void testLookUpContactByName(){
@@ -35,9 +42,18 @@ public class PhoneBookTest {
     }
     @Test
     public void testListAllByName(){
-
+        phoneBook.listAllByName(phoneBook.getContactsList().keySet().toString());
+        String expected = ;
+        String actual = phoneBook.getContactsList().keySet().toString();
+        Assert.assertEquals(expected, actual);
     }
 
+    @Test
+    public void testListAllNamesAndNumbers(){
+        phoneBook.listAllNamesAndNumber();
+        String expected = ;
+        String actual = phoneBook.getContactsList().entrySet();
+        Assert.assertEquals(expected, actual);
+    }
 }
 
-}

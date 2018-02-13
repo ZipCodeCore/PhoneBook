@@ -1,7 +1,8 @@
 package com.zipcodewilmington.phonebook;
 import java.util.Map;
 import java.util.Set;
-import java.util.HashMap;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 /**
  * Created by leon on 1/23/18.
@@ -15,7 +16,7 @@ public class PhoneBook {
     private Map<String, String> contactsList;
 
     public PhoneBook(){
-        this.contactsList = new HashMap<String, String>();
+        this.contactsList = new TreeMap<String, String>();
         contactsList.put("Pete Jones", "2678849087");
         contactsList.put("Ron Burgundy", "5604329932");
         contactsList.put("Nala Bits", "2345578122");
@@ -23,6 +24,7 @@ public class PhoneBook {
     }
     public Map<String, String> getContactsList(){
         return contactsList;
+
     }
 
     public void addContact(String name, String number) {
@@ -47,17 +49,21 @@ public class PhoneBook {
         return contactsList.get(name) == null ? "Sorry name not found" : contactsList.get(name);
     }
 
-    public void listAllByName(String name){
-        for(String ContactsByName : contactsList.keySet()){
-            System.out.println(contactsList.get(name));
+    public String listAllByName(String strings) {
+        Set nameSet = contactsList.keySet();
+        for (Object names : nameSet) {
+            return names.toString();
         }
 
-    }
-    public void listAllNamesAndNumbers(){
-        Set<Map.Entry<String, String>>listingAll = contactsList.entrySet();
-        System.out.println(contactsList);
-    }
 
+    public String listAllNamesAndNumbers(){
+            Set listingAll = contactsList.entrySet();
+            for (Object allEntries : listingAll )
+            return allEntries.toString();
+
+        }
+    }
 }
 
-}
+
+
