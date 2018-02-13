@@ -13,22 +13,29 @@ public class PhoneBookTest {
     public void testDefaultConstructor() {
 
         PhoneBook book = new PhoneBook();
-        book.add("Robert", "302-555-1234");
         Assert.assertNotNull(book);
-
-
-
     }
+
     @Test
     public void testConstructorWithArgument() {
-
+        PhoneBook book = new PhoneBook();
+        book.add("Bob", "302-555-1234");
+        Assert.assertNotNull(book);
     }
 
     @Test
     public void testAdd() {
-        PhoneBook book = new PhoneBook();
-        book.add("Bob", "302-555-1234");
 
+        //Given
+        PhoneBook book = new PhoneBook();
+        String expectedAddition = "302-555-1234";
+
+        //When
+        book.add("Bob", "302-555-1234");
+        String actualAddition = book.lookup("Bob");
+
+        //Then
+        Assert.assertEquals(expectedAddition, actualAddition);
 
     }
 

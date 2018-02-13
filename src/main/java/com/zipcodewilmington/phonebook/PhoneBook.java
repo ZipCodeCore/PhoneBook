@@ -12,6 +12,7 @@ public class PhoneBook {
     //instance variable
     private TreeMap<String, String> treeMap;
 
+
     // void "no arguments" constructor -creates empty map
     public PhoneBook() {
         this.treeMap= new TreeMap<String, String>();
@@ -24,9 +25,11 @@ public class PhoneBook {
 
     //add a name & number entry
     public void add(String name, String number) {
+
         if(!treeMap.containsKey(name)) {
             treeMap.put(name, number);
         }
+
     }
 
     //remove a name & number entry
@@ -40,13 +43,8 @@ public class PhoneBook {
 
     //find phone number lookup by name
     public String lookup(String name) {
-        String look = "";
-        if (treeMap.containsKey(name)) {
-            look = treeMap.get(name);
-        } else {
-            look = name + " is not in database";
-        }
-        return look;
+        String number = treeMap.get(name);
+        return number;
     }
 
     //print out all of the entries in PhoneBook
