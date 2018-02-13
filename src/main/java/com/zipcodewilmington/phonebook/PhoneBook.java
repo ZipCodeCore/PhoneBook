@@ -2,6 +2,7 @@ package com.zipcodewilmington.phonebook;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Created by leon on 1/23/18.
@@ -12,7 +13,7 @@ public class PhoneBook {
 
     public PhoneBook() {
         //create hashmap <declare data types here>
-        phoneRecord = new HashMap<String, String>();
+        phoneRecord = new TreeMap<String, String>();
     }
 
     /**
@@ -83,7 +84,7 @@ public class PhoneBook {
 
         // Print the content of the hashMap
         for (String nameKey : phoneRecord.keySet()) {
-            System.out.println("Name =" + nameKey + ", PhoneNumber =" + phoneRecord.get(nameKey));
+            System.out.println("Name: " + nameKey + ", PhoneNumber: " + phoneRecord.get(nameKey));
         }
     }
 
@@ -94,9 +95,19 @@ public class PhoneBook {
         lancasterPeople.add("Sally", "7173419899");
         lancasterPeople.add("Zach", "7173413244");
         lancasterPeople.add("Adam", "7173419675");
+        lancasterPeople.add("Chance", "555");
+        lancasterPeople.add("Wally", "8906786");
 
         lancasterPeople.listAllNames();
         lancasterPeople.listAllNamesAndNumbers();
+
+        lancasterPeople.reverseLookUp("7173416306");
+        lancasterPeople.lookup("Sally");
+        lancasterPeople.remove("Zach");
+        lancasterPeople.lookup("Zach");
+        lancasterPeople.lookup("jkl");
+        lancasterPeople.listAllNames();
+
 
 
     }
