@@ -29,7 +29,7 @@ public class PhoneBook {
      *
      * @return
      */
-    private boolean add(String name, String phoneNumber) {
+    public boolean add(String name, String phoneNumber) {
         Person somePerson = new Person(name, phoneNumber);
         boolean personAdded = false;
 
@@ -41,7 +41,12 @@ public class PhoneBook {
         return personAdded;
     }
 
-    private boolean removeName(String name) {
+    /**
+     *
+     * @param name
+     * @return
+     */
+    public boolean removeName(String name) {
         if(name.equals(lookUpName(name))){
             phoneBook.remove(name);
         }
@@ -49,31 +54,51 @@ public class PhoneBook {
         return true;
 
     }
+
+    /**
+     *
+     * @param phoneNumber
+     * @return
+     */
    public Person lookUpPhoneNumber(String phoneNumber){
        /**reverse lookup need to look value "phoneNumber"*/
 
        for(Map.Entry<String, Person> entry : phoneBook.entrySet()){
-          if(entry.getValue().getNumber().equals(phoneNumber){
+          if(entry.getValue().getNumber().equals(phoneNumber)){
               return entry.getValue();
            }
         }
        return null; // change this
    }
 
+    /**
+     *
+     * @param name
+     * @return
+     */
     public Person lookUpName(String name) {
 
        return phoneBook.get(name);
     }
 
+    /**
+     *
+     * @return
+     */
     public String[] getlistAllNames(){
 
         Set<String> keys = phoneBook.keySet();
 
         return keys.toArray(new String [keys.size()]);
     }
-    public  CogetlistAllPhonebook(){
 
+    /**
+     *
+     * @return
+     */
+    public  Object[] getlistAllPhonebook(){
+// returns all the values into a collection of objects.
        Collection value = phoneBook.values();
-      return value;
+      return value.toArray( new Object[value.size()]);
     }
 }

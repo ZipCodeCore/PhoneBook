@@ -11,7 +11,8 @@ public class PersonTest {
     @Before
     public void setUp() throws Exception {
        number = "20000000";
-        john = new Person(name,  number);
+       name = "John";
+       john = new Person(name,  number);
     }
 
     @Test
