@@ -1,6 +1,5 @@
 package com.zipcodewilmington.phonebook;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -12,16 +11,16 @@ public class PhoneBook {
     private Map<String, String> phoneRecord;
 
     public PhoneBook() {
-        //create hashmap <declare data types here>
         phoneRecord = new TreeMap<String, String>();
     }
 
     /**
-     * adds a record to phone book
+     * adds a name and corresponding phone number to phone book
+     *
      * @param name
      * @param number
      */
-    public void add(String name, String number) {
+    public void addNameAndNumber(String name, String number) {
         if (!phoneRecord.containsKey(name)) {
             phoneRecord.put(name, number);
             System.out.println("Record was successfully added to the Phone Book.");
@@ -31,10 +30,11 @@ public class PhoneBook {
     }
 
     /**
-     * removes record
+     * uses name to retrieve and delete both name and phone number
+     *
      * @param name
      */
-    public void remove(String name) {
+    public void deleteNameAndNumber(String name) {
         if (phoneRecord.containsKey(name)) {
             phoneRecord.remove(name);
             System.out.println("Record was successfully deleted from the Phone Book.");
@@ -44,10 +44,11 @@ public class PhoneBook {
     }
 
     /**
-     * retrieves record by name
+     * retrieves phone number by name
+     *
      * @param name
      */
-    public void lookup(String name) {
+    public void retrieveByName(String name) {
         if (phoneRecord.containsKey(name)) {
             String phoneNum = phoneRecord.get(name);
             System.out.println("The phone number for " + name + " is " + phoneNum);
@@ -57,10 +58,11 @@ public class PhoneBook {
     }
 
     /**
-     * retrieves record by number
+     * retrieves name by phone number
+     *
      * @param number
      */
-    public void reverseLookUp(String number) {
+    public void retrieveByPhoneNumber(String number) {
         for (String nameKey : phoneRecord.keySet()) {
             if (number.equals(phoneRecord.get(nameKey))) {
                 System.out.println("The phone number for " + nameKey + number);
@@ -69,7 +71,7 @@ public class PhoneBook {
     }
 
     /**
-     * returns list of all names in phoneBook
+     * returns alphabetical list of all names in phoneBook
      */
     public void listAllNames() {
         for (String nameKey : phoneRecord.keySet()) {
@@ -78,7 +80,7 @@ public class PhoneBook {
     }
 
     /**
-     * returns list of all records in phoneBook
+     * returns alphabetical list of all records in phoneBook
      */
     public void listAllNamesAndNumbers() {
 
@@ -92,24 +94,29 @@ public class PhoneBook {
 
         PhoneBook lancasterPeople = new PhoneBook();
 
-        lancasterPeople.add("Sally", "7173419899");
-        lancasterPeople.add("Zach", "7173413244");
-        lancasterPeople.add("Adam", "7173419675");
-        lancasterPeople.add("Chance", "555");
-        lancasterPeople.add("Wally", "8906786");
+        lancasterPeople.addNameAndNumber("Sally", "7173419899");
+        lancasterPeople.addNameAndNumber("Zach", "7173413244");
+        lancasterPeople.addNameAndNumber("Adam", "7173419675");
+        lancasterPeople.addNameAndNumber("Chance", "555");
+        lancasterPeople.addNameAndNumber("Wally", "8906786");
 
         lancasterPeople.listAllNames();
         lancasterPeople.listAllNamesAndNumbers();
 
-        lancasterPeople.reverseLookUp("7173416306");
-        lancasterPeople.lookup("Sally");
-        lancasterPeople.remove("Zach");
-        lancasterPeople.lookup("Zach");
-        lancasterPeople.lookup("jkl");
+        lancasterPeople.retrieveByPhoneNumber("7173416306");
+        lancasterPeople.retrieveByName("Sally");
+        lancasterPeople.deleteNameAndNumber("Zach");
+        lancasterPeople.retrieveByName("Zach");
+        lancasterPeople.retrieveByName("jkl");
         lancasterPeople.listAllNames();
-
 
 
     }
 
 }
+
+
+
+
+
+
