@@ -95,6 +95,23 @@ public class PhoneBookTest {
         Assert.assertEquals(expected, actual);
         }
 
+    @Test
+    public void reverseLookupTest() {
+        PhoneBook testBook = new PhoneBook();
+        testBook.add("George", "123.456.7890");
+        String testNumber = testBook.reverseLookup("123.456.7891");
+        Assert.assertFalse(testNumber.equals("George"));
+    }
+
+    @Test
+    public void reverseLookupTest2() {
+        PhoneBook testBook = new PhoneBook();
+        testBook.add("Zeke", "146.346.7345");
+        String testNumber = testBook.reverseLookup("146.346.7345");
+        Assert.assertTrue(testNumber.equals("Zeke"));
+    }
+
+
 
 
 

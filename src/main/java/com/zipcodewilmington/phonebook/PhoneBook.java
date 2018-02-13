@@ -39,9 +39,22 @@ public class PhoneBook {
         return nameNumberBook.get(name);
     }
 
+    public String reverseLookup(String number){
+
+        for (Map.Entry<String, String> values : nameNumberBook.entrySet()) {
+            if(values.getValue() == number) {
+                String getString = values.getKey();
+                return getString;
+            }
+        }
+        return "Can not find match to phone number!";
+    }
+
     public String listNames(){
 
         Set<String> contacts = nameNumberBook.keySet();
+
+        //String contacts2 = nameNumberBook.keySet();
 
         String allContacts = "";
         for(String name : contacts){
@@ -55,9 +68,9 @@ public class PhoneBook {
 
         String contactsAndNumbers = "";
 
-        for (Map.Entry<String, String> entry : nameNumberBook.entrySet()) {
-            String getKeys = String.format("%1$-10s", entry.getKey());
-            String getValues = String.format("%1$-10s", entry.getValue());
+        for (Map.Entry<String, String> values : nameNumberBook.entrySet()) {
+            String getKeys = String.format("%1$-10s", values.getKey());
+            String getValues = String.format("%1$-10s", values.getValue());
 
             //String getKeys = entry.getKey() + ":  ";
             //tring getValues = entry.getValue();
@@ -86,6 +99,8 @@ public class PhoneBook {
         //System.out.println(phonebook.lookup("George"));
         System.out.println(phonebook.listNames());
         System.out.println(phonebook.listPhoneBook());
+        System.out.println(phonebook.reverseLookup("123.456.7890"));
+        System.out.println(phonebook.reverseLookup("123.456.7891"));
 
 
 
