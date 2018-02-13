@@ -38,7 +38,7 @@ public class PhoneBookTest {
     public void removeEntryTest() {
         String name = "Person 1";
         String number = "8942418";
-        phoneBookTest.removeEntry(name, number);
+        phoneBookTest.removeEntry(name);
         String expected = null;
         String actual = phoneBookTest.lookUp(name);
         Assert.assertEquals(expected, actual);
@@ -49,7 +49,7 @@ public class PhoneBookTest {
     public void removeEntryTest2() {
         String name = "Person 2";
         String number = "12387874";
-        phoneBookTest.removeEntry(name, number);
+        phoneBookTest.removeEntry(name);
         String expected = null;
         String actual = phoneBookTest.lookUp(name);
         Assert.assertEquals(expected, actual);
@@ -105,6 +105,12 @@ public class PhoneBookTest {
         String expected = "That number is not in the phone book";
         String actual = phoneBookTest.reverseLookUp(number);
         Assert.assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void removeOneNumberTest() {
+        String name = "Brian";
 
     }
 }
