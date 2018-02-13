@@ -20,11 +20,6 @@ public class PersonTest {
 
         Assert.assertEquals("John", john.getName());
     }
-//    @Test
-//    public void testgetNameNull() {
-//
-//        Assert.assertEquals("John", john.getName());
-//    }
 
     @Test
     public void getNumber() {
@@ -32,15 +27,14 @@ public class PersonTest {
     }
 
     @Test
-    public void setName() {
+    public void testSetName() {
+    john.setName("Steve");
+    Assert.assertEquals("Steve", john.getName());
     }
-
-//    @Test
-//    public String toString() {
-//        return null;
-//    }
 
     @Test
     public void setNumber() {
+        john.setNumber("1000");
+        Assert.assertEquals("1000", john.getNumber());
     }
 }

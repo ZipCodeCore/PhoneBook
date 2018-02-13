@@ -19,8 +19,8 @@ public class PhoneBook {
 
     private TreeMap<String, Person> phoneBook;
 
-    public PhoneBook(TreeMap thisPhone) {
-        phoneBook = thisPhone;
+    public PhoneBook(TreeMap thisEntry) {
+        phoneBook = thisEntry;
 
     }
 
@@ -30,75 +30,82 @@ public class PhoneBook {
      * @return
      */
     public boolean add(String name, String phoneNumber) {
-        Person somePerson = new Person(name, phoneNumber);
+        //Person somePerson = new Person(name, phoneNumber);
         boolean personAdded = false;
 
-        if(!name.equals(somePerson.getName())){
+        if (!phoneBook.containsKey(name)) {
+            Person somePerson = new Person(name, phoneNumber);
             phoneBook.put(name, somePerson);
+            personAdded = true;
         }
-        personAdded = true;
+
+
+
 
         return personAdded;
     }
 
     /**
-     *
      * @param name
      * @return
      */
-    public boolean removeName(String name) {
-        if(name.equals(lookUpName(name))){
+    public boolean removeListing(String name) {
+        boolean removedName = false;
+
+        if (phoneBook.containsKey(name)) {
             phoneBook.remove(name);
+            removedName = true;
         }
-
-        return true;
-
+        return removedName;
     }
 
     /**
-     *
      * @param phoneNumber
      * @return
      */
-   public Person lookUpPhoneNumber(String phoneNumber){
-       /**reverse lookup need to look value "phoneNumber"*/
-
-       for(Map.Entry<String, Person> entry : phoneBook.entrySet()){
-          if(entry.getValue().getNumber().equals(phoneNumber)){
-              return entry.getValue();
-           }
+    public Person lookUpPhoneNumber(String phoneNumber) {
+        /**reverse lookup need to look value "phoneNumber"*/
+        for (Map.Entry<String, Person> entry : phoneBook.entrySet()) {
+            if (entry.getValue().getNumber().equals(phoneNumber)) {
+                return entry.getValue();
+            }
         }
-       return null; // change this
-   }
+        return null; // change this
+    }
 
     /**
-     *
      * @param name
      * @return
      */
     public Person lookUpName(String name) {
 
-       return phoneBook.get(name);
+        return phoneBook.get(name);
     }
 
     /**
-     *
      * @return
      */
-    public String[] getlistAllNames(){
+    public String[] getlistAllNames() {
 
         Set<String> keys = phoneBook.keySet();
 
-        return keys.toArray(new String [keys.size()]);
+        System.out.println(keys.toString());
+        return keys.toArray(new String[keys.size()]);
+
     }
 
     /**
-     *
      * @return
      */
-    public  Object[] getlistAllPhonebook(){
-// returns all the values into a collection of objects.
-       Collection value = phoneBook.values();
-      return value.toArray( new Object[value.size()]);
+    public Object[] getlistAllListings() {
+        // returns all the values into a collection of objects.
+        Collection value = phoneBook.values();
+        String s = value.toString();
+        System.out.println(s);
+
+        return value.toArray(new Object[value.size()]);
+       // String listAll = value.toString();
+
+
     }
 }
