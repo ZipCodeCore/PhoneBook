@@ -18,7 +18,7 @@ public class PhoneBookTest {
         String name = "Person 1";
         String number = "1234567";
         phoneBookTest.addEntry(name, number);
-        String expected = number;
+        String expected = "[1234567]";
         String actual = phoneBookTest.lookUp(name);
         Assert.assertEquals(expected, actual);
 
@@ -29,30 +29,28 @@ public class PhoneBookTest {
         String name = "Person 2";
         String number = "87654321";
         phoneBookTest.addEntry(name, number);
-        String expected = number;
+        String expected = "[87654321]";
         String actual = phoneBookTest.lookUp(name);
         Assert.assertEquals(expected, actual);
     }
 
-    @Test
+    @Test(expected = NullPointerException.class)
     public void removeEntryTest() {
         String name = "Person 1";
         String number = "8942418";
+        phoneBookTest.addEntry(name, number);
         phoneBookTest.removeEntry(name);
-        String expected = null;
-        String actual = phoneBookTest.lookUp(name);
-        Assert.assertEquals(expected, actual);
+        phoneBookTest.lookUp(name);
 
     }
 
-    @Test
+    @Test(expected = NullPointerException.class)
     public void removeEntryTest2() {
         String name = "Person 2";
         String number = "12387874";
+        phoneBookTest.addEntry(name, number);
         phoneBookTest.removeEntry(name);
-        String expected = null;
-        String actual = phoneBookTest.lookUp(name);
-        Assert.assertEquals(expected, actual);
+        phoneBookTest.lookUp(name);
     }
 
     @Test
@@ -76,14 +74,16 @@ public class PhoneBookTest {
     public void listAllTest() {
         String name = "Person 1";
         String number = "1234567";
-        phoneBookTest.addEntry(name, number);
         String name2 = "Person 2";
         String number2 = "2345678";
-        phoneBookTest.addEntry(name2, number2);
         String name3 = "Person 3";
         String number3 = "34567898";
-        phoneBookTest.addEntry(name3, number3);
-        String expected = "Person 11234567\nPerson 22345678\nPerson 334567898\n";
+        String number4 = "5343677";
+        phoneBookTest.addEntry(name, number);
+        phoneBookTest.addEntry(name2, number2);
+        phoneBookTest.addEntry(name3, number3, number4);
+        String expected = "Person 1[1234567]\nPerson 2[2345678]\nPerson 3[34567898, 5343677]\n";
+        System.out.println(expected);
         String actual = phoneBookTest.listAll();
         Assert.assertEquals(expected, actual);
     }
@@ -111,6 +111,16 @@ public class PhoneBookTest {
     @Test
     public void removeOneNumberTest() {
         String name = "Brian";
+        String number = "1234567";
+        String number2 = "2345678";
+        String number3 = "3456789";
+        phoneBookTest.addEntry(name, number, number2, number3);
+        phoneBookTest.removeOneNumber(name, number2);
+        String expected = "[1234567, 3456789]";
+        String actual = phoneBookTest.lookUp(name);
+        Assert.assertEquals(expected, actual);
+
 
     }
+
 }
