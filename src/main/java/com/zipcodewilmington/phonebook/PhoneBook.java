@@ -40,42 +40,12 @@ public class PhoneBook {
         return sb.toString();
     }
     //
-//    public String reverseLookUp (String phoneNumber){
-//        if (this.contacts.containsValue(phoneNumber)){
-//            String name = "";
-//            for(Map.Entry<String, String> entry : this.contacts.entrySet()){
-//                if (entry.getValue().equals(phoneNumber)) {
-//                    return entry.getKey();
-//                }
-//            }
-//            return name;
-//        }
-//        else {
-//            return NON_EXISTANT_MESSAGE;
-//        }
-//
-//    }
-//
-//    public void add (String name, String phoneNumber){
-//        this.contacts.put(name, phoneNumber);
-//
-//    }
-//
-//    public void remove (String name, String phoneNumber) {
-//        this.contacts.remove(name, phoneNumber);
-//    }
-//
-//   public Set listNames () {
-//        return this.contacts.keySet();
-//   }
-//    public Set listNameNumber () {
-//      //loop through  return this.contacts.values();
-//        return this.contacts.entrySet();
-//
-//    }
-
-
-
-
-
+    public String reverseLookUp (String phoneNumber){
+        for(Map.Entry<String, String> entry : contacts.entrySet()){
+            if (entry.getValue().equals(phoneNumber)) {
+                return entry.getKey();
+            }
+        }
+        return null;
+    }
 }
