@@ -61,6 +61,14 @@ public class Entry {
         return name;
     }
 
+    /**
+     * return this entry's numbers as an arrayList to better facilitate JSONification
+     * @return the ArrayList of Numbers belonging to this Entry
+     */
+    public ArrayList<Number> getNumbersaslist() {
+        return this.numbers;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -72,7 +80,6 @@ public class Entry {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(name, numbers);
     }
 

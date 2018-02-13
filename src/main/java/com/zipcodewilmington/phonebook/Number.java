@@ -1,5 +1,6 @@
 package com.zipcodewilmington.phonebook;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -28,6 +29,14 @@ public class Number {
      */
     public String getNumber() {
         return number;
+    }
+
+    /**
+     * getter for description prop
+     * @return unformatted description as String
+     */
+    public String getDescription() {
+        return description;
     }
 
     @Override

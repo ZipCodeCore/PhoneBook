@@ -2,6 +2,9 @@ package com.zipcodewilmington.phonebook;
 
 import java.util.HashMap;
 import java.util.Map;
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
 
 /**
  * Created by leon on 1/23/18.
@@ -54,6 +57,23 @@ public class PhoneBook {
     }
 
     /**
+     * return the whole list as a JSON string
+     * @return a the list. as a JSON string.
+     */
+    public String listAllJSON() {
+        JsonObjectBuilder jb = Json.createObjectBuilder();
+        for(Entry e : book.values()) {
+            JsonObjectBuilder numJB = Json.createObjectBuilder();
+            for(Number n : e.getNumbersaslist()) {
+                numJB.add(n.getDescription(), n.getNumber());
+            }
+            jb.add(e.getName(), numJB.build());
+        }
+        JsonObject jsonList = jb.build();
+        return jsonList.toString();
+    }
+
+    /**
      * print a (somewhat) formatted list of all Entries
      */
     public void printAll() {
@@ -89,7 +109,7 @@ public class PhoneBook {
         Entry e;
         if (book.containsKey(name)) {
             e = book.get(name);
-            e.addNumber(number, "");
+            e.addNumber(number, "secondary");
         }
         else {
             numberOfEntries++;
