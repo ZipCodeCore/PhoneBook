@@ -20,17 +20,7 @@ public class PhoneBookTest {
         yellowPages = new PhoneBook();
         bill = new Person("bill", "1234567890");
     }
-
-//    public void addTest(String name, String number){
-//        //Person expected = ("Bill", "1234567890");
-//
-//
-//    }
-    @Test
-    public void getTest(){
-        yellowPages.add(bill);
-        Assert.assertEquals(bill, yellowPages.get("bill"));
-    }
+    
 
     @Test
     public void getTestNumber(){

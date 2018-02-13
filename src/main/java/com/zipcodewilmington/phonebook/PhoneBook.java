@@ -24,9 +24,9 @@ public class PhoneBook {
 //        return this.phoneBook.get(name);
 //    }
 
-    public Person get(String name) {
-        this.phoneBook.get(name);
-        return
+    public String get(String name) {
+        Person temp = this.phoneBook.get(name);
+        return temp.getNumber();
     }
         //overload with person object
     public void add(Person person){
