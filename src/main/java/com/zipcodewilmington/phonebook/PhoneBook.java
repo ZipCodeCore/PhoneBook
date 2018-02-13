@@ -1,6 +1,7 @@
 package com.zipcodewilmington.phonebook;
 
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.TreeMap;
 
 /**
@@ -17,13 +18,24 @@ public class PhoneBook {
 
     public void add(String name, String phoneNumber){
         phoneBook.put(name, phoneNumber);
-        System.out.println(phoneBook);
+        //System.out.println(phoneBook);
     }
 
+    public String lookUp(String name){
+        String result = phoneBook.get(name);
+        return result;
+    }
 
     public String getPhoneBook() {
-        String result = String.format("%s  |  %s\n", String.valueOf(phoneBook.get()), String.valueOf(phoneBook.values()));
+        StringBuilder result = new StringBuilder();
+        for (Map.Entry<String, String> entry : phoneBook.entrySet()){
+            result.append(String.format("%-20s %8s\n", entry.getKey(), entry.getValue()));
+        }
+        return String.valueOf(result);
+    }
 
-        return result;
+    public void removeEntry(String name){
+        phoneBook.remove(name);
+        //System.out.println(getPhoneBook());
     }
 }
