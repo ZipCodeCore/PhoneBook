@@ -26,36 +26,32 @@ public class PhoneBook {
 
      }
 
-     public String entryLookup(String nameEntry){
+     protected String entryLookup(String nameEntry){
         return phoneBook.get(nameEntry);
 
      }
 
     public String entryListNames() {
-        String fullListNames = "";
-        Set<String> keys = phoneBook.keySet();
-        for (String key: keys){
-            fullListNames += key + "\n";
+
+        return phoneBook.keySet().toString();
 
         }
-        return fullListNames;
-    }
 
-    public String entryListNumbers() {
-        String fullListNumbers = "";
-        Set<String> keys = phoneBook.keySet();
-        for (String key: keys){
-            fullListNumbers += phoneBook.get(key) + "\n";
-
-        }
-        return fullListNumbers;
-    }
+//    public String entryListNumbers() {
+//        String fullListNumbers = "";
+//        Set<String> keys = phoneBook.keySet();
+//        for (String key: keys){
+//            fullListNumbers += phoneBook.get(key) + "\n";
+//
+//        }
+//        return fullListNumbers;
+//    }
 
      public String entryListAll() {
         String fullListAll = "";
          Set<String> keys = phoneBook.keySet();
         for (String key: keys){
-            fullListAll += key + " : " + phoneBook.get(key);
+            fullListAll += key + " : " + phoneBook.get(key) + "\n";
 
         }
         return fullListAll;
@@ -72,14 +68,14 @@ public class PhoneBook {
          return getKeyfromValue;
      }
     public static void main(String[] args) {
-       PhoneBook nameNumber = new PhoneBook();
-       nameNumber.addEntry("Albert", "111111111");
-       nameNumber.addEntry("Bobby", "222222222");
-       nameNumber.entryListAll();
+//       PhoneBook nameNumber = new PhoneBook();
+//       nameNumber.addEntry("Albert", "111111111");
+//       nameNumber.addEntry("Bobby", "222222222");
+//       nameNumber.entryListAll();
        //nameNumber.removeEntry("Albert", "111111111");
       //  System.out.println(nameNumber.entryLookup("Albert"));
       //  System.out.println(nameNumber.entryListAll());
-        System.out.println(nameNumber.reverseLookup("111111111"));
+      //  System.out.println(nameNumber.reverseLookup("111111111"));
     }
 
 }
