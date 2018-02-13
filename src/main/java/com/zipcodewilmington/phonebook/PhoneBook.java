@@ -65,23 +65,29 @@ public class PhoneBook {
 
             printBook.append(key).append(" = ").append(value).append("\n");
 
-//        String allInfo = "";
-//
-//        for (Map.Entry<String, String> entry: myTree.entrySet()){
-//            String getKeys = String.format("%1$-15s", entry.getKey());
-//            String getValues = String.format("%1$-15s", entry.getValue());
-//
-//            allInfo += getKeys + getValues + "\n";
         }
         String result = printBook.toString();
 
         return result;
     }
 
-    public String reverseLookup() {
+    public String reverseLookup(String number) {
 
-        return null;
+        String getName = "";
+        for (Map.Entry<String, String> entry : myTree.entrySet()) {
+            if (entry.getValue() == number) {
+                getName += entry.getKey();
+                return getName;
+            }
+
+        }
+
+
+        return "not in my phone book";
+
     }
+
+
 
 
     public static void main(String[] args) {
@@ -99,7 +105,7 @@ public class PhoneBook {
 
 
         phonebookEntry.listPhoneBook();
-        System.out.println(phonebookEntry.listPhoneBook());
+        System.out.println(phonebookEntry.reverseLookup("4899994190"));
 
     }
 
