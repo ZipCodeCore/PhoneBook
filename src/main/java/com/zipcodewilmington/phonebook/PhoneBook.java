@@ -1,7 +1,7 @@
 package com.zipcodewilmington.phonebook;
 
+
 import java.util.TreeMap;
-import java.util.Map;
 
 /**
  * Created by leon on 1/23/18.
@@ -28,6 +28,11 @@ public class PhoneBook {
         Person temp = this.phoneBook.get(name);
         return temp.getNumber();
     }
+
+    public Person getPerson(String name) {
+        Person temp = this.phoneBook.get(name);
+        return temp;
+    }
         //overload with person object
 //    public void add(Person person){
 //        this.phoneBook.put(person.getName(), person);
@@ -41,7 +46,16 @@ public class PhoneBook {
         this.phoneBook.remove(name);
     }
 
-    public boolean find(String name){
+    public boolean existenceCheck(String name){
         return this.phoneBook.containsKey(name);
+    }
+    
+    public String display(){
+        StringBuilder displayAllNamesAndPhoneNumbers = new StringBuilder();
+        for (String key : phoneBook.keySet()) {
+            Person temp = getPerson(key);
+            displayAllNamesAndPhoneNumbers.append(temp.getName() + " " + temp.getNumber() + "\n");
+        }
+        return displayAllNamesAndPhoneNumbers.toString().substring(0, displayAllNamesAndPhoneNumbers.length() -1);
     }
 }

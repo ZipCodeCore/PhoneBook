@@ -40,6 +40,18 @@ public class PhoneBookTest {
     public void removeTest(){
         yellowPages.add("bill", "1234567890");
         yellowPages.remove("bill");
-        Assert.assertFalse(yellowPages.find("bill"));
+        Assert.assertFalse(yellowPages.existenceCheck("bill"));
+    }
+
+    @Test
+    public void displayTest(){
+        yellowPages.add("bill", "1234567890");
+        yellowPages.add("jill", "0987654321");
+        yellowPages.add("dill", "1234543210");
+        Assert.assertEquals(yellowPages.display(),
+                "bill 1234567890\n" +
+                        "dill 1234543210\n" +
+                        "jill 0987654321"
+        );
     }
 }
