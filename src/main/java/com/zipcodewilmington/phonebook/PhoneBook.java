@@ -1,5 +1,6 @@
 package com.zipcodewilmington.phonebook;
-import java.util.TreeMap;
+import java.util.*;
+
 /**
  * Created by leon on 1/23/18.
  */
@@ -7,55 +8,74 @@ import java.util.TreeMap;
 //Class Declaration
 public class PhoneBook {
     //method 1
-    private static final String NON_EXISTANT_MESSAGE = "This number does not exist.";
+    private static final String NON_EXISTANT_MESSAGE = "This does not exist.";
 
     private TreeMap<String, String> contacts;
 
     public PhoneBook() {
-        this.contacts = new TreeMap<>();
+        contacts = new TreeMap<>();
     }
 
 
-    public String lookUpPhoneNumber(String name){
-        if (this.contacts.containsKey(name)){
-            return this.contacts.get(name);
+    public void add (String name, String phoneNumber) {
+        contacts.put(name, phoneNumber);
+    }
+
+    public String lookup(String name) {
+        return contacts.get(name);
+
+    }
+
+    public void remove (String name) {
+        contacts.remove(name);
+    }
+
+    public String display() {
+        StringBuilder sb = new StringBuilder();
+        for(Map.Entry<String, String> entry : contacts.entrySet()) {
+            String name = entry.getKey();
+            String phoneNumber = entry.getValue();
+            sb.append(name + " " + phoneNumber + "\n");
         }
-        else {
-            return NON_EXISTANT_MESSAGE;
-        }
+        return sb.toString();
     }
+    //
+//    public String reverseLookUp (String phoneNumber){
+//        if (this.contacts.containsValue(phoneNumber)){
+//            String name = "";
+//            for(Map.Entry<String, String> entry : this.contacts.entrySet()){
+//                if (entry.getValue().equals(phoneNumber)) {
+//                    return entry.getKey();
+//                }
+//            }
+//            return name;
+//        }
+//        else {
+//            return NON_EXISTANT_MESSAGE;
+//        }
+//
+//    }
+//
+//    public void add (String name, String phoneNumber){
+//        this.contacts.put(name, phoneNumber);
+//
+//    }
+//
+//    public void remove (String name, String phoneNumber) {
+//        this.contacts.remove(name, phoneNumber);
+//    }
+//
+//   public Set listNames () {
+//        return this.contacts.keySet();
+//   }
+//    public Set listNameNumber () {
+//      //loop through  return this.contacts.values();
+//        return this.contacts.entrySet();
+//
+//    }
 
-    public String lookUpName (String phoneNumber){
-        if (this.contacts.containsValue(phoneNumber)){
-            return this.contacts.get(phoneNumber);
-        }
-        else {
-            return NON_EXISTANT_MESSAGE;
-        }
 
-    }
 
-    public void add (String name, String phoneNumber){
-        this.contacts.put(name, phoneNumber);
-
-    }
-
-    public void remove (String name, String phoneNumber) {
-        this.contacts.remove(name, phoneNumber);
-    }
-
-    public String listAllNames () {
-      //loop through  return this.contacts.values();
-        return null;
-    }
-
-    public static void main(String[] args) {
-
-        PhoneBook pb = new PhoneBook();
-        pb.add("Joe", "123455789");
-        System.out.println(pb.lookUpPhoneNumber("Joe"));
-
-    }
 
 
 }

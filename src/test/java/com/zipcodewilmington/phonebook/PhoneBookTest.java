@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 
 /**
@@ -12,99 +13,181 @@ import java.util.TreeMap;
 public class PhoneBookTest {
 
     @Test
-    public void testlookUpPhoneNum1() {
+    public void lookup_ValidEntry_ReturnsNumber() {
+        // Arrange
+        String input = "215-333-4444";
+        String expected = "215-333-4444";
+
+        // Act
         PhoneBook phoneBook = new PhoneBook();
-        String expected = "2153334444";
+        phoneBook.add("theresa", input);
+        String actual = phoneBook.lookup("theresa");
+
+        // Assert
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void lookUp_NoEntry_ReturnsNull() {
+        PhoneBook phoneBook = new PhoneBook();
+        String actual = phoneBook.lookup("cody");
+        Assert.assertNull(actual);
+    }
+
+    @Test
+    public void add_AddsEntry() {
+        PhoneBook phoneBook = new PhoneBook();
+        String expected = "215-333-4444";
         phoneBook.add("theresa", expected);
-        String actual = phoneBook.lookUpPhoneNumber("theresa");
-        Assert.assertEquals(expected, actual);
-    }
-    @Test
-    public void testlookUpPhoneNum2() {
-        PhoneBook phoneBook = new PhoneBook();
-        String expected = "2158887777";
-        phoneBook.add("cody", expected);
-        String actual = phoneBook.lookUpPhoneNumber("cody");
+        String actual = phoneBook.lookup("theresa");
         Assert.assertEquals(expected, actual);
     }
 
     @Test
-    public void testlookUpName1() {
+    public void remove_RemovesEntry() {
         PhoneBook phoneBook = new PhoneBook();
-        String expected = "sam";
-        phoneBook.add(expected, "8562224444");
-        String actual = phoneBook.lookUpName("8562224444");
+        String expected = "215-333-4444";
+        phoneBook.add("theresa", expected);
+        phoneBook.remove("theresa");
+        String actual = phoneBook.lookup("theresa");
+        Assert.assertNull(actual);
+    }
+
+    @Test
+    public void display_HasEntry_ReturnsString() {
+        // Arrange
+        String input = "215-333-4444";
+        String expected = "theresa 215-333-4444\n";
+
+        // Act
+        PhoneBook phoneBook = new PhoneBook();
+        phoneBook.add("theresa", input);
+        String actual = phoneBook.display();
+
+        // Assert
         Assert.assertEquals(expected, actual);
     }
 
-
     @Test
-    public void testlookUpName2() {
+    public void display_HasMultipleEntry_ReturnsString() {
+        // Arrange
+        String expected = "min 215-222-4444\ntheresa 215-333-4444\n";
+
+        // Act
         PhoneBook phoneBook = new PhoneBook();
-        String expected = "toby";
-        phoneBook.add(expected, "8561119999");
-        String actual = phoneBook.lookUpName("8561119999");
+        phoneBook.add("theresa", "215-333-4444");
+        phoneBook.add("min", "215-222-4444");
+
+        String actual = phoneBook.display();
+
+        // Assert
         Assert.assertEquals(expected, actual);
-}
-
-
-
-
-
-    @Test
-    public void testadd1() {
-        PhoneBook phoneBook = new PhoneBook();
-        String name = "bob";
-        String number = "2153333333";
-        phoneBook.add(name, number);
-        String expected = "";
-        //String actual = PhoneBook.add(name, number);
-        //Assert.assertEquals(expected, actual);
     }
 
+//
 //    @Test
-//    public void testadd2() {
-//        String expected = "";
-//        String actual = PhoneBook.add();
+//    public void testlreverseLookUp1() {
+//        PhoneBook phoneBook = new PhoneBook();
+//        String expected = "sam";
+//        phoneBook.add(expected, "856-222-4444");
+//        String actual = phoneBook.reverseLookUp("856-222-4444");
 //        Assert.assertEquals(expected, actual);
 //    }
 //
 //
-//
+//    @Test
+//    public void testreverseLookUp2() {
+//        PhoneBook phoneBook = new PhoneBook();
+//        String expected = "toby";
+//        phoneBook.add(expected, "856-111-9999");
+//        String actual = phoneBook.reverseLookUp("856-111-9999");
+//        Assert.assertEquals(expected, actual);
+//    }
 //
 //
 //    @Test
+//    public void testadd1() {
+//        PhoneBook phoneBook = new PhoneBook();
+//        String name = "bob";
+//        String number = "215-333-3333";
+//        phoneBook.add(name, number);
+//
+//    }
+//
+//    @Test
+//    public void testadd2() {
+//        PhoneBook phoneBook = new PhoneBook();
+//        String name = "bill";
+//        String number = "215-777-8888";
+//        phoneBook.add(name, number);
+//
+//    }
+//    @Test
 //    public void testremove1() {
-//        String expected = "";
-//        String actual = PhoneBook.remove();
-//        Assert.assertEquals(expected, actual);
+//        PhoneBook phoneBook = new PhoneBook();
+//        String name = "frank";
+//        String number = "215-777-5555";
+//        phoneBook.remove(name, number);
+//
 //    }
 //
 //    @Test
 //    public void testremove2() {
-//        String expected = "";
-//        String actual = PhoneBook.remove();
-//        Assert.assertEquals(expected, actual);
-//    }
+//        PhoneBook phoneBook = new PhoneBook();
+//        String name = "will";
+//        String number = "215-345-7890";
+//        phoneBook.remove(name, number);
 //
-//
-//
-//
-//
-//
-//    @Test
-//    public void testlistAllNames1() {
-//        String expected = "";
-//        String actual = PhoneBook.listAllNames();
-//        Assert.assertEquals(expected, actual);
 //    }
 //
 //    @Test
-//    public void testlistAllNames2() {
-//        String expected = "";
-//        String actual = PhoneBook.listAllNames();
-//        Assert.assertEquals(expected, actual);
+//    public void testListNames1(){
+//        PhoneBook phoneBook = new PhoneBook();
+//        phoneBook.add("Zebra", "111-222-333");
+//        phoneBook.add("Dog", "222-444-4444");
+//        Set<String> names = phoneBook.listNames();
+//        Assert.assertTrue(names.size() == 2);
+//        Assert.assertTrue(names.contains("Zebra"));
+//        Assert.assertTrue(names.contains("Dog"));
+//
 //    }
 //
+//    @Test
+//    public void testListNames2(){
+//        PhoneBook phoneBook = new PhoneBook();
+//        phoneBook.add("Sam", "444-222-333");
+//        phoneBook.add("Iam", "888-000-4444");
+//        Set<String> names = phoneBook.listNames();
+//        Assert.assertTrue(names.size() == 2);
+//        Assert.assertTrue(names.contains("Sam"));
+//        Assert.assertTrue(names.contains("Iam"));
 //
+//    }
+
+//    @Test
+//    public void testListNameNumber1(){
+//        PhoneBook phoneBook = new PhoneBook();
+//        phoneBook.add("Cam", "555-222-1111");
+//        phoneBook.add("Mam", "666-333-4444");
+//        phoneBook.add("Will", "222-123-5678");
+//        String actual = phoneBook.listNameNumber();
+//        String expected = "Cam";
+//        Set<String> <String> names = phoneBook.listNameNumber();
+//        Assert.assertTrue(names.size() == 2);
+//        Assert.assertTrue(names.contains("Sam"), );
+//
+//
+//    }
+//    @Test
+//    public void testListNameNumber2(){
+//        PhoneBook phoneBook = new PhoneBook();
+//        phoneBook.add("Sam", "444-222-333");
+//        phoneBook.add("Iam", "888-000-4444");
+//        Set<String> names = phoneBook.listNameNumber();
+//        Assert.assertTrue(names.size() == 2);
+//        Assert.assertTrue(names.contains("Sam"));
+//        Assert.assertTrue(names.contains("Iam"));
+//
+//    }
+
 }
