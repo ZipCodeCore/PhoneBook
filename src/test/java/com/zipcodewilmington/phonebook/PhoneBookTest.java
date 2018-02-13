@@ -1,5 +1,6 @@
 package com.zipcodewilmington.phonebook;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Set;
@@ -86,10 +87,30 @@ public class PhoneBookTest {
     @Test
     public void listNameAndNumberTest1(){
 
+        PhoneBook testPhoneBook = new PhoneBook();
+        testPhoneBook.add("Valkyr", "9845032923");
+        testPhoneBook.add("Banshee", "1632742724");
+        testPhoneBook.add("Frost", "2745958293");
+
+        String actual = testPhoneBook.listNameAndNumbers();
+        String expected = "Banshee: 1632742724\nFrost: 2745958293\nValkyr: 9845032923\n";
+        Assert.assertEquals(actual, expected);
+
     }
 
     @Test
     public void listNameAndNumberTest2(){
+
+        PhoneBook testPhoneBook = new PhoneBook();
+        testPhoneBook.add("Saryn", "83342983745");
+        testPhoneBook.add("Nidus", "01258246954");
+        testPhoneBook.add("Titania", "2850349549");
+        testPhoneBook.add("Harrow", "8934998234");
+
+        String actual = testPhoneBook.listNameAndNumbers();
+        String expected = "Harrow: 8934998234\nNidus: 01258246954\nSaryn: 83342983745\nTitania: 2850349549\n";
+        Assert.assertEquals(actual, expected);
+
 
     }
 
