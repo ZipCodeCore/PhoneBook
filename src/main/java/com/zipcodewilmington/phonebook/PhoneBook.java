@@ -29,12 +29,19 @@ public class PhoneBook {
         return temp.getNumber();
     }
         //overload with person object
-    public void add(Person person){
-        this.phoneBook.put(person.getName(), person);
-    }
+//    public void add(Person person){
+//        this.phoneBook.put(person.getName(), person);
+//    }
 
     public void add(String name, String number){
         this.phoneBook.put(name, new Person(name, number));
+    }
 
+    public void remove(String name){
+        this.phoneBook.remove(name);
+    }
+
+    public boolean find(String name){
+        return this.phoneBook.containsKey(name);
     }
 }
