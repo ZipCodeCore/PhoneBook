@@ -8,6 +8,7 @@ import java.util.Map;
  * Created by leon on 1/23/18.
  */
 public class PhoneBook {
+
     //instance variable
     private TreeMap<String, String> treeMap;
 
@@ -22,25 +23,50 @@ public class PhoneBook {
     }
 
     //add a name & number entry
-    public void addNameNumberEntry(String name, String number) {
+    public void add(String name, String number) {
         treeMap.put(name, number);
+        String confirm = "";
+        if(treeMap.put(name, number)!= null) {
+            confirm = name + " and " + number + " are now in the database";
+        } else {
+            confirm = "Error: " + name + " is already in the database";
+        }
     }
 
     //remove a name & number entry
-    public void removeEntry(String name) {
+    public String remove(String name) {
         treeMap.remove(name);
+        String response = "";
+        if(treeMap.remove(name) != null) {
+            response = "Name and number removed";
+        }
+        if(treeMap.remove(name)== null) {
+            response = "Invalid entry";
+        }
+        return response;
     }
 
     //find phone number lookup by name
-    public String lookupByName(String name) {
-         return treeMap.get(name);
+    public String lookup(String name) {
+         String lookup = treeMap.get(name);
+         String notFound = name + " is not in the directory";
+         if(lookup != null) {
+             return lookup;
+         }
+         else {
+             return notFound;
+         }
     }
 
     //print out all of the entries in PhoneBook
-    public Set<Map.Entry<String,String>> printOutPhoneBook() {
-        return treeMap.entrySet();
+    //need to work on code for formatting
+    public String display() {
+        System.out.println(treeMap.entrySet().toString());
+        String printOut = treeMap.entrySet().toString();
+        return printOut;
     }
 
 
 
 }
+
