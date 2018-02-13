@@ -1,6 +1,7 @@
 package com.zipcodewilmington.phonebook;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -11,14 +12,12 @@ import java.util.Objects;
  */
 public class Entry {
     private String name;
-    private ArrayList<Number> numbers;
+    private ArrayList<String> numbers;
 
     public Entry(String name, String... nums) {
         this.name = name;
         numbers = new ArrayList<>();
-        for (String n : nums) {
-            numbers.add(new Number(n));
-        }
+        numbers.addAll(Arrays.asList(nums));
     }
 
     /**
@@ -27,8 +26,8 @@ public class Entry {
      */
     public String listNumbers() {
         StringBuilder sb = new StringBuilder();
-        for (Number n : numbers) {
-            sb.append(n.getNumber());
+        for (String n : numbers) {
+            sb.append(n);
             sb.append("\n");
         }
         return sb.toString();
@@ -37,11 +36,10 @@ public class Entry {
     /**
      * add a new number to this entry
      * @param number the number to be added
-     * @param description a description for this number i.e. mobile, home, etc.
      * @return true if success else false
      */
-    public boolean addNumber(String number, String description) {
-        return numbers.add(new Number(description, number));
+    public boolean addNumber(String number) {
+        return numbers.add(number);
     }
 
     /**
@@ -50,7 +48,7 @@ public class Entry {
      * @return true if success
      */
     public boolean remove(String number) {
-        return numbers.remove(new Number("dummy", number));
+        return numbers.remove(number);
     }
 
     /**
@@ -65,7 +63,7 @@ public class Entry {
      * return this entry's numbers as an arrayList to better facilitate JSONification
      * @return the ArrayList of Numbers belonging to this Entry
      */
-    public ArrayList<Number> getNumbersaslist() {
+    public ArrayList<String> getNumbersAslist() {
         return this.numbers;
     }
 
@@ -86,8 +84,8 @@ public class Entry {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (Number n : numbers) {
-            sb.append(String.format("%1$-15s %2$s \n", name, n.getNumber()));
+        for (String n : numbers) {
+            sb.append(String.format("%1$-15s %2$s \n", name, n));
         }
         return sb.toString();
     }

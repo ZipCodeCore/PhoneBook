@@ -1,8 +1,8 @@
 package com.zipcodewilmington.phonebook;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import javax.json.Json;
+import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
 
@@ -11,12 +11,9 @@ import javax.json.JsonObjectBuilder;
  */
 public class PhoneBook {
     private HashMap<String, Entry> book;
-    private int numberOfEntries;
 
     public PhoneBook() {
-        numberOfEntries = 0;
         book = new HashMap<>();
-        numberOfEntries = 0;
     }
 
     /**
@@ -53,7 +50,6 @@ public class PhoneBook {
         for (Entry e : book.values())
             sb.append(e.toString());
         return sb.toString();
-
     }
 
     /**
@@ -63,21 +59,13 @@ public class PhoneBook {
     public String listAllJSON() {
         JsonObjectBuilder jb = Json.createObjectBuilder();
         for(Entry e : book.values()) {
-            JsonObjectBuilder numJB = Json.createObjectBuilder();
-            for(Number n : e.getNumbersaslist()) {
-                numJB.add(n.getDescription(), n.getNumber());
-            }
+            JsonArrayBuilder numJB = Json.createArrayBuilder();
+            for (String n : e.getNumbersAslist())
+                numJB.add(n);
             jb.add(e.getName(), numJB.build());
         }
         JsonObject jsonList = jb.build();
         return jsonList.toString();
-    }
-
-    /**
-     * print a (somewhat) formatted list of all Entries
-     */
-    public void printAll() {
-        System.out.println(listAll());
     }
 
     /**
@@ -109,10 +97,9 @@ public class PhoneBook {
         Entry e;
         if (book.containsKey(name)) {
             e = book.get(name);
-            e.addNumber(number, "secondary");
+            e.addNumber(number);
         }
         else {
-            numberOfEntries++;
             e = book.put(name, new Entry(name, number));
         }
         return e;

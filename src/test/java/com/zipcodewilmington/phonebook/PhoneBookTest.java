@@ -167,7 +167,7 @@ public class PhoneBookTest {
      */
     @Test
     public void testListAllJSON() {
-        String expected = "{\"Rex\":{\"home\":\"608-191-6969\",\"secondary\":\"608-191-6971\"},\"Nia\":{\"home\":\"234-593-2291\"},\"Tora\":{\"home\":\"757-221-3425\"},\"Mòrag\":{\"home\":\"323-988-6543\"},\"Zeke\":{\"home\":\"666-223-9909\"}}";
+        String expected = "{\"Rex\":[\"608-191-6969\",\"608-191-6970\",\"608-191-6971\"],\"Nia\":[\"234-593-2291\"],\"Tora\":[\"757-221-3425\"],\"Mòrag\":[\"323-988-6543\"],\"Zeke\":[\"666-223-9909\"]}";
         String actual = phonebook.listAllJSON();
 
         TestUtils.assertEquality(expected, actual);
