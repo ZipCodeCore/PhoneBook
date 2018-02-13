@@ -67,6 +67,14 @@ public class PhoneBookTest {
     }
 
 
+    @Test
+    public void reverseLookupTest1() {
+        PhoneBook testPhoneBook = new PhoneBook();
+        testPhoneBook.add("Vince", "555.867.5309");
+        String testNumber = testPhoneBook.reverseLookup("555.867.5309");
+        Assert.assertTrue(testNumber.equals("Vince"));
+    }
+
 
 
     @Test

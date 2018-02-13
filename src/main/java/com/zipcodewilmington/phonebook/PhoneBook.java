@@ -1,5 +1,6 @@
 package com.zipcodewilmington.phonebook;
 
+import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
@@ -10,7 +11,7 @@ public class PhoneBook {
 
     TreeMap<String, String> myTree = new TreeMap<String, String>();
 
-    public PhoneBook (){
+    public PhoneBook() {
 
     }
 
@@ -19,13 +20,24 @@ public class PhoneBook {
     }
 
 
-    public void remove(String name){
+    public void remove(String name) {
         myTree.remove(name);
     }
 
 
     public String lookup(String name) {
+
         return myTree.get(name);
+    }
+
+    public String reverseLookup(String number) {
+
+        for (Map.Entry<String, String> entry : myTree.entrySet()) {
+            if (entry.getValue() == number) {
+                String keyAtValue = entry.getKey();
+                return keyAtValue;
+            }
+        } return "Number not found";
     }
 
 
@@ -43,14 +55,10 @@ public class PhoneBook {
         String list = "";
         Set<String> keys = myTree.keySet();
         for (String i : keys) {
-            list += i + ": " + myTree.get(i)+ "\n";
+            list += i + ": " + myTree.get(i) + "\n";
         }
         return list;
     }
-
-
-
-
 
 
     public static void main(String[] args) {
@@ -62,14 +70,13 @@ public class PhoneBook {
         myPhoneBook.add("Danny", "555.999.8865");
         myPhoneBook.add("Terri", "555.123.9886");
 
-        System.out.println(myPhoneBook.listNamesAndNumbers());
+        //System.out.println(myPhoneBook.listNamesAndNumbers());
         //System.out.println(myPhoneBook.listNames());
+        System.out.println(myPhoneBook.reverseLookup("555.999.8865"));
 
 
 
     }
-
-
 
 
 }
