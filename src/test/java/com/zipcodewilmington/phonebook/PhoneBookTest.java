@@ -59,7 +59,30 @@ public class PhoneBookTest {
 
     }
 
+    @Test
+    public void listNamesTest1() {
+        PhoneBook testBook = new PhoneBook();
+        testBook.addEntry("Kate", "4846569090");
+        testBook.addEntry("Adam", "4864569090");
+        testBook.addEntry("Zeke", "4787869090");
+        String actual = testBook.listNames();
+        String expected = "Adam\nKate\nZeke\n";
+        Assert.assertEquals(actual, expected);
+
+
+    }
+
+    @Test
+    public void listPhonebookTest1() {
+        PhoneBook testBook = new PhoneBook();
+        testBook.addEntry("Kate", "4846569090");
+        testBook.addEntry("Adam", "4864569090");
+        testBook.addEntry("Zeke", "4787869090");
+        String actual = testBook.listPhoneBook();
+        String expected = "Adam = 4864569090\nKate = 4846569090\nZeke = 4787869090\n";
+        Assert.assertEquals(actual, expected);
+
+
+    }
 
 }
-
-

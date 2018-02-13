@@ -57,17 +57,30 @@ public class PhoneBook {
 
     public String listPhoneBook() {
 
+        StringBuilder printBook = new StringBuilder();
 
-        String allInfo = "";
+        for (Map.Entry<String, String> entry : myTree.entrySet()) {
+            String key = entry.getKey();
+            String value = entry.getValue();
 
-        for (Map.Entry<String, String> entry: myTree.entrySet()){
-            String getKeys = String.format("%1$-15s", entry.getKey());
-            String getValues = String.format("%1$-15s", entry.getValue());
+            printBook.append(key).append(" = ").append(value).append("\n");
 
-            allInfo += getKeys + getValues + "\n";
+//        String allInfo = "";
+//
+//        for (Map.Entry<String, String> entry: myTree.entrySet()){
+//            String getKeys = String.format("%1$-15s", entry.getKey());
+//            String getValues = String.format("%1$-15s", entry.getValue());
+//
+//            allInfo += getKeys + getValues + "\n";
         }
+        String result = printBook.toString();
 
-        return allInfo;
+        return result;
+    }
+
+    public String reverseLookup() {
+
+        return null;
     }
 
 
