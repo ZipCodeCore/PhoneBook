@@ -76,6 +76,14 @@ public class PhoneBookTest {
         String actual = testbook.listNames();
         Assert.assertEquals(expected, actual);
     }
-
-
+    @Test
+    public void testPhoneBookReverseLookUp() {
+        PhoneBook testbook = new PhoneBook();
+        testbook.add("Keith", "555-666-7777");
+        testbook.add("John", "555-612-7777");
+        testbook.add("Mike", "555-623-7777");
+        testbook.add("Steve", "555-645-7777");
+        String testnumber = testbook.reverselookup("555-666-7777");
+        Assert.assertEquals("Keith", testnumber);
+    }
 }

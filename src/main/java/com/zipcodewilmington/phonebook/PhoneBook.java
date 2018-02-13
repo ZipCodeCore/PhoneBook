@@ -27,7 +27,6 @@ public PhoneBook() {
 
  public String lookup(String name){
         return contacts.get(name);
-
  }
 
  public String listNames(){
@@ -46,13 +45,23 @@ public PhoneBook() {
         StringBuilder namesnumbers = new StringBuilder();
         Set<String> keys = contacts.keySet();
         for(String key: keys)
-
         {
-
             namesnumbers.append(key+" "+contacts.get(key)+"\n");
         }
         return namesnumbers.toString();
     }
+
+    public String reverselookup(String number){
+        Set<String> names = contacts.keySet();
+        for(String name: names)
+        {
+            if (contacts.get(name).equals(number)){
+                return name;
+            }
+        }
+        return null;
+    }
+
 
 
 }
