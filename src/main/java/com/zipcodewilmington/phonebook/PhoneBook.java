@@ -9,12 +9,13 @@ import java.util.TreeMap;
  */
 public class PhoneBook {
 
-    private TreeMap<String, ArrayList> phoneBookList = new TreeMap<String, ArrayList>();
+    private TreeMap<String, ArrayList<String>> phoneBookList = new TreeMap<String, ArrayList<String>>();
 
     public void addEntryToPhoneBook(String name, String... phonenumbers) {
-        ArrayList phonenumberList = new ArrayList();
-        for (String number: phonenumbers
-             ) {phonenumberList.add(number);
+        ArrayList<String> phonenumberList = new ArrayList<String>();
+        for (String number : phonenumbers
+                ) {
+            phonenumberList.add(number);
 
         }
         phoneBookList.put(name, phonenumberList);
@@ -37,7 +38,7 @@ public class PhoneBook {
     }
 
     public String lookupNameByPhonenumber(String phonenumber) {
-        for (Map.Entry<String, ArrayList> entry : phoneBookList.entrySet()) {
+        for (Map.Entry<String, ArrayList<String>> entry : phoneBookList.entrySet()) {
             if (entry.getValue().toString().equals(phonenumber)) {
                 return entry.getKey();
 
@@ -47,7 +48,15 @@ public class PhoneBook {
         return "Number not found";
     }
 
-    public String removeSinglePhonenumber( String name, String phonenumber) {
+
+    public void removeSinglePhonenumber(String name, String phonenumber) {
+        int count = 0;
+        for (String phoneNum : phoneBookList.get(name)) {
+            if (phoneNum == phonenumber) {
+                phoneBookList.get(name).remove(count);
+            }
+            count++;
+        }
 
     }
 }

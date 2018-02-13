@@ -29,15 +29,13 @@ public class PhoneBookTest {
 
     }
 
-    @Test
+    @Test(expected = NullPointerException.class)
     public void testRemoveEntryFromPhoneBook() {
         String name = "John Johnson";
         String phonenumber = "3692587896";
         testPhoneBook.addEntryToPhoneBook(name, phonenumber);
-        Class expected = Exception.class;
         testPhoneBook.removeEntryFromPhoneBook(name);
-        String actual = testPhoneBook.lookupPhonenumber(name);
-        Assert.assertEquals(expected, actual);
+        testPhoneBook.lookupPhonenumber(name);
     }
 
     @Test
@@ -113,6 +111,19 @@ public class PhoneBookTest {
         testPhoneBook.addEntryToPhoneBook(name, phonenumber, phonenumber2, phonenumber3);
         String expected = "[3659547852, 8412578524, 3254785485]";
         String actual = testPhoneBook.lookupPhonenumber(name);
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void removingASinglePhonenumber() {
+        String name = "John Johnson";
+        String phonenumber = "3659547852";
+        String phonenumber2 = "8412578524";
+        String phonenumber3 = "3254785485";
+        testPhoneBook.addEntryToPhoneBook(name, phonenumber, phonenumber2, phonenumber3);
+        testPhoneBook.removeSinglePhonenumber("John Johnson", "8412578524");
+        String expected = "[3659547852, 3254785485]";
+        String actual = testPhoneBook.lookupPhonenumber("John Johnson");
         Assert.assertEquals(expected, actual);
     }
 
