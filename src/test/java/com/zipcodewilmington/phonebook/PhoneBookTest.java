@@ -20,11 +20,14 @@ public class PhoneBookTest {
 
 
     @Test
-    public void getName() {
+    public void testLookup() {
 
-        testPhonebook.add(john.getName(), john.getNumber());
+        testPhonebook.add(john.getName(), john.getPhoneNumber());
 
-        String testNumber = "111-555-1234";
-        Assert.assertTrue();
+        Person actualPerson = testPhonebook.lookup(john.getName());
+
+        Assert.assertEquals(john.getPhoneNumber(), actualPerson.getPhoneNumber());
 
     }
+
+}
