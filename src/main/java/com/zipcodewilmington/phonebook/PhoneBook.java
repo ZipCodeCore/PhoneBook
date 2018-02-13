@@ -71,37 +71,4 @@ public class PhoneBook {
         }
         return "Number not found in directory";
     }
-
-
-
-
-
-
-
-    public static void main(String[] args) {
-        Listing eric = new Listing("Eric", "555-5555");
-        Listing jenny = new Listing("Jenny", "867-5309");
-        Listing horatio = new Listing("Horatio", "987-6543");
-        Listing terrance = new Listing("Terrance", "111-2222");
-        Listing tariq = new Listing("Tariq", "420-6969");
-        PhoneBook test = new PhoneBook ("Jenny", jenny);
-        test.addListing("Eric", eric);
-        test.addListing("Horatio", horatio);
-        test.addListing("Terrance", terrance);
-        test.addListing("Tariq", tariq);
-        horatio.addNumber("111-1111");
-        tariq.addNumber("123-4567");
-        tariq.addNumber("987-6543");
-
-      Set keys = test.book.keySet();
-        for (Iterator i = keys.iterator(); i.hasNext();) {
-            String key = (String) i.next();
-            String nameToPrint = test.book.get(key).printName();
-            String numbersToPrint = test.book.get(key).printNumbers();
-            System.out.printf("%8s : %8s", nameToPrint, numbersToPrint +"\n");
-
-        }
-
-    }
-
 }

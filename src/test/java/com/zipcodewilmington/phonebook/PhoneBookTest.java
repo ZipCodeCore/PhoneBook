@@ -63,6 +63,7 @@ public class PhoneBookTest {
         }
         catch(Exception e){
             thrown = true;
+            System.out.println("Don't be fooled: this exception means it passed the test");
              e.printStackTrace();
         }
         Assert.assertTrue(thrown);
@@ -88,6 +89,7 @@ public class PhoneBookTest {
         }
         catch(Exception e){
             thrown = true;
+            System.out.println("Don't be fooled: this exception means it passed the test");
             e.printStackTrace();
         }
         Assert.assertTrue(thrown);
@@ -151,6 +153,23 @@ public class PhoneBookTest {
     public void testReverseLookup(){
         String expectedName = "Eric";
         String actual = test.reverseLookup("555-5555");
+        Assert.assertTrue(actual.equals(expectedName));
+
+    }
+
+    @Test
+    public void testReverseLookupWithMultipleNumbers(){
+        String expectedName = "Eric";
+        test.book.get("Eric").addNumber("333-3333");
+        String actual = test.reverseLookup("333-3333");
+        Assert.assertTrue(actual.equals(expectedName));
+
+    }
+
+    @Test
+    public void testReverseLookupInvalidNumber(){
+        String expectedName = "Number not found in directory";
+        String actual = test.reverseLookup("333-3333");
         Assert.assertTrue(actual.equals(expectedName));
 
     }
