@@ -18,11 +18,13 @@ public class PhoneBookTest {
 
    @Test
    public void testAddEntry(){
-      String expected = "111111111";
+      String number = "111111111";
       String name = "Albert";
-      testPhoneBook.addEntry(name, expected);
+      testPhoneBook.addEntry(name, number);
       String actual = testPhoneBook.entryLookup(name);
+      String expected = "[111111111]";
       Assert.assertEquals(expected, actual);
+
 
    }
 
@@ -35,36 +37,35 @@ public class PhoneBookTest {
       Assert.assertFalse("You did not enter a number", false);
    }
 
-   @Test
+
+   @Test (expected =  NullPointerException.class)
    public void testRemoveEntry(){
-      String expected = null;
       String name = "Albert";
       String number = "111111111";
       testPhoneBook.removeEntry(name, number);
       String actual = testPhoneBook.entryLookup(name);
-      Assert.assertEquals(expected, actual);
+
 
    }
 
-   @Test
+   @Test (expected = NullPointerException.class)
    public void testRemoveEntry1(){
       String expected = "Albert";
       String name = "Albert";
       String number = "111111111";
       testPhoneBook.removeEntry(name, number);
       String actual = testPhoneBook.entryLookup(name);
-      Assert.assertFalse("Did not remove", false);
    }
 
    @Test
    public void testEntryLookup(){
       String name = "Albert";
       String number = "111111111";
+      testPhoneBook.addEntry("Albert", "111111111");
       testPhoneBook.entryLookup(name);
-      String expected = testPhoneBook.entryLookup(name);
+      String expected = "[111111111]";
       String actual = testPhoneBook.entryLookup(name);
       Assert.assertEquals(expected, actual);
-      Assert.assertFalse("This guy isn't in here", false);
 
    }
 
@@ -104,7 +105,7 @@ public class PhoneBookTest {
       String number2 = "333333333";
       testPhoneBook.addEntry(name2, number2);
 
-      String expected = "Albert : 111111111\nBobby : 222222222\nCatherine : 333333333\n";
+      String expected = "Albert : [111111111]\nBobby : [222222222]\nCatherine : [333333333]\n";
       String actual = testPhoneBook.entryListAll();
       Assert.assertEquals(expected, actual);
    }
@@ -119,5 +120,17 @@ public class PhoneBookTest {
       Assert.assertEquals(expected, actual);
    }
 
+   @Test
+   public void testremoveOnePhoneNum(){
+      String name = "Albert";
+      String number = "111111111";
+      String number1 = "222222222";
+      testPhoneBook.addEntry(name, number, number1);
+      testPhoneBook.removeOneNumberfromEntry("Albert", "111111111");
+      String expected = "[222222222]";
+      String actual = testPhoneBook.entryLookup("Albert");
+      Assert.assertEquals(expected, actual);
+
+   }
 
 }

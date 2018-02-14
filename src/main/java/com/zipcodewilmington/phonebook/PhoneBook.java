@@ -2,32 +2,44 @@ package com.zipcodewilmington.phonebook;
 
 import com.sun.xml.internal.bind.v2.util.QNameMap;
 
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.List;
+import java.util.*;
+
 /**
  * Created by leon on 1/23/18.
  */
 public class PhoneBook {
 
+private String nameEntry;
+private String numberEntry;
 
 
-     TreeMap<String, String> phoneBook = new TreeMap<String, String>();
 
-     public void addEntry(String nameEntry, String numberEntry){
-        phoneBook.put(nameEntry, numberEntry);
+   private TreeMap<String, ArrayList<String>> phoneBook = new TreeMap<String, ArrayList<String>>();
+
+     public void addEntry(String nameEntry, String...numberEntry){
+        ArrayList<String> phoneList = new ArrayList<String>();
+        for (String number : numberEntry){
+            phoneList.add(number);
+        }
+         phoneBook.put(nameEntry, phoneList);
 
     }
+
+//    public String addNewNumbertoEntry(String nameEntry, String numberEntry) {
+//         ContactEntry entry = new ContactEntry(nameEntry);
+//         entry.addNumber((entryLookup(nameEntry)));
+//         entry.addNumber(numberEntry);
+//         addEntry(nameEntry, numberEntry);
+//         return entryLookup(nameEntry);
+//    }
 
      public void removeEntry(String nameEntry , String numberEntry){
         phoneBook.remove(nameEntry, numberEntry);
 
-
      }
 
      protected String entryLookup(String nameEntry){
-        return phoneBook.get(nameEntry);
+        return phoneBook.get(nameEntry).toString();
 
      }
 
@@ -58,24 +70,33 @@ public class PhoneBook {
      }
 
      public String reverseLookup(String numberEntry){
-         String getKeyfromValue = "";
          Set<String> keys = phoneBook.keySet();
          for (String key: keys){
-             if (phoneBook.get(key).equals(numberEntry)){
-                 getKeyfromValue += key;
+             if(phoneBook.get(key).contains(numberEntry)) {
+                 return key;
              }
          }
-         return getKeyfromValue;
+         return null;
      }
+
+     public void removeOneNumberfromEntry(String nameEntry, String numberEntry){
+         int counter = 0;
+         for (String phoneNum : phoneBook.get(nameEntry)){
+             if (phoneNum.equals(numberEntry)){
+                 phoneBook.get(nameEntry).remove(counter);
+             }
+         } counter++;
+     }
+
+
     public static void main(String[] args) {
-//       PhoneBook nameNumber = new PhoneBook();
-//       nameNumber.addEntry("Albert", "111111111");
-//       nameNumber.addEntry("Bobby", "222222222");
-//       nameNumber.entryListAll();
-       //nameNumber.removeEntry("Albert", "111111111");
+       PhoneBook nameNumber = new PhoneBook();
+       nameNumber.addEntry("Albert", "111111111");
+       nameNumber.addEntry("Bobby", "222222222");
+       nameNumber.addEntry("Albert", "333333333", "444444444");
       //  System.out.println(nameNumber.entryLookup("Albert"));
-      //  System.out.println(nameNumber.entryListAll());
-      //  System.out.println(nameNumber.reverseLookup("111111111"));
+        System.out.println(nameNumber.entryListAll());
+        System.out.println(nameNumber.reverseLookup("333333333"));
     }
 
 }
