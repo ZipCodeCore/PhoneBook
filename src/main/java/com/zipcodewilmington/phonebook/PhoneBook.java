@@ -8,21 +8,29 @@ import java.util.*;
 public class PhoneBook{
 
     private String name;
-    private List<String> numbers = new ArrayList<String>();
+
 
     public PhoneBook (){
 
     }
 
-    TreeMap<String, List<String>> actualPhoneBook = new TreeMap<String , List<String>>();
+    TreeMap<String, ArrayList<String>> actualPhoneBook = new TreeMap<String , ArrayList<String>>();
 
-    public void add(String name, List numbers){
+    public void add(String name, String... numbers){
 
-        actualPhoneBook.put(name, numbers);
+        ArrayList<String> numberList = new ArrayList<String>();
+
+        for (String number : numbers){
+
+            numberList.add(number);
+
+        }
+
+        actualPhoneBook.put(name, numberList);
 
     }
 
-    public List lookUp(String name){
+    public ArrayList<String> lookUp(String name){
 
        return actualPhoneBook.get(name);
 
@@ -42,7 +50,7 @@ public class PhoneBook{
 
         StringBuilder listNameAndNumbers = new StringBuilder();
 
-        for (Map.Entry<String, List<String>> entry : actualPhoneBook.entrySet()) {
+        for (Map.Entry<String, ArrayList<String>> entry : actualPhoneBook.entrySet()) {
 
             String getKeys = entry.getKey();
             List getValues = entry.getValue();
@@ -56,11 +64,12 @@ public class PhoneBook{
     public String reverseLookUp(String number){
 
         for(Map.Entry entry: actualPhoneBook.entrySet()){
+            String reverse = "";
             if(number.equals(entry.getValue())){
-                return entry.getKey().toString();
+                reverse =  entry.getKey().toString();
             }
+            return reverse;
         }
-
         return null;
     }
 
