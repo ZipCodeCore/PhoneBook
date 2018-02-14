@@ -9,45 +9,38 @@ import java.util.TreeMap;
  * Created by leon on 1/23/18.
  */
 public class PhoneBook {
-    private String name;
-    private String number;
 
-    TreeMap<String, String> nameNumberBook = new TreeMap<String, String>();
+    TreeMap<String, Person> nameNumberBook = new TreeMap<String, Person>();
 
     public PhoneBook(){
 
     }
 
-    public PhoneBook(String name, String number){
-        this.name = name;
-        this.number = number;
-
-    }
-
     public void add(String name, String number){
-
-        nameNumberBook.put(name, number);
+        Person person = new Person(name, number);
+        nameNumberBook.put(name, person);
     }
 
     public void remove(String name){
-
         nameNumberBook.remove(name);
     }
 
     public String lookup(String name){
 
-        return nameNumberBook.get(name);
+        return nameNumberBook.get(name).getPhoneNumbers();
     }
 
     public String reverseLookup(String number){
 
-        for (Map.Entry<String, String> values : nameNumberBook.entrySet()) {
-            if(values.getValue() == number) {
-                String getString = values.getKey();
-                return getString;
-            }
+        //Set<Map.Entry<String, Person>> entries = nameNumberBook.entrySet();
+
+        for(Map.Entry<String, Person> entry : nameNumberBook.entrySet()){
+            if (entry.getValue().getPhoneNumbers().equals("[" + number + "]")){
+                String keyAtValue = entry.getKey();
+                return keyAtValue;
         }
-        return "Can not find match to phone number!";
+
+        } return "Not found";
     }
 
     public String listNames(){
@@ -66,19 +59,13 @@ public class PhoneBook {
 
     public String listPhoneBook() {
 
-        String contactsAndNumbers = "";
+        String phoneList = "";
 
-        for (Map.Entry<String, String> values : nameNumberBook.entrySet()) {
-            String getKeys = String.format("%1$-10s", values.getKey());
-            String getValues = String.format("%1$-10s", values.getValue());
-
-            //String getKeys = entry.getKey() + ":  ";
-            //tring getValues = entry.getValue();
-
-            contactsAndNumbers += getKeys + getValues + "\n";
+        Set<String> keys = nameNumberBook.keySet();
+        for(String values : keys){
+            phoneList += values + ": " + nameNumberBook.get(values).getPhoneNumbers() + "\n";
         }
-
-        return contactsAndNumbers;
+        return phoneList;
     }
 
     public static void main(String[] args) {
@@ -100,7 +87,7 @@ public class PhoneBook {
         System.out.println(phonebook.listNames());
         System.out.println(phonebook.listPhoneBook());
         System.out.println(phonebook.reverseLookup("123.456.7890"));
-        System.out.println(phonebook.reverseLookup("123.456.7891"));
+        //System.out.println(phonebook.reverseLookup("123.456.7891"));
 
 
 

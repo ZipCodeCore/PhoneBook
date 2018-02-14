@@ -10,10 +10,16 @@ import org.junit.Test;
  */
 
 public class PhoneBookTest {
+    PhoneBook testBook;
+
+    @Before
+    public void setup() {
+        testBook = new PhoneBook();
+    }
+
 
     @Test
     public void addTest1() {
-        PhoneBook testBook = new PhoneBook();
         testBook.add("George", "1234567890");
         String testNumber = testBook.lookup("George");
         Assert.assertTrue(testNumber.equals("1234567890"));
@@ -21,7 +27,6 @@ public class PhoneBookTest {
 
     @Test
     public void addTest2() {
-        PhoneBook testBook = new PhoneBook();
         testBook.add("George", "1234567890");
         String testNumber = testBook.lookup("George");
         Assert.assertFalse(testNumber.equals("1234567891"));
@@ -29,7 +34,6 @@ public class PhoneBookTest {
 
     @Test
     public void lookUpTest1() {
-        PhoneBook testBook = new PhoneBook();
         testBook.add("George", "1234567890");
         String testNumber = testBook.lookup("George");
         Assert.assertTrue(testNumber.equals("1234567890"));
@@ -37,7 +41,6 @@ public class PhoneBookTest {
 
     @Test
     public void lookUpTest2() {
-        PhoneBook testBook = new PhoneBook();
         testBook.add("George", "1234567890");
         String testNumber = testBook.lookup("George");
         Assert.assertFalse(testNumber.equals("1234567891"));
@@ -45,7 +48,6 @@ public class PhoneBookTest {
 
     @Test
     public void removeTest1() {
-        PhoneBook testBook = new PhoneBook();
         testBook.remove("Billy");
         String testNumber = testBook.lookup("Billy");
         Assert.assertEquals(null, testNumber);
@@ -53,7 +55,6 @@ public class PhoneBookTest {
 
     @Test
     public void removeTest2() {
-        PhoneBook testBook = new PhoneBook();
         testBook.add("George", "1234567890");
         testBook.add("Brad", "609.489.2345");
         testBook.remove("Brad");
@@ -64,7 +65,6 @@ public class PhoneBookTest {
 
     @Test
     public void listPhonebookTest() {
-        PhoneBook testBook = new PhoneBook();
         //testBook.add("George", "123.456.7890");
         testBook.add("Brad", "609.489.2345");
         String actual = testBook.listPhoneBook();
@@ -74,7 +74,6 @@ public class PhoneBookTest {
 
     @Test
     public void listPhonebookTest2() {
-        PhoneBook testBook = new PhoneBook();
         //testBook.add("George", "123.456.7890");
         testBook.add("Brad", "609.489.2345");
         testBook.add("Pitt", "609.356.1865");
@@ -85,7 +84,6 @@ public class PhoneBookTest {
 
     @Test
     public void listNamesTest() {
-        PhoneBook testBook = new PhoneBook();
         testBook.add("George", "123.456.7890");
         testBook.add("Pete", "839.302.8594");
         testBook.add("Alex", "395.823.0987");
@@ -97,7 +95,6 @@ public class PhoneBookTest {
 
     @Test
     public void reverseLookupTest() {
-        PhoneBook testBook = new PhoneBook();
         testBook.add("George", "123.456.7890");
         String testNumber = testBook.reverseLookup("123.456.7891");
         Assert.assertFalse(testNumber.equals("George"));
@@ -105,7 +102,6 @@ public class PhoneBookTest {
 
     @Test
     public void reverseLookupTest2() {
-        PhoneBook testBook = new PhoneBook();
         testBook.add("Zeke", "146.346.7345");
         String testNumber = testBook.reverseLookup("146.346.7345");
         Assert.assertTrue(testNumber.equals("Zeke"));
