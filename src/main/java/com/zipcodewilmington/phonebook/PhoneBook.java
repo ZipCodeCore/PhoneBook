@@ -42,8 +42,10 @@ public class PhoneBook {
     //no test cases yet
     public void removeNumberFromEntry(String name, String number) {
         for (Map.Entry<String, ArrayList<String>> entry : treeMap.entrySet()) {
-            if (entry.getValue().contains(number)) {
-                entry.getValue().remove(number);
+            if (entry.getKey().equals(name)) {
+                if (entry.getValue().contains(number)) {
+                    entry.getValue().remove(number);
+                }
             }
         }
     }
