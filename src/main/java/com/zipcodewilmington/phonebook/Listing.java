@@ -1,19 +1,23 @@
 package com.zipcodewilmington.phonebook;
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 
 public class Listing {
     private String name;
-    private ArrayList<String> numbersList;
+    private LinkedList<String> numbersList;
 
     public Listing(String name, String number){
         this.name = name;
-        this.numbersList = new ArrayList();
+        this.numbersList = new LinkedList();
         numbersList.add(number);
     }
 
     public void addNumber (String newNumber){
-        numbersList.add(" | " + newNumber);
+        numbersList.add(newNumber);
+    }
+
+    public void removeNumber(String numberToRemove){
+            numbersList.remove(numberToRemove);
     }
 
     public String printName(){
@@ -22,8 +26,13 @@ public class Listing {
 
     public String printNumbers(){
         StringBuilder builder = new StringBuilder();
-        for (String number : numbersList){
-            builder.append(number);
+        for (int i = 0; i<numbersList.size(); i++){
+            if(i == numbersList.size()-1){
+                builder.append(numbersList.get(i));
+            }
+            else {
+                builder.append(numbersList.get(i) + " | ");
+            }
         }
         return builder.toString();
     }

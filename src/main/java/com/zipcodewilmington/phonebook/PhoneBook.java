@@ -21,25 +21,25 @@ public class PhoneBook {
         book.put(listingKeyToAdd, listingValueToAdd);
     }
 
-    public void removeListing(String listingKeyToRemove) throws Exception {
+    public void removeListing(String listingKeyToRemove) throws NoListingFoundException {
         if (book.get(listingKeyToRemove) == null) {
-            throw new Exception("No listing under that name: cannot remove");
+            throw new NoListingFoundException("No listing under that name: cannot remove");
         }
         book.remove(listingKeyToRemove);
     }
 
-    public String lookupByName(String keyToLookup) throws Exception {
+    public String lookupByName(String keyToLookup) throws NoListingFoundException {
         if (book.get(keyToLookup) == null) {
-            throw new Exception("No listing under that name: cannot look up");
+            throw new NoListingFoundException("No listing under that name: cannot look up");
         }
         return book.get(keyToLookup).printNumbers();
     }
 
     public String listAllNames() {
         StringBuilder builder = new StringBuilder();
-        Set keys = book.keySet();
-        for (Iterator i = keys.iterator(); i.hasNext(); ) {
-            String key = (String) i.next();
+        Iterator<String> keys = book.keySet().iterator();
+        while(keys.hasNext()) {
+            String key = keys.next();
             builder.append(book.get(key).printName() + "\n");
         }
         return builder.toString();
@@ -47,9 +47,9 @@ public class PhoneBook {
 
     public String listAllNamesAndNumbers() {
         StringBuilder builder = new StringBuilder();
-        Set keys = book.keySet();
-        for (Iterator i = keys.iterator(); i.hasNext(); ) {
-            String key = (String) i.next();
+        Iterator<String> keys = book.keySet().iterator();
+        while(keys.hasNext()) {
+            String key = keys.next();
             String nameToPrint = book.get(key).printName();
             String numbersToPrint = book.get(key).printNumbers();
             builder.append(String.format("%8s : %8s", nameToPrint, numbersToPrint + "\n"));
