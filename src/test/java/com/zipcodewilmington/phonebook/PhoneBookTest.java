@@ -29,22 +29,43 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void testAdd() {
-
+    public void testInputEntry() {
         //Given
         PhoneBook book = new PhoneBook();
 
         ArrayList<String> expectedAddition = new ArrayList<String>();
         expectedAddition.add("302-555-2222");
         expectedAddition.add("302-555-3456");
+
         //When
         book.inputEntry("Bob", expectedAddition);
         ArrayList<String> actualAddition = new ArrayList<String>(book.lookup("Bob"));
 
         //Then
         Assert.assertEquals(expectedAddition, actualAddition);
+    }
+
+    @Test
+    public void addNumberToEntry() {
+        //Given
+        PhoneBook book = new PhoneBook();
+        ArrayList<String> bobNumber = new ArrayList<String>();
+        bobNumber.add("302-555-2222");
+        book.inputEntry("Bob", bobNumber);
+        book.display();
+        //Expected
+        ArrayList<String> expectedAddition = new ArrayList<String>();
+        expectedAddition.add("302-555-2222");
+        expectedAddition.add("302-555-1111");
+        //When
+        book.addNumberToEntry("Bob", "302-555-1111");
+        ArrayList<String> actualAddition = book.lookup("Bob");
+        //Then
+        Assert.assertEquals(expectedAddition, actualAddition);
 
     }
+
+    //add test for removeNumberFromEntry
 
     @Test
     public void testRemoveEntry() {
@@ -129,6 +150,7 @@ public class PhoneBookTest {
         String expectedName = "Bob";
         ArrayList<String> bobNumber = new ArrayList<String>();
         bobNumber.add("302-555-2223");
+        bobNumber.add("302-555-5555");
         book.inputEntry(expectedName, bobNumber);
 
         //When;

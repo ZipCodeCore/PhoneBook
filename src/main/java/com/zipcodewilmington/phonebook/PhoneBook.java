@@ -27,18 +27,26 @@ public class PhoneBook {
         }
     }
 
-    //add and remove numbers from existing names
-    //unfinished, no test cases yet
-    public void modifyNumbers(String name, ArrayList<String> number) {
+    //add numbers to existing entries
+    //no test cases yet
+    public void addNumberToEntry(String name, String number) {
         for (Map.Entry<String, ArrayList<String>> entry : treeMap.entrySet()) {
-            ArrayList<String> value = entry.getValue();
-            for (String firstNumber : value) {
-
+            if (name.equals(entry.getKey())) {
+                ArrayList<String> value = entry.getValue();
+                value.add(number);
             }
         }
-
     }
 
+    //remove numbers from existing entries
+    //no test cases yet
+    public void removeNumberFromEntry(String name, String number) {
+        for (Map.Entry<String, ArrayList<String>> entry : treeMap.entrySet()) {
+            if (entry.getValue().contains(number)) {
+                entry.getValue().remove(number);
+            }
+        }
+    }
 
     //remove a name & number entry
     public void removeEntry(String name) {
@@ -77,7 +85,4 @@ public class PhoneBook {
         return printOut.toString();
     }
 
-
-
 }
-
