@@ -4,15 +4,21 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 public class PersonTest {
     private Person john;
     private String number;
     private String name;
+    private ArrayList<String> listOfPhoneNumbers;
     @Before
     public void setUp() throws Exception {
        number = "20000000";
        name = "John";
-       john = new Person(name,  number);
+       listOfPhoneNumbers = new ArrayList<>();
+       listOfPhoneNumbers.add(number);
+
+       john = new Person(name, number,listOfPhoneNumbers);
     }
 
     @Test
