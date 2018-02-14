@@ -36,7 +36,7 @@ public class PhoneBookTest {
 
 
     @Test
-    public void removeTest() {
+    public void removeTest1() {
         testPhoneBook.add("Marky", "123.321.9999");
         testPhoneBook.add("Ricky", "999.543.1234");
         testPhoneBook.remove("Marky");
@@ -49,8 +49,8 @@ public class PhoneBookTest {
         testPhoneBook.add("Marky", "123.321.9999");
         testPhoneBook.add("Ricky", "999.543.1234");
         testPhoneBook.remove("Ricky");
-        String testNumber = testPhoneBook.lookup("Ricky");
-        Assert.assertEquals(null, testNumber);
+        String actual = testPhoneBook.listNames();
+        Assert.assertTrue(actual.equals("Marky\n"));
     }
 
 
@@ -74,6 +74,24 @@ public class PhoneBookTest {
         testPhoneBook.add("Vince", "555.867.5309");
         String testNumber = testPhoneBook.reverseLookup("555.867.5309");
         Assert.assertTrue(testNumber.equals("Vince"));
+    }
+
+    @Test
+        public void reverseLookupTest2() {
+            testPhoneBook.add("Tim", "555.867.5309");
+            testPhoneBook.add("Tebow", "555.867.5309");
+            testPhoneBook.myTree.get("Tebow").addNumbers("111.222.3333");
+            String testNumber = testPhoneBook.reverseLookup("111.222.3333");
+            Assert.assertTrue(testNumber.equals("Tebow"));
+    }
+
+    @Test
+    public void reverseLookupTest3() {
+        testPhoneBook.add("Tim", "555.867.5309");
+        testPhoneBook.add("Tebow", "555.867.5309");
+        testPhoneBook.myTree.get("Tebow").addNumbers("111.222.3333");
+        String testNumber = testPhoneBook.reverseLookup("111.999.3333");
+        Assert.assertFalse(testNumber.equals("Tebow"));
     }
 
     @Test
@@ -147,5 +165,20 @@ public class PhoneBookTest {
         Assert.assertNotEquals(expected, actual);
     }
 
-}
 
+    @Test
+    public void removeNumberTest1 () {
+        testPhoneBook.add("Joey", "888.555.7890");
+        testPhoneBook.add("Robby", "888.123.1234");
+        testPhoneBook.add("Johnny", "888.321.5522");
+        testPhoneBook.add("Brian", "888.999.9876");
+        testPhoneBook.myTree.get("Robby").addNumbers("123.444.5555");
+        testPhoneBook.myTree.get("Robby").addNumbers("123.555.1234");
+        testPhoneBook.myTree.get("Robby").removeNumbers("888.123.1234");
+        String actual = testPhoneBook.listNamesAndNumbers();
+        String expected = "Brian: [888.999.9876]\nJoey: [888.555.7890]\nJohnny: [888.321.5522]\nRobby: [123.444.5555, 123.555.1234]\n";
+        Assert.assertEquals(expected, actual);
+    }
+
+
+}

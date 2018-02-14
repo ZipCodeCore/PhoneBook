@@ -21,5 +21,9 @@ public class Person {
         phoneNumbers.add(number);
     }
 
+    public void removeNumbers (String number) {
+        phoneNumbers.remove(number);
+    }
+
 
 }

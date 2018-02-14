@@ -1,9 +1,6 @@
 package com.zipcodewilmington.phonebook;
 
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * Created by leon on 1/23/18.
@@ -36,7 +33,7 @@ public class PhoneBook {
    public String reverseLookup(String number) {
 
        for (Map.Entry<String, Person> entry : myTree.entrySet()) {
-           if (entry.getValue().getNumbers().equals("[" + number + "]")) {
+           if (entry.getValue().getNumbers().contains(number)) {
                String keyAtValue = entry.getKey();
                return keyAtValue;
            }
@@ -66,17 +63,7 @@ public class PhoneBook {
 
     public static void main(String[] args) {
 
-        PhoneBook myPhoneBook = new PhoneBook();
-
-        myPhoneBook.add("Marky", "655.876.0987");
-        myPhoneBook.add("Ricky", "555.123.4567");
-        myPhoneBook.add("Danny", "888.555.3322");
-        myPhoneBook.add("Terri", "800.988.5412");
-        myPhoneBook.myTree.get("Marky").addNumbers("555.888.1234");
-
-        System.out.println(myPhoneBook.listNamesAndNumbers());
 
     }
-
 
 }
