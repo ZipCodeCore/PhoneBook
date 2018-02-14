@@ -16,7 +16,7 @@ public class PhoneBookTest {
     public void addTest() {
         PhoneBook testBook = new PhoneBook();
         testBook.addEntry("Luke", "6109998787");
-        String testNumber = testBook.stringLookup("Luke");
+        String testNumber = testBook.lookupNumber("Luke");
         Assert.assertTrue(testNumber.equals("6109998787"));
 
     }
@@ -25,7 +25,7 @@ public class PhoneBookTest {
     public void addTest1() {
         PhoneBook testBook = new PhoneBook();
         testBook.addEntry("Kate", "4846569090");
-        String testNumber = testBook.stringLookup("Kate");
+        String testNumber = testBook.lookupNumber("Kate");
         Assert.assertTrue(testNumber.equals("4846569090"));
 
     }
@@ -34,8 +34,8 @@ public class PhoneBookTest {
     public void removeTest1() {
         PhoneBook testBook = new PhoneBook();
         testBook.addEntry("Kate", "4846569090");
-        testBook.remove("Kate");
-        String testNumber = testBook.stringLookup("Kate");
+        testBook.removeEntry("Kate");
+        String testNumber = testBook.lookupNumber("Kate");
         Assert.assertEquals(null, testNumber);
 
 
@@ -45,7 +45,7 @@ public class PhoneBookTest {
     public void stringLookupTest() {
         PhoneBook testBook = new PhoneBook();
         testBook.addEntry("Kate", "4846569090");
-        String testNumber = testBook.stringLookup("Kate");
+        String testNumber = testBook.lookupNumber("Kate");
         Assert.assertFalse(testNumber.equals("4846587091"));
 
     }
@@ -54,7 +54,7 @@ public class PhoneBookTest {
     public void stringLookupTest1() {
         PhoneBook testBook = new PhoneBook();
         testBook.addEntry("Kate", "4846569090");
-        String testNumber = testBook.stringLookup("Kate");
+        String testNumber = testBook.lookupNumber("Kate");
         Assert.assertTrue(testNumber.equals("4846569090"));
 
     }
@@ -79,8 +79,8 @@ public class PhoneBookTest {
         testBook.addEntry("Adam", "4864569090");
         testBook.addEntry("Zeke", "4787869090");
         String actual = testBook.listPhoneBook();
-        String expected = "Adam = 4864569090\nKate = 4846569090\nZeke = 4787869090\n";
-        Assert.assertEquals(actual, expected);
+        String expected = "Adam: 4864569090\nKate: 4846569090\nZeke: 4787869090\n";
+        Assert.assertEquals(expected, actual);
 
 
     }

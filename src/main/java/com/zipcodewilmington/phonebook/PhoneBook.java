@@ -1,9 +1,6 @@
 package com.zipcodewilmington.phonebook;
 
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.TreeSet;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by leon on 1/23/18.
@@ -13,7 +10,7 @@ public class PhoneBook {
     private String name;
     private String number;
 
-    TreeMap<String, String> myTree = new TreeMap<String, String>();
+    TreeMap<String, ArrayList<String>> myTree = new TreeMap<String, ArrayList<String>>();
 
 
     public PhoneBook(){
@@ -21,29 +18,39 @@ public class PhoneBook {
     }
 
 
-    public void addEntry(String name, String number) {
-        myTree.put(name, number);
-
+    public void addEntry(String name, String... number) {
+        ArrayList<String> listOfPhoneNumbers = new ArrayList<String>(Arrays.asList(number));
+        myTree.put(name, listOfPhoneNumbers);
 
     }
 
+    public void additionalPhoneNumberToKey(String name, String number) {
+        myTree.get(name).add(number);
+    }
 
-    public void remove(String name) {
+
+    public void removeNumberFromName(String name, String number) {
+        myTree.get(name).remove(number);
+    }
+
+
+    public void removeEntry(String name) {
         myTree.remove(name);
 
     }
 
-    public String stringLookup(String name) {
-
-       return myTree.get(name);
-
+    public String lookupNumber(String name) {
+        ArrayList<String> matchingNumbers = myTree.get(name);
+        String listedNumbers = "";
+        for (String phoneNumbers : matchingNumbers) {
+            listedNumbers +=phoneNumbers + "\n";
+        }
+       return listedNumbers.trim();
 
 
     }
 
     public String listNames() {
-
-
 
         Set<String> contacts = myTree.keySet();
 
@@ -52,18 +59,19 @@ public class PhoneBook {
             allNames += contact + "\n";
 
         }
-        return allNames;
+        return allNames.trim();
     }
 
     public String listPhoneBook() {
 
+        Set<String> contacts = myTree.keySet();
         StringBuilder printBook = new StringBuilder();
 
-        for (Map.Entry<String, String> entry : myTree.entrySet()) {
-            String key = entry.getKey();
-            String value = entry.getValue();
-
-            printBook.append(key).append(" = ").append(value).append("\n");
+        for (String name : contacts) {
+            printBook.append(name).append(": ");
+            for (int x = 0; x<myTree.get(name).size(); x++) {
+                printBook.append(x).append("  ");
+            } printBook.append("\n");
 
         }
         String result = printBook.toString();
@@ -73,13 +81,14 @@ public class PhoneBook {
 
     public String reverseLookup(String number) {
 
-        String getName = "";
-        for (Map.Entry<String, String> entry : myTree.entrySet()) {
-            if (entry.getValue() == number) {
-                getName += entry.getKey();
-                return getName;
-            }
+        Set<String> contacts = myTree.keySet();
 
+        for (String name : contacts) {
+            for (int y = 0; y < myTree.get(name).size(); y++) {
+                if (myTree.get(name).get(y).equals(number)) {
+                    return name;
+                }
+            }
         }
 
 
@@ -105,7 +114,7 @@ public class PhoneBook {
 
 
         phonebookEntry.listPhoneBook();
-        System.out.println(phonebookEntry.reverseLookup("4899994190"));
+        System.out.println(phonebookEntry.listPhoneBook());
 
     }
 
