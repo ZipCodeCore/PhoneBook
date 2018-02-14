@@ -5,5 +5,8 @@ package com.zipcodewilmington.phonebook;
  */
 
 // saved1
+
 public class PhoneBook {
+
+    String name = "whatever";
 }
