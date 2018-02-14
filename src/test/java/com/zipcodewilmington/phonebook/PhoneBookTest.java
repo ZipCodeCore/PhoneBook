@@ -15,73 +15,61 @@ public class PhoneBookTest {
 
     private static PhoneBook testPhoneBook;
 
-    /**
-     * double brace initializing: outer pair of braces means that you
-     * are declaring and initializing an anonymous inner class that
-     * extends TreeMap. Inner braces represents an instance initializer,
-     * code that is run when an instance is created.
-     */
-    @Before
     public void setUp() {
-
-        Map<String, String> expectedPhoneBook = new TreeMap<String, String>() {
-            {
-                put("fa", "43234");
-                put("jj", "54323");
-                put("dfafa", "894579");
-            }
-        };
-        testPhoneBook = new PhoneBook(expectedPhoneBook);
+        testPhoneBook = new PhoneBook();
     }
-
 
     @Test
     public void recordShouldAddToPhoneBook() {
-        testPhoneBook.addNameAndNumber("Julia", "7173248976");
-        boolean actualValue = testPhoneBook.containsName("Julia");
-        boolean actualName = testPhoneBook.containsPhoneNumber("7173248976");
-        Assert.assertTrue(actualName);
-        Assert.assertTrue(actualValue);
-    }
-
-
-    @Test
-    public void recordShouldDeleteFromPhoneBook() {
-        testPhoneBook.deleteNameAndNumber("Julia");
-        boolean actualValue = testPhoneBook.containsPhoneNumber("Julia");
-        boolean actualName = testPhoneBook.containsPhoneNumber("7173248976");
-        Assert.assertFalse(actualName);
-        Assert.assertFalse(actualValue);
+        PhoneBook pb = new PhoneBook();
+        pb.addNameAndNumber("Julia", "7173248976");
+        String expectedValue = pb.retrieveByName("Julia");
+        Assert.assertEquals(expectedValue, "7173248976");
     }
 
     @Test
     public void phoneNumberShouldRetrieveByName() {
-        String expected = testPhoneBook.deleteNameAndNumber("Julia");
-        boolean expectedName = testPhoneBook.containsName(name);
-        Assert.assertEquals(expected, actual);
+        PhoneBook pb = new PhoneBook();
+        pb.addNameAndNumber("Sam", "7173247777");
+        String expectedValue = pb.retrieveByName("Sam");
+        Assert.assertEquals(expectedValue, "7173247777");
     }
 
     @Test
     public void nameShouldRetrieveByPhoneNumber() {
-
-        Assert.assertEquals(expected, actual);
+        PhoneBook pb = new PhoneBook();
+        pb.addNameAndNumber("Sam", "7173247777");
+        String expectedValue = pb.retrieveByPhoneNumber("7173247777");
+        Assert.assertEquals(expectedValue, "7173247777");
     }
 
     @Test
-    public void shouldlistAllNames() {
-
-        Assert.assertEquals(expected, actual);
+    public void recordShouldDeleteFromPhoneBook() {
+        PhoneBook pb = new PhoneBook();
+        pb.deleteNameAndNumber("Julia");
+        String expectedValue = pb.retrieveByName("Julia");
+        Assert.assertEquals(expectedValue, null);
     }
 
+/**
+    @Test
+    public void shouldlistAllNamesAlphabeticalOrder() {
+        PhoneBook pb = new PhoneBook();
+        pb.addNameAndNumber("Sally", "7173243456");
+        pb.addNameAndNumber("Adam", "7173244567");
+        pb.addNameAndNumber("Chance", "7173247891");
+        pb.addNameAndNumber("Zach", "7173242345");
+        pb.addNameAndNumber("Wally", "7173242345");
+        String actual = pb.listAllNames();
+        String testList = "Name: Adam\nName: Chance\nName: Sally\nName: Wally\nName: Zach";
+        Assert.assertEquals(testList, actual);
+    }
 
     @Test
     public void shouldlistAllNamesAndNumbers() {
 
-        Assert.assertEquals(expected, actual);
+        Assert.assertEquals(false, false);
     }
+
+*/
 }
-
-
-
-
-

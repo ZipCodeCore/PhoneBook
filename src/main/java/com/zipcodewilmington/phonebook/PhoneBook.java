@@ -1,17 +1,19 @@
 package com.zipcodewilmington.phonebook;
 
+import java.util.Formatter;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.Arrays;
 
 /**
  * Created by leon on 1/23/18.
  */
 public class PhoneBook {
 
-    public Map<String, String> phoneRecord;
+    private Map<String, String> phoneRecord;
 
-    public PhoneBook(Map<String, String> phoneRecord) {
-        this.phoneRecord = phoneRecord;
+    public PhoneBook() {
+        phoneRecord = new TreeMap<String, String>();
     }
 
     /**
@@ -20,13 +22,8 @@ public class PhoneBook {
      * @param name
      * @param number
      */
-    public void addNameAndNumber(String name, String number) {
-        if (!containsName(name)) {
-            phoneRecord.put(name, number);
-            System.out.println("Record was successfully added to the Phone Book.");
-        } else {
-            System.out.println("Phone Book already contains " + name);
-        }
+    public Boolean addNameAndNumber(String name, String number) {
+        return phoneRecord.put(name, number) != null;
     }
 
     /**
@@ -34,27 +31,18 @@ public class PhoneBook {
      *
      * @param name
      */
-    public void deleteNameAndNumber(String name) {
-        if (phoneRecord.containsKey(name)) {
-            phoneRecord.remove(name);
-            System.out.println("Record was successfully deleted from the Phone Book.");
-        } else {
-            System.out.println("Phone Book does not contain " + name);
-        }
+    public boolean deleteNameAndNumber(String name) {
+        return phoneRecord.remove(name) != null;
     }
+
 
     /**
      * retrieves phone number by name
      *
      * @param name
      */
-    public void retrieveByName(String name) {
-        if (phoneRecord.containsKey(name)) {
-            String phoneNum = phoneRecord.get(name);
-            System.out.println("The phone number for " + name + " is " + phoneNum);
-        } else {
-            System.out.println("Phone Book does not contain " + name);
-        }
+    public String retrieveByName(String name) {
+        return phoneRecord.get(name);
     }
 
     /**
@@ -62,65 +50,58 @@ public class PhoneBook {
      *
      * @param number
      */
-    public void retrieveByPhoneNumber(String number) {
+    public String retrieveByPhoneNumber(String number) {
         for (String nameKey : phoneRecord.keySet()) {
-            if (number.equals(phoneRecord.get(nameKey))) {
-                System.out.println("The phone number for " + nameKey + number);
+            String numValue = phoneRecord.get(nameKey);
+            if (numValue.equals(number)) {
+                return phoneRecord.get(nameKey);
             }
         }
+        return "";
     }
 
     /**
      * returns alphabetical list of all names in phoneBook
      */
-    public void listAllNames() {
+    public String listAllNames() {
+        StringBuilder list = new StringBuilder();
+        Formatter prettyListNames = new Formatter(list);
         for (String nameKey : phoneRecord.keySet()) {
-            System.out.println(nameKey);
+            prettyListNames.format("Name: %-7s%n",nameKey);
         }
+        return list.toString();
     }
 
     /**
      * returns alphabetical list of all records in phoneBook
      */
-    public void listAllNamesAndNumbers() {
-
-        // Print the content of the hashMap
+    public String listAllNamesAndNumbers() {
+        StringBuilder list = new StringBuilder();
+        Formatter prettyList = new Formatter(list);
         for (String nameKey : phoneRecord.keySet()) {
-            System.out.println("Name: " + nameKey + ", PhoneNumber: " + phoneRecord.get(nameKey));
+            prettyList.format("Name: %-7s PhoneNumber: %-10s%n", nameKey, phoneRecord.get(nameKey));
         }
+        return list.toString();
     }
 
     public static void main(String[] args) {
-
         PhoneBook lancasterPeople = new PhoneBook();
-
         lancasterPeople.addNameAndNumber("Sally", "7173419899");
         lancasterPeople.addNameAndNumber("Zach", "7173413244");
         lancasterPeople.addNameAndNumber("Adam", "7173419675");
         lancasterPeople.addNameAndNumber("Chance", "555");
         lancasterPeople.addNameAndNumber("Wally", "8906786");
 
-        lancasterPeople.listAllNames();
-        lancasterPeople.listAllNamesAndNumbers();
 
-        lancasterPeople.retrieveByPhoneNumber("7173416306");
-        lancasterPeople.retrieveByName("Sally");
-        lancasterPeople.deleteNameAndNumber("Zach");
-        lancasterPeople.retrieveByName("Zach");
-        lancasterPeople.retrieveByName("jkl");
-        lancasterPeople.listAllNames();
+        String x = lancasterPeople.listAllNamesAndNumbers();
+        System.out.println(x);
+
+        String y = lancasterPeople.listAllNames();
+        System.out.println(y);
 
 
     }
 
-
-    public boolean containsName(String name) {
-        return phoneRecord.containsKey(name);
-    }
-
-    public boolean containsPhoneNumber(String phoneNumber) {
-        return phoneRecord.containsKey(phoneNumber);
-    }
 }
 
 
