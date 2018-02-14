@@ -1,8 +1,6 @@
 package com.zipcodewilmington.phonebook;
 
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * Created by leon on 1/23/18.
@@ -10,21 +8,21 @@ import java.util.TreeMap;
 public class PhoneBook{
 
     private String name;
-    private String number;
+    private List<String> numbers = new ArrayList<String>();
 
     public PhoneBook (){
 
     }
 
-    TreeMap<String, String> actualPhoneBook = new TreeMap<String , String>();
+    TreeMap<String, List<String>> actualPhoneBook = new TreeMap<String , List<String>>();
 
-    public void add(String name, String number){
+    public void add(String name, List numbers){
 
-        actualPhoneBook.put(name, number);
+        actualPhoneBook.put(name, numbers);
 
     }
 
-    public String lookUp(String name){
+    public List lookUp(String name){
 
        return actualPhoneBook.get(name);
 
@@ -44,15 +42,26 @@ public class PhoneBook{
 
         StringBuilder listNameAndNumbers = new StringBuilder();
 
-        for (Map.Entry<String, String> entry : actualPhoneBook.entrySet()) {
+        for (Map.Entry<String, List<String>> entry : actualPhoneBook.entrySet()) {
 
             String getKeys = entry.getKey();
-            String getValues = entry.getValue();
+            List getValues = entry.getValue();
 
            listNameAndNumbers.append(getKeys).append(": ").append(getValues).append("\n");
         }
         String listAll = listNameAndNumbers.toString();
         return listAll;
+    }
+
+    public String reverseLookUp(String number){
+
+        for(Map.Entry entry: actualPhoneBook.entrySet()){
+            if(number.equals(entry.getValue())){
+                return entry.getKey().toString();
+            }
+        }
+
+        return null;
     }
 
 }

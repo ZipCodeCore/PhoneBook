@@ -3,6 +3,7 @@ package com.zipcodewilmington.phonebook;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.List;
 import java.util.Set;
 
 import static junit.framework.TestCase.assertEquals;
@@ -18,8 +19,8 @@ public class PhoneBookTest {
     public void addAndLookUpTest1(){
 
         PhoneBook testPhoneBook = new PhoneBook();
-        testPhoneBook.add("Bob", "8743845682");
-        String n = testPhoneBook.lookUp("Bob");
+        testPhoneBook.add("Bob", "8743845682"));
+        List n = testPhoneBook.lookUp("Bob");
         assertTrue((n.equals("8743845682")));
     }
 
@@ -28,7 +29,7 @@ public class PhoneBookTest {
 
         PhoneBook testPhoneBook = new PhoneBook();
         testPhoneBook.add("Sally", "8345636538");
-        String n = testPhoneBook.lookUp("Sally");
+        List n = testPhoneBook.lookUp("Sally");
         assertTrue((n.equals("8345636538")));
 
     }
@@ -40,7 +41,7 @@ public class PhoneBookTest {
         testPhoneBook.add("Joe", "7473549123");
         testPhoneBook.add("Mat", "6484759803");
         testPhoneBook.remove("Mat");
-        String actual = testPhoneBook.lookUp("Mat");
+         List actual = testPhoneBook.lookUp("Mat");
         assertEquals(null, actual);
 
     }
@@ -53,7 +54,7 @@ public class PhoneBookTest {
         testPhoneBook.add("Gary", "1632742724");
         testPhoneBook.add("Vince", "2745958293");
         testPhoneBook.remove("Vince");
-        String actual = testPhoneBook.lookUp("Vince");
+        List actual = testPhoneBook.lookUp("Vince");
         assertEquals(null, actual);
 
     }
@@ -112,6 +113,26 @@ public class PhoneBookTest {
         Assert.assertEquals(actual, expected);
 
 
+    }
+
+    @Test
+    public void reverseLookUpTest1() {
+
+        PhoneBook testPhoneBook = new PhoneBook();
+        testPhoneBook.add("Sally", "8345636538");
+        String r = testPhoneBook.reverseLookUp("8345636538");
+        assertTrue((r.equals("Sally")));
+    }
+
+    @Test
+    public void reverseLookUpTest2() {
+
+        PhoneBook testPhoneBook = new PhoneBook();
+        testPhoneBook.add("Sally", "8345636538");
+        testPhoneBook.add("Bob", "8374862467");
+        testPhoneBook.add("Harrow", "8934998234");
+        String r = testPhoneBook.reverseLookUp("8934998234");
+        assertTrue((r.equals("Harrow")));
     }
 
 
