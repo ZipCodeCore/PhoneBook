@@ -76,7 +76,7 @@ private String numberEntry;
                  return key;
              }
          }
-         return null;
+         return "That number does not exist";
      }
 
      public void removeOneNumberfromEntry(String nameEntry, String numberEntry){
