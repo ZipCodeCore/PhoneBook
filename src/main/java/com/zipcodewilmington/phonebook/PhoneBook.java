@@ -21,14 +21,13 @@ public class PhoneBook {
     }
 
     //add a name & number entry, add number
-    public void inputEntry(String name, ArrayList<String> number) {
+    public void addEntry(String name, ArrayList<String> number) {
         if (!treeMap.containsKey(name)) {
             treeMap.put(name, number);
         }
     }
 
     //add numbers to existing entries
-    //no test cases yet
     public void addNumberToEntry(String name, String number) {
         for (Map.Entry<String, ArrayList<String>> entry : treeMap.entrySet()) {
             if (name.equals(entry.getKey())) {
@@ -39,7 +38,6 @@ public class PhoneBook {
     }
 
     //remove numbers from existing entries
-    //no test cases yet
     public void removeNumberFromEntry(String name, String number) {
         for (Map.Entry<String, ArrayList<String>> entry : treeMap.entrySet()) {
             if (entry.getKey().equals(name)) {
@@ -50,17 +48,17 @@ public class PhoneBook {
         }
     }
 
-    //remove a name & number entry
+    //remove entire entry
     public void removeEntry(String name) {
             treeMap.remove(name);
     }
 
-    //find phone number lookup by name
+    //lookup: find phone number from name
     public ArrayList<String> lookup(String name) {
         return treeMap.get(name);
     }
 
-    //reverse lookup
+    //reverse lookup: find name from number
     public String reverseLookup (String number) {
         String name = "";
         for(Map.Entry<String, ArrayList<String>> entry: treeMap.entrySet()) {
@@ -78,8 +76,7 @@ public class PhoneBook {
     public String display(){
         StringBuilder printOut = new StringBuilder();
         for(Map.Entry<String, ArrayList<String>> entry: treeMap.entrySet()) {
-            printOut
-                    .append(entry.getKey())
+            printOut.append(entry.getKey())
                     .append(" ")
                     .append(entry.getValue().toString())
                     .append("\n");

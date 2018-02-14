@@ -5,6 +5,7 @@ import org.junit.Test;
 import sun.nio.cs.ext.SJIS;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.TreeMap;
 
 /**
@@ -20,26 +21,19 @@ public class PhoneBookTest {
     @Test
     public void testConstructorWithArgument() {
         PhoneBook book = new PhoneBook();
-        ArrayList<String> number = new ArrayList<String>();
-        number.add("302-555-2222");
-        number.add("302-555-3456");
-        book.inputEntry("Bob", number);
+        ArrayList<String> number = new ArrayList<String>(Arrays.asList("302-555-2222","302-555-3456"));
+        book.addEntry("Bob", number);
         Assert.assertNotNull(book);
     }
 
     @Test
-    public void testInputEntry() {
+    public void testAddEntry() {
         //Given
         PhoneBook book = new PhoneBook();
-
-        ArrayList<String> expectedAddition = new ArrayList<String>();
-        expectedAddition.add("302-555-2222");
-        expectedAddition.add("302-555-3456");
-
+        ArrayList<String> expectedAddition = new ArrayList<String>(Arrays.asList("302-555-2222","302-555-3456"));
         //When
-        book.inputEntry("Bob", expectedAddition);
+        book.addEntry("Bob", expectedAddition);
         ArrayList<String> actualAddition = new ArrayList<String>(book.lookup("Bob"));
-
         //Then
         Assert.assertEquals(expectedAddition, actualAddition);
     }
@@ -48,12 +42,10 @@ public class PhoneBookTest {
     public void addNumberToEntry() {
         //Given
         PhoneBook book = new PhoneBook();
-        ArrayList<String> bobNumber = new ArrayList<String>();
-        bobNumber.add("302-555-2234");
-        book.inputEntry("Bob", bobNumber);
-        ArrayList<String> expectedAddition = new ArrayList<String>();
-        expectedAddition.add("302-555-2234");
-        expectedAddition.add("302-555-1111");
+        ArrayList<String> bobNumber = new ArrayList<String>(Arrays.asList("302-555-2234"));
+        book.addEntry("Bob", bobNumber);
+        //Expected
+        ArrayList<String> expectedAddition = new ArrayList<String>(Arrays.asList("302-555-2234","302-555-1111"));
         //When
         book.addNumberToEntry("Bob", "302-555-1111");
         ArrayList<String> actualAddition = book.lookup("Bob");
@@ -65,14 +57,10 @@ public class PhoneBookTest {
     public void removeNumberFromEntry() {
         //Given
         PhoneBook book = new PhoneBook();
-        ArrayList<String> bobNumber = new ArrayList<String>();
-        bobNumber.add("302-555-2234");
-        bobNumber.add("302-555-1111");
-        book.inputEntry("Bob", bobNumber);
-
-        ArrayList<String> expectedAfterDeletion = new ArrayList<String>();
-        expectedAfterDeletion.add("302-555-2234");
-
+        ArrayList<String> bobNumber = new ArrayList<String>(Arrays.asList("302-555-2234","302-555-1111"));
+        book.addEntry("Bob", bobNumber);
+        //Expected
+        ArrayList<String> expectedAfterDeletion = new ArrayList<String>(Arrays.asList("302-555-2234"));
         //When
         book.removeNumberFromEntry("Bob", "302-555-1111");
         ArrayList<String> actualAfterDeletion = book.lookup("Bob");
@@ -85,16 +73,13 @@ public class PhoneBookTest {
 
         //Given
         PhoneBook book = new PhoneBook();
-        ArrayList<String> bobNumber = new ArrayList<String>();
-        bobNumber.add("302-555-2222");
-        bobNumber.add("302-555-3456");
-        book.inputEntry("Bob", bobNumber);
+        ArrayList<String> bobNumber = new ArrayList<String>(Arrays.asList("302-555-2222","302-555-3456"));
+        book.addEntry("Bob", bobNumber);
+        //Expected
         String expectedValue = "";
-
         //When
         book.removeEntry("Bob");
         String actualValue = book.display();
-
         //Then
         Assert.assertEquals(expectedValue, actualValue);
     }
@@ -104,10 +89,8 @@ public class PhoneBookTest {
         //To test if lookup returns all of the person's phone numbers
         //Given
         PhoneBook book = new PhoneBook();
-        ArrayList<String> expectedNumber = new ArrayList<String>();
-        expectedNumber.add("302-555-2223");
-        expectedNumber.add("302-555-3456");
-        book.inputEntry("Bob", expectedNumber);
+        ArrayList<String> expectedNumber = new ArrayList<String>(Arrays.asList("302-555-2223","302-555-3456"));
+        book.addEntry("Bob", expectedNumber);
         //When
         ArrayList<String> actualNumber = new ArrayList<String>(book.lookup("Bob"));
         //Then
@@ -119,13 +102,11 @@ public class PhoneBookTest {
         //To test if lookup picks out the right person when there are multiple entries
         //Given
         PhoneBook book = new PhoneBook();
-        ArrayList<String> bobNumber = new ArrayList<String>();
-        bobNumber.add("302-555-2223");
-        book.inputEntry("Bob", bobNumber);
+        ArrayList<String> bobNumber = new ArrayList<String>(Arrays.asList("302-555-2223"));
+        book.addEntry("Bob", bobNumber);
         //Expected
-        ArrayList<String> expectedNumber = new ArrayList<String>();
-        expectedNumber.add("302-555-9988");
-        book.inputEntry("Frank", expectedNumber);
+        ArrayList<String> expectedNumber = new ArrayList<String>(Arrays.asList("302-555-9988"));
+        book.addEntry("Frank", expectedNumber);
         //When
         ArrayList<String> actualNumber = new ArrayList<String> (book.lookup("Frank"));
         //Then
@@ -137,11 +118,9 @@ public class PhoneBookTest {
         // to test if right person is returned when searching by one of multiple phone numbers
         //Given
         PhoneBook book = new PhoneBook();
-        ArrayList<String> bobNumber = new ArrayList<String>();
-        bobNumber.add("302-555-2223");
-        bobNumber.add("302-555-5555");
+        ArrayList<String> bobNumber = new ArrayList<String>(Arrays.asList("302-555-2223","302-555-5555"));
         String expectedName = "Bob";
-        book.inputEntry(expectedName, bobNumber);
+        book.addEntry(expectedName, bobNumber);
         //When
         String actualName = book.reverseLookup("302-555-2223");
         //Then
@@ -153,15 +132,10 @@ public class PhoneBookTest {
     public void testDisplay() {
         //Given:
         PhoneBook book = new PhoneBook();
-
-        ArrayList<String> bobNumber = new ArrayList<String>();
-        bobNumber.add("302-555-1234");
-        bobNumber.add("302-556-1245");
-        book.inputEntry("Bob", bobNumber);
-
-        ArrayList<String> frankNumber = new ArrayList<String>();
-        frankNumber.add("777-555-1111");
-        book.inputEntry("Frank", frankNumber);
+        ArrayList<String> bobNumber = new ArrayList<String>(Arrays.asList("302-555-1234","302-556-1245"));
+        book.addEntry("Bob", bobNumber);
+        ArrayList<String> frankNumber = new ArrayList<String>(Arrays.asList("777-555-1111"));
+        book.addEntry("Frank", frankNumber);
         //Expected
         String expectedNameNumber = "Bob " + bobNumber.toString() + "\n" + "Frank " + frankNumber.toString() + "\n";
         //When
