@@ -1,8 +1,5 @@
 package com.zipcodewilmington.phonebook;
-import java.util.TreeMap;
-import java.util.Set;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by leon on 1/23/18.
@@ -10,12 +7,12 @@ import java.util.Map;
 public class PhoneBook {
 
     //instance variable
-    private TreeMap<String, String> treeMap;
+    private TreeMap<String, ArrayList<String>> treeMap;
 
 
     // void "no arguments" constructor -creates empty map
     public PhoneBook() {
-        this.treeMap= new TreeMap<String, String>();
+        this.treeMap= new TreeMap<String, ArrayList<String>>();
     }
 
     // single argument constructor -type Map -creates new map w/ same key/value mappings as argument
@@ -23,32 +20,45 @@ public class PhoneBook {
         this.treeMap = treeMap;
     }
 
-    //add a name & number entry
-    public void add(String name, String number) {
-
-        if(!treeMap.containsKey(name)) {
+    //add a name & number entry, add number
+    public void inputEntry(String name, ArrayList<String> number) {
+        if (!treeMap.containsKey(name)) {
             treeMap.put(name, number);
+        }
+    }
+
+    //add and remove numbers from existing names
+    //unfinished, no test cases yet
+    public void modifyNumbers(String name, ArrayList<String> number) {
+        for (Map.Entry<String, ArrayList<String>> entry : treeMap.entrySet()) {
+            ArrayList<String> value = entry.getValue();
+            for (String firstNumber : value) {
+
+            }
         }
 
     }
 
+
     //remove a name & number entry
-    public void remove(String name) {
+    public void removeEntry(String name) {
             treeMap.remove(name);
     }
 
     //find phone number lookup by name
-    public String lookup(String name) {
-        String number = treeMap.get(name);
-        return number;
+    public ArrayList<String> lookup(String name) {
+        return treeMap.get(name);
     }
 
     //reverse lookup
     public String reverseLookup (String number) {
         String name = "";
-        for(Map.Entry<String, String> entry: treeMap.entrySet()) {
-            if(entry.getValue().equals(number)) {
-                name = entry.getKey();
+        for(Map.Entry<String, ArrayList<String>> entry: treeMap.entrySet()) {
+            ArrayList<String> value = entry.getValue();
+            for(String revnumber: value) {
+                if(number.contains(revnumber)) {
+                    name = entry.getKey();
+                }
             }
         }
         return name;
@@ -57,15 +67,14 @@ public class PhoneBook {
     //print out all of the entries in PhoneBook
     public String display(){
         StringBuilder printOut = new StringBuilder();
-        for(Map.Entry<String, String> entry: treeMap.entrySet()) {
+        for(Map.Entry<String, ArrayList<String>> entry: treeMap.entrySet()) {
             printOut
                     .append(entry.getKey())
                     .append(" ")
-                    .append(entry.getValue())
+                    .append(entry.getValue().toString())
                     .append("\n");
         }
-        String print = printOut.toString();
-        return print;
+        return printOut.toString();
     }
 
 
