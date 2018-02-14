@@ -68,14 +68,7 @@ public class PhoneBookTest {
         Assert.assertEquals(true, myPhoneBook.add(testName, testPhone));
         //Assert.assertEquals(true, myPhoneBook.add(testName, testPhone));
     }
-//
-//    @Test
-//    public void testAddANumberToAList(){
-//        String testName = "Lary";
-//        String testPhone = "777";
-//        myPhoneBook.addNumberToList(testName, testPhone);
-//        Assert.assertEquals(true, actual);
-//    }
+
 
     @Test
     public void testAddFalse() {

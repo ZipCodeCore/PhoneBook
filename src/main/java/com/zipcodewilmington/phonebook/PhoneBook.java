@@ -34,31 +34,27 @@ public class PhoneBook {
         if (!phoneBook.containsKey(name)) {
             // if a person has more than one phonenumber add phone number list of phoneNumbers
             ArrayList<String> listOfNumbers = new ArrayList<>();
-            listOfNumbers.add(phoneNumber);
+            personAdded = listOfNumbers.add(phoneNumber);
             Person somePerson = new Person(name, phoneNumber, listOfNumbers);
             phoneBook.put(name, somePerson);
-            return personAdded = true;
+            return personAdded;
         }
 
-        personAdded = addNumberToList(phoneNumber);
+        personAdded = addNumberToList(name ,phoneNumber);
 
         return personAdded;
     }
 
-    public boolean addNumberToList(String phoneNumber) {
+    public boolean addNumberToList(String name, String phoneNumber) {
         boolean addedNumber = false;
-        /** I want to add phone number to List of Phone numbers
-         *  check to see if add and return result accordingly;
-         */
-        //int index = lookUpPhoneNumber(phoneNumber).getListOfNumbers().indexOf(phoneNumber);
-        //if (index < 0) {
-            lookUpPhoneNumber(phoneNumber).getListOfNumbers().add(phoneNumber);
-            addedNumber = lookUpPhoneNumber(phoneNumber).getListOfNumbers().contains(phoneNumber);
-
-       // }
+        /** check for existing phonenumber.
+          there is no phone exisiting number add to list*/
+         if(lookUpPhoneNumber(phoneNumber) == null){
+            addedNumber = lookUpName(name).getListOfNumbers().add(phoneNumber);
+        }
         return addedNumber;
     }
-    //public boolean removeNumberFromListing()
+
 
     /**
      * @param name
@@ -81,8 +77,7 @@ public class PhoneBook {
         boolean removedANumber = false;
         try {
             if (phoneBook.containsKey(name)) {
-                lookUpPhoneNumber(phoneNumber).getListOfNumbers().remove(phoneNumber);
-                //removedANumber = true;
+              removedANumber =  lookUpPhoneNumber(phoneNumber).getListOfNumbers().remove(phoneNumber);
             }
         } catch (NullPointerException e) {
             System.out.println("No phoneNumber exsists");
@@ -95,12 +90,13 @@ public class PhoneBook {
      * @return
      */
     public Person lookUpPhoneNumber(String phoneNumber) {
+        boolean isPhoneNumber = false;
         /**reverse lookup need to look value "phoneNumber"*/
         for (Map.Entry<String, Person> entry : phoneBook.entrySet()) {
 
-            int index = entry.getValue().getListOfNumbers().indexOf(phoneNumber);
+            isPhoneNumber = entry.getValue().getListOfNumbers().contains(phoneNumber);
 
-            if (entry.getValue().getListOfNumbers().get(index).equals(phoneNumber)) {
+            if (isPhoneNumber == true) {
                 return entry.getValue();
             }
         }
