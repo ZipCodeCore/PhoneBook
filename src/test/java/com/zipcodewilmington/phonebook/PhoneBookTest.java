@@ -25,10 +25,10 @@ public class PhoneBookTest {
 
 
     @Test
-    public void getTestNumber(){
+    public void getPersonTest(){
         yellowPages.add("bill", "1234567890");
         System.out.println(bill.getNumbers().toString());
-        Assert.assertEquals(bill.getNumbers(), yellowPages.get("bill"));
+        Assert.assertEquals(bill.getName(), yellowPages.getPerson("bill").getName());
     }
 
     //i kinda need to talk to someone about this? how to instantiate my phonebook with a value. otherwise i'm testing get and set at the same time,
@@ -36,7 +36,7 @@ public class PhoneBookTest {
     @Test
     public void addTest(){
         yellowPages.add("bill", "1234567890");
-        Assert.assertEquals(bill.getNumbers(), yellowPages.get("bill"));
+        Assert.assertEquals(bill.getNumbers(), yellowPages.getPerson("bill").getNumbers());
     }
 
     @Test
@@ -55,9 +55,9 @@ public class PhoneBookTest {
         yellowPages.add("jill", "0987654321");
         yellowPages.add("dill", "1234543210");
         Assert.assertEquals(yellowPages.display(),
-                "bill 1234567890\n" +
-                        "dill 1234543210\n" +
-                        "jill 0987654321"
+                "bill 1234567890 \n" +
+                        "dill 1234543210 \n" +
+                        "jill 0987654321 "
         );
     }
 

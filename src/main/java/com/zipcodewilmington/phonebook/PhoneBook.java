@@ -1,5 +1,6 @@
 package com.zipcodewilmington.phonebook;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
@@ -14,13 +15,7 @@ public class PhoneBook {
     }
 
     public PhoneBook() {
-        this.phoneBook = new TreeMap<String, Person>();
-    }
-
-
-    public String get(String name) {
-        Person temp = this.phoneBook.get(name);
-        return temp.getNumbers();
+        this(new TreeMap<String, Person>());
     }
 
     public Person getPerson(String name) {
@@ -59,12 +54,15 @@ public class PhoneBook {
 
     public String display(){
         StringBuilder displayAllNamesAndPhoneNumbers = new StringBuilder();
-        for (String key : phoneBook.keySet()) {
-            Person temp = getPerson(key);
-            //make sure my get numbers method is creating an organized string i can use with this method.
-            displayAllNamesAndPhoneNumbers.append(temp.getName() + " " + temp.getNumbers().toString() + "\n");
+        for (Person person: phoneBook.values()) {
+            displayAllNamesAndPhoneNumbers.append(person.getName() + " ");
+            ArrayList<String> tempNumbers = person.getNumbers();
+            for (String number: tempNumbers) {
+                displayAllNamesAndPhoneNumbers.append(number + " ");
+            }
+            displayAllNamesAndPhoneNumbers.append("\n");
         }
-        System.out.println(displayAllNamesAndPhoneNumbers.toString());
+        System.out.println(displayAllNamesAndPhoneNumbers.toString().substring(0, displayAllNamesAndPhoneNumbers.length() -1));
         return displayAllNamesAndPhoneNumbers.toString().substring(0, displayAllNamesAndPhoneNumbers.length() -1);
     }
 
