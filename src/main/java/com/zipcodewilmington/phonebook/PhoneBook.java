@@ -26,7 +26,7 @@ public class PhoneBook {
     public String reverseLookup(String phoneNumber){
         for (Person person: phoneBook.values()) {
             for (String number : person.numbers) {
-                if (person.numbers.contains(number)){
+                if (number.equals(phoneNumber)){
                     return person.getName();
                 }
             }

@@ -39,8 +39,4 @@ public class Person {
         addNumberToNumbers(number);
     }
 
-    public Person() {
-        new Person("NO NAME", "000000000");
-    }
-
 }

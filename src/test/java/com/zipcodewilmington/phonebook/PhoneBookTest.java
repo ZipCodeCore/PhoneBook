@@ -3,10 +3,6 @@ package com.zipcodewilmington.phonebook;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
-
-import java.util.TreeMap;
-import java.util.Map;
 
 /**
  * Created by leon on 1/23/18.
