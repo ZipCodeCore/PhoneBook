@@ -1,6 +1,5 @@
 package com.zipcodewilmington.phonebook;
 
-import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
@@ -10,45 +9,58 @@ import java.util.TreeMap;
  */
 public class PhoneBook {
 
-    TreeMap<String, Person> phoneBook = new TreeMap<String, Person>();
+    TreeMap<String, String> phoneBook = new TreeMap<String, String>();
 
 
     public void addEntryToPhoneBook(String name, String phoneNumber) {
-        phoneBook.put(name, new Person(name, phoneNumber));
+        phoneBook.put(name, phoneNumber);
     }
 
 
-    public void removePhoneBookEntryFromPhoneBook(String name) {
-        phoneBook.remove(name);
+    public void removeEntryFromPhoneBook(String name, String phoneNumber) {
+        phoneBook.remove(name, phoneNumber);
     }
 
-    public String[] listNames() {
-        return null;
+    public String lookUp(String name) {
+        return phoneBook.get(name);
     }
+
+    public String listNames() {
+        String completeListOfNames = "";
+        for (String key : phoneBook.keySet()) {
+            completeListOfNames += key + "\n";
+        }
+
+        return completeListOfNames;
+    }
+
+    public String listNumbers() {
+        String completeListOfNumbers = "";
+        for (Map.Entry<String, String> entry : phoneBook.entrySet()) {
+            completeListOfNumbers += entry.getValue() + "\n";
+        }
+        return completeListOfNumbers;
+    }
+
 
     public String entryListAll() {
         String fullList = "";
-        Set<String> keys = phoneBook.keySet();
-        for (Map.Entry<String, Person> entry: phoneBook.entrySet()) {
-            fullList += entry.getKey() + " : " + entry.getValue().getPhoneNumber();
+        for (Map.Entry<String, String> entry : phoneBook.entrySet()) {
+            fullList += entry.getKey() + " : " + entry.getValue() + "\n"; //reverse lookup
 
         }
         return fullList;
     }
-    public static void main(String[] args) {
-        PhoneBook nameNumber = new PhoneBook();
-        nameNumber.addEntryToPhoneBook("eric", "3025551111 \n");
-        nameNumber.addEntryToPhoneBook("eyan", "3025552222 \n");
-        nameNumber.entryListAll();
-        System.out.println(nameNumber.entryListAll());
 
+    public String reverseLookup(String numberToLookUp) {
+        for (Map.Entry<String,String > e : phoneBook.entrySet()) {
+            if (e.getValue().equals(numberToLookUp)){
+                return e.getKey();
+            }
+        }return null;
     }
 
 
-    public Person lookUp(String name) {
-        return phoneBook.get(name);
-
-    }
 
 
 }
