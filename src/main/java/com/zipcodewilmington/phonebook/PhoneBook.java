@@ -1,5 +1,6 @@
 package com.zipcodewilmington.phonebook;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
@@ -9,14 +10,15 @@ import java.util.TreeMap;
  */
 public class PhoneBook {
 
-    TreeMap<String, String> myTree = new TreeMap<String, String>();
+    TreeMap<String, Person> myTree = new TreeMap<String, Person>();
 
     public PhoneBook() {
 
     }
 
     public void add(String name, String number) {
-        myTree.put(name, number);
+        Person newContact = new Person(name, number);
+        myTree.put(name, newContact);
     }
 
 
@@ -27,18 +29,19 @@ public class PhoneBook {
 
     public String lookup(String name) {
 
-        return myTree.get(name);
+        return myTree.get(name).getNumbers();
     }
 
-    public String reverseLookup(String number) {
 
-        for (Map.Entry<String, String> entry : myTree.entrySet()) {
-            if (entry.getValue() == number) {
-                String keyAtValue = entry.getKey();
-                return keyAtValue;
-            }
-        } return "Number not found";
-    }
+   public String reverseLookup(String number) {
+
+       for (Map.Entry<String, Person> entry : myTree.entrySet()) {
+           if (entry.getValue().getNumbers().equals("[" + number + "]")) {
+               String keyAtValue = entry.getKey();
+               return keyAtValue;
+           }
+       } return "Number not found";
+   }
 
 
     public String listNames() {
@@ -55,7 +58,7 @@ public class PhoneBook {
         String list = "";
         Set<String> keys = myTree.keySet();
         for (String i : keys) {
-            list += i + ": " + myTree.get(i) + "\n";
+            list += i + ": " + myTree.get(i).getNumbers() + "\n";
         }
         return list;
     }
@@ -65,16 +68,13 @@ public class PhoneBook {
 
         PhoneBook myPhoneBook = new PhoneBook();
 
-        myPhoneBook.add("Marky", "555.123.4321");
-        myPhoneBook.add("Ricky", "555.432.9785");
-        myPhoneBook.add("Danny", "555.999.8865");
-        myPhoneBook.add("Terri", "555.123.9886");
+        myPhoneBook.add("Marky", "655.876.0987");
+        myPhoneBook.add("Ricky", "555.123.4567");
+        myPhoneBook.add("Danny", "888.555.3322");
+        myPhoneBook.add("Terri", "800.988.5412");
+        myPhoneBook.myTree.get("Marky").addNumbers("555.888.1234");
 
-        //System.out.println(myPhoneBook.listNamesAndNumbers());
-        //System.out.println(myPhoneBook.listNames());
-        System.out.println(myPhoneBook.reverseLookup("555.999.8865"));
-
-
+        System.out.println(myPhoneBook.listNamesAndNumbers());
 
     }
 
