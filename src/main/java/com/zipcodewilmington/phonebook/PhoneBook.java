@@ -7,17 +7,16 @@ import java.util.*;
  */
 public class PhoneBook {
 
-    private String name;
-    private String number;
-    public TreeMap<String, ArrayList<String>>phoneBookEntries = new TreeMap<String, ArrayList<String>>();
+
+    public TreeMap<String, ArrayList<String>> phoneBookEntries;
 
 
     public PhoneBook() {
-
+        this.phoneBookEntries = new TreeMap<String, ArrayList<String>>();
     }
 
-    public void add(String name, String ... number) {
-        ArrayList<String> listOfNumbers= new ArrayList<String>(Arrays.asList(number));
+    public void add(String name, String... number) {
+        ArrayList<String> listOfNumbers = new ArrayList<String>(Arrays.asList(number));
         phoneBookEntries.put(name, listOfNumbers);
     }
 
@@ -26,7 +25,7 @@ public class PhoneBook {
     }
 
 
-    public void removeNumber(String name, String number){
+    public void removeNumber(String name, String number) {
         phoneBookEntries.get(name).remove(number);
     }
 
@@ -35,10 +34,9 @@ public class PhoneBook {
     }
 
     public String lookUp(String name) {
-        ArrayList<String> matchingNumbers= phoneBookEntries.get(name);
-        String returnNumbers="";
-        for (String number : matchingNumbers)
-        {
+        ArrayList<String> matchingNumbers = phoneBookEntries.get(name);
+        String returnNumbers = "";
+        for (String number : matchingNumbers) {
             returnNumbers += number + "\n";
         }
 
@@ -65,27 +63,28 @@ public class PhoneBook {
         String allContacts = "";
 
         for (String name : contacts) {
-            allContacts += name+ ":\n";
-            for(int i=0; i<phoneBookEntries.get(name).size();i++){
-                allContacts+=phoneBookEntries.get(name).get(i)+ "\n";
+            allContacts += name + ":\n";
+            for (int i = 0; i < phoneBookEntries.get(name).size(); i++) {
+                allContacts += phoneBookEntries.get(name).get(i) + "\n";
             }
         }
 
         return allContacts.trim();
     }
 
-        public  String reverseLookUp(String value) {
+    public String reverseLookUp(String value) {
 
-            Set<String> contacts = phoneBookEntries.keySet();
-            for(String name: contacts){
-                for(int i=0;i<phoneBookEntries.get(name).size();i++) {
-                    if (phoneBookEntries.get(name).get(i).equals(value)) {
-                        return name;
-                    }
+        Set<String> contacts = phoneBookEntries.keySet();
+
+        for (String name : contacts) {
+            for (int i = 0; i < phoneBookEntries.get(name).size(); i++) {
+                if (phoneBookEntries.get(name).get(i).equals(value)) {
+                    return name;
                 }
-
             }
-            return null;
+
+        }
+        return null;
 
     }
 }
