@@ -1,81 +1,76 @@
 package com.zipcodewilmington.phonebook;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * Created by leon on 1/23/18.
  */
 public class PhoneBook {
-    Map<String,String> phoneBook = new TreeMap<String, String>();
-    Set<String>names;
-    Set<String>phoneBookList;
-    String nameLists="";
-    String namesAndNumbers ="";
-
-
-    public PhoneBook(Map<String, String> phoneBook) {
-        this.phoneBook = phoneBook;
-    }
+    Map<String, List<String>> phoneBook;
 
     public PhoneBook() {
-
+        this.phoneBook = new TreeMap<String, List<String>>();
     }
 
-    public boolean add(String name,String phoneNumber) {
+    public boolean add(String name, String phone) {
+        if (phoneBook.containsKey(name)) {
+            phoneBook.get(name).add(phone);
+            return true;
 
-     phoneBook.put(name, phoneNumber);
-     if(phoneBook.get(name).equals(phoneNumber)){
-         return true;
-     }return false;
+        } else {
+            List<String> contactNumbers = new ArrayList<String>();
+            contactNumbers.add(phone);
+            phoneBook.put(name, contactNumbers);
+        }
+
+        return true;
     }
 
-    public boolean remove(String name){
-        if(phoneBook.containsKey(name)){
-            phoneBook.remove(name);
-        }
-        else{
-            System.out.println(name+" does not exist in the phone book list");
-        }
-        return !phoneBook.containsKey(name);
-
-
+    public boolean remove(String name) {
+        return phoneBook.remove(name) != null;
     }
 
-        public String lookup(String name){
-
-        return phoneBook.get(name);
-        }
-
-        public String listNames(){
-        if(phoneBook.isEmpty()){
-            return null;
-        }else {
-            Set<String> names = phoneBook.keySet();
-
-            for (String name : names) {
-                nameLists += name + "\n";
-            }
-            return nameLists;
-        }
-
-        }
-
-        public String listNamesAndNumbers(){
-            if(phoneBook.isEmpty()){
-                return null;
-            }else {
-                Set<String> PhoneBookList = phoneBook.keySet();
-                for (String nameKeys : phoneBookList) {
-                    namesAndNumbers += nameKeys + "   " + phoneBook.get(nameKeys) + "\n";
-                }
+    public String lookup(String name) {
+        String myNumbers = "";
+        for (String key : phoneBook.keySet()) {
+            for (int i = 0; i < phoneBook.get(key).size(); i++) {
+                myNumbers += phoneBook.get(key).get(i) + "  ";
             }
 
-        return namesAndNumbers;
+        }
+        return myNumbers;
+    }
+
+    public String listNames() {
+        String names = "";
+        for (String a : phoneBook.keySet()) {
+            names += a + "\n";
         }
 
+        return names;
+    }
+
+    public String listNamesAndNumbers() {
+        StringBuilder namesAndNumbers = new StringBuilder();
+        for (String keys : phoneBook.keySet()) {
+            List<String> contact = phoneBook.get(keys);
+            for (String num : contact) {
+                namesAndNumbers.append(keys).append("    ").append(num);
+            }
+            namesAndNumbers.append("\n");
+        }
+        return namesAndNumbers.toString();
+    }
+
+    public String reverseLookUp(String number) {
+        for (String keys : phoneBook.keySet()) {
+            for (int i = 0; i < phoneBook.get(keys).size(); i++) {
+                if (phoneBook.get(keys).get(i).equals(number))
+                    return keys;
+            }
+        }
+        return null;
+    }
 
 
 }
