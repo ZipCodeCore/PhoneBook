@@ -15,7 +15,7 @@ public class PhoneBook {
         PhoneBook myPhoneBookActualObjectInstance= new PhoneBook();
         myPhoneBookActualObjectInstance.add("vince", "1123456789");
         myPhoneBookActualObjectInstance.add("amy", "29387429");
-        System.out.println(myPhoneBookActualObjectInstance.showNames());
+        System.out.println(myPhoneBookActualObjectInstance.displayEntirePhoneBookContents());
     }
 
 
@@ -45,15 +45,33 @@ public class PhoneBook {
 
     }
 
-    public String showNames() {
+    public String reverseLookup(String number) {
 
-        String phoneList = "";
-        Set<String> unsortedKeys = personTreeMap.keySet();
-        for (String personsName : unsortedKeys) {
-            phoneList += (personsName + "\n");
+        return
+
+    }
+
+    public String showNamesOnly() {
+
+        String phoneListOfNamesOnly= "";
+        Set<String> nameTreeKeys = personTreeMap.keySet();
+        for (String personsName : nameTreeKeys) {
+            phoneListOfNamesOnly += (personsName + "\n");
             }
 
-        return phoneList;
+        return phoneListOfNamesOnly;
+
+        }
+
+    public String displayEntirePhoneBookContents() {
+
+        String entirePhoneBook = "";
+        Set<String> nameTreeKeys = personTreeMap.keySet();
+        for (String personsName : nameTreeKeys) {
+             entirePhoneBook += (personsName + "'s phone number: " +  personTreeMap.get(personsName).getNumbers() + "\n");
+        }
+
+        return entirePhoneBook;
 
         }
 
