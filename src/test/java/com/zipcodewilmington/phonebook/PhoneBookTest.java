@@ -51,7 +51,7 @@ public class PhoneBookTest {
         Assert.assertEquals(expectedValue, null);
     }
 
-/**
+
     @Test
     public void shouldlistAllNamesAlphabeticalOrder() {
         PhoneBook pb = new PhoneBook();
@@ -61,7 +61,7 @@ public class PhoneBookTest {
         pb.addNameAndNumber("Zach", "7173242345");
         pb.addNameAndNumber("Wally", "7173242345");
         String actual = pb.listAllNames();
-        String testList = "Name: Adam\nName: Chance\nName: Sally\nName: Wally\nName: Zach";
+        String testList = "Name: Adam\nName: Chance\nName: Sally\nName: Wally\nName: Zach\n";
         Assert.assertEquals(testList, actual);
     }
 
@@ -71,5 +71,5 @@ public class PhoneBookTest {
         Assert.assertEquals(false, false);
     }
 
-*/
+
 }

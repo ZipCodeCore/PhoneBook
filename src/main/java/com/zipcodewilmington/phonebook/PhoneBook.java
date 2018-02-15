@@ -67,7 +67,7 @@ public class PhoneBook {
         StringBuilder list = new StringBuilder();
         Formatter prettyListNames = new Formatter(list);
         for (String nameKey : phoneRecord.keySet()) {
-            prettyListNames.format("Name: %-7s%n",nameKey);
+            prettyListNames.format("Name: %s%n",nameKey);
         }
         return list.toString();
     }
@@ -85,6 +85,7 @@ public class PhoneBook {
     }
 
     public static void main(String[] args) {
+
         PhoneBook lancasterPeople = new PhoneBook();
         lancasterPeople.addNameAndNumber("Sally", "7173419899");
         lancasterPeople.addNameAndNumber("Zach", "7173413244");
