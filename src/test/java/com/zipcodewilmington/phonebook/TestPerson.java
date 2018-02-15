@@ -1,12 +1,10 @@
 package com.zipcodewilmington.phonebook;
 
-
+import java.util.ArrayList;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class TestPerson {
-
-    @Test
 
 
 
@@ -14,8 +12,10 @@ public class TestPerson {
 
     @Test
     public void testGetName() {
-        Person person = new Person("Nathaniel", "8567744773");
+        //we place the expected on top
         String expected = "Nathaniel";
+        Person person = new Person("Nathaniel", expected);
+
 
         //I don't need a setter, because i did "this.name"...remember
         String actual = person.getName();
@@ -24,15 +24,25 @@ public class TestPerson {
     }
 
     @Test
-    public void testGetNumber(){
-        Person person = new Person("Nathaniel", "8567744773");
+    public void testGetPhoneNumbers(){
         String expected = "8567744773";
+        Person person = new Person("Nathaniel",expected);
 
-        String actual = person.getNumber();
+
+        ArrayList<String> actual = person.getPhoneNumbers();
         Assert.assertEquals(expected, actual);
     }
 
+    @Test
+    public void testSetAddAdditionalNumbers(){
+        //Given
+        String expected = "Karen";
 
+        //When
+        person.setPhoneNumbers(expected);
+
+
+    }
 
 
 

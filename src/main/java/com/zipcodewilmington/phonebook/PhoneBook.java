@@ -9,9 +9,10 @@ import java.util.TreeMap;
  */
 //the class
 public class PhoneBook {
-
+    //constructor
     public PhoneBook(){
-        TreeMap<String, String>entry = new TreeMap();
+        //this is saying that the treemap is going to have the string as a key and the Person as the value
+        TreeMap<String, Person> entry = new TreeMap();
     }
 
 
