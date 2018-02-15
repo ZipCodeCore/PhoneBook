@@ -47,7 +47,14 @@ public class PhoneBook {
 
     public String reverseLookup(String number) {
 
-        return
+        for (Map.Entry<String, Person> phoneBookEntry : personTreeMap.entrySet()){
+            if (phoneBookEntry.getValue().getNumbers().contains(number)){
+                String foundName = phoneBookEntry.getKey();
+                return foundName;
+            }
+        }
+
+        return "We're sorry. We could not find that number. Have a nice day.";
 
     }
 
