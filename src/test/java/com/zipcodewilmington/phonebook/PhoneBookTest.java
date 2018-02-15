@@ -81,6 +81,33 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void
+    public void displayEntirePhoneBookContentsTest(){
+        testPhonebook.add("Andrea", "8888");
+        testPhonebook.add("Alexei", "8877");
+        String actual = testPhonebook.displayEntirePhoneBookContents();
+        String expected = "Alexei's phone number: [8877]\nAndrea's phone number: [8888]\n";
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void addAdditionalNumberTest(){
+        testPhonebook.add("Andrea", "8888");
+        testPhonebook.personTreeMap.get("Andrea").addAdditionalNumber("1111");
+        String actual= testPhonebook.displayEntirePhoneBookContents();
+        String expected = "Andrea's phone number(s): [8888, 1111]\n";
+        Assert.assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void removeSingleNumberTest(){
+        testPhonebook.add("Andrea", "8888");
+        testPhonebook.personTreeMap.get("Andrea").addAdditionalNumber("1111");
+        testPhonebook.personTreeMap.get("Andrea").addAdditionalNumber("2222");
+        testPhonebook.personTreeMap.get("Andrea").removeSingleNumber("1111");
+        String actual = testPhonebook.displayEntirePhoneBookContents();
+        String expected = "Andrea's phone number(s): [8888, 2222]\n";
+        Assert.assertEquals(expected, actual);
+    }
 
 }

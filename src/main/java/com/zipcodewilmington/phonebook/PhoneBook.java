@@ -76,7 +76,7 @@ public class PhoneBook {
         String entirePhoneBook = "";
         Set<String> nameTreeKeys = personTreeMap.keySet();
         for (String personsName : nameTreeKeys) {
-             entirePhoneBook += (personsName + "'s phone number: " +  personTreeMap.get(personsName).getNumbers() + "\n");
+             entirePhoneBook += (personsName + "'s phone number(s): " +  personTreeMap.get(personsName).getNumbers() + "\n");
         }
 
         return entirePhoneBook;
@@ -84,5 +84,3 @@ public class PhoneBook {
         }
 
     }
-
-
