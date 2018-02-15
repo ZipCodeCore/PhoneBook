@@ -4,7 +4,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.Set;
 
 
 /**
@@ -21,39 +23,36 @@ public class PhoneBookTest {
 
     }
     @Test
-    public void testAddContact(){
+    public void addContactTest(){
         phoneBook.addContact("Genya", "6578356767");
         boolean genyaIsInPhoneBook = phoneBook.getContactsList().keySet().contains("Genya");
         Assert.assertTrue(genyaIsInPhoneBook);
 
     }
     @Test
-    public void testRemoveContact(){
+    public void removeContactTest(){
         phoneBook.removeContact("Pete Jones");
         boolean peteJonesHasBeenRemoved = !phoneBook.getContactsList().containsKey("Pete Jones");
         Assert.assertTrue(peteJonesHasBeenRemoved);
     }
+
     @Test
-    public void testLookUpContactByName(){
-        phoneBook.lookUpContactByName("Nala Bits");
-        String expected = "2345578122";
-        String actual = phoneBook.getContactsList().get("Nala Bits");
-        Assert.assertEquals(expected, actual);
-    }
-    @Test
-    public void testListAllByName(){
-        phoneBook.listAllByName(phoneBook.getContactsList().keySet().toString());
-        String expected = ;
-        String actual = phoneBook.getContactsList().keySet().toString();
+    public void listAllNamesAndNumbersTest(){
+        phoneBook.listAllNamesAndNumbers();
+        String expected = new String();
+        Set<Map.Entry<String, ArrayList>> actual = phoneBook.getContactsList().entrySet();
         Assert.assertEquals(expected, actual);
     }
 
     @Test
-    public void testListAllNamesAndNumbers(){
-        phoneBook.listAllNamesAndNumber();
-        String expected = ;
-        String actual = phoneBook.getContactsList().entrySet();
+    public void reverseLookUpTest(){
+        phoneBook.reverseLookUp();
+        String expected = new String();
+        Set<Map.Entry<String, ArrayList>> actual = phoneBook.getContactsList().entrySet();
         Assert.assertEquals(expected, actual);
+
     }
+
 }
+
 

@@ -1,8 +1,7 @@
 package com.zipcodewilmington.phonebook;
-import java.util.Map;
-import java.util.Set;
-import java.util.SortedMap;
+import java.util.*;
 import java.util.TreeMap;
+import java.util.Set;
 
 /**
  * Created by leon on 1/23/18.
@@ -11,59 +10,61 @@ public class PhoneBook {
 
     String name;
     String number;
+    ArrayList<String> numbersList = new ArrayList<>();
 
 
-    private Map<String, String> contactsList;
+    private TreeMap contactsList;
 
-    public PhoneBook(){
-        this.contactsList = new TreeMap<String, String>();
-        contactsList.put("Pete Jones", "2678849087");
-        contactsList.put("Ron Burgundy", "5604329932");
-        contactsList.put("Nala Bits", "2345578122");
+    public PhoneBook() {
+        this.contactsList = new TreeMap<>();
 
     }
-    public Map<String, String> getContactsList(){
+
+    public Map<String, ArrayList> getContactsList() {
         return contactsList;
 
     }
 
-    public void addContact(String name, String number) {
+    public String addContact(String name, String number) {
         if (!contactsList.containsKey(name)) {
             contactsList.put(name, number);
-            System.out.println("New contact " + name + " has been added");
-        } else {
-            System.out.println("Contact already exists");
         }
+        return "";
     }
 
-    public void removeContact(String name) {
+    public String removeContact(String name) {
         if (contactsList.containsKey(name)) {
             contactsList.remove(name);
-            System.out.println("Contact has been removed");
-        } else {
-            System.out.println("No " + name + " contact exists");
         }
+        return "";
     }
 
-    public String lookUpContactByName(String name){
-        return contactsList.get(name) == null ? "Sorry name not found" : contactsList.get(name);
-    }
 
-    public String listAllByName(String strings) {
-        Set nameSet = contactsList.keySet();
-        for (Object names : nameSet) {
-            return names.toString();
+    public String listAllNamesAndNumbers() {
+        Set listingAll = contactsList.entrySet();
+        return listingAll.toString();
+        /*String getEntries = new String();
+        for (Object allEntries : listingAll) {
+            if(listingAll.equals());*/
         }
 
 
-    public String listAllNamesAndNumbers(){
-            Set listingAll = contactsList.entrySet();
-            for (Object allEntries : listingAll )
-            return allEntries.toString();
+
+    public String reverseLookUp() {
+        Set<String> listingReverse = contactsList.keySet();
+        for (String allEntries : listingReverse) {
+            if(listingReverse.contains(allEntries.equals(number))) {
+                return allEntries;
+            }
 
         }
+        return "";
     }
 }
+
+
+
+
 
 
 
