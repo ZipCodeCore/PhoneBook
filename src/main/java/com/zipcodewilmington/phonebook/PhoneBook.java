@@ -1,5 +1,7 @@
 package com.zipcodewilmington.phonebook;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.TreeMap;
 
@@ -10,32 +12,69 @@ import java.util.TreeMap;
 
 public class PhoneBook {
 
-    TreeMap<String, String> contacts;
+    private TreeMap<String, Contact> contactsMap;
 
-    public PhoneBook () {
-        contacts = new TreeMap();
+    // Constructor
+    public PhoneBook() {
+        contactsMap = new TreeMap<String, Contact>();
     }
 
-    public String addPerson(String name, String phoneNumber) {
-        return contacts.put(name, phoneNumber);
+
+    public void addContact(String name, String phoneNumber) {
+        //Create new contact instance, call addPhoneNumber method
+        Contact contact = new Contact(name);
+        contact.addPhoneNumber(phoneNumber);
+        // Call getName method to add key, contact is value
+        contactsMap.put(contact.getName(), contact);
     }
 
-    public String lookupPhoneNumber(String name) {
-        return contacts.get(name);
+
+    public int getNumberOfContacts() {
+        return contactsMap.size();
     }
 
-    public String removePerson(String name) {
-        return contacts.remove(name);
+
+    public void removeContact(String name) {
+        contactsMap.remove(name);
     }
 
-    public void  listNamesAndNums(String name, String phoneNumber) {
 
-        for (String key : contacts.keySet()){
-            String value = contacts.get(key);
-            System.out.println(key + ": " + value);
+    public ArrayList lookupByName(String name) {
+        return contactsMap.get(name).getPhoneNumbers();
+    }
+
+
+    public Collection listAllContacts() {
+        return contactsMap.values();
+    }
+
+    public String lookupByNumber(String phoneNumber) {
+        // from phone book
+        // into contactsMap
+        // into Contact object
+        // into Contact object's arraylist
+        // evaluate values in arraylist
+
+        Collection<Contact> contacts = contactsMap.values();
+        for (Contact contact : contacts) {
+            ArrayList<String> phoneNumbers = contact.getPhoneNumbers();
+            if(phoneNumbers.contains(phoneNumber)) {
+                return contact.getName();
+            }
         }
-
     }
+
+
+//
+//    public void listNamesAndNums(String name, String phoneNumber) {
+//
+//        for (String key : contacts.keySet()){
+//            String value = contacts.get(key);
+//            System.out.println(key + ": " + value);
+//        }
+//
+//    }
+//
 
 
 }
