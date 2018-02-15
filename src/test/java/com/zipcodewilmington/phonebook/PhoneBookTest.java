@@ -17,11 +17,11 @@ import static org.junit.Assert.assertArrayEquals;
 
 public class PhoneBookTest {
     @Test
-    public void addAndLookUpTest1(){
+    public void addAndLookUpTest1() {
 
         PhoneBook testPhoneBook = new PhoneBook();
         String expected = "8387474747";
-        testPhoneBook.add("Bob", "8743845682","8387474747" );
+        testPhoneBook.add("Bob", "8743845682", "8387474747");
         String actual = testPhoneBook.lookUp("Bob").get(1).toString();
         Assert.assertEquals(expected, actual);
     }
@@ -38,7 +38,7 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void removeTest1(){
+    public void removeTest1() {
 
         PhoneBook testPhoneBook = new PhoneBook();
 
@@ -52,7 +52,7 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void removeTest2(){
+    public void removeTest2() {
         //Given
         PhoneBook testPhoneBook = new PhoneBook();
         testPhoneBook.add("Sue", "9845032923");
@@ -69,33 +69,33 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void listNameTest1(){
+    public void listNameTest1() {
         PhoneBook testPhoneBook = new PhoneBook();
         testPhoneBook.add("Sue", "9845032923");
         testPhoneBook.add("Gary", "1632742724");
         testPhoneBook.add("Vince", "2745958293");
 
         String[] actual = testPhoneBook.listName();
-        String[] expected = { "Gary", "Sue", "Vince"};
+        String[] expected = {"Gary", "Sue", "Vince"};
         assertArrayEquals(expected, actual);
 
     }
 
     @Test
-    public void listNameTest2(){
+    public void listNameTest2() {
         PhoneBook testPhoneBook = new PhoneBook();
         testPhoneBook.add("Eric", "9845032923");
         testPhoneBook.add("Jack", "1632742724");
         testPhoneBook.add("Jane", "2745958293");
 
         String[] actual = testPhoneBook.listName();
-        String[] expected = { "Eric", "Jack", "Jane"};
+        String[] expected = {"Eric", "Jack", "Jane"};
         assertArrayEquals(expected, actual);
 
     }
 
     @Test
-    public void listNameAndNumberTest1(){
+    public void listNameAndNumberTest1() {
 
         PhoneBook testPhoneBook = new PhoneBook();
         testPhoneBook.add("Valkyr", "9845032923");
@@ -104,12 +104,12 @@ public class PhoneBookTest {
 
         String actual = testPhoneBook.listNameAndNumbers();
         String expected = "Banshee: [1632742724]\nFrost: [2745958293]\nValkyr: [9845032923]\n";
-        Assert.assertEquals(expected, actual );
+        Assert.assertEquals(expected, actual);
 
     }
 
     @Test
-    public void listNameAndNumberTest2(){
+    public void listNameAndNumberTest2() {
 
         PhoneBook testPhoneBook = new PhoneBook();
         List<String> testNumbers = new ArrayList<String>();
