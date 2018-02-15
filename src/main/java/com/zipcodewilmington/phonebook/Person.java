@@ -18,11 +18,15 @@ public class Person {
         return phoneNumbers.toString();
     }
 
-    public void addNumbers(String number){
+    public void addNumbers (String number){
+
         phoneNumbers.add(number);
     }
 
+    public void removeNumbers (String number){
 
+        phoneNumbers.remove(number);
+    }
 
 
 }
