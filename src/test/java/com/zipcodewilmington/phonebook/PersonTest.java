@@ -33,6 +33,7 @@ public class PersonTest {
         Assert.assertEquals(expected, actual);
     }
 
+    @Test
     public void addPhoneNumbersTest() {
         this.person = new Person("John Smith", "(000) 000-0000");
         String expectedPhoneNumberToAdd1 = "(111) 111-1111";
@@ -48,6 +49,7 @@ public class PersonTest {
 
     }
 
+    @Test
     public void removePhoneNumbersTest() {
         this.person = new Person("John Smith", "(000) 000-0000", "(111) 111-1111", "(222) 222-2222");
         String expectedPhoneNumberToDelete1 = "(111) 111-1111";
