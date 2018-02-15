@@ -84,7 +84,7 @@ public class PhoneBook {
         StringBuilder list = new StringBuilder();
         Formatter prettyList = new Formatter(list);
         for (String nameKey : phoneRecord.keySet()) {
-            prettyList.format("Name: %-7s PhoneNumber: %-10s%n", nameKey, phoneRecord.get(nameKey));
+            prettyList.format("Name: %s PhoneNumber: %-10s%n", nameKey, join(phoneRecord.get(nameKey)));
         }
         return list.toString();
     }
@@ -103,7 +103,7 @@ public class PhoneBook {
         for ( int i = 0; i < listNum.size(); i++)
         {
             sb.append(listNum.get(i));
-            if (i < listNum.size()){
+            if (i < listNum.size()-1){
                 sb.append(", ");
             }
         }
@@ -118,6 +118,8 @@ public class PhoneBook {
         lancasterPeople.addNameAndNumber("Adam", "7173419675");
         lancasterPeople.addNameAndNumber("Chance", "555");
         lancasterPeople.addNameAndNumber("Wally", "8906786");
+        lancasterPeople.addNameAndNumber("Wally", "3456789");
+        lancasterPeople.addNameAndNumber("Wally", "89665");
 
 
         String x = lancasterPeople.listAllNamesAndNumbers();
