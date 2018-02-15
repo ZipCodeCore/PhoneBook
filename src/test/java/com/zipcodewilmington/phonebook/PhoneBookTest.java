@@ -37,7 +37,25 @@ public class PhoneBookTest {
         Assert.assertTrue(testNumber.equals("[123.4]"));
     }
 
+//    @Test
+//    public void removeEntireEntryTest1(){
+//        testPhonebook.add("Allessandra", "4321");
+//        testPhonebook.add("Essarella", "4421");
+//        testPhonebook.removeEntireEntry("Allessandra");
+//        String testNumber = testPhonebook.lookup("Essarella");
+//        Assert.assertNotEquals(null, testNumber);
+//    }
 
+    @Test
+    public void removeEntireEntryTest2(){
+        testPhonebook.add("Andrea", "8888");
+        testPhonebook.add("Alexei", "8877");
+        testPhonebook.removeEntireEntry("Alexei");
+        String testList = testPhonebook.showNamesOnly();
+        Assert.assertTrue(testList.equals("Andrea\n"));
+
+
+    }
 
     @Test
     public void testLookup() {
@@ -52,8 +70,17 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void test (){
-
+    public void testListNamesOnly1 (){
+        testPhonebook.add("Andrea", "8888");
+        testPhonebook.add("Alexei", "8877");
+        testPhonebook.add("Addison", "1234");
+        testPhonebook.add("AdDy", "1234");
+        String actual = testPhonebook.showNamesOnly();
+        String expected = "AdDy\nAddison\nAlexei\nAndrea\n";
+        Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void
 
 }
