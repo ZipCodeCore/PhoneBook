@@ -41,8 +41,14 @@ public class PhoneBook {
     }
 
     //PART II
-    public String reverseLookup() { //lookup names from phone numbers
-        return "null";
+    public String reverseLookup(String phoneNumber) { //lookup names from phone numbers
+        for (String name : hashMap.keySet()) {
+            if (hashMap.get(name).getPhoneNumber() == phoneNumber) {
+                return name;
+                //break;
+            }
+        }
+        return "No_name";
     }
 
     //PART III

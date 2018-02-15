@@ -19,12 +19,12 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void testDefaultConstructor() {
+    public void defaultConstructorTest() {
         Assert.assertNotNull(this.phonebook);
     }
 
     @Test
-    public void testLookup() {
+    public void lookupTest() {
         Person expectedPerson = new Person("Jane", "(111) 222-3333");
         this.phonebook.addEntry("Jane", "(111) 222-3333");
 
@@ -39,7 +39,7 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void testAddEntry() {
+    public void addEntryTest() {
         this.phonebook.addEntry("Adam", "(222) 333-4444");
 
         boolean actualPersonName = this.phonebook.hashMap.containsKey("Adam");
@@ -50,7 +50,7 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void testRemoveEntry() {
+    public void removeEntryTest() {
         this.phonebook.addEntry("Bob", "(333) 444-5555");
         this.phonebook.removeEntry("Bob");
 
@@ -62,7 +62,7 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void testGetEntryList() {
+    public void getEntryListTest() {
         this.phonebook.addEntry("Ava", "(000) 111-2222");
         this.phonebook.addEntry("Brian", "(222) 333-4444");
         this.phonebook.addEntry("Charlie", "(444) 555-6666");
@@ -81,6 +81,34 @@ public class PhoneBookTest {
         Assert.assertFalse(actualPersonName);
         Assert.assertFalse(actualPersonObject);
         */
+    }
+
+    @Test
+    public void reverseLookupTest() {
+
+        // This method should allow you to look up names by the phone number associated with them.
+
+        // Given
+        String givenPhoneNumber = "(000) 111-2222";
+
+        // When
+        this.phonebook.addEntry("Ava", "(000) 111-2222");
+        Person expectedPerson = new Person("Ava", "(000) 111-2222");
+
+        String expectedName = "Ava";
+        String expectedPhoneNumber = "(000) 111-2222";
+
+        String actualNameFromPerson = expectedPerson.getName();
+        String actualPhoneNumberFromPerson = expectedPerson.getPhoneNumber();
+
+        String actualNameFromPhoneBook = "Ava";
+        String actualPhoneNumberFromPhoneBook = this.phonebook.hashMap.get(actualNameFromPhoneBook).getPhoneNumber();
+
+        Assert.assertEquals(expectedName, this.phonebook.reverseLookup(givenPhoneNumber));
+        // Then
+
+
+
     }
 
 }
