@@ -25,17 +25,17 @@ Your PhoneBook class should have the following method
    * Sample Script
 
 	   ```java
-PhoneBook phoneBook = new PhoneBook();
-phoneBook.add("Zebra", "111-222-333");
-phoneBook.add("Dog", "222-444-4444");
-phoneBook.display(); 
+	   PhoneBook phoneBook = new PhoneBook();
+	   phoneBook.add("Zebra", "111-222-333");
+	   phoneBook.add("Dog", "222-444-4444");
+	   phoneBook.display(); 
 	   ```
 
    * Sample Output
 
 	   ```
-Dog 222-444-4444
-Zebra 111-222-333
+		Dog 222-444-4444
+		Zebra 111-222-333
 	   ```
       
 
