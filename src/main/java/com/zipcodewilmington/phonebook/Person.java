@@ -26,6 +26,14 @@ public class Person {
     public String getNumbers(){
         return phoneNumber.toString();
     }
+
+    public void removeSingleNumber (String number){
+        phoneNumber.remove(number);
+    }
+
+    public void addAdditionalNumber(String number){
+        phoneNumber.add(number);
+    }
 }
 
 

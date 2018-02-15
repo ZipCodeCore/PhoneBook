@@ -15,6 +15,7 @@ public class PhoneBook {
         PhoneBook myPhoneBookActualObjectInstance= new PhoneBook();
         myPhoneBookActualObjectInstance.add("vince", "1123456789");
         myPhoneBookActualObjectInstance.add("amy", "29387429");
+        myPhoneBookActualObjectInstance.personTreeMap.get("amy").addAdditionalNumber("2344");
         System.out.println(myPhoneBookActualObjectInstance.displayEntirePhoneBookContents());
     }
 
@@ -34,7 +35,7 @@ public class PhoneBook {
     }
 
 
-    public void remove(String name) {
+    public void removeEntireEntry (String name) {
 
         personTreeMap.remove(name);
     }
