@@ -1,12 +1,7 @@
 package com.zipcodewilmington.phonebook;
 
-import org.junit.Before;
-import org.junit.Test;
 import org.junit.Assert;
-import org.junit.After;
-
-import java.util.Map;
-import java.util.TreeMap;
+import org.junit.Test;
 
 /**
  * Created by leon on 1/23/18.
@@ -23,32 +18,33 @@ public class PhoneBookTest {
     public void recordShouldAddToPhoneBook() {
         PhoneBook pb = new PhoneBook();
         pb.addNameAndNumber("Julia", "7173248976");
-        String expectedValue = pb.retrieveByName("Julia");
+        String expectedValue = pb.retrieveNumbersByName("Julia");
         Assert.assertEquals(expectedValue, "7173248976");
     }
 
     @Test
-    public void phoneNumberShouldRetrieveByName() {
+    public void ShouldRetrieveNumbersByName() {
         PhoneBook pb = new PhoneBook();
         pb.addNameAndNumber("Sam", "7173247777");
-        String expectedValue = pb.retrieveByName("Sam");
+        String expectedValue = pb.retrieveNumbersByName("Sam");
         Assert.assertEquals(expectedValue, "7173247777");
     }
 
     @Test
-    public void nameShouldRetrieveByPhoneNumber() {
+    public void shouldRetrieveNameByNumber() {
         PhoneBook pb = new PhoneBook();
         pb.addNameAndNumber("Sam", "7173247777");
-        String expectedValue = pb.retrieveByPhoneNumber("7173247777");
-        Assert.assertEquals(expectedValue, "7173247777");
+        String expectedValue = pb.retrieveNameByNumber("7173247777");
+        Assert.assertEquals(expectedValue, "Sam");
     }
 
     @Test
     public void recordShouldDeleteFromPhoneBook() {
         PhoneBook pb = new PhoneBook();
+        pb.addNameAndNumber("Julia", "7173247777");
         pb.deleteNameAndNumber("Julia");
-        String expectedValue = pb.retrieveByName("Julia");
-        Assert.assertEquals(expectedValue, null);
+        String expectedValue = pb.listAllNames();
+        Assert.assertEquals(expectedValue, "");
     }
 
 

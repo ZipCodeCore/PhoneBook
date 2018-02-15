@@ -1,19 +1,17 @@
 package com.zipcodewilmington.phonebook;
 
-import java.util.Formatter;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.Arrays;
 
 /**
  * Created by leon on 1/23/18.
  */
 public class PhoneBook {
-
-    private Map<String, String> phoneRecord;
+    //Map<String, List<String>> map = new HashMap<String, List<String>>();
+    private Map<String, List<String>> phoneRecord;
 
     public PhoneBook() {
-        phoneRecord = new TreeMap<String, String>();
+        phoneRecord = new TreeMap<String, List<String>>();
     }
 
     /**
@@ -23,7 +21,14 @@ public class PhoneBook {
      * @param number
      */
     public Boolean addNameAndNumber(String name, String number) {
-        return phoneRecord.put(name, number) != null;
+        if (phoneRecord.containsKey(name)) {
+            phoneRecord.get(name).add(number);
+            return true;
+        }
+        List<String> newNumber = new ArrayList<String>();
+        newNumber.add(number);
+        phoneRecord.put(name, newNumber);
+        return true;
     }
 
     /**
@@ -41,8 +46,8 @@ public class PhoneBook {
      *
      * @param name
      */
-    public String retrieveByName(String name) {
-        return phoneRecord.get(name);
+    public String retrieveNumbersByName(String name) {
+        return join(phoneRecord.get(name));
     }
 
     /**
@@ -50,11 +55,11 @@ public class PhoneBook {
      *
      * @param number
      */
-    public String retrieveByPhoneNumber(String number) {
+    public String retrieveNameByNumber(String number) {
         for (String nameKey : phoneRecord.keySet()) {
-            String numValue = phoneRecord.get(nameKey);
-            if (numValue.equals(number)) {
-                return phoneRecord.get(nameKey);
+            List<String> numForName = phoneRecord.get(nameKey);
+            if(numForName.contains(number)){
+                return nameKey;
             }
         }
         return "";
@@ -67,7 +72,7 @@ public class PhoneBook {
         StringBuilder list = new StringBuilder();
         Formatter prettyListNames = new Formatter(list);
         for (String nameKey : phoneRecord.keySet()) {
-            prettyListNames.format("Name: %s%n",nameKey);
+            prettyListNames.format("Name: %s%n", nameKey);
         }
         return list.toString();
     }
@@ -82,6 +87,27 @@ public class PhoneBook {
             prettyList.format("Name: %-7s PhoneNumber: %-10s%n", nameKey, phoneRecord.get(nameKey));
         }
         return list.toString();
+    }
+
+    /**
+     * joins a list by a delimiter
+     * @param listNum
+     * @return String
+     */
+    public static String join(List<String> listNum){
+
+        if(listNum.size() == 1){
+            return listNum.get(0);
+        }
+        StringBuilder sb = new StringBuilder();
+        for ( int i = 0; i < listNum.size(); i++)
+        {
+            sb.append(listNum.get(i));
+            if (i < listNum.size()){
+                sb.append(", ");
+            }
+        }
+        return sb.toString();
     }
 
     public static void main(String[] args) {
@@ -104,9 +130,5 @@ public class PhoneBook {
     }
 
 }
-
-
-
-
 
 
