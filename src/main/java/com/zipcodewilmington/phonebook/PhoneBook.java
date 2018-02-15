@@ -14,11 +14,13 @@ public class PhoneBook {
         TreeMap<String, String>entry = new TreeMap();
     }
 
-    public void setLookup(String name){
+
+    public void setAdd(String name, String number){
+
 
     }
 
-    public void setAdd(String name, String number){
+    public void setLookup(String name){
 
     }
 
@@ -38,13 +40,14 @@ public class PhoneBook {
         return null;
     }
 
+    public String getAdd(){
+        return null;
+    }
+
     public String getLookup(){
         return null;
     }
 
-    public String getAdd(){
-        return null;
-    }
 
     public String getRemove(){
         return null;

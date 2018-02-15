@@ -11,6 +11,17 @@ import java.util.TreeMap;
 public class PhoneBookTest {
 
     @Test
+    public void AddTest(){
+        //Given
+        String expectedname = "Marlon";
+        String expectednumber = "8005674563";
+        //When
+        PhoneBook phoneBook = new PhoneBook();
+        //Then
+
+    }
+
+    @Test
     public void LookupTest(){
         //Given
         String expectedname = "Katrice";

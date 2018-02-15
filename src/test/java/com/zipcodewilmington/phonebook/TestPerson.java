@@ -7,6 +7,12 @@ import org.junit.Test;
 public class TestPerson {
 
     @Test
+
+
+
+
+
+    @Test
     public void testGetName() {
         Person person = new Person("Nathaniel", "8567744773");
         String expected = "Nathaniel";
