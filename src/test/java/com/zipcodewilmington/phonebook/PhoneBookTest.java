@@ -14,8 +14,6 @@ public class PhoneBookTest {
 
     PhoneBook testPhonebook = new PhoneBook();
 
-    TreeMap<String, String> personMapTest= new TreeMap<String, String>();
-
     @Before
 
     public void setup(){
@@ -27,10 +25,10 @@ public class PhoneBookTest {
     @Test
     public void testLookup() {
 
-        personMapTest.put("JohnDoe", "1123");
+        testPhonebook.add("JohnDoe", "1123");
 
-        String expected = "JohnDoe";
-        String actual = testPhonebook.lookup(expected);
+        String expected = "1123";
+        String actual = testPhonebook.lookup("JohnDoe");
 
         Assert.assertEquals(expected, actual);
 
