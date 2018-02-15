@@ -19,11 +19,11 @@ public class PhoneBook {
 public PhoneBook() {
 }
 
- public void add(String name, String phonenum){
+ public void addName(String name, String phonenum){
        contacts.put(name, new PhoneNumberStorage(name, phonenum));
  }
 
-    public void add(String name, PhoneNumberStorage phoneNumberStorage){
+    public void addName(String name, PhoneNumberStorage phoneNumberStorage){
         contacts.put(name, phoneNumberStorage);
     }
 
@@ -58,11 +58,12 @@ public PhoneBook() {
     }
 
     public String reverselookup(String number){
-        Set<String> names = contacts.keySet();
-        for(String name: names)
-        {
-            if (contacts.get(name).equals(number)){
-                return name;
+        //Set<String> names = contacts.keySet();
+        for(PhoneNumberStorage nums : contacts.values())
+        { for( String phoneNumbers : nums.getPhoneNumbers())
+
+            if (number.equals(phoneNumbers)){
+                return nums.lookup();
             }
         }
         return null;

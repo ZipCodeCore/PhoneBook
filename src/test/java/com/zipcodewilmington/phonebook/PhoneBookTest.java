@@ -22,36 +22,37 @@ public class PhoneBookTest {
         // Given
         PhoneBook testbook = new PhoneBook();
         PhoneNumberStorage temp = new PhoneNumberStorage("Keith", "555-666-7777");
-       testbook.add("Keith", temp);
+       testbook.addName("Keith", temp);
 
       PhoneNumberStorage testNumber = testbook.lookup("Keith");
       Assert.assertTrue(testNumber.equals(temp));
 
     }
-//@Test
-//    public void testPhoneBookDelete(){
-//        PhoneBook testbook = new PhoneBook();
-//        testbook.add("Keith", "555-666-7777");
-//        testbook.deleter("Keith");
-//        String testnumber = testbook.lookup("Keith");
-//        Assert.assertEquals(null, testnumber);
-//    }
-//@Test
-//    public void testPhoneBookLookUp(){
-//        PhoneBook testbook = new PhoneBook();
-//        testbook.add("Keith", "555-666-7777");
-//        String testnumber = testbook.lookup("Keith");
-//        Assert.assertEquals("555-666-7777", testnumber);
-//    }
+@Test
+    public void testPhoneBookDelete(){
+        PhoneBook testbook = new PhoneBook();
+        testbook.addName("Keith", "555-666-7777");
+        testbook.deleter("Keith");
+        PhoneNumberStorage temp = testbook.lookup("Keith");
+        Assert.assertNull(temp );
+    }
+@Test
+    public void testPhoneBookLookUp(){
+        PhoneBook testbook = new PhoneBook();
+        PhoneNumberStorage temp = new PhoneNumberStorage("Keith", "555-666-7777");
+        testbook.addName("Keith", temp);
+        PhoneNumberStorage actual = testbook.lookup("Keith");
+        Assert.assertEquals(actual, temp);
+    }
 
     @Test
     public void testPhoneBookList(){
 
         PhoneBook testbook = new PhoneBook();
-        testbook.add("Keith", "555-666-7777");
-        testbook.add("John", "555-612-7777");
-        testbook.add("Mike", "555-623-7777");
-        testbook.add("Steve", "555-645-7777");
+        testbook.addName("Keith", "555-666-7777");
+        testbook.addName("John", "555-612-7777");
+        testbook.addName("Mike", "555-623-7777");
+        testbook.addName("Steve", "555-645-7777");
 
         String expected = "John 555-612-7777\n" +
                 "Keith 555-666-7777\n" +
@@ -65,10 +66,10 @@ public class PhoneBookTest {
     public void testPhoneBookNames(){
 
         PhoneBook testbook = new PhoneBook();
-        testbook.add("Keith", "555-666-7777");
-        testbook.add("John", "555-612-7777");
-        testbook.add("Mike", "555-623-7777");
-        testbook.add("Steve", "555-645-7777");
+        testbook.addName("Keith", "555-666-7777");
+        testbook.addName("John", "555-612-7777");
+        testbook.addName("Mike", "555-623-7777");
+        testbook.addName("Steve", "555-645-7777");
 
         String expected = "John\n" +
                 "Keith\n" +
@@ -80,10 +81,11 @@ public class PhoneBookTest {
     @Test
     public void testPhoneBookReverseLookUp() {
         PhoneBook testbook = new PhoneBook();
-        testbook.add("Keith", "555-666-7777");
-        testbook.add("John", "555-612-7777");
-        testbook.add("Mike", "555-623-7777");
-        testbook.add("Steve", "555-645-7777");
+
+        testbook.addName("Keith", "555-666-7777");
+        testbook.addName("John", "555-612-7777");
+        testbook.addName("Mike", "555-623-7777");
+        testbook.addName("Steve", "555-645-7777");
         String testnumber = testbook.reverselookup("555-666-7777");
         Assert.assertEquals("Keith", testnumber);
     }

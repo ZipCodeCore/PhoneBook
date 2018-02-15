@@ -4,8 +4,9 @@ import java.util.ArrayList;
 
 public class PhoneNumberStorage {
 
-    String name;
-    ArrayList<String> phoneNumbers;
+    public String name;
+    public ArrayList<String> phoneNumbers;
+
 
     public PhoneNumberStorage(String name, ArrayList<String> phoneNumbers) {
         this.name = name;
@@ -16,5 +17,16 @@ public class PhoneNumberStorage {
         ArrayList<String> temp = new ArrayList<String>();
         temp.add(phoneNumbers);
         new PhoneNumberStorage(name, temp);
+    }
+
+
+
+
+    public String lookup(){
+        return this.name;
+    }
+
+    public ArrayList<String> getPhoneNumbers() {
+        return phoneNumbers;
     }
 }
