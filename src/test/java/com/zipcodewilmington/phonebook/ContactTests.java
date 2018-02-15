@@ -50,12 +50,26 @@ public class ContactTests {
     }
 
     @Test
-    public void removePhoneNumber() {
+    public void removePhoneNumberTest() {
+    // Actual:
+    // Create new contact instance
         Contact contact1 = new Contact("Jerry");
-        contact1.addPhoneNumber("89089");
 
-        ArrayList<String> expectedPhoneNumbers = new ArrayList<String>();
-        expectedPhoneNumbers.remove("89089");
+    // Add phone number to contact
+    // Remove number
+        contact1.addPhoneNumber("89089");
+        contact1.removePhoneNumber("89089");
+
+    // Call getPhoneNumber method to check against
+        ArrayList actualRemovePhoneNumberTest = contact1.getPhoneNumbers();
+
+    // Expected:
+    // Create ArrayList to test/return empty ArrayList
+        ArrayList<String> expectedRemovePhoneNumberTest = new ArrayList<String>();
+
+
+        Assert.assertEquals(expectedRemovePhoneNumberTest, actualRemovePhoneNumberTest );
+
 
     }
 

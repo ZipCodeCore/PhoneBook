@@ -36,8 +36,11 @@ public class PhoneBookTest {
         testPhoneBook.addContact("Newman", "90980");
         testPhoneBook.addContact("Elaine", "432345");
 
+        int actualNumberOfContacts = testPhoneBook.getNumberOfContacts();
         int expectedNumberOfContacts = 3;
-        //int actualNumberOfContacts =
+
+        Assert.assertEquals(expectedNumberOfContacts, actualNumberOfContacts);
+
     }
 
     @Test
@@ -46,9 +49,16 @@ public class PhoneBookTest {
         PhoneBook testPhoneBook = new PhoneBook();
         testPhoneBook.addContact("Madeline", "898098");
 
-
-        ArrayList expectedLookupByNameResult = new ArrayList();
+        // Actual
         ArrayList actualLookupByNameResult = testPhoneBook.lookupByName("Madeline");
+
+
+        // Expected
+        ArrayList<String> expectedLookupByNameResult = new ArrayList<String>();
+        expectedLookupByNameResult.add("898098");
+
+        Assert.assertEquals(expectedLookupByNameResult, actualLookupByNameResult);
+
 
     }
 
@@ -56,9 +66,12 @@ public class PhoneBookTest {
     public void lookupByNumberTest() {
 
         PhoneBook testPhoneBook = new PhoneBook();
+        testPhoneBook.addContact("Jerry", "43984029830");
 
+        String actualLookupByNumberResult = testPhoneBook.lookupByNumber("43984029830");
+        String expectedLookupByNumberResult = "Jerry";
 
-
+        Assert.assertEquals(expectedLookupByNumberResult, actualLookupByNumberResult);
 
     }
 
@@ -73,95 +86,27 @@ public class PhoneBookTest {
         testPhoneBook.addContact(personNameToRemove, "23423");
         testPhoneBook.removeContact(personNameToRemove);
 
-
-
         Assert.assertEquals(expectedListSize, testPhoneBook.getNumberOfContacts());
     }
 
     @Test
     public void listAllContactsTest() {
-
+        // Given
         PhoneBook testPhoneBook = new PhoneBook();
-        testPhoneBook.addContact("Kramer", "23423");
+        Contact testContact = new Contact("Kramer");
+        testPhoneBook.addContact(testContact);
 
-        Collection actualContactsList = testPhoneBook.listAllContacts();
-
-
-        // Actual
-        // Create object
-        Collection expectedContactsList = new ArrayList<Contact>();
-        Contact contact1 = new Contact("Kramer");
+        // When
+        Collection contacts = testPhoneBook.listAllContacts();
+        boolean outcome = contacts.contains(testContact);
 
 
-        contact1.addPhoneNumber("23423");
-
-        // add contacts to expectedList
-        expectedContactsList.add(contact1);
-
-
-        Assert.assertEquals(expectedContactsList, actualContactsList);
-        }
-
-
-
-
+        // Then
+        Assert.assertTrue(outcome);
     }
 
-
-    //addContact ---- done
-    //removeContact ----- done
-    //lookupByName ----- done
-    //lookupByNumber
-    //addPhoneNumber ---- done
-    //removePhoneNumber ---- done
-    //list all entries (names & phone numbers) ----- done
+}
 
 
-//    @Test
-//    public void testGetName() {
-//        // Given
-//        String expectedName = "Bob";
-//
-//
-//        // When
-//        Person person = new Person("Bob", ;
-//
-//        // Then
-//        String actualName = person.getName();
-//        Assert.assertEquals(expectedName, actualName);
-//
-//    }
-
-
-    //    @Test
-//    public void testGetPhoneNumber() {
-//        // Given
-//        String expectedName = "Madeline";
-//        String expectedPhoneNumber = "123";
-//
-//        // When
-//        Person person = new Person(expectedName, expectedPhoneNumber);
-//
-//        // Then
-//        String actualPhoneNumber = person.getPhoneNumber();
-//        String actualName = person.getName();
-//
-//        Assert.assertEquals(expectedPhoneNumber, actualPhoneNumber);
-//        Assert.assertEquals(expectedName, actualName);
-//    }
-//
-
-//
-//
-//
-//    @Test
-//    public void testLookup() {
-//        PhoneBook testPB = new PhoneBook();
-//        testPB.addPerson("bob", "123");
-//
-//        String actualPhoneNumber = testPB.lookupPhoneNumber("Bob");
-//        Assert.assertEquals("123", actualPhoneNumber);
-//
-//    }
 
 

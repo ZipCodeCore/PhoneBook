@@ -28,6 +28,10 @@ public class PhoneBook {
         contactsMap.put(contact.getName(), contact);
     }
 
+    public void addContact(Contact contact) {
+        contactsMap.put(contact.getName(), contact);
+    }
+
 
     public int getNumberOfContacts() {
         return contactsMap.size();
@@ -44,7 +48,7 @@ public class PhoneBook {
     }
 
 
-    public Collection listAllContacts() {
+    public Collection<Contact> listAllContacts() {
         return contactsMap.values();
     }
 
@@ -62,19 +66,7 @@ public class PhoneBook {
                 return contact.getName();
             }
         }
+        return "";
     }
-
-
-//
-//    public void listNamesAndNums(String name, String phoneNumber) {
-//
-//        for (String key : contacts.keySet()){
-//            String value = contacts.get(key);
-//            System.out.println(key + ": " + value);
-//        }
-//
-//    }
-//
-
 
 }
