@@ -1,5 +1,7 @@
 package com.zipcodewilmington.phonebook;
 
+/*
+
 public class Person {
 
     //variables
@@ -7,7 +9,7 @@ public class Person {
     /*we made these private bc we don't want the user to be able to change the data. Another reason we want to do this
      is that you want to "hide" how you store the information from the users.
 
-    */
+
     private String name;
     private String phoneNumber;
 
@@ -35,3 +37,6 @@ public class Person {
 
 
 }
+
+*/
+
