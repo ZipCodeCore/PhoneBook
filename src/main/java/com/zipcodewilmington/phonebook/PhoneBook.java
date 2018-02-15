@@ -2,7 +2,7 @@ package com.zipcodewilmington.phonebook;
 
 import java.util.TreeMap;
 import java.util.Set;
-
+import java.util.ArrayList;
 /**
  * Created by leon on 1/23/18.
  */
@@ -10,7 +10,9 @@ public class PhoneBook {
 
         String name;
         String phonenum;
-        TreeMap<String, String> contacts = new TreeMap<String, String>();
+        //TreeMap<String, String> contacts = new TreeMap<String, String>();
+    //   TreeMap<String, ArrayList> contacts = new TreeMap<String, ArrayList<String>>();
+    TreeMap<String, PhoneNumberStorage> contacts = new TreeMap<String, PhoneNumberStorage>();
 
 
 
@@ -18,14 +20,18 @@ public PhoneBook() {
 }
 
  public void add(String name, String phonenum){
-       contacts.put(name, phonenum);
+       contacts.put(name, new PhoneNumberStorage(name, phonenum));
  }
+
+    public void add(String name, PhoneNumberStorage phoneNumberStorage){
+        contacts.put(name, phoneNumberStorage);
+    }
 
  public void deleter(String name){
         contacts.remove(name);
  }
 
- public String lookup(String name){
+ public PhoneNumberStorage lookup(String name){
         return contacts.get(name);
  }
 
