@@ -27,12 +27,12 @@ public class PhoneBook {
 
     }
 
-    public String lookup(String name){
+    public String lookupNumberByName(String name){
 
         return nameNumberBook.get(name).getPhoneNumbers();
     }
 
-    public String reverseLookup(String number){
+    public String lookupNameByNumber(String number){
 
         for(Map.Entry<String, Person> entry : nameNumberBook.entrySet()){
             if (entry.getValue().getPhoneNumbers().contains("[" + number + "]")){
@@ -40,7 +40,7 @@ public class PhoneBook {
                 return keyAtValue;
             }
         }
-        return "Could not find person!";
+        return "Could not find number!";
     }
 
     public String listNames(){
@@ -54,7 +54,7 @@ public class PhoneBook {
         return allContacts;
     }
 
-    public String listPhoneBook() {
+    public String display() {
 
         String phoneList = "";
 
