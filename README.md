@@ -16,11 +16,11 @@
 ## Instructions:
 
 ### Building a basic `PhoneBook` class
-
+<img src = "./PhoneBookUML.png">
 * Create a `PhoneBook` class that holds names and phone numbers.
 * You can use an [associative data type](https://en.wikipedia.org/wiki/Associative_array) (one which stores items as keys paired with values).
 * **Hint:** You should use a sorted map.
-* A UML of this class can be found [here](./PhoneBookUML.png)
+
 
 * Your PhoneBook class should have the following method
 
