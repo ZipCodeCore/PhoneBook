@@ -17,24 +17,27 @@ Your completed lab must be submitted via GitHub. Labs are not complete unless th
 Create a PhoneBook class that holds names and phone numbers. You can use an associative data type (one which stores items as keys paired with values). (Hint: You should use a sorted map).
 
 Your PhoneBook class should have the following method
-  * lookup(String name) -  allows you to look up a person's phone number based on their name
-  * add(String name, String phoneNumber) - add entry
-  * remove(String name) - remove entry
-  * display() - list all entries (names an phone numbers) in alphabetical order
+	* lookup(String name) -  allows you to look up a person's phone number based on their name
+	* add(String name, String phoneNumber) - add entry
+	* remove(String name) - remove entry
+	* display() - list all entries (names an phone numbers) in alphabetical order
 
-    ```java
-      PhoneBook phoneBook = new PhoneBook();
-      phoneBook.add("Zebra", "111-222-333");
-      phoneBook.add("Dog", "222-444-4444");
-      phoneBook.display(); 
+   * Sample Script
+
+	   ```java
+PhoneBook phoneBook = new PhoneBook();
+phoneBook.add("Zebra", "111-222-333");
+phoneBook.add("Dog", "222-444-4444");
+phoneBook.display(); 
+	   ```
+
+   * Sample Output
+
+	   ```
+Dog 222-444-4444
+Zebra 111-222-333
+	   ```
       
-      /*
-       Calling display this should print out the entries like this
-       Dog 222-444-4444
-       Zebra 111-222-333
-      */
-      
-    ```
 
 ### Part II:
 
