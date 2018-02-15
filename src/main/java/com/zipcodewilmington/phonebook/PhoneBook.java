@@ -1,5 +1,7 @@
 package com.zipcodewilmington.phonebook;
 
+import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
+
 import java.util.*;
 
 /**
@@ -19,17 +21,19 @@ public class PhoneBook {
 
 
     public void addEntry(String name, String... number) {
-        ArrayList<String> listOfPhoneNumbers = new ArrayList<String>(Arrays.asList(number));
-        myTree.put(name, listOfPhoneNumbers);
+        ArrayList<String> allNumbers = new ArrayList<String>(Arrays.asList(number));
+        myTree.put(name, allNumbers);
 
     }
 
     public void additionalPhoneNumberToKey(String name, String number) {
+
         myTree.get(name).add(number);
     }
 
 
     public void removeNumberFromName(String name, String number) {
+
         myTree.get(name).remove(number);
     }
 
@@ -43,7 +47,7 @@ public class PhoneBook {
         ArrayList<String> matchingNumbers = myTree.get(name);
         String listedNumbers = "";
         for (String phoneNumbers : matchingNumbers) {
-            listedNumbers +=phoneNumbers + "\n";
+            listedNumbers +=phoneNumbers + ", ";
         }
        return listedNumbers.trim();
 
@@ -62,21 +66,22 @@ public class PhoneBook {
         return allNames.trim();
     }
 
+
     public String listPhoneBook() {
 
         Set<String> contacts = myTree.keySet();
-        StringBuilder printBook = new StringBuilder();
+        String phoneBook = "";
 
         for (String name : contacts) {
-            printBook.append(name).append(": ");
-            for (int x = 0; x<myTree.get(name).size(); x++) {
-                printBook.append(x).append("  ");
-            } printBook.append("\n");
+            phoneBook += name + ": ";
+          for (int x = 0; x<myTree.get(name).size(); x++) {
+                phoneBook += myTree.get(name).get(x) + ", ";
+            }
 
         }
-        String result = printBook.toString();
 
-        return result;
+
+        return phoneBook.trim();
     }
 
     public String reverseLookup(String number) {
@@ -104,12 +109,12 @@ public class PhoneBook {
         PhoneBook phonebookEntry = new PhoneBook();
 
         phonebookEntry.addEntry("Brian", "3027619121");
-        phonebookEntry.addEntry("Dan", "4846394190");
+        phonebookEntry.addEntry("Dan", "4846394190", "9897878787");
         phonebookEntry.addEntry("Garret", "3027894586");
         phonebookEntry.addEntry("Luke", "3147619121");
         phonebookEntry.addEntry("Kate", "4899994190");
         phonebookEntry.addEntry("Lenore", "3097894586");
-
+        phonebookEntry.removeEntry("Dan");
 
 
 
