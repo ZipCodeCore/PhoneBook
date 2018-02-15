@@ -13,7 +13,8 @@ public class PhoneBook {
 
     public PhoneBook() {
         this.hashMap = new HashMap<String, Person>();
-        this.hashMap.put("Name_empty", new Person("Name_empty", "Phone_number_empty"));
+        this.entryList = new ArrayList<String>();
+        //this.hashMap.put("Name_empty", new Person("Name_empty", "Phone_number_empty"));
     }
 
     //PART I
@@ -21,20 +22,23 @@ public class PhoneBook {
         return hashMap.get(name);
     }
 
-    public void addEntry(String name, String phoneNumber) {
-        hashMap.put(name, new Person(name, phoneNumber));
+    public void addEntry(String name, String... phoneNumbers) {
+        hashMap.put(name, new Person(name, phoneNumbers));
     }
 
-    public void removeEntry(String name) {
+    // Changed method name for Part III
+    public void removeRecord(String name) {
         hashMap.remove(name);
     }
 
+    /*
     public ArrayList<String> getEntryList() { //names
         for (Map.Entry<String, Person> entry: hashMap.entrySet()) {
             entryList.add(entry.getKey() + " : " + entry.getValue().getPhoneNumber());
         }
         return entryList;
     }
+    */
 
     public String[] entriesList() { //names and phone numbers
         return new String[0];
@@ -43,7 +47,7 @@ public class PhoneBook {
     //PART II
     public String reverseLookup(String phoneNumber) { //lookup names from phone numbers
         for (String name : hashMap.keySet()) {
-            if (hashMap.get(name).getPhoneNumber() == phoneNumber) {
+            if (hashMap.get(name).phoneNumberList.contains(phoneNumber) == true) {
                 return name;
                 //break;
             }
