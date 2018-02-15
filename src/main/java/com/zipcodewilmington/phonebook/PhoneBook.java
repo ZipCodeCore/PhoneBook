@@ -9,6 +9,7 @@ import java.util.TreeMap;
  */
 public class PhoneBook {
     private TreeMap<String, ArrayList> phoneBook;
+    ArrayList<String> phoneNumberList;
 
     public PhoneBook(){
         this.phoneBook = new TreeMap<String, ArrayList>();
@@ -17,7 +18,7 @@ public class PhoneBook {
 
 
     public void add(String name, String... phoneNumber){
-        ArrayList<String> phoneNumberList = new ArrayList<String>();
+        phoneNumberList = new ArrayList<String>();
         for (String number : phoneNumber){
             phoneNumberList.add(number);
         }
@@ -43,18 +44,36 @@ public class PhoneBook {
     public String getPhoneBook(){
         StringBuilder result = new StringBuilder();
         for (Map.Entry<String, ArrayList> entry : phoneBook.entrySet()){
-            result.append(String.format("%-20s %8s\n", entry.getKey(), entry.getValue()));
+            result.append(String.format("%-20s", entry.getKey()));
+            for(int i = 0; i < entry.getValue().size(); i++){
+                result.append(entry.getValue().get(i));
+                result.append(" ");
+            }
+            result.append("\n");
+//            result.append(String.format("%-20s %8s\n", entry.getKey(), arrayResultIn));
         }
-        return String.valueOf(result);
+        return result.toString();
     }
 
-    public void removeRecord(String name){
+    public Boolean removeRecord(String name){
+        Boolean result = true;
         phoneBook.remove(name);
+        if (!(lookUp(name).equals(name))){
+            result = false;
+        }
+        return result;
     }
 
-    public void removeEntry(String name, String number){
+    public Boolean removeEntry(String name, String number){
+        Boolean result = true;
         phoneBook.get(name).remove(number);
+        if (!(reverseLookup(number).equals(number))){
+            result = false;
+        }
+        return result;
     }
+
+
 
 
 }

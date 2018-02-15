@@ -62,25 +62,24 @@ public class PhoneBookTest {
 
     @Test
     public void removeRecordTest1(){
-        phoneBook.removeRecord(name2);
-        String actual = phoneBook.getPhoneBook();
-        String expected = "Steve Harvey         [2153755497, 6574383954]\n" +
-                "Zoe                  [7896785647]\n";
+        Boolean actual = phoneBook.removeRecord(name2);
+        Boolean expected = false;
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void removeEntryTest1(){
-        phoneBook.removeEntry(name, pN4);
-        String actual = phoneBook.getPhoneBook();
-        String expected = "Frankie              [2158663323]\n" +
-                "Steve Harvey         [2153755497]\n" +
-                "Zoe                  [7896785647]\n";
+        Boolean actual = phoneBook.removeEntry(name, pN4);
+        Boolean expected = false;
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void displayPhoneBook(){
-        phoneBook.getPhoneBook();
+        String expected = "Frankie             2158663323 \n"+
+        "Steve Harvey        2153755497 6574383954 \n" +
+        "Zoe                 7896785647 \n";
+        String actual = phoneBook.getPhoneBook();
+        Assert.assertEquals(expected, actual);
     }
 }
