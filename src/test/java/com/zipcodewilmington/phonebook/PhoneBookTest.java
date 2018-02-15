@@ -38,9 +38,10 @@ public class PhoneBookTest {
     public void removeTest1() {
         PhoneBook testBook = new PhoneBook();
         testBook.addEntry("Kate", "4846569090");
+        testBook.addEntry("Vince", "3333333333");
         testBook.removeEntry("Kate");
-        String testNumber = testBook.lookupNumber("Kate");
-        Assert.assertEquals(null, testNumber);
+        String testNumber = testBook.listNames();
+        Assert.assertEquals(testNumber, "Vince");
 
 
     }
