@@ -18,9 +18,9 @@ public class PhoneBookTest {
     @Test
     public void addTest() {
         PhoneBook testBook = new PhoneBook();
-        testBook.addEntry("Luke", "6109998787");
-        String testNumber = testBook.lookupNumber("Luke");
-        Assert.assertTrue(testNumber.equals("6109998787,"));
+        testBook.addEntry("Joe", "1234567", "2345678");
+        String testNumber = testBook.lookupNumber("Joe");
+        Assert.assertTrue(testNumber.equals("1234567, 2345678,"));
 
     }
 
@@ -89,7 +89,16 @@ public class PhoneBookTest {
 
     }
 
-
+    @Test
+    public void RemoveNumberFromNameTest(){
+        PhoneBook testBook = new PhoneBook();
+        testBook.addEntry("Adam", "4864569090", "7879891212");
+        testBook.removeNumberFromName("Adam", "4864569090");
+        String expected = "7879891212,";
+        String actual = testBook.lookupNumber("Adam");
+        System.out.println(actual);
+        Assert.assertTrue(expected.equals(actual));
+    }
 
     @Test
     public void additionalPhoneNumberToKeyTest() {

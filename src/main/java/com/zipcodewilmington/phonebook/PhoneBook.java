@@ -10,13 +10,12 @@ import java.util.*;
 public class PhoneBook {
 
     private String name;
-    private String number;
+    private ArrayList<String> number;
 
     TreeMap<String, ArrayList<String>> myTree = new TreeMap<String, ArrayList<String>>();
 
 
     public PhoneBook(){
-
     }
 
 
@@ -33,8 +32,8 @@ public class PhoneBook {
 
 
     public void removeNumberFromName(String name, String number) {
-
-        myTree.get(name).remove(number);
+        List<String> phoneNumbers = myTree.get(name);
+        phoneNumbers.remove(number);
     }
 
 
