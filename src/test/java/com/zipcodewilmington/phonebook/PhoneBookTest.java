@@ -90,15 +90,17 @@ public class PhoneBookTest {
         Assert.assertEquals("Keith", testnumber);
     }
 
-//    @Test
-//    public void testPhoneBookLookUpMultiple(){
-//        PhoneBook testbook = new PhoneBook();
-//
-//        testbook.add("Keith",
-//        String testnumber = testbook.lookup("Keith");
-//        Assert.assertEquals("555-666-7777", "555-333-9999", testnumber);
-//    }
+   @Test
+   public void testPhoneBookAddMultiple() {
+       // Given
+       PhoneBook testbook = new PhoneBook();
+       PhoneNumberStorage temp = new PhoneNumberStorage("Keith", "555-666-7777", "555-000-8888");
+       testbook.addName("Keith", temp);
 
+       PhoneNumberStorage testNumber = testbook.lookup("Keith");
+       Assert.assertTrue(testNumber.equals(temp));
+
+   }
 
 
 }

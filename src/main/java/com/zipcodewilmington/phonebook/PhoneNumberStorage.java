@@ -20,7 +20,10 @@ public class PhoneNumberStorage {
     }
 
 
+public void add(String phonenumber){
+        phoneNumbers.add(phonenumber);
 
+}
 
     public String lookup(){
         return this.name;
@@ -29,4 +32,8 @@ public class PhoneNumberStorage {
     public ArrayList<String> getPhoneNumbers() {
         return phoneNumbers;
     }
+
+    public PhoneNumberStorage(String name, String... number) {
+        this.name = name;
+        this.phoneNumbers = phoneNumbers;}
 }
