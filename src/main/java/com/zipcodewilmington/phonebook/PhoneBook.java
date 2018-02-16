@@ -44,8 +44,9 @@ public class PhoneBook {
         StringBuilder sb = new StringBuilder();
 
         for (String key : treeMap.keySet()) {
-            sb.append(treeMap.get(key).getName() + "\n");
-            sb.append(treeMap.get(key).getPhoneNumberListString());
+            Person p = treeMap.get(key);
+            sb.append(p.getName() + "\n");
+            sb.append(p.getPhoneNumberListString() + "\n");
         }
 
         return sb;
