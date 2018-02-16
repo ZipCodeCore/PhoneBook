@@ -1,19 +1,22 @@
 package com.zipcodewilmington.phonebook;
 
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * Created by leon on 1/23/18.
  */
 public class PhoneBook {
 
-    TreeMap<String, String> phoneBook = new TreeMap<String, String>();
+    TreeMap<String, Person> phoneBook;
+
+public phoneBook(){
+    phoneBook = new TreeMap<String, Person>();
+    }
 
 
     public void addEntryToPhoneBook(String name, String phoneNumber) {
-        phoneBook.put(name, phoneNumber);
+       Person person = new Person(name, phoneNumber);
+        phoneBook.put(name, person);
     }
 
 
@@ -22,7 +25,7 @@ public class PhoneBook {
     }
 
     public String lookUp(String name) {
-        return phoneBook.get(name);
+        return phoneBook.get(name).getPhoneNumbers();
     }
 
     public String listNames() {
@@ -36,7 +39,7 @@ public class PhoneBook {
 
     public String listNumbers() {
         String completeListOfNumbers = "";
-        for (Map.Entry<String, String> entry : phoneBook.entrySet()) {
+        for (Map.Entry<String, Person> entry : phoneBook.entrySet()) {
             completeListOfNumbers += entry.getValue() + "\n";
         }
         return completeListOfNumbers;
@@ -45,17 +48,18 @@ public class PhoneBook {
 
     public String entryListAll() {
         String fullList = "";
-        for (Map.Entry<String, String> entry : phoneBook.entrySet()) {
+        for (Map.Entry<String, Person> entry : phoneBook.entrySet()) {
             fullList += entry.getKey() + " : " + entry.getValue() + "\n"; //reverse lookup
 
         }
+        System.out.println(fullList);
         return fullList;
     }
 
     public String reverseLookup(String numberToLookUp) {
-        for (Map.Entry<String,String > e : phoneBook.entrySet()) {
-            if (e.getValue().equals(numberToLookUp)){
-                return e.getKey();
+        for (Map.Entry<String,Person > entry : phoneBook.entrySet()) {
+            if (entry.getValue().equals(numberToLookUp)){
+                return entry.getKey();
             }
         }return null;
     }

@@ -5,6 +5,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 /**
  * Created by leon on 1/23/18.
  */
@@ -14,13 +16,14 @@ public class PhoneBookTest {
     @Before
     public void setUp() {
         phoneBook = new PhoneBook();
-        phoneBook.addEntryToPhoneBook("Eric", "3021234567");
-        phoneBook.addEntryToPhoneBook("Bob", "3029999999");
+        phoneBook.addEntryToPhoneBook("Eric", "302-123-4567");
+        phoneBook.addEntryToPhoneBook("Bob", "302-999-9999");
     }
+
 
     @Test
     public void testAddPhoneBookEntryToPhoneBook() {
-        String phoneNumber = "3025551111";
+        String phoneNumber = "302-555-1111";
         phoneBook.addEntryToPhoneBook("eric", phoneNumber);
         String actual = phoneBook.lookUp("eric");
         Assert.assertEquals(phoneNumber, actual);
@@ -28,7 +31,7 @@ public class PhoneBookTest {
 
     @Test
     public void testRemoveEntryFromPhoneBook() {
-        String phoneNumber = "3025551111";
+        String phoneNumber = "302-555-1111";
         String name = "eric";
         phoneBook.addEntryToPhoneBook(name, phoneNumber);
         phoneBook.removeEntryFromPhoneBook("eric", phoneNumber);
@@ -50,8 +53,8 @@ public class PhoneBookTest {
     public void testListNumber() {
 
 
-        String expected = "3029999999\n" +
-                "3021234567\n";
+        String expected = "302-999-9999\n" +
+                "302-123-4567\n";
         String actual = phoneBook.listNumbers();
 
         Assert.assertEquals(expected, actual);
@@ -61,8 +64,8 @@ public class PhoneBookTest {
     public void testEntryListAll() {
 
 
-        String expected = "Bob : 3029999999\n" +
-                "Eric : 3021234567\n";
+        String expected = "Bob : 302-999-9999\n" +
+                "Eric : 302-123-4567\n";
         String actual = phoneBook.entryListAll();
 
         Assert.assertEquals(expected, actual);
@@ -74,7 +77,7 @@ public class PhoneBookTest {
     public void testReverseLookup() {
         String expected = "Bob";
 
-        String actual = phoneBook.reverseLookup("3029999999");
+        String actual = phoneBook.reverseLookup("302-999-9999");
         Assert.assertEquals(expected,actual);
     }
 

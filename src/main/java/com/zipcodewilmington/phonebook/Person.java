@@ -1,28 +1,53 @@
 package com.zipcodewilmington.phonebook;
 
-class Person {
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class Person {
 
     private String personName;
-    private String phoneNumber;
+    private ArrayList<String> phoneNumbers;
 
-    public Person(String personName, String phoneNumber) {
+    public Person(String personName){
         this.personName = personName;
-        this.phoneNumber = phoneNumber;
+        this.phoneNumbers = new ArrayList<>();
+        phoneNumbers
     }
+
 
     public String getPersonName() {
         return personName;
     }
 
-    public void setPersonName(String personName) {
-        this.personName = personName;
+
+//public String addNumbers(){
+//        return null;
+//}
+
+
+   //find a way to print each item in the ArrayList in order
+   public String getPhoneNumbers() {
+       return phoneNumbers.toString();
+   }
+//       StringBuilder sb = new StringBuilder();
+//       for(int i = 0; i < phoneNumbers.size(); i++){
+//           if(i == phoneNumbers.size()){
+//               sb.append();
+//           }
+//       }
+//        return phoneNumbers;
+//    }
+
+
+
+
+
+
+
+
+
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-}
+
+
