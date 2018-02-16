@@ -65,21 +65,23 @@ public class PhoneBookTest {
     }
 
     @Test
-    public void removeTest1() {
+    public void removeRecordTest1() {
         testBook.add("Bob", "938.204.7890");
-        testBook.add("Thomas", "366.765.4678");
+        testBook.add("Junior", "869.456.3215");
         testBook.removeRecord("Bob");
-        String testNumber = testBook.lookupNumberByName("Thomas");
-        Assert.assertNotEquals(null, testNumber);
+        String actual = testBook.display();
+        String expected = "Junior: [869.456.3215]\n";
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
-    public void removeTest2() {
-        testBook.add("Alex", "887.875.3456");
-        testBook.add("Junior", "869.456.3215");
-        testBook.removeRecord("Alex");
-        String testNumber = testBook.lookupNumberByName("Junior");
-        Assert.assertNotEquals(null, testNumber);
+    public void removeRecordTest2() {
+        testBook.add("Sage", "887.875.3456");
+        testBook.add("Pete", "869.456.3215");
+        testBook.removeRecord("Pete");
+        String actual = testBook.display();
+        String expected = "Sage: [887.875.3456]\n";
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
@@ -97,14 +99,15 @@ public class PhoneBookTest {
     @Test
     public void displayTest() {
         testBook.add("Brad","609.489.2345");
+        testBook.add("Donald","609.456.5574");
+        testBook.add("Mark","609.298.5968");
         String actual = testBook.display();
-        String expected = "Brad: [609.489.2345]\n";
+        String expected = "Brad: [609.489.2345]\nDonald: [609.456.5574]\nMark: [609.298.5968]\n";
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void displayTest2() {
-        //testBook.add("George", "123.456.7890");
         testBook.add("Brad", "609.489.2345");
         testBook.add("Pitt", "609.356.1865");
         String actual = testBook.display();
