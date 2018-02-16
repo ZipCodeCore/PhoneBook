@@ -17,31 +17,41 @@ public class PhoneBookTest {
 
     @Test
     public void addTest() {
-        testPb.add("Abby", "1234567899");
+        testPb.add("Abby", "1234567899", "1231231231");
         String expectValue = testPb.retrieveByName("Abby");
-        Assert.assertEquals(expectValue, "1234567899");
+        Assert.assertEquals(expectValue, "[1234567899, 1231231231]");
     }
 
+
     @Test
-    public void deleteNameAndNumberTest() {
+    public void addSecondNumberTest() {
+        testPb.add("Abby", "1234567899");
+        String expectValue = testPb.retrieveByName("Abby");
+        Assert.assertEquals(expectValue, "[1234567899]");
+    }
+
+
+    @Test
+    public void reverseLookupTest() {
         testPb.add("Bob", "9999999999");
         testPb.delete("Bob");
-        String expectValue = testPb.retrieveByName("Bob");
+        String expectValue = testPb.reverseLookup("Bob");
         Assert.assertEquals(expectValue, null);
     }
 
     @Test
     public void retrieveByNameTest() {
-        testPb.add("Charles", "9879879877");
+        testPb.add("Charles", "9879879877", "1111111111");
         String expectValue = testPb.retrieveByName("Charles");
-        Assert.assertEquals(expectValue, "9879879877");
+        Assert.assertEquals(expectValue, "[9879879877, 1111111111]" );
     }
 
     @Test
     public void retrieveByNumberTest() {
         testPb.add("Jen", "9879879877");
-        String expectValue = testPb.retrieveByPhoneNumber("9879879877");
-        Assert.assertEquals(expectValue, "Jen");
+        testPb.add("Joe", "22");
+        String expectValue = testPb.retrieveByPhoneNumber("22");
+        Assert.assertEquals(expectValue, "Joe");
     }
 
     @Test
@@ -66,4 +76,6 @@ public class PhoneBookTest {
         Assert.assertEquals(expected, actual);
 
     }
+
+
 }
