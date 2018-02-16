@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Person {
 
     private String name;
-    public ArrayList<String> phoneNumberList;
+    protected ArrayList<String> phoneNumberList;
 
     public Person(String name, String... phoneNumbers) {
         this.name = name;
@@ -21,6 +21,20 @@ public class Person {
 
     public String getName() {
         return name;
+    }
+
+    public ArrayList<String> getPhoneNumberListArray() {
+        return phoneNumberList;
+    }
+
+    public String getPhoneNumberListString() {
+
+        StringBuilder sb = new StringBuilder();
+
+        for (String phoneNumber : phoneNumberList) {
+            sb.append("\t" + phoneNumber + "\n");
+        }
+        return sb.toString();
     }
 
     public void addPhoneNumbers(String... phoneNumbersToAdd) {

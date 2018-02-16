@@ -1,8 +1,12 @@
 package com.zipcodewilmington.phonebook;
 
+import com.sun.tools.doclets.formats.html.SourceToHTMLConverter;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import javax.sound.midi.Soundbank;
+import java.util.Arrays;
 
 /**
  * Created by Luis J. Romero on 2/12/2018
@@ -16,7 +20,6 @@ public class PersonTest {
     public void setup() {
         this.person = new Person("John Smith", "(111) 222-3333");
     }
-
 
     @Test
     public void setNameTest() {
@@ -32,6 +35,35 @@ public class PersonTest {
         String actual = person.getName();
         Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void getPhoneNumberListArrayTest() {
+        this.person = new Person("Adam", "(000) 000-0000", "(011) 111-1111");
+
+        String expectedPhoneNumber1 = "(000) 000-0000";
+        String expectedPhoneNumber2 = "(011) 111-1111";
+
+        String actualPhoneNumber1 = person.getPhoneNumberListArray().get(0);
+        String actualPhoneNumber2 = person.getPhoneNumberListArray().get(1);
+
+        Assert.assertEquals(expectedPhoneNumber1, actualPhoneNumber1);
+        Assert.assertEquals(expectedPhoneNumber2, actualPhoneNumber2);
+    }
+
+    @Test
+    public void getPhoneNumberListArrayStringTest() {
+        this.person = new Person("Adam", "(000) 000-0000", "(011) 111-1111");
+
+        String expectedPhoneNumbers = "\t" + "(000) 000-0000" + "\n" +
+                                      "\t" + "(011) 111-1111" + "\n";
+        String actualPhoneNumbers = person.getPhoneNumberListString();
+
+//        System.out.println(expectedPhoneNumbers);
+//        System.out.println(person.getPhoneNumberListString());
+
+        Assert.assertEquals(expectedPhoneNumbers, actualPhoneNumbers);
+    }
+
 
     @Test
     public void addPhoneNumbersTest() {

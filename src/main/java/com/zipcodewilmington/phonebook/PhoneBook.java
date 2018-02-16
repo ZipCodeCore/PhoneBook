@@ -3,6 +3,8 @@ package com.zipcodewilmington.phonebook;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.Set;
+
 /**
  * Created by leon on 1/23/18.
  */
@@ -10,10 +12,12 @@ public class PhoneBook {
 
     protected HashMap<String, Person> hashMap;
     protected ArrayList<String> entryList;
+    protected Set<String> keySet;
 
     public PhoneBook() {
         this.hashMap = new HashMap<String, Person>();
         this.entryList = new ArrayList<String>();
+        this.keySet = hashMap.keySet();
         //this.hashMap.put("Name_empty", new Person("Name_empty", "Phone_number_empty"));
     }
 
@@ -31,17 +35,21 @@ public class PhoneBook {
         hashMap.remove(name);
     }
 
-    /*
-    public ArrayList<String> getEntryList() { //names
-        for (Map.Entry<String, Person> entry: hashMap.entrySet()) {
-            entryList.add(entry.getKey() + " : " + entry.getValue().getPhoneNumber());
-        }
-        return entryList;
+    public Set<String> getKeySet() { //names and phone numbers
+        return hashMap.keySet();
+        //return all persons
     }
-    */
 
-    public String[] entriesList() { //names and phone numbers
-        return new String[0];
+    public StringBuilder displayAllEntries() { //names and phone numbers
+        StringBuilder sb = new StringBuilder();
+
+        for (String key : hashMap.keySet()) {
+            sb.append(hashMap.get(key).getName() + "\n");
+            sb.append(hashMap.get(key).getPhoneNumberListString());
+        }
+
+        return sb;
+        //call getentries
     }
 
     //PART II
@@ -54,9 +62,5 @@ public class PhoneBook {
         }
         return "No_name";
     }
-
-    //PART III
-    //after I'm done w/ Part I and Part II
-
 
 }
