@@ -1,7 +1,7 @@
 package com.zipcodewilmington.phonebook;
 
 import java.util.Map;
-import java.util.HashMap;
+import java.util.TreeMap;
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -10,42 +10,42 @@ import java.util.Set;
  */
 public class PhoneBook {
 
-    protected HashMap<String, Person> hashMap;
+    protected TreeMap<String, Person> treeMap;
     protected ArrayList<String> entryList;
     protected Set<String> keySet;
 
     public PhoneBook() {
-        this.hashMap = new HashMap<String, Person>();
+        this.treeMap = new TreeMap<String, Person>();
         this.entryList = new ArrayList<String>();
-        this.keySet = hashMap.keySet();
+        this.keySet = treeMap.keySet();
         //this.hashMap.put("Name_empty", new Person("Name_empty", "Phone_number_empty"));
     }
 
     //PART I
     public Person lookup(String name) {
-        return hashMap.get(name);
+        return treeMap.get(name);
     }
 
     public void addEntry(String name, String... phoneNumbers) {
-        hashMap.put(name, new Person(name, phoneNumbers));
+        treeMap.put(name, new Person(name, phoneNumbers));
     }
 
     // Changed method name for Part III
     public void removeRecord(String name) {
-        hashMap.remove(name);
+        treeMap.remove(name);
     }
 
     public Set<String> getKeySet() { //names and phone numbers
-        return hashMap.keySet();
+        return treeMap.keySet();
         //return all persons
     }
 
     public StringBuilder displayAllEntries() { //names and phone numbers
         StringBuilder sb = new StringBuilder();
 
-        for (String key : hashMap.keySet()) {
-            sb.append(hashMap.get(key).getName() + "\n");
-            sb.append(hashMap.get(key).getPhoneNumberListString());
+        for (String key : treeMap.keySet()) {
+            sb.append(treeMap.get(key).getName() + "\n");
+            sb.append(treeMap.get(key).getPhoneNumberListString());
         }
 
         return sb;
@@ -54,8 +54,8 @@ public class PhoneBook {
 
     //PART II
     public String reverseLookup(String phoneNumber) { //lookup names from phone numbers
-        for (String name : hashMap.keySet()) {
-            if (hashMap.get(name).phoneNumberList.contains(phoneNumber) == true) {
+        for (String name : treeMap.keySet()) {
+            if (treeMap.get(name).phoneNumberList.contains(phoneNumber) == true) {
                 return name;
                 //break;
             }

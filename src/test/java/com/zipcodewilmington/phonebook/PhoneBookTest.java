@@ -32,7 +32,7 @@ public class PhoneBookTest {
         String actualPersonName = expectedPerson.getName();
         String actualPersonPhoneNumber = expectedPerson.phoneNumberList.get(0);
 
-        boolean actualPersonNameExists = this.phonebook.hashMap.containsKey("Jane");
+        boolean actualPersonNameExists = this.phonebook.treeMap.containsKey("Jane");
 
         Assert.assertTrue(actualPersonNameExists);
     }
@@ -42,16 +42,16 @@ public class PhoneBookTest {
     public void addEntryTest() {
         this.phonebook.addEntry("Adam", "(000) 000-0000", "(111) 111-1111");
 
-        boolean actualPersonName = this.phonebook.hashMap.containsKey("Adam");
-        boolean actualPhoneNumber = this.phonebook.hashMap.containsValue(this.phonebook.hashMap.get("Adam"));
+        boolean actualPersonName = this.phonebook.treeMap.containsKey("Adam");
+        boolean actualPhoneNumber = this.phonebook.treeMap.containsValue(this.phonebook.treeMap.get("Adam"));
         Assert.assertTrue(actualPersonName);
         Assert.assertTrue(actualPhoneNumber);
 
         String expectedPhoneNumber1 = "(000) 000-0000";
         String expectedPhoneNumber2 = "(111) 111-1111";
 
-        String actualPhoneNumber1 = this.phonebook.hashMap.get("Adam").phoneNumberList.get(0);
-        String actualPhoneNumber2 = this.phonebook.hashMap.get("Adam").phoneNumberList.get(1);
+        String actualPhoneNumber1 = this.phonebook.treeMap.get("Adam").phoneNumberList.get(0);
+        String actualPhoneNumber2 = this.phonebook.treeMap.get("Adam").phoneNumberList.get(1);
 
         Assert.assertEquals(expectedPhoneNumber1, actualPhoneNumber1);
         Assert.assertEquals(expectedPhoneNumber2, actualPhoneNumber2);
@@ -63,8 +63,8 @@ public class PhoneBookTest {
         this.phonebook.addEntry("Bob", "(333) 444-5555");
         this.phonebook.removeRecord("Bob");
 
-        boolean actualPersonName = this.phonebook.hashMap.containsKey("Bob");
-        boolean actualPersonObject = this.phonebook.hashMap.containsValue(this.phonebook.hashMap.get("Bob"));
+        boolean actualPersonName = this.phonebook.treeMap.containsKey("Bob");
+        boolean actualPersonObject = this.phonebook.treeMap.containsValue(this.phonebook.treeMap.get("Bob"));
 
         Assert.assertFalse(actualPersonName);
         Assert.assertFalse(actualPersonObject);
@@ -76,7 +76,7 @@ public class PhoneBookTest {
         this.phonebook.addEntry("Gabriel", "(100) 000-0000", "(110) 000-0000");
 
         System.out.println("getAllEntriesTest:");
-        String expectedKeySet = "[Gabriel, Frank]";
+        String expectedKeySet = "[Frank, Gabriel]";
         String actualKeySet = this.phonebook.getKeySet().toString();
 
         Assert.assertEquals(expectedKeySet, actualKeySet);
@@ -87,12 +87,12 @@ public class PhoneBookTest {
         this.phonebook.addEntry("Herbert", "(200) 000-0000", "(210) 000-0000");
         this.phonebook.addEntry("Isabel", "(300) 000-0000", "(310) 000-0000");
 
-        String expectedEntries = "Isabel" + "\n" +
-                                 "\t" + "(300) 000-0000" + "\n" +
-                                 "\t" + "(310) 000-0000" + "\n" +
-                                 "Herbert" + "\n" +
+        String expectedEntries = "Herbert" + "\n" +
                                  "\t" + "(200) 000-0000" + "\n" +
-                                 "\t" + "(210) 000-0000" + "\n";
+                                 "\t" + "(210) 000-0000" + "\n" +
+                                 "Isabel" + "\n" +
+                                 "\t" + "(300) 000-0000" + "\n" +
+                                 "\t" + "(310) 000-0000" + "\n";
         String actualEntries = this.phonebook.displayAllEntries().toString();
 
 //        System.out.println("displayAllEntriesTest:");
@@ -118,7 +118,7 @@ public class PhoneBookTest {
         String expectedPhoneNumber = "(000) 111-2222";
 
         String actualNameFromPhoneBook = "Ava";
-        boolean actualPhoneNumberFromPhoneBook = this.phonebook.hashMap.get(actualNameFromPhoneBook).phoneNumberList.contains(expectedPhoneNumber);
+        boolean actualPhoneNumberFromPhoneBook = this.phonebook.treeMap.get(actualNameFromPhoneBook).phoneNumberList.contains(expectedPhoneNumber);
 
         Assert.assertEquals(expectedName, this.phonebook.reverseLookup(givenPhoneNumber));
         // Then
