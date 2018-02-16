@@ -1,5 +1,6 @@
 package com.zipcodewilmington.phonebook;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,68 +10,75 @@ import java.util.TreeMap;
 /**
  * Created by leon on 1/23/18.
  */
+
 public class PhoneBookTest {
-    // constructor
-    String name = "Jess";
-    String number = "1234567";
-    String nameA = "Alice";
-    String numberA = "1111111";
-    String nameB = "Sean";
-    String numberB = "2222222";
+    private static PhoneBook phoneBookTest;
 
-    private PhoneBook phoneBook = new PhoneBook();
-    // instance
-
-
-   @Before
-   public void setUp(){
-       phoneBook = new PhoneBook();
-   }
-
-   @Test
-   public boolean testAddAContact() {
-    //instance of new phone book
-//    phoneBook.addAContact(name, number);
-//    Assert.assertTrue(phoneBook.addAContact(name, number).equals(name, number));
-       TreeMap.containsKey(String);
-       Assert.assertTrue(phoneBook.addAContact(name));
-
-   }
-@Test
-    public void removeAContact(String name){
-       //Given
-        String expected = "Null";
-
-        //When
-        phoneBook.addAContact(expected);
-        tmap.add(name);
-        //first must add a name to map
-
-        phoneBook.lookupContactName(expected);
-        String actual = phoneBook.removeAContact();
-        tmap.remove(name);
-        //Then
-        Assert.assertTrue(expected, actual);
-    }
-    @Test
-    public void testLookupContactName (){
-       //Given
-       phoneBook.lookupContactName("Jess");
-       String expected = "1234567";
-
-       //When
-       String actual = phoneBook.lookupContactName("Jess");
-
-       //Then
-       Assert.assertEquals(expected, actual);
+    public void setUp() {
+        phoneBookTest = new PhoneBook();
     }
 
     @Test
-    public void printOut(){
-        System.out.println(phoneBook.listOfAllNames());
+    public void testAdd() {
+        PhoneBook phoneBook = new PhoneBook();
+        phoneBook.add("Jess", "3333333");
+        String expected = phoneBook.lookup("Jess");
+        Assert.assertEquals(expected, "3333333");
+    }
 
+    @Test
+    public void testDelete() {
+        PhoneBook phoneBook = new PhoneBook();
+        phoneBook.add("Kat", "2342233");
+        Boolean actual = phoneBook.delete("Kat");
+        Assert.assertTrue(actual);
+    }
+
+    @Test
+    public void testLookup() {
+        PhoneBook phoneBook = new PhoneBook();
+        phoneBook.add("Sean", "556665");
+        String actual = phoneBook.lookup("Sean");
+        Assert.assertEquals("556665", actual);
+    }
+
+    // actual is what method in Phonebook class gives us back
+    @Test
+    public void testReverseLookup() {
+        PhoneBook phoneBook = new PhoneBook();
+        phoneBook.add("Sean", "556665");
+        String actual = phoneBook.reverseLookup("556665");
+        Assert.assertEquals("Sean", actual);
+    }
+
+    @Test
+    public void testListAllNames() {
+        PhoneBook phoneBook = new PhoneBook();
+        phoneBook.add("Sean", "556665");
+        phoneBook.add("Joe", "9766847");
+        phoneBook.add("Bree", "993255");
+        String expected = "Name Bree\nName Joe\nName Sean\n";
+        String actual = phoneBook.listAllNames();
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testListAllNamesAndNumbers() {
+        PhoneBook phoneBook = new PhoneBook();
+        phoneBook.add("Sean", "5566651111");
+        phoneBook.add("Joe", "9766847111");
+        phoneBook.add("Bree", "9932551111");
+        String expected = "Name Bree\n Number: 9932551111\n" +
+                          "Name Joe\n Number: 9766847111\n" +
+                            "Name Sean\n Number: 5566651111\n";
+        String actual = phoneBook.listAllNamesAndNumbers();
+        Assert.assertEquals(expected, actual);
     }
 }
+
+
+
+
 
 
 
