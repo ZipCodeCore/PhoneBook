@@ -19,16 +19,11 @@ public class PhoneBookTest {
     private String myNumber;
     private String myNumber1;
     private String myNumber2;
-
-    private Person myPerson;
-    private Person myPerson1;
-    private Person myPerson2;
-
     private ArrayList<String> myListOfPhoneNumbers;
     private ArrayList<String> myListOfPhoneNumbers1;
     private ArrayList<String> myListOfPhoneNumbers2;
 
-    private TreeMap<String, Person> myPhoneBookEntries;
+    private TreeMap<String, ArrayList<String>> myPhoneBookEntries;
     private PhoneBook myPhoneBook;
 
     @Before
@@ -41,24 +36,11 @@ public class PhoneBookTest {
         myNumber1 = "200";
         myNumber2 = "300";
 
-        myListOfPhoneNumbers = new ArrayList<>();
-        myListOfPhoneNumbers1 = new ArrayList<>();
-        myListOfPhoneNumbers2 = new ArrayList<>();
+        myPhoneBook = new PhoneBook();
 
-        myListOfPhoneNumbers.add(myNumber);
-        myListOfPhoneNumbers1.add(myNumber1);
-        myListOfPhoneNumbers2.add(myNumber2);
-
-        myPerson = new Person(myName, myNumber, myListOfPhoneNumbers);
-        myPerson1 = new Person(myName1, myNumber1, myListOfPhoneNumbers1);
-        myPerson2 = new Person(myName2, myNumber2, myListOfPhoneNumbers2);
-
-        myPhoneBookEntries = new TreeMap<>();
-        myPhoneBookEntries.put(myName, myPerson);//myPhoneBook = new PhoneBook(myPhoneBookEntries);
-        myPhoneBookEntries.put(myName1, myPerson1);
-        myPhoneBookEntries.put(myName2, myPerson2);
-
-        myPhoneBook = new PhoneBook(myPhoneBookEntries);
+        myPhoneBook.add(myName, myNumber);
+        myPhoneBook.add(myName1, myNumber1);
+        myPhoneBook.add(myName2, myNumber2);
     }
 
     @Test
@@ -66,7 +48,7 @@ public class PhoneBookTest {
         String testName = "bob";
         String testPhone = "777";
         Assert.assertEquals(true, myPhoneBook.add(testName, testPhone));
-        //Assert.assertEquals(true, myPhoneBook.add(testName, testPhone));
+        // Assert.assertEquals(true, myPhoneBook.add(testName, testPhone));
     }
 
 
@@ -88,48 +70,52 @@ public class PhoneBookTest {
     @Test
     public void testRemoveAPhoneNumber() {
 //        String testName = "Gordy";
-       String testName1 = "Lady";
-       String testNumber = "8900";
+        String testName1 = "Lady";
+        String testNumber = "8900";
 //        String testNumber1 = "9999";
         boolean actual = myPhoneBook.removeAPhoneNumber(myName1, myNumber1);
-        boolean actual1 =myPhoneBook.removeAPhoneNumber(myName, myNumber);
+        boolean actual1 = myPhoneBook.removeAPhoneNumber(myName, myNumber);
         Assert.assertEquals(true, actual);
         //Assert.assertEquals(false,  actual1);
-    }
-    @Test
-    public void testlookUpPhoneNumber() {
-        String testNumber = "1000";
-        String testNumber1 = "500";
-        String testName1 = "Steve";
-        Person expected = myPerson;
-
-        Assert.assertEquals(expected, myPhoneBook.lookUpPhoneNumber(testNumber));
-        //Assert.assertEquals(null, myPhoneBook.lookUpPhoneNumber(testNumber1));
-
     }
 
     @Test
     public void testlookUpName() {
+
+        Assert.assertEquals(myName, myPhoneBook.lookUpName(myNumber));
+
+        //Assert.assertEquals(null, myPhoneBook.lookUpPhoneNumber(testNumber1));
+
+    }
+
+
+    @Test
+    public void testlookPhoneNumberForTwoUsers() {
+        Assert.assertEquals(myNumber, myPhoneBook.lookUpPhoneNumber(myName).get(0));
+        Assert.assertEquals(myNumber2, myPhoneBook.lookUpPhoneNumber(myName2).get(0));
+    }
+
+    @Test
+    public void testlookPhoneNumber() {
+        ArrayList<String> expected = new ArrayList<>();
+        expected.add(myNumber);
         String testName = "bob";
         String testName1 = "Steve";
-        Person expected = myPerson;
 
-        Assert.assertEquals(expected, myPhoneBook.lookUpName(testName));
+
+        Assert.assertEquals(expected, myPhoneBook.lookUpPhoneNumber(myName));
         Assert.assertEquals(null, myPhoneBook.lookUpName(testName1));
-
     }
 
     @Test
     public void testGetlistAllNames() {
-        String[] expected = {"bob", "lady", "tim"};
-        String[] actual = myPhoneBook.getlistAllNames();
-        Assert.assertEquals(expected, actual);
-    }
+       String expected = "bob    1000\n"
+                        +"lady    300\n"
+                        +"tim    200\n";
 
-    @Test
-    public void testGetlListAllPhonebook() {
-        Object[] expected = myPhoneBook.getlistAllListings();
-        Object[] actual = myPhoneBook.getlistAllListings();
+        String actual = myPhoneBook.getlistAllNames();
         Assert.assertEquals(expected, actual);
     }
 }
+
+
