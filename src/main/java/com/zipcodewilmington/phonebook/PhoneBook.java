@@ -1,66 +1,67 @@
 package com.zipcodewilmington.phonebook;
+
 import java.util.*;
 import java.util.TreeMap;
-import java.util.Set;
+
 
 /**
  * Created by leon on 1/23/18.
  */
 public class PhoneBook {
 
-    String name;
-    String number;
-    ArrayList<String> numbersList = new ArrayList<>();
+    private TreeMap<String, Contact> phoneBook;
 
-
-    private TreeMap contactsList;
 
     public PhoneBook() {
-        this.contactsList = new TreeMap<>();
-
+        this.phoneBook = new TreeMap<>(String::compareToIgnoreCase);
+    }
+    public void addNewEntry(String name, String number){
+        getPhoneBook().put(name, new Contact(name, number));
     }
 
-    public Map<String, ArrayList> getContactsList() {
-        return contactsList;
-
+    public void removeEntry(String name){
+        getPhoneBook().remove(name);
+    }
+    public void removeNumber(String name, String number){
+        getPhoneBook().get(name).getPhoneNumbers().remove(number);
     }
 
-    public String addContact(String name, String number) {
-        if (!contactsList.containsKey(name)) {
-            contactsList.put(name, number);
-        }
-        return "";
+    public ArrayList<String> lookUpContactPhoneNumbers(String name){
+        return getPhoneBook().get(name).getPhoneNumbers();
     }
 
-    public String removeContact(String name) {
-        if (contactsList.containsKey(name)) {
-            contactsList.remove(name);
-        }
-        return "";
+    public void listAllNamesAndNumbers() {
+        System.out.println(toString());
+
     }
-
-
-    public String listAllNamesAndNumbers() {
-        Set listingAll = contactsList.entrySet();
-        return listingAll.toString();
-        /*String getEntries = new String();
-        for (Object allEntries : listingAll) {
-            if(listingAll.equals());*/
-        }
-
-
-
-    public String reverseLookUp() {
-        Set<String> listingReverse = contactsList.keySet();
-        for (String allEntries : listingReverse) {
-            if(listingReverse.contains(allEntries.equals(number))) {
-                return allEntries;
+    public String reverseLookUp(String number) {
+        for (Map.Entry<String, Contact> contactEntry : getPhoneBook().entrySet()) {
+            if (contactEntry.getValue().getPhoneNumbers().contains(number)) {
+                return contactEntry.getKey();
             }
 
         }
-        return "";
+        return "Contact not found";
     }
+
+    @Override
+    public String toString(){
+        String toBeReturned = "";
+        for(Map.Entry<String, Contact> contactEntry : getPhoneBook().entrySet()){
+           toBeReturned += contactEntry.getValue().toString();
+           toBeReturned += " ";
+        }
+        return toBeReturned.trim();
+    }
+    public TreeMap<String, Contact> getPhoneBook(){
+        return phoneBook;
 }
+
+        }
+
+
+
+
 
 
 
