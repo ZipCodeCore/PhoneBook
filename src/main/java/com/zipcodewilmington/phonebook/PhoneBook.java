@@ -2,70 +2,77 @@ package com.zipcodewilmington.phonebook;
 
 import java.util.*;
 
-/**
- * Created by leon on 1/23/18.
- */
 public class PhoneBook {
 
-    TreeMap<String, Person> phoneBook;
+    // created class variables
+    protected TreeMap<String, ArrayList<String>> treeMap;
 
-public phoneBook(){
-    phoneBook = new TreeMap<String, Person>();
+
+    // initiate instance variables in constructor
+    public PhoneBook() {
+        this.treeMap = new TreeMap<>();
     }
 
+    // .getKey =    name
+    // .getValue =  arraylist phone #'s
+    // .entrySet = efficient way of iterating over map
+    // .containsKey = used to return true if map contains
 
-    public void addEntryToPhoneBook(String name, String phoneNumber) {
-       Person person = new Person(name, phoneNumber);
-        phoneBook.put(name, person);
-    }
-
-
-    public void removeEntryFromPhoneBook(String name, String phoneNumber) {
-        phoneBook.remove(name, phoneNumber);
-    }
-
-    public String lookUp(String name) {
-        return phoneBook.get(name).getPhoneNumbers();
-    }
-
-    public String listNames() {
-        String completeListOfNames = "";
-        for (String key : phoneBook.keySet()) {
-            completeListOfNames += key + "\n";
+    public void addEntryToPhoneBook(String name, ArrayList<String> phoneNumber) {
+        // checking name if it's in map
+        if (!treeMap.containsKey(name)) {
+            treeMap.put(name, phoneNumber); //not there, add info
         }
-
-        return completeListOfNames;
     }
 
-    public String listNumbers() {
-        String completeListOfNumbers = "";
-        for (Map.Entry<String, Person> entry : phoneBook.entrySet()) {
-            completeListOfNumbers += entry.getValue() + "\n";
-        }
-        return completeListOfNumbers;
+
+    public void removeEntryFromPhoneBook(String name) {
+        treeMap.remove(name);
+    }
+
+    public ArrayList<String> lookUp(String name) {
+        return treeMap.get(name);
     }
 
 
     public String entryListAll() {
-        String fullList = "";
-        for (Map.Entry<String, Person> entry : phoneBook.entrySet()) {
-            fullList += entry.getKey() + " : " + entry.getValue() + "\n"; //reverse lookup
 
+        StringBuilder fullList = new StringBuilder();
+
+        for (Map.Entry<String, ArrayList<String>> entry : treeMap.entrySet()) {
+            fullList.append(entry.getKey())
+                    .append(" ")
+                    .append(entry.getValue())
+                    .append("\n"); // appended on new lines for readability
         }
         System.out.println(fullList);
-        return fullList;
-    }
+        return fullList.toString();
 
+//        Noting originally had below syntax
+//        String fullList = "";
+//        for (Map.Entry<String, ArrayList<String>> entry : treeMap.entrySet()) {
+//            fullList += entry.getKey() + " : " + entry.getValue() + "\n";
+//
+//        }
+//        System.out.println(fullList);
+//        return fullList;
+    }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // want to look up number and return the persons name
     public String reverseLookup(String numberToLookUp) {
-        for (Map.Entry<String,Person > entry : phoneBook.entrySet()) {
-            if (entry.getValue().equals(numberToLookUp)){
-                return entry.getKey();
+
+        String name = "";   //empty string
+
+        for (Map.Entry<String, ArrayList<String>> entry : treeMap.entrySet()) { //Looping entire TreeMap
+
+            for (String numberWeWant : entry.getValue()) { //searching #'s in TreeMap value
+                if (numberToLookUp.contains(numberWeWant)) {
+                    name = entry.getKey();  // getKey reps names in TreeMap
+                }
             }
-        }return null;
+        }
+        System.out.println(name);
+        return name;
     }
-
-
-
-
 }
-
