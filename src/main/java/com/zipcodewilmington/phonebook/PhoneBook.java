@@ -6,19 +6,19 @@ import java.util.*;
  * Created by leon on 1/23/18.
  */
 public class PhoneBook {
-    Map<String, List<String>> phoneBook;
+    Map<String, ArrayList<String>> phoneBook;
 
     public PhoneBook() {
-        this.phoneBook = new TreeMap<String, List<String>>();
+        this.phoneBook = new TreeMap<String, ArrayList<String>>();
     }
 
-    public boolean add(String name, String phone) {
-        if (phoneBook.containsKey(name)) {
-            phoneBook.get(name).add(phone);
+    protected boolean add(String name, String phone) {
+        if (hasEntry(name)) {
+            getArrayListFor(name).add(phone);
             return true;
 
         } else {
-            List<String> contactNumbers = new ArrayList<String>();
+            ArrayList<String> contactNumbers = new ArrayList<String>();
             contactNumbers.add(phone);
             phoneBook.put(name, contactNumbers);
         }
@@ -26,22 +26,20 @@ public class PhoneBook {
         return true;
     }
 
-    public boolean remove(String name) {
-        return phoneBook.remove(name) != null;
+    protected void remove(String name) {
+         phoneBook.remove(name);
     }
 
-    public String lookup(String name) {
-        String myNumbers = "";
-        for (String key : phoneBook.keySet()) {
-            for (int i = 0; i < phoneBook.get(key).size(); i++) {
-                myNumbers += phoneBook.get(key).get(i) + "  ";
-            }
-
+    protected String lookup(String name) {
+        String contactInfo = "";
+        ArrayList<String>phoneNumberLists = getArrayListFor(name);
+        for (String phoneNumbers:phoneNumberLists) {
+            contactInfo+=phoneNumbers + " ";
         }
-        return myNumbers;
+        return contactInfo;
     }
 
-    public String listNames() {
+    protected String listNames() {
         String names = "";
         for (String a : phoneBook.keySet()) {
             names += a + "\n";
@@ -50,27 +48,43 @@ public class PhoneBook {
         return names;
     }
 
-    public String listNamesAndNumbers() {
+    protected String listNamesAndNumbers() {
         StringBuilder namesAndNumbers = new StringBuilder();
         for (String keys : phoneBook.keySet()) {
-            List<String> contact = phoneBook.get(keys);
+            namesAndNumbers.append(keys+"==>");
+            ArrayList<String> contact = getArrayListFor(keys);
             for (String num : contact) {
-                namesAndNumbers.append(keys).append("    ").append(num);
+                namesAndNumbers.append(num+",");
             }
             namesAndNumbers.append("\n");
         }
         return namesAndNumbers.toString();
     }
 
-    public String reverseLookUp(String number) {
+    protected String reverseLookUp(String number) {
         for (String keys : phoneBook.keySet()) {
-            for (int i = 0; i < phoneBook.get(keys).size(); i++) {
-                if (phoneBook.get(keys).get(i).equals(number))
+            for (int i = 0; i < getArrayListFor(keys).size(); i++) {
+                if (getArrayListFor(keys).get(i).equals(number))
                     return keys;
             }
         }
         return null;
     }
+    protected boolean hasEntry(String name){
+        if(phoneBook.containsKey(name)){
+            return true;
+        }
+        return false;
+    }
+    protected ArrayList<String> getArrayListFor(String name){
+        return phoneBook.get(name);
+    }
+    protected void removeIndividualNumbers(String name,String number){
+        getArrayListFor(name).remove(number);
+    }
 
+    protected void removeRecord() {
 
+        phoneBook.clear();
+    }
 }
