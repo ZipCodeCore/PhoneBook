@@ -13,9 +13,12 @@ public class PhoneBook {
     public static void main(String[] args) {
 
         PhoneBook myPhoneBookActualObjectInstance= new PhoneBook();
+        //adding two people:
         myPhoneBookActualObjectInstance.add("vince", "1123456789");
         myPhoneBookActualObjectInstance.add("amy", "29387429");
-        myPhoneBookActualObjectInstance.personTreeMap.get("amy").addAdditionalNumber("2344");
+        //asking the program to get a person using it's name and adding an additional number to it:
+        myPhoneBookActualObjectInstance.addAdditionalNumberToEntry("amy", "2344");
+        //printing out the entire phonebook
         System.out.println(myPhoneBookActualObjectInstance.displayEntirePhoneBookContents());
     }
 
@@ -38,6 +41,12 @@ public class PhoneBook {
     public void removeEntireEntry (String name) {
 
         personTreeMap.remove(name);
+    }
+
+    //newly added thanks to "the falcon"
+    public void addAdditionalNumberToEntry (String name, String number){
+        personTreeMap.get(name).addAdditionalNumber(number);
+
     }
 
     public String lookup(String name) {
