@@ -2,16 +2,14 @@ package com.zipcodewilmington.phonebook;
 
 import org.junit.Assert;
 import org.junit.Test;
-import sun.nio.cs.ext.SJIS;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.TreeMap;
 
 /**
  * Created by leon on 1/23/18.
  */
 public class PhoneBookTest {
+
     @Test
     public void testDefaultConstructor() {
         PhoneBook book = new PhoneBook();
@@ -70,7 +68,6 @@ public class PhoneBookTest {
 
     @Test
     public void testRemoveEntry() {
-
         //Given
         PhoneBook book = new PhoneBook();
         ArrayList<String> bobNumber = new ArrayList<String>(Arrays.asList("302-555-2222","302-555-3456"));
@@ -86,7 +83,6 @@ public class PhoneBookTest {
 
     @Test
     public void testLookup(){
-        //To test if lookup returns all of the person's phone numbers
         //Given
         PhoneBook book = new PhoneBook();
         ArrayList<String> expectedNumber = new ArrayList<String>(Arrays.asList("302-555-2223","302-555-3456"));
@@ -99,7 +95,6 @@ public class PhoneBookTest {
 
     @Test
     public void testLookup2(){
-        //To test if lookup picks out the right person when there are multiple entries
         //Given
         PhoneBook book = new PhoneBook();
         ArrayList<String> bobNumber = new ArrayList<String>(Arrays.asList("302-555-2223"));
@@ -115,7 +110,6 @@ public class PhoneBookTest {
 
     @Test
     public void testreverseLookup(){
-        // to test if right person is returned when searching by one of multiple phone numbers
         //Given
         PhoneBook book = new PhoneBook();
         ArrayList<String> bobNumber = new ArrayList<String>(Arrays.asList("302-555-2223","302-555-5555"));
