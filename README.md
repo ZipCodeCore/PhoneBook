@@ -35,8 +35,8 @@
 
 	* `reverseLookup(String phoneNumber)`
 		* returns a name for the respective input `phoneNumber`
-	* `display()`
-		* print a human-readable list of all entries (names and phone numbers) in alphabetical order.
+	* `listNamesAndNumbers()`
+		* Create a String that has all the entries (names and phone numbers) in alphabetical order.
 
 	   * Sample Script
 	
@@ -44,7 +44,7 @@
 		   PhoneBook phoneBook = new PhoneBook();
 		   phoneBook.add("Zebra", "111-222-333");
 		   phoneBook.add("Dog", "222-444-4444");
-		   phoneBook.display(); 
+		   phoneBook.listNamesAndNumbers(); 
 		   ```
 	
 	   * Sample Output
