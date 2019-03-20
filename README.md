@@ -1,5 +1,5 @@
 # Phone Book
-* **Objective** - To implement a `PhoneBook` class which maps a `name` to many `phoneNumber`s
+* **Objective** - To implement a `PhoneBook` class which maps a `name` to many `phoneNumber`
 * **Purpose** - To establish familiarity `Map`
 
 ## Getting Started
