@@ -27,7 +27,7 @@ public class PhoneBook {
         return null;
     }
 
-    public List<String> getPhoneNumbersFor(String name) {
+    public List<String> lookup(String name) {
         return null;
     }
 
