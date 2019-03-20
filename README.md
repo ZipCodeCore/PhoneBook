@@ -10,8 +10,6 @@
 ### Building a basic `PhoneBook` class
 * Create a `PhoneBook` class that holds names and phone numbers.
 * You can use an [associative data type](https://en.wikipedia.org/wiki/Associative_array) (one which stores items as keys paired with values).
-* **Hint:** You should use a sorted map.
-
 
 * Your PhoneBook class should have the following method
 	* `void add(String name, String phoneNumber)`
