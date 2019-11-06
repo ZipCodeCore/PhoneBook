@@ -13,11 +13,17 @@ public class PhoneBook {
     }
 
     public PhoneBook() {
-        this(null);
+        this(new LinkedHashMap<>());
     }
 
     public void add(String name, String phoneNumber) {
-        theMap.put(name, Collections.singletonList(phoneNumber));
+        List<String> phoneNumsList = theMap.get(name);
+        if(phoneNumsList != null) {
+            phoneNumsList.add(phoneNumber);
+        }
+        else {
+            theMap.put(name, Collections.singletonList(phoneNumber));
+        }
     }
 
     public void addAll(String name, String... phoneNumbers) {
@@ -38,18 +44,29 @@ public class PhoneBook {
     }
 
     public List<String> lookup(String name) {
-        return null;
+        return theMap.get(name);
     }
 
     public String reverseLookup(String phoneNumber)  {
+        for (Map.Entry<String, List<String>> entry: theMap.entrySet()){
+            for(String phoneNum: entry.getValue()){
+                if(phoneNum.equals(phoneNumber)){
+                    return entry.getKey();
+                }
+            }
+        }
         return null;
     }
 
     public List<String> getAllContactNames() {
-        return null;
+        List<String> allConNames = new ArrayList<>();
+        for (Map.Entry<String, List<String>> entry: theMap.entrySet()){
+                    allConNames.add(entry.getKey());
+            }
+        return allConNames;
     }
 
     public Map<String, List<String>> getMap() {
-        return null;
+        return theMap;
     }
 }
