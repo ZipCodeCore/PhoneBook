@@ -1,9 +1,6 @@
 package com.zipcodewilmington.phonebook;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by leon on 1/23/18.
@@ -15,13 +12,13 @@ public class PhoneBook {
 
 //--------  constructors ------------
     public PhoneBook(Map<String, List<String>> map) {
-        this.phoneBook = new HashMap<>();
+        this.phoneBook = new LinkedHashMap<>();
         this.phoneBook = map;
         this.phoneNumbers = new ArrayList<>();
     }
 
     public PhoneBook() {
-        this.phoneBook = new HashMap<>();
+        this.phoneBook = new LinkedHashMap<>();
         this.phoneNumbers = new ArrayList<>();
     }
 //------------------------------------
@@ -45,7 +42,7 @@ public class PhoneBook {
 
     public Boolean hasEntry(String name) {
 
-        return this.phoneBook.containsKey(name);
+        return this.phoneNumbers.contains(name);
     }
 
     public List<String> lookup(String name) {
