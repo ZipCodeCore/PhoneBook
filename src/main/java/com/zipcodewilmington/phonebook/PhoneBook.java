@@ -18,9 +18,12 @@ public class PhoneBook {
     }
 
     public void add(String name, String phoneNumber) {
-        List<String> phoneNumberList = map.get(name);
+        List<String> phoneNumberList = new ArrayList<>();
+        if(hasEntry(name)) {
+            phoneNumberList = map.get(name);
+        }
         phoneNumberList.add(phoneNumber);
-        map.put(phoneNumber, phoneNumberList);
+        map.put(name, phoneNumberList);
     }
 
     public void addAll(String name, String... phoneNumbers) {
@@ -34,7 +37,8 @@ public class PhoneBook {
     }
 
     public Boolean hasEntry(String name) {
-        return map.get(name) != null;
+        Set<String> contactNames = map.keySet();
+        return contactNames.contains(name);
     }
 
     public List<String> lookup(String name) {
@@ -42,15 +46,25 @@ public class PhoneBook {
     }
 
     public String reverseLookup(String phoneNumber)  {
-
+        Set<String> contactNames = map.keySet();
+        for (String contactName : contactNames) {
+            List<String> phoneNumbers =map.get(contactName);
+            if(phoneNumbers.contains(phoneNumber)){
+                return contactName;
+            }
+        }
         return null;
     }
 
     public List<String> getAllContactNames() {
-        return null;
+        Set<String> contactSet = map.keySet();
+        List<String> result = new ArrayList<>();
+        contactSet.forEach(currentElement -> result.add(currentElement));
+        //or contactSet.forEach(result::add) <- more professional and clean
+        return result;
     }
 
     public Map<String, List<String>> getMap() {
-        return null;
+        return map;
     }
 }
