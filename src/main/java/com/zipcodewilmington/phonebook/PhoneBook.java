@@ -6,41 +6,68 @@ import java.util.*;
  * Created by leon on 1/23/18.
  */
 public class PhoneBook {
-    private Map <String, ArrayList<String>> map;
-    //private List<String> list = new ArrayList<>();
+    private LinkedHashMap <String, List<String>> map;
 
 
-    public PhoneBook(Map<String, ArrayList<String>> map) {
-        //map = new LinkedHashMap<>(0);
+    //THE KEY IS NAME THE VALUE IS THE PHONE NUMBERS
+    //THE ARRAY LIST IS PART OF THE (HASH)MAP
+
+
+    public PhoneBook(LinkedHashMap<String, List<String>> map) {
         this.map = map;
-        //this.list = list;
     }
 
     public PhoneBook() {
 
-        //map = new LinkedHashMap<String, List<String>>();
-
-        this.map = new TreeMap<String, ArrayList<String>>();
+        this.map = new LinkedHashMap<>(0);
     }
 
     public void add(String name, String phoneNumber) {
-        ArrayList<String> number = map.get(name);
-       number.add(phoneNumber);
-        map.put(name, number);
+
+        if(this.map.containsKey(name)) {
+            this.map.get(name).add(phoneNumber);
+        } else {
+            this.map.put(name, new ArrayList<>());
+            this.map.get(name).add(phoneNumber);
+        }
+
+
+       // map.put(name, Arrays.asList(phoneNumber));
+
+
+//        ArrayList<String> numbers;
+//        if(this.map.containsKey(name)){
+//           numbers = map.get(name);   //pulls out and returns the value for the key "name" in the ArrayList of existing phone numbers
+//            numbers.add(phoneNumber); }  //adds the phone number to the array List
+//        else
+//        {
+//             numbers = new ArrayList<>(Arrays.asList(phoneNumber)); //If the key isn't there we create a new ArrayList key for it
+//        }
+//        map.put(name, numbers);        //puts the new information into the map
     }
 
     public void addAll(String name, String... phoneNumbers) {
-        //adds many phone numbers to a single name entry
-
-        for (String string: phoneNumbers) {
-            list.add(string);
+        if(this.map.containsKey(name)) {
+            this.map.get(name).addAll(Arrays.asList(phoneNumbers));
+        } else {
+            this.map.put(name, Arrays.asList(phoneNumbers));
         }
-        map.put(name,list);
 
+
+        //adds many phone numbers to a single name entry
+        //map.put(name, Arrays.asList(phoneNumbers));
+
+//        ArrayList<String> numbers;
+//
+//            numbers = map.getOrDefault(name, new ArrayList <String>());      //pulls out the ArrayList of existing phone numbers
+//            ArrayList<String> incomingNums = new ArrayList<>(Arrays.asList(phoneNumbers));  //turns the regular Array of incoming phone numbers to an array List
+//            numbers.addAll(incomingNums);
+//
+//        map.put(name, numbers);
     }
 
     public void remove(String name) {
-        map.remove(name);
+        this.map.remove(name);
     }
 
     public Boolean hasEntry(String name) {
@@ -51,28 +78,30 @@ public class PhoneBook {
         return map.get(name);
     }
 
-    public String reverseLookup(String phoneNumber)  {
-        String result = "";
-        for (Map.Entry<String, ArrayList<String>> entry : map.entrySet()) {
+    public String reverseLookup(String phoneNumber) {
+
+        String nameToFind = "";
+        for (Map.Entry<String, List<String>> entry : this.map.entrySet()) {
             List<String> listOfPhoneNumbers = map.get(entry.getKey());
             for (int i = 0; i < listOfPhoneNumbers.size(); i++) {
-                if (listOfPhoneNumbers.get(i).equals(phoneNumber))
-                    result = entry.getKey();
+                if (listOfPhoneNumbers.get(i).equals(phoneNumber)) {
+                    nameToFind = entry.getKey();
+                }
             }
         }
-        return result;
+        return nameToFind;
     }
 
     public List<String> getAllContactNames() {
 
         List<String> result = new ArrayList<>();
-        for (Map.Entry<String,ArrayList<String>> entry: map.entrySet()) {
+        for (Map.Entry<String,List<String>> entry: map.entrySet()) {
             result.add(entry.getKey());
         }
         return result;
     }
 
-    public Map<String, ArrayList<String>> getMap() {
+    public Map<String, List<String>> getMap() {
 
         return this.map;
     }
