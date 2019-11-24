@@ -27,10 +27,12 @@ public class PhoneBook {
     }
 
     public void remove(String name) {
+        phonebook.remove(name);
     }
 
     public Boolean hasEntry(String name) {
-        return null;
+        ArrayList<String> num = new ArrayList<>(Arrays.asList(name));
+        return phonebook.containsValue(num) || phonebook.containsKey(name);
     }
 
     public List<String> lookup(String name) {
