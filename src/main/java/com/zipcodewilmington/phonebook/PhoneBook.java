@@ -40,7 +40,11 @@ public class PhoneBook {
     }
 
     public String reverseLookup(String phoneNumber)  {
-        return null;
+        List<List<String>> nums = new ArrayList<List<String>>(phonebook.values());
+        ArrayList<String> num = new ArrayList<>(Arrays.asList(phoneNumber));
+        Integer index = nums.indexOf(num);
+        String[] names = phonebook.keySet().toArray(new String[phonebook.size()]);
+        return names[index];
     }
 
     public List<String> getAllContactNames() {
