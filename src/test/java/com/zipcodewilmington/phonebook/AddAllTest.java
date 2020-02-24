@@ -6,7 +6,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
-public class AddAllTest {
+public class  AddAllTest {
 
 
     @Test
