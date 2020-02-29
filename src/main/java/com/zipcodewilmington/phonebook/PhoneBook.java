@@ -6,25 +6,27 @@ import java.util.*;
  * Created by leon on 1/23/18.
  */
 public class PhoneBook {
-    private HashMap<String, List<String>> namesNumbers = new HashMap<>();
+    private LinkedHashMap<String, List<String>> namesNumbers = new LinkedHashMap<>();
+
 
     public PhoneBook(Map<String, List<String>> map) {
         this.namesNumbers.putAll(map);
     }
 
     public PhoneBook() {
-        this.namesNumbers = new HashMap(){};
+        this.namesNumbers = new LinkedHashMap<>();
     }
 
     public void add(String name, String phoneNumber) {
-        ArrayList<String> phoneNumbers= new ArrayList<>();
-        phoneNumbers.add(phoneNumber);
-        this.namesNumbers.put(name,phoneNumbers);
+        ArrayList<String> numList = new ArrayList<>(1);
+        numList.add(phoneNumber);
+        this.namesNumbers.put(name,numList);
     }
 
     public void addAll(String name, String... phoneNumbers) {
-        ArrayList<String> phoneNumbersList = new ArrayList<>(Arrays.asList(phoneNumbers));
-        this.namesNumbers.put(name,phoneNumbersList);
+        ArrayList<String> numList = new ArrayList<>(phoneNumbers.length);
+        numList.addAll(Arrays.asList(phoneNumbers));
+        this.namesNumbers.put(name,numList);
     }
 
     public void remove(String name) {
@@ -36,20 +38,26 @@ public class PhoneBook {
     }
 
     public List<String> lookup(String name) {
-        return this.namesNumbers.get(name);
+        ArrayList<String> numList = new ArrayList<>(namesNumbers.get(name).size());
+        numList.addAll(namesNumbers.get(name));
+        return numList;
     }
 
     public String reverseLookup(String phoneNumber)  {
-        for (Map.Entry<String, List<String>> entry : this.namesNumbers.entrySet()){
-            if (entry.getValue().equals(phoneNumber)){
+        for (Map.Entry<String, List<String>> entry: namesNumbers.entrySet()){
+            if (entry.getValue().contains(phoneNumber)){
                 return entry.getKey();
-            }
+    }
         }
         return null;
     }
 
     public List<String> getAllContactNames() {
-        return new ArrayList<>(this.namesNumbers.keySet());
+        ArrayList<String> nameList = new ArrayList<>(namesNumbers.keySet().size());
+        for (String name : namesNumbers.keySet()){
+            nameList.add(name);
+        }
+        return nameList;
     }
 
     public Map<String, List<String>> getMap() {
