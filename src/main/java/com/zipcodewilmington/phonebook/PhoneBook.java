@@ -1,13 +1,22 @@
 package com.zipcodewilmington.phonebook;
 
 import java.util.List;
+import java.util.ArrayList;
+//import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
  * Created by leon on 1/23/18.
+ * Made WAY better by kristofer 6/16/20
  */
 public class PhoneBook {
+
+    private final Map<String, List<String>> phonebook;
+
     public PhoneBook(Map<String, List<String>> map) {
+        this.phonebook = null;
     }
 
     public PhoneBook() {
