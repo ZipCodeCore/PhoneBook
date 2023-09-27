@@ -25,7 +25,7 @@ Here are some of the key features of the Map interface:
 - No duplicate keys: Although values can be duplicated, keys cannot. Each key in a Map must be unique.
 - Null keys and values: A Map can contain null keys and values.
 - Iteration: You can iterate over the keys or values in a Map using the `keySet()`, `values()`, or `entrySet()` methods.
-- 
+
 Here is an example of how to use the Map interface in Java:
 
 ```java
