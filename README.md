@@ -2,7 +2,7 @@
 * **Objective** - To implement a `PhoneBook` class which maps a `name` to many `phoneNumber`
 * **Purpose** - To establish familiarity with Java's `Map` interface.
 
-## Modeling Abstarction in Software
+## Modeling Abstraction in Software
 
 Software developers use data structures to build abstractions that model real-world objects in their programs. For example, a phonebook can be modeled as a collection of key-value pairs, where the keys are names and the values are phone numbers. In Java, there are several common data structures that can be used to implement a phonebook, including arrays, ArrayLists, and HashMaps.
 
